@@ -1,0 +1,64 @@
+@import "m-_variable";
+
+
+.m-border-none{
+  border: none;
+}
+
+@each $color in map-keys($m-border-colors) {
+  .m-border-#{$color} {
+    border: 1 + $unit solid getFromMap($m-border-colors, $color);
+  }
+  .m-border-#{$color}-t {
+    border-top: 1 + $unit solid getFromMap($m-border-colors, $color);
+  }
+  .m-border-#{$color}-b {
+    border-bottom: 1 + $unit solid getFromMap($m-border-colors, $color);
+  }
+  .m-border-#{$color}-l {
+    border-left: 1 + $unit solid getFromMap($m-border-colors, $color);
+  }
+  .m-border-#{$color}-r {
+    border-right: 1 + $unit solid getFromMap($m-border-colors, $color);
+  }
+}
+
+.m-border-radius-default{
+  border-radius: getFromMap($m-border-radius, 'default');
+}
+
+.m-border-radius-small{
+  border-radius: getFromMap($m-border-radius, 'small');
+}
+
+.m-border-radius-small{
+  border-radius: getFromMap($m-border-radius, 'small');
+}
+
+.m-border-radius-small2{
+  border-radius: getFromMap($m-border-radius, 'small2');
+}
+
+.m-border-radius-small3{
+  border-radius: getFromMap($m-border-radius, 'small3');
+}
+
+.m-border-radius-large{
+  border-radius: getFromMap($m-border-radius, 'large');
+}
+
+.m-border-radius-large2{
+  border-radius: getFromMap($m-border-radius, 'large2');
+}
+
+.m-border-radius-large3{
+  border-radius: getFromMap($m-border-radius, 'large3');
+}
+
+@for $i from 0 through 50 {
+  @if $i%2==0 {
+    .m-border-radius#{$i} {
+      border-radius: #{$i}#{$unit};
+    }
+  }
+}

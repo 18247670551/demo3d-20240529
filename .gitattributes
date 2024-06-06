@@ -1,0 +1,23 @@
+# windows中的换行符为 CRLF，而在Linux下的换行符为LF
+
+# 所以在执行 git add . 时，会出现
+#     warning: LF will be replaced by CRLF in package.json.
+#     The file will have its original line endings in your working directory
+
+# 解决办法1:
+#     git config core.autocrlf false  //禁用自动转换
+
+
+# 解决办法2:
+#     在工程目录下添加 .gitattributes 文件，文件内容为:
+
+package.json text eol=lf
+package-lock.json text eol=lf
+
+#  text
+#      用于控制行尾的规范性。如果一个文本文件是规范的，则Git库汇总该文件（git 服务器上的文件）的行尾总是LF。对于工作目录，除了text属性之外，还可以设置eol属性或core.eol配置变量。
+
+#  eol
+#      设置行末字符。
+#      eol=lf ，[回车] ：入库时将行尾规范为LF，检出时行尾不强制转换为 CRLF
+#      eol=crlf，[换行、回车] ：入库时将行尾规范为LF，检出时将行尾转换为 CRLF

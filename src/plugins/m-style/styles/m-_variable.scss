@@ -1,0 +1,178 @@
+/*
+  env 部分, 后面所有不同前端使用不同单位等, 集中在此定义
+ */
+$env-client: web;
+//$env-client: mini;
+
+
+$unit: px;
+
+@if $env-client == 'mini' {
+  $unit: rpx;
+}
+
+
+
+$default-row-height: 100 + $unit;
+$default-flex-gap: 20 + $unit;
+
+$theme-color: #409EFF;
+$page-bg-color: #F0F0F0;
+
+
+$m-colors: (
+        inherit: inherit,
+        primary: #409eff,
+        success: #67c23a,
+        warning: #e6a23c,
+        danger: #f56c6c,
+        error: #f56c6c,
+        info: #909399,
+        white0: white,
+        black0: black,
+        transparent0: transparent,
+        red0: red,
+        green0: green,
+        blue0: blue,
+        blue1: #1296db,
+        yellow0: yellow,
+        orange0: orange,
+        brown0: brown,
+        pink0: pink,
+        grey1: #111,
+        grey2: #222,
+        grey3: #333,
+        grey4: #444,
+        grey5: #555,
+        grey6: #666,
+        grey7: #777,
+        grey8: #888,
+        grey9: #999,
+        greyA: #AAA,
+        greyB: #BBB,
+        greyC: #CCC,
+        greyD: #DDD,
+        greyE: #EEE,
+        greyF0: #F0F0F0,
+        greyF5: #F5F5F5,
+);
+
+
+// 不直接使用此变量, 只为与 $m-colors 合并成 $m-text-colors
+$_m-text-colors: (
+        default: #333,
+        light: #666,
+        light2: #999,
+        light3: #AAA,
+        light4: #CCC,
+        light5: #DDD,
+        deep: #222,
+        deep2: #111,
+        deep3: #111,
+        deep4: #111,
+        deep5: #111,
+);
+
+$m-text-colors: map-merge($m-colors, $_m-text-colors);
+
+
+// 不直接使用此变量, 只为与 $m-colors 合并成 $m-bg-colors
+$_m-bg-colors: (
+        default: #999,
+        light: #ccc,
+        light2: #ddd,
+        light3: #eee,
+        light4: #f0f0f0,
+        light5: #f5f5f5,
+        deep: #777,
+        deep2: #666,
+        deep3: #555,
+        deep4: #333,
+        deep5: #111,
+        linearGrey: linear-gradient(to bottom right, #fbfbfb, #e3e3e3),
+        linearBlue: linear-gradient(to bottom right, #e1f5ff, #71d0ff),
+        linearYellow: linear-gradient(to bottom right, #f9feb6, #f9ee2b),
+        linearGreen: linear-gradient(to bottom right, #c1ffd1, #39ff6b),
+        linearRed: linear-gradient(to bottom right, #ffceca, #ff7a73),
+);
+
+$m-bg-colors: map-merge($m-colors, $_m-bg-colors);
+
+
+// 不直接使用此变量, 只为与 $m-colors 合并成 $m-text-colors
+$_m-border-colors: (
+        default: #999,
+        light: #ccc,
+        light2: #ddd,
+        light3: #eee,
+        light4: #f0f0f0,
+        light5: #f5f5f5,
+        deep: #777,
+        deep2: #666,
+        deep3: #555,
+        deep4: #333,
+        deep5: #111,
+);
+
+$m-border-colors: map-merge($m-colors, $_m-border-colors);
+
+
+$m-border-radius: (
+        default: 10 + $unit,
+        small: 8 + $unit,
+        small2: 6 + $unit,
+        small3: 4 + $unit,
+        small4: 2 + $unit,
+        large: 12 + $unit,
+        large2: 14 + $unit,
+        large3: 18 + $unit,
+        large4: 20 + $unit,
+        large5: 22 + $unit,
+);
+
+
+@function getFromMap($map, $key) {
+  @if not map-has-key($map, $key) {
+    @warn "scss错误, getFromMap方法 未从 #{$map}. 找到属性 #{$key}.";
+  }
+
+  @return map-get($map, $key);
+}
+
+
+// @each
+// @each $name in map-keys($m-colors) {
+//   .m-bg-#{$name} {
+//     background-color: getFromMap($m-colors, $name);
+//   }
+// }
+
+
+// @for
+// @for $i from 1 through length(map-keys($m-colors)) {
+//   .btn-#{nth(map-keys($m-colors), $i)} {
+//     color: colors(nth(map-keys($m-colors), $i));
+//   }
+// }
+
+
+// @for $i from 1 through 100 {
+//   @if $i%2==0 {
+//     .h-#{$i} {
+//       height: #{$i}px;
+//     }
+//   }
+// }
+
+
+//p {
+//  @if 10 == 20 {
+//    border: 1px dotted;
+//  }
+//  @if 7 < 2 {
+//    border: 2px solid;
+//  }
+//  @if null {
+//    border: 3px double;
+//  }
+//}

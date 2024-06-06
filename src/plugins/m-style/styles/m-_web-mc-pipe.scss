@@ -1,0 +1,162 @@
+@import "m-_variable";
+
+.m-pipe-left-round {
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+}
+
+.m-pipe-right-round {
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+
+
+
+
+.m-pipe-ver-top-left-rect20 {
+  clip-path: polygon(0 20px, 100% 0, 100% 100%, 0 100%);
+}
+
+.m-pipe-ver-top-right-rect20 {
+  clip-path: polygon(0 0, 100% 20px, 100% 100%, 0 100%);
+}
+
+.m-pipe-ver-bottom-left-rect20 {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 20px));
+}
+
+.m-pipe-ver-bottom-right-rect20 {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), 0 100%);
+}
+
+.m-pipe-hor-top-both-rect20 {
+  clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 100%, 0 100%);
+}
+
+.m-pipe-hor-bottom-both-rect20 {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 20px) 100%, 20px 100%);
+}
+
+
+
+
+
+.m-pipe-hor-top-left-rect40 {
+  clip-path: polygon(0 40px, 100% 0, 100% 100%, 0 100%);
+}
+
+.m-pipe-ver-top-right-rect40 {
+  clip-path: polygon(0 0, 100% 40px, 100% 100%, 0 100%);
+}
+
+.m-pipe-top-both-rect40{
+  clip-path: polygon(40px 0, calc(100% - 40px) 0, 100% 100%, 0 100%);
+}
+.m-pipe-hor-bottom-both-rect40{
+  clip-path: polygon(0 0, 100% 0, calc(100% - 40px) 100%, 40px 100%);
+}
+
+.m-pipe-ver-top-left-and-bottom-right-rect40{
+  clip-path: polygon(0 40px, 100% 0, 100% calc(100% - 40px), 0 100%);
+}
+
+.m-pipe-hor-top-left-rect40 {
+  clip-path: polygon(40px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.m-pipe-hor-bottom-right-rect20{
+  clip-path: polygon(0 0, 100% 0, calc(100% - 20px) 100%, 0 100%);
+}
+
+.m-pipe-ver-top-left-rect20{
+  clip-path: polygon(0 20px, 100% 0, 100% 100%, 0 100%);
+}
+
+.m-pipe-hor-bottom-left-rect20{
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 20px 100%);
+}
+
+.m-pipe-hor-top-right-rect20 {
+  clip-path: polygon(0 0, 100% 20px, 100% 100%, 0 100%);
+}
+
+.m-pipe-ver-both-right-rect20{
+  clip-path: polygon(0 0, 100% 20px, 100% calc(100% - 20px), 0 100%);
+}
+
+.m-pipe-hor-top-left-rect20{
+  clip-path: polygon(20px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.m-pipe-hor-bottom-left-rect40{
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 40px 100%);
+}
+
+
+
+
+//.mc-pipe-hor-bottom-both-corner-rect10 {
+//  clip-path: polygon(0 0, 100% 0, calc(100% - 10rpx) 100%, 10rpx 100%);
+//}
+//
+//.mc-pipe-hor-top-both-corner-rect10 {
+//  clip-path: polygon(10rpx 0, calc(100% - 10rpx) 0, 100% 100%, 0 100%);
+//}
+//
+//.mc-pipe-hor-bottom-left-corner-rect10{
+//  clip-path: polygon(0 0, 100% 0, 100% 100%, 10rpx 100%);
+//}
+//
+//.mc-pipe-hor-both-right-corner-rect10{
+//  clip-path: polygon(0 0, 100% 10rpx, 100% calc(100% - 10rpx), 0 100%);
+//}
+//
+//.mc-pipe-hor-top-left-corner-rect10{
+//  clip-path: polygon(10rpx 0, 100% 0, 100% 100%, 0 100%);
+//}
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//.mc-pipe-ver-top-left-corner-rect16 {
+//  clip-path: polygon(0 16rpx, 100% 0, 100% 100%, 0 100%);
+//}
+
+//
+//
+//
+//.mc-pipe-ver-bottom-left-corner-rect16 {
+//  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 16rpx));
+//}
+//.mc-pipe-ver-bottom-right-corner-rect16 {
+//  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16rpx), 0 100%);
+//}
+//
+//
+//.mc-pipe-hor-bottom-both-corner-rect16 {
+//  clip-path: polygon(0 0, 100% 0, calc(100% - 16rpx) 100%, 16rpx 100%);
+//}
+//
+//.mc-pipe-hor-top-both-corner-rect16 {
+//  clip-path: polygon(16rpx 0, calc(100% - 16rpx) 0, 100% 100%, 0 100%);
+//}
+//
+//.mc-pipe-ver-top-left-bottom-right-corner-rect16{
+//  clip-path: polygon(0 16rpx, 100% 0, 100% calc(100% - 16rpx), 0 100%);
+//}
+//
+//.mc-pipe-ver-bottom-left-corner-rect16{
+//  clip-path: polygon(16rpx 0, 100% 0, 100% 100%, 0 100%);
+//}
+//
+//.mc-pipe-hor-bottom-left-corner-rect16{
+//  clip-path: polygon(0 0, 100% 0, 100% 100%, 16rpx 100%);
+//}
+

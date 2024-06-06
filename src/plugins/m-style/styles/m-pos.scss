@@ -1,0 +1,86 @@
+@import "m-_variable";
+
+.m-pos-r {
+  position: relative;
+}
+
+.m-pos-a {
+  position: absolute;
+}
+
+@if($env-client == 'mini'){
+
+  @for $i from 0 through 1000 {
+
+    .m-pos-l#{$i} {
+      left: #{$i}#{$unit};
+    }
+
+    .m-pos-l#{$i}p5 {
+      left: #{$i + .5}#{$unit};
+    }
+
+    .m-pos-r#{$i} {
+      right: #{$i}#{$unit};
+    }
+
+    .m-pos-r#{$i}p5 {
+      right: #{$i + .5}#{$unit};
+    }
+
+    .m-pos-t#{$i} {
+      top: #{$i}#{$unit};
+    }
+
+    .m-pos-t#{$i}p5 {
+      top: #{$i + .5}#{$unit};
+    }
+
+    .m-pos-b#{$i} {
+      bottom: #{$i}#{$unit};
+    }
+
+    .m-pos-b#{$i}p5 {
+      bottom: #{$i + .5}#{$unit};
+    }
+
+  }
+} @else {
+
+  @for $i from 0 through 2000 {
+
+    .m-pos-l#{$i} {
+      left: #{$i}#{$unit};
+    }
+
+    .m-pos-l#{$i}p5 {
+      left: #{$i + .5}#{$unit};
+    }
+
+    .m-pos-r#{$i} {
+      right: #{$i}#{$unit};
+    }
+
+    .m-pos-r#{$i}p5 {
+      right: #{$i + .5}#{$unit};
+    }
+
+    .m-pos-t#{$i} {
+      top: #{$i}#{$unit};
+    }
+
+    .m-pos-t#{$i}p5 {
+      top: #{$i + .5}#{$unit};
+    }
+
+    .m-pos-b#{$i} {
+      bottom: #{$i}#{$unit};
+    }
+
+    .m-pos-b#{$i}p5 {
+      bottom: #{$i + .5}#{$unit};
+    }
+
+  }
+}
+

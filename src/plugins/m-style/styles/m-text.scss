@@ -1,0 +1,43 @@
+@import "m-_variable";
+
+
+@each $name in map-keys($m-text-colors) {
+  .m-text-#{$name} {
+    color: getFromMap($m-text-colors, $name);
+  }
+}
+
+.m-text-hc {
+  text-align: center;
+}
+
+.m-text-vc {
+  vertical-align: middle;
+}
+
+.m-text-c {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.m-text-l {
+  text-align: left;
+}
+
+.m-text-r {
+  text-align: right;
+}
+
+.m-text-single-overflow{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// .m-text-shadow {
+//   font-size: 50rpx;
+//   font-style: oblique;
+//   font-weight: 900;
+//   color:white;
+//   text-shadow: 0 0 8rpx green;
+// }

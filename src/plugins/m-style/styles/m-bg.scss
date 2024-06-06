@@ -1,0 +1,11 @@
+@import "m-_variable";
+
+.m-bg-page{
+  background-color: $page-bg-color;
+}
+
+@each $name in map-keys($m-bg-colors) {
+  .m-bg-#{$name} {
+    background-color: getFromMap($m-bg-colors, $name);
+  }
+}

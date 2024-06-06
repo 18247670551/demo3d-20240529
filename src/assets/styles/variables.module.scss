@@ -1,0 +1,5 @@
+// 导出 variables.module.scss 变量提供给TypeScript使用
+:export {
+  menuBg: $menuBg;
+  default-r: $default-r;
+}

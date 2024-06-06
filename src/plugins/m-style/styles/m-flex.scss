@@ -1,0 +1,139 @@
+@import "m-_variable";
+
+.m-flex-row {
+  display: flex;
+  flex-direction: row;
+
+  &.m-flex-hc {
+    justify-content: center;
+  }
+
+  &.m-flex-vc {
+    align-items: center;
+  }
+}
+
+.m-flex-col {
+  display: flex;
+  flex-direction: column;
+
+  &.m-flex-hc {
+    align-items: center;
+  }
+
+  &.m-flex-vc {
+    justify-content: center;
+  }
+}
+
+
+.m-flex-c {
+  justify-content: center;
+  align-items: center;
+}
+
+
+.m-flex-jc-start {
+  justify-content: flex-start;
+}
+
+.m-flex-jc-end {
+  justify-content: flex-end;
+}
+
+.m-flex-jc-between {
+  justify-content: space-between;
+}
+
+.m-flex-jc-around {
+  justify-content: space-around;
+}
+
+.m-flex-jc-evenly {
+  justify-content: space-evenly;
+}
+
+.m-flex-ai-start {
+  align-items: flex-start;
+}
+
+.m-flex-ai-end {
+  align-items: flex-end;
+}
+
+@for $i from 0 through 100 {
+  $flag: false;
+
+  @if $i<=50 and $i%2==0 {
+    $flag: true;
+  }
+
+  @if $i>50 and $i%10==0 {
+    $flag: true;
+  }
+
+  .m-gap#{$i} {
+    gap: #{$i}#{$unit};
+  }
+
+}
+
+
+@for $i from 0 through 1000 {
+  $flag: false;
+
+  @if $i<=100 and $i%2==0 {
+    $flag: true;
+  }
+
+  @if $i>100 and $i<=200 and $i%10==0 {
+    $flag: true;
+  }
+
+  @if $i>200 and $i%20==0 {
+    $flag: true;
+  }
+
+  @if $flag {
+    .m-flex-basis#{$i} {
+      flex-basis: #{$i}#{$unit};
+    }
+  }
+}
+
+.m-flex-s0 {
+  flex-shrink: 0;
+}
+
+.m-flex-g0 {
+  flex-grow: 0;
+}
+
+
+.m-flex1 {
+  flex: 1;
+}
+
+.m-flex2 {
+  flex: 2;
+}
+
+.m-flex3 {
+  flex: 3;
+}
+
+.m-flex4 {
+  flex: 4;
+}
+
+.m-flex5 {
+  flex: 5;
+}
+
+
+.m-flex-none {
+  flex: none;
+}
+
+
+

@@ -1,0 +1,78 @@
+@keyframes m-animation-error-flashing {
+    0% {
+        background: #d5061f;
+    }
+    100% {
+        background: #AAA;
+    }
+}
+
+/*正转动画*/
+@keyframes m-animation-rotate {
+    0% {
+        transform: rotatez(0deg)
+    }
+    100% {
+        transform: rotatez(360deg)
+    }
+}
+
+/*反转动画*/
+@keyframes m-animation-rotate-reverse {
+    0% {
+        transform: rotatez(0deg)
+    }
+    100% {
+        transform: rotatez(-360deg)
+    }
+}
+
+/*心跳动画*/
+/*<div class="heart"></div>*/
+.heart {
+    animation: heartbeat 1s infinite;
+    -webkit-animation: heartbeat 1s infinite;
+    /* Safari 和 Chrome */
+
+    width: 198px;
+    height: 198px;
+    background: #f00;
+    position: relative;
+    filter: drop-shadow(0 0 20px rgb(255, 20, 20));
+    transform: rotate(45deg);
+    left: 200px;
+    top: 50px;
+}
+
+.heart:before, .heart:after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: #f00;
+    border-radius: 100px;
+}
+
+.heart:before {
+    left: -100px;
+}
+
+.heart:after {
+    left: 0;
+    top: -100px;
+}
+
+@keyframes m-heartbeat {
+    0% {
+        transform: rotate(45deg) scale(0.8, 0.8);
+        opacity: 1;
+    }
+    25% {
+        transform: rotate(45deg) scale(1, 1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: rotate(45deg) scale(0.8, 0.8);
+        opacity: 1;
+    }
+}

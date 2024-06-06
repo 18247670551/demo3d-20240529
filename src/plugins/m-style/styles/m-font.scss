@@ -1,0 +1,51 @@
+@import "m-_variable";
+
+.m-font-bold {
+  font-weight: bold;
+}
+
+.m-font-bolder {
+  font-weight: bolder;
+}
+
+.m-font-em1p5{
+  font-size: 1.5em;
+}
+
+.m-font-em2{
+  font-size: 2em;
+}
+
+.m-font-em2p5{
+  font-size: 2.5em;
+}
+
+.m-font-em3{
+  font-size: 3em;
+}
+
+@for $i from 1 through 100{
+
+  @if $i<=20 {
+    .m-font#{$i}{
+      font-size: #{$i}#{$unit};
+    }
+
+    .m-font#{$i}p5{
+      font-size: #{$i + .5}#{$unit};
+    }
+  }
+
+  @if $i>20 and $i<=50 {
+    .m-font#{$i}{
+      font-size: #{$i}#{$unit};
+    }
+  }
+
+  @if $i>50 and $i%2==0 {
+    .m-font#{$i}{
+      font-size: #{$i}#{$unit};
+    }
+  }
+
+}

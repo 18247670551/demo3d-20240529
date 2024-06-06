@@ -1,0 +1,107 @@
+@import "m-_variable";
+
+.m-lh-em15 {
+  line-height: 1.5em;
+}
+
+.m-lh-em20 {
+  line-height: 2em;
+}
+
+
+.m-h-row {
+  height: $default-row-height;
+}
+
+.m-w100p {
+  width: 100%;
+}
+
+.m-h100p {
+  height: 100%;
+}
+
+.m-wh100p {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.m-w100v {
+  width: 100vw;
+}
+
+.m-h100v {
+  height: 100vh;
+}
+
+.m-wh100v {
+  width: 100vw;
+  height: 100vh;
+}
+
+
+
+@for $i from 0 through 2000 {
+  $flag: false;
+
+  @if $i<=20 {
+    .m-w#{$i} {
+      width: #{$i}#{$unit};
+    }
+
+    .m-h#{$i} {
+      height: #{$i}#{$unit};
+    }
+
+    .m-lh#{$i} {
+      line-height: #{$i}#{$unit};
+    }
+  }
+
+  @if $i<=50 and $i%2==0 {
+    .m-w#{$i} {
+      width: #{$i}#{$unit};
+    }
+
+    .m-h#{$i} {
+      height: #{$i}#{$unit};
+    }
+
+    .m-lh#{$i} {
+      line-height: #{$i}#{$unit};
+    }
+  }
+
+  @if $i>50 and $i<=500 and $i%10==0 {
+    .m-w#{$i} {
+      width: #{$i}#{$unit};
+    }
+
+    .m-h#{$i} {
+      height: #{$i}#{$unit};
+    }
+  }
+
+  @if $i>500 and $i%50==0 {
+    .m-w#{$i} {
+      width: #{$i}#{$unit};
+    }
+
+    .m-h#{$i} {
+      height: #{$i}#{$unit};
+    }
+  }
+
+  @if $i>1000 and $i%100==0 {
+    .m-w#{$i} {
+      width: #{$i}#{$unit};
+    }
+
+    .m-h#{$i} {
+      height: #{$i}#{$unit};
+    }
+  }
+
+}

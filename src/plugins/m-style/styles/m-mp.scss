@@ -1,0 +1,85 @@
+@import "m-_variable";
+
+
+@for $i from 0 through 100 {
+  $flag: false;
+
+  @if $i<=20 {
+    $flag: true;
+  }
+
+  @if $i>20 and $i%10==0 {
+    $flag: true;
+  }
+
+  @if $i>200 and $i%20==0 {
+    $flag: true;
+  }
+
+  @if $i>500 and $i%50==0 {
+    $flag: true;
+  }
+
+  @if $flag {
+    .m-m#{$i} {
+      margin: #{$i}#{$unit};
+    }
+
+    .m-mt#{$i} {
+      margin-top: #{$i}#{$unit};
+    }
+
+    .m-mb#{$i} {
+      margin-bottom: #{$i}#{$unit};
+    }
+
+    .m-ml#{$i} {
+      margin-left: #{$i}#{$unit};
+    }
+
+    .m-mr#{$i} {
+      margin-right: #{$i}#{$unit};
+    }
+
+    .m-mh#{$i} {
+      margin-left: #{$i}#{$unit};
+      margin-right: #{$i}#{$unit};
+    }
+
+    .m-mv#{$i} {
+      margin-top: #{$i}#{$unit};
+      margin-bottom: #{$i}#{$unit};
+    }
+
+    .m-p#{$i} {
+      padding: #{$i}#{$unit};
+    }
+
+    .m-pt#{$i} {
+      padding-top: #{$i}#{$unit};
+    }
+
+    .m-pb#{$i} {
+      padding-bottom: #{$i}#{$unit};
+    }
+
+    .m-pl#{$i} {
+      padding-left: #{$i}#{$unit};
+    }
+
+    .m-pr#{$i} {
+      padding-right: #{$i}#{$unit};
+    }
+
+    .m-ph#{$i} {
+      padding-left: #{$i}#{$unit};
+      padding-right: #{$i}#{$unit};
+    }
+
+    .m-pv#{$i} {
+      padding-top: #{$i}#{$unit};
+      padding-bottom: #{$i}#{$unit};
+    }
+  }
+
+}

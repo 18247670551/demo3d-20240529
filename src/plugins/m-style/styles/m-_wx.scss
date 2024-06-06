@@ -1,0 +1,26 @@
+@import "m-_variable";
+
+page,
+view,
+image,
+input,
+text,
+textarea,
+navigator,
+swiper,
+swiper-item,
+scroll-view {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: getFromMap($m-text-colors, 'default');
+}
+
+page{
+  width: 100%;
+  height: 100%;
+  background-color: $page-bg-color;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei',
+    sans-serif;
+}

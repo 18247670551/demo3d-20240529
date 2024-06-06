@@ -1,0 +1,95 @@
+//此文件用不上, 使用小程序自带按钮组件
+
+@import "m-_variable";
+
+
+.m-btn-wx {
+  $primary: #409EFF;
+  $success: #67C23A;
+  $danger: #F56C6C;
+  $warning: #E6A23C;
+  $disabled: #CCCCCC;
+
+  // 第一元素表示 width, 第二元素 height, 第三元素 border-radius, 第四元素 字体大小
+  $default: 400 rpx 90 rpx 10 rpx 38 rpx;
+  $line: 100% 90 rpx 10 rpx 38 rpx;
+  $small: 200 rpx 60 rpx 6 rpx 34 rpx;
+  $mini: 100 rpx 40 rpx 2 rpx 30 rpx;
+
+  display: flex;
+  gap: 20 rpx;
+  justify-content: center;
+  align-items: center;
+
+  width: nth($default, 1);
+  height: nth($default, 2);
+  font-size: nth($default, 4);
+  line-height: nth($default, 2);
+  border-radius: nth($default, 3);
+  color: white;
+
+  .text {
+    color: inherit;
+  }
+
+  &.line {
+    width: nth($line, 1);
+    height: nth($line, 2);
+    font-size: nth($line, 4);
+    line-height: nth($line, 2);
+    border-radius: nth($line, 3);
+  }
+
+  &.small {
+    width: nth($small, 1);
+    height: nth($small, 2);
+    font-size: nth($small, 4);
+    line-height: nth($small, 2);
+    border-radius: nth($small, 3);
+  }
+
+  &.mini {
+    width: nth($mini, 1);
+    height: nth($mini, 2);
+    font-size: nth($mini, 4);
+    line-height: nth($mini, 2);
+    border-radius: nth($mini, 3);
+  }
+
+
+  &.primary {
+    background-color: $primary;
+
+    &.hover, &.loading {
+      background-color: lighten($primary, 10%);
+    }
+  }
+
+  &.success {
+    background-color: $success;
+
+    &.hover, &.loading {
+      background-color: lighten($success, 10%);
+    }
+  }
+
+  &.danger {
+    background-color: $danger;
+
+    &.hover, &.loading {
+      background-color: lighten($danger, 10%);
+    }
+  }
+
+  &.warning {
+    background-color: $warning;
+
+    &.hover, &.loading {
+      background-color: lighten($warning, 10%);
+    }
+  }
+
+  &.disabled {
+    background-color: $disabled;
+  }
+}

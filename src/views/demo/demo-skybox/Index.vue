@@ -1,0 +1,80 @@
+<template>
+  <div id="three-dom" ref="threeDomRef"/>
+</template>
+
+<script setup lang="ts">
+import {onMounted, ref} from "vue"
+import * as THREE from 'three'
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
+
+const threeDomRef = ref<HTMLDivElement | null>(null)
+
+onMounted(() => {
+  init()
+})
+
+function init() {
+  const dom = threeDomRef.value!
+
+  const scene = new THREE.Scene()
+
+  const camera = new THREE.PerspectiveCamera(45, dom.clientWidth / dom.clientHeight, 0.1, 1000)
+
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true, // 反锯齿
+  })
+
+  renderer.setSize(dom.clientWidth, dom.clientHeight)
+  renderer.setPixelRatio(window.devicePixelRatio)
+
+  dom.appendChild(renderer.domElement)
+
+  // 鼠标控制
+  const controls = new OrbitControls(camera, renderer.domElement)
+  // 设置阻尼
+  controls.enableDamping = true
+  controls.target.set(0, 0, 0)
+  controls.update()
+
+  // 光线
+  const light = new THREE.DirectionalLight(0xFFFFFF, 2)
+  light.position.set(-1, 2, 4)
+  scene.add(light)
+
+  const geometry = new THREE.BoxGeometry(1, 1, 1)
+  const material = new THREE.MeshPhongMaterial({
+    color: "9f9",
+  })
+  const cube = new THREE.Mesh(geometry, material)
+  scene.add(cube)
+  camera.position.z = 5
+
+  // 天空盒材质
+  const loader = new THREE.TextureLoader()
+  loader.load("/demo/skybox/panorama.jpg", texture => {
+    const rt = new THREE.WebGLCubeRenderTarget(texture.image.height)
+    rt.fromEquirectangularTexture(renderer, texture)
+    scene.background = rt.texture
+  })
+
+
+  const animate = () => {
+    requestAnimationFrame(animate)
+    cube.rotation.x += 0.01
+    cube.rotation.y += 0.01
+    controls.update()
+    renderer.render(scene, camera)
+  }
+
+  animate()
+
+}
+
+</script>
+
+<style lang="scss" scoped>
+#three-dom {
+  width: 100%;
+  height: 100%;
+}
+</style>
