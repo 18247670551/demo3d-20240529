@@ -85,13 +85,13 @@ export default abstract class ThreeCore {
         this.stats = new Stats()
         dom.appendChild(this.stats.dom)
 
-        window.addEventListener("resize", this.onResize.bind(this))
+        window.addEventListener("resize", this.onResize, false)
 
         //利用 setTimeout 宏任务最后执行特性, 使js执行过程要等所有微任务和同步代码执行完再执行, 否则 this.init() 可能会在场景未搭建完毕就执行报错或没有生产对象
         setTimeout(() => {
             this.init()
             this.animate()
-        })
+        }, 2000)
     }
 
     protected abstract init(): void
@@ -125,7 +125,7 @@ export default abstract class ThreeCore {
         delete this.myAnimates[name]
     }
 
-    private onResize() {
+    private onResize = () => {
         const width = this.dom.clientWidth
         const height = this.dom.clientHeight
 

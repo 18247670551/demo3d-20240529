@@ -103,14 +103,6 @@ export default class ThreeProject extends ThreeCore{
 
     /* endregion */
 
-
-
-
-
-
-
-
-
     /* region three实体区 */
     //酸加药桶
     private acidBucket: Bucket | null = null

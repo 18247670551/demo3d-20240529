@@ -259,6 +259,36 @@
 
 
 
+        <div class="item" @click="toDemo('示例-狼兔项目--狼')">
+          <div class="image">
+            <img src="/demo/case-cover/wr-wolf.png" alt="my-world"/>
+          </div>
+          <div class="title">狼兔项目--狼</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-狼兔项目--兔')">
+          <div class="image">
+            <img src="/demo/case-cover/wr-rabbit.png" alt="my-world"/>
+          </div>
+          <div class="title">狼兔项目--兔</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-狼兔项目--刺猬')">
+          <div class="image">
+            <img src="/demo/case-cover/wr-hedgehog.png" alt="my-world"/>
+          </div>
+          <div class="title">狼兔项目--刺猬</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-狼兔项目--地球')">
+          <div class="image">
+            <img src="/demo/case-cover/wr-earth.png" alt="my-world"/>
+          </div>
+          <div class="title">狼兔项目--地球</div>
+        </div>
+
+
+
 
         <div class="item" @click="toDemo('示例-一些模型文件')">
           <div class="image">

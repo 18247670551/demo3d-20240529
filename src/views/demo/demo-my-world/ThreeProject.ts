@@ -90,6 +90,8 @@ export default class ThreeProject extends ThreeCore {
         // 第6和第8,即索引5和7为0.5时, 代表使用贴图的上半部分
         // 基本方格的顶面(草地的地面)使用贴图上半部分, 其他面(草地的侧面)都使用下半部分
 
+        // 也可以使用 new THREE.InstancedMesh() 标准网格模型, 大量重复模型时用这个, threejs渲染时有优化, 这个草地基础方格就可以用 box几何体, 六个面
+
         //左边
         const nxGeometry = new THREE.PlaneGeometry(grassBlockUnit, grassBlockUnit)
         nxGeometry.attributes.uv.array[1] = 0.5

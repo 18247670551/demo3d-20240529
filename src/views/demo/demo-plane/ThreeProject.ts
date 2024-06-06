@@ -5,7 +5,7 @@ import {ElMessage} from "element-plus"
 import {GUI} from "dat.gui"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 
-export class ThreePlane extends ThreeCore {
+export class ThreeProject extends ThreeCore {
 
     private readonly plane: Plane
 
@@ -17,7 +17,7 @@ export class ThreePlane extends ThreeCore {
     
     private readonly orbit: OrbitControls
 
-    constructor(dom: HTMLElement, isDev: boolean) {
+    constructor(dom: HTMLElement) {
 
         super(dom, {
             cameraOptions: {

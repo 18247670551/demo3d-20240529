@@ -4,10 +4,11 @@
 
 <script setup lang="ts">
 import {onMounted, onUnmounted, ref} from "vue"
-import {ThreeProject} from "./ThreeProject"
+import ThreeProject from "./ThreeProject"
 
 let three: ThreeProject
 const threeDomRef = ref<HTMLDivElement | null>(null)
+
 
 onMounted(() => {
 

@@ -44,6 +44,10 @@ import F18 from '@/views/demo/demo-f18/Index.vue'
 import Forest from '@/views/demo/demo-forest/Index.vue'
 import Models from '@/views/demo/demo-models/Index.vue'
 import MyWorld from '@/views/demo/demo-my-world/Index.vue'
+import WRWolf from '@/views/demo/demo-wolf-rabbit/demo-wolf/Index.vue'
+import WRRabbit from '@/views/demo/demo-wolf-rabbit/demo-rabbit/Index.vue'
+import WRHedgehog from '@/views/demo/demo-wolf-rabbit/demo-hedgehog/Index.vue'
+import WRMap from '@/views/demo/demo-wolf-rabbit/demo-earth/Index.vue'
 import Test from '@/views/demo/demo-test/Index.vue'
 
 const routes: RouteRecordRaw[] = [
@@ -82,6 +86,10 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-树林', path: '/demo/demo-forest', component: Forest, meta: {title: "示例-树林", isLogin: true}},
     {name: '示例-一些模型文件', path: '/demo/demo-models', component: Models, meta: {title: "示例-一些模型文件", isLogin: true}},
     {name: '示例-my-world', path: '/demo/demo-my-world', component: MyWorld, meta: {title: "示例-my-world", isLogin: true}},
+    {name: '示例-狼兔项目--狼', path: '/demo/demo-wr-wolf', component: WRWolf, meta: {title: "示例-狼兔项目--狼", isLogin: true}},
+    {name: '示例-狼兔项目--兔', path: '/demo/demo-wr-rabbit', component: WRRabbit, meta: {title: "示例-狼兔项目--兔", isLogin: true}},
+    {name: '示例-狼兔项目--刺猬', path: '/demo/demo-wr-hedgehog', component: WRHedgehog, meta: {title: "示例-狼兔项目--刺猬", isLogin: true}},
+    {name: '示例-狼兔项目--地球', path: '/demo/demo-wr-earth', component: WRMap, meta: {title: "示例-狼兔项目--地球", isLogin: true}},
     {name: '测试页面', path: '/demo/demo-test', component: Test, meta: {title: "测试页面", isLogin: true}},
 
 

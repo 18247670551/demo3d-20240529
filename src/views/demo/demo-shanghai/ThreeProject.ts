@@ -441,9 +441,8 @@ export default class ThreeProject extends ThreeCore {
             z += Math.sin((y + i) * 0.015)
 
             vertices.setXYZ(i, x, y, z)
-        _geometry.attributes.position.needsUpdate = true
+            _geometry.attributes.position.needsUpdate = true
         }
-
 
 
         // todo 这里有bug 几何体在上面顶点偏移操作变形后, 材质贴图匹配不上
