@@ -150,12 +150,38 @@
         </div>
 
 
+
+        <div class="item" @click="toDemo('示例-my-world')">
+          <div class="image">
+            <img src="/demo/case-cover/my-world.png" alt="my-world"/>
+          </div>
+          <div class="title">my-world</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-物理引擎')">
+          <div class="image">
+            <img src="/demo/case-cover/physics.png" alt="物理引擎"/>
+          </div>
+          <div class="title">物理引擎</div>
+        </div>
+
+
+
+        <div class="item" @click="toDemo('示例-上海2')">
+          <div class="image">
+            <img src="/demo/case-cover/shanghai2.png" alt="上海2"/>
+          </div>
+          <div class="title">上海--模型文件</div>
+        </div>
+
+
         <div class="item" @click="toDemo('示例-上海')">
           <div class="image">
             <img src="/demo/case-cover/shanghai.png" alt="上海"/>
           </div>
           <div class="title">上海--纯代码建模</div>
         </div>
+
 
 
 
@@ -187,6 +213,18 @@
           </div>
           <div class="title">粒子简例3--银河系</div>
         </div>
+
+        <div class="item" @click="toDemo('示例-粒子简例4')">
+          <div class="image">
+            <img src="/demo/case-cover/points4.png" alt="粒子简例4"/>
+          </div>
+          <div class="title">粒子简例4</div>
+        </div>
+
+
+
+
+
 
         <div class="item" @click="toDemo('示例-彩虹雨')">
           <div class="image">
@@ -250,12 +288,7 @@
 
 
 
-        <div class="item" @click="toDemo('示例-my-world')">
-          <div class="image">
-            <img src="/demo/case-cover/my-world.png" alt="my-world"/>
-          </div>
-          <div class="title">my-world</div>
-        </div>
+
 
 
 
@@ -286,6 +319,10 @@
           </div>
           <div class="title">狼兔项目--地球</div>
         </div>
+
+
+
+
 
 
 

@@ -35,7 +35,8 @@
     "three": "^0.164.1",
     "three-mesh-bvh": "^0.7.4",
     "dat.gui": "^0.7.9",
-    "nipplejs": "^0.10.2"
+    "nipplejs": "^0.10.2",
+    "cannon-es": "^0.20.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.4",

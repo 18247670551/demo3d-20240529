@@ -66,9 +66,9 @@ export default class ThreeProject extends ThreeCore{
 
     load1(){
         const gltfLoader = new GLTFLoader()
-        gltfLoader.load("/demo/csmart/csmart.glb", (glb) => {
-           const obj = glb.scene
-           this.scene.add(obj)
+        gltfLoader.load("/demo/csmart/csmart.glb", (gltf) => {
+           const scene = gltf.scene
+           this.scene.add(scene)
         })
     }
 

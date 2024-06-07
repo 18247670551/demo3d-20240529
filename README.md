@@ -139,6 +139,10 @@ npm run dev
 ![preview](./public/demo/case-cover/heart-balloon.png)
 
 
+#### 示例: 上海--模型文件
+##### 来源网络
+![preview](./public/demo/case-cover/shanghai2.png)
+
 #### 示例: 上海
 ##### 来源网络, 出自稀土掘金 作者 Funky_Tiger
 ##### 本人重构, 原代码threejs版本较低, 改为最新版本164, 弯曲的楼贴图有bug, 代码中有标出
@@ -164,6 +168,10 @@ npm run dev
 #### 示例: 粒子简例3--银河系
 ##### 来源网络, 重构
 ![preview](./public/demo/case-cover/points3.png)
+
+#### 示例: 粒子简例4--着色器
+##### 来源网络, 重构
+![preview](./public/demo/case-cover/points4.png)
 
 #
 #### 示例: 彩虹雨

@@ -24,6 +24,7 @@ import HeartBalloon from '@/views/demo/demo-heart-balloon/Index.vue'
 import Csmart from '@/views/demo/demo-csmart/Index.vue'
 import EarthMoon from '@/views/demo/demo-earth-moon/Index.vue'
 import ShangHai from '@/views/demo/demo-shanghai/Index.vue'
+import ShangHai2 from '@/views/demo/demo-shanghai2/Index.vue'
 import Firefly from '@/views/demo/demo-firefly/Index.vue'
 import DryRoom from '@/views/demo/demo-dry/Index.vue'
 import WashRoom from '@/views/demo/demo-wash/Index.vue'
@@ -39,11 +40,13 @@ import Rain0 from '@/views/demo/demo-rain0/Index.vue'
 import Points1 from '@/views/demo/demo-points1/Index.vue'
 import Points2 from '@/views/demo/demo-points2/Index.vue'
 import Points3 from '@/views/demo/demo-points3/Index.vue'
+import Points4 from '@/views/demo/demo-points4/Index.vue'
 import Fan from '@/views/demo/demo-fan/Index.vue'
 import F18 from '@/views/demo/demo-f18/Index.vue'
 import Forest from '@/views/demo/demo-forest/Index.vue'
 import Models from '@/views/demo/demo-models/Index.vue'
 import MyWorld from '@/views/demo/demo-my-world/Index.vue'
+import Physics from '@/views/demo/demo-physics/Index.vue'
 import WRWolf from '@/views/demo/demo-wolf-rabbit/demo-wolf/Index.vue'
 import WRRabbit from '@/views/demo/demo-wolf-rabbit/demo-rabbit/Index.vue'
 import WRHedgehog from '@/views/demo/demo-wolf-rabbit/demo-hedgehog/Index.vue'
@@ -66,6 +69,7 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-csmart', path: '/demo/demo-csmart', component: Csmart, meta: {title: "示例-csmart", isLogin: true}},
     {name: '示例-地月系统', path: '/demo/demo-earth-moon', component: EarthMoon, meta: {title: "示例-地月系统", isLogin: true}},
     {name: '示例-上海', path: '/demo/demo-shanghai', component: ShangHai, meta: {title: "示例-上海", isLogin: true}},
+    {name: '示例-上海2', path: '/demo/demo-shanghai2', component: ShangHai2, meta: {title: "示例-上海2", isLogin: true}},
     {name: '示例-萤火虫动画', path: '/demo/demo-firefly', component: Firefly, meta: {title: "示例-萤火虫动画", isLogin: true}},
     {name: '示例-烘干车间', path: '/demo/demo-dry', component: DryRoom, meta: {title: "示例-烘干车间", isLogin: true}},
     {name: '示例-洗消车间', path: '/demo/demo-wash', component: WashRoom, meta: {title: "示例-洗消车间", isLogin: true}},
@@ -81,11 +85,13 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-粒子简例1', path: '/demo/demo-points1', component: Points1, meta: {title: "示例-粒子简例1", isLogin: true}},
     {name: '示例-粒子简例2', path: '/demo/demo-points2', component: Points2, meta: {title: "示例-粒子简例2", isLogin: true}},
     {name: '示例-粒子简例3', path: '/demo/demo-points3', component: Points3, meta: {title: "示例-粒子简例3", isLogin: true}},
+    {name: '示例-粒子简例4', path: '/demo/demo-points4', component: Points4, meta: {title: "示例-粒子简例4", isLogin: true}},
     {name: '示例-风扇', path: '/demo/demo-fan', component: Fan, meta: {title: "示例-风扇", isLogin: true}},
     {name: '示例-f18', path: '/demo/demo-park', component: F18, meta: {title: "示例-f18", isLogin: true}},
     {name: '示例-树林', path: '/demo/demo-forest', component: Forest, meta: {title: "示例-树林", isLogin: true}},
     {name: '示例-一些模型文件', path: '/demo/demo-models', component: Models, meta: {title: "示例-一些模型文件", isLogin: true}},
     {name: '示例-my-world', path: '/demo/demo-my-world', component: MyWorld, meta: {title: "示例-my-world", isLogin: true}},
+    {name: '示例-物理引擎', path: '/demo/demo-physics', component: Physics, meta: {title: "示例-物理引擎", isLogin: true}},
     {name: '示例-狼兔项目--狼', path: '/demo/demo-wr-wolf', component: WRWolf, meta: {title: "示例-狼兔项目--狼", isLogin: true}},
     {name: '示例-狼兔项目--兔', path: '/demo/demo-wr-rabbit', component: WRRabbit, meta: {title: "示例-狼兔项目--兔", isLogin: true}},
     {name: '示例-狼兔项目--刺猬', path: '/demo/demo-wr-hedgehog', component: WRHedgehog, meta: {title: "示例-狼兔项目--刺猬", isLogin: true}},

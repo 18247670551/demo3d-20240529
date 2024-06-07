@@ -4,6 +4,7 @@ import {LensflareElement, Lensflare} from 'three/examples/jsm/objects/Lensflare'
 import {TextureLoader} from "three"
 import {Water} from "three/examples/jsm/objects/Water"
 import ThreeCore from "@/three-widget/ThreeCore"
+import {resetUV} from "@/utils/TreeUtils";
 
 
 export default class ThreeProject extends ThreeCore {
@@ -443,6 +444,8 @@ export default class ThreeProject extends ThreeCore {
             vertices.setXYZ(i, x, y, z)
             _geometry.attributes.position.needsUpdate = true
         }
+
+        resetUV(_geometry)
 
 
         // todo 这里有bug 几何体在上面顶点偏移操作变形后, 材质贴图匹配不上
