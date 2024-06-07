@@ -28,7 +28,7 @@ export default class BonusParticles extends THREE.Group {
         }
     }
 
-    explose() {
+    explose = () => {
 
         console.log("粒子爆炸")
 
@@ -50,8 +50,8 @@ export default class BonusParticles extends THREE.Group {
                     x: tx,
                     y: ty,
                     z: tz,
-                    duration: s
-                    //ease: Power4.easeOut,
+                    duration: s,
+                    ease: "Power4.easeOut",
                 },
             )
             gsap.to(item.scale,
@@ -60,7 +60,7 @@ export default class BonusParticles extends THREE.Group {
                     y: .01,
                     z: .01,
                     duration: s,
-                    //ease: Power4.easeOut,
+                    ease: "Power4.easeOut",
                     onComplete: () => {
                         item.visible = false
                     }

@@ -53,6 +53,7 @@ import WRWolf from '@/views/demo/demo-wolf-rabbit/demo-wolf/Index.vue'
 import WRRabbit from '@/views/demo/demo-wolf-rabbit/demo-rabbit/Index.vue'
 import WRHedgehog from '@/views/demo/demo-wolf-rabbit/demo-hedgehog/Index.vue'
 import WRMap from '@/views/demo/demo-wolf-rabbit/demo-earth/Index.vue'
+import WolfRabbit from '@/views/demo/demo-wolf-rabbit-失败/Index.vue'
 import Test from '@/views/demo/demo-test/Index.vue'
 
 const routes: RouteRecordRaw[] = [
@@ -100,6 +101,7 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-狼兔项目--兔', path: '/demo/demo-wr-rabbit', component: WRRabbit, meta: {title: "示例-狼兔项目--兔", isLogin: true}},
     {name: '示例-狼兔项目--刺猬', path: '/demo/demo-wr-hedgehog', component: WRHedgehog, meta: {title: "示例-狼兔项目--刺猬", isLogin: true}},
     {name: '示例-狼兔项目--地球', path: '/demo/demo-wr-earth', component: WRMap, meta: {title: "示例-狼兔项目--地球", isLogin: true}},
+    {name: '示例-狼兔项目', path: '/demo/demo-wolf-rabbit', component: WolfRabbit, meta: {title: "示例-狼兔项目", isLogin: true}},
     {name: '测试页面', path: '/demo/demo-test', component: Test, meta: {title: "测试页面", isLogin: true}},
 
 

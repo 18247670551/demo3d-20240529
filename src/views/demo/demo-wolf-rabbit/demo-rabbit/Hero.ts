@@ -281,66 +281,64 @@ export default class Hero extends THREE.Group {
 
     jump = ()=> {
 
-        console.log("兔子跳")
-
         let totalSpeed = 10 / this.speed
         let jumpHeight = 45
 
         gsap.to(this.earL.rotation, {
             x: this.earL.rotation.x + 0.3,
             duration: totalSpeed,
-            //ease: Back.easeOut,
+            ease: "Back.easeOut",
         })
         gsap.to(this.earR.rotation, {
             x: this.earR.rotation.x - 0.3,
             duration: totalSpeed,
-            //ease: Back.easeOut,
+            ease: "Back.easeOut",
         })
 
 
         gsap.to(this.pawFL.rotation, {
             x: this.pawFL.rotation.x + 0.7,
             duration: totalSpeed,
-            //ease: Back.easeOut,
+            ease: "Back.easeOut",
         })
         gsap.to(this.pawFR.rotation, {
             x: this.pawFR.rotation.x - 0.7,
             duration: totalSpeed,
-            //ease: Back.easeOut,
+            ease: "Back.easeOut",
         })
 
         gsap.to(this.pawBL.rotation, {
             x: this.pawBL.rotation.x + 0.7,
             duration: totalSpeed,
-            //ease: Back.easeOut,
+            ease: "Back.easeOut",
         })
         gsap.to(this.pawBR.rotation, {
             x: this.pawBR.rotation.x - 0.7,
             duration: totalSpeed,
-            //ease: Back.easeOut,
+            ease: "Back.easeOut",
         })
 
         gsap.to(this.tail.rotation, {
             x: this.tail.rotation.x + 1,
             duration: totalSpeed,
-            //ease: Back.easeOut,
+            ease: "Back.easeOut",
         })
         gsap.to(this.mouth.rotation, {
             x: 0.5,
             duration: totalSpeed,
-            //ease: Back.easeOut,
+            ease: "Back.easeOut",
         })
 
         gsap.to(this.position, {
             y: jumpHeight,
             duration: totalSpeed / 2,
-            //ease: Power2.easeOut,
+            ease: "Power2.easeOut",
         })
 
         gsap.to(this.position, {
             y: 0,
             duration: totalSpeed / 2,
-            //ease: Power4.easeIn,
+            ease: "Power4.easeIn",
             delay: totalSpeed / 2,
             onComplete: () => {
                 // this.status = "running"
@@ -358,7 +356,7 @@ export default class Hero extends THREE.Group {
         gsap.to(this.head.rotation, {
             y: tHeadRotY,
             duration: sp,
-            //ease: Power4.easeInOut,
+            ease: "Power4.easeInOut",
             onComplete: () => {
                 this.nod()
             }
@@ -371,12 +369,12 @@ export default class Hero extends THREE.Group {
         gsap.to(this.earL.rotation, {
             x: tEarLRotX,
             duration: sp,
-            //ease: Power4.easeInOut,
+            ease: "Power4.easeInOut",
         })
         gsap.to(this.earR.rotation, {
             x: tEarRRotX,
             duration: sp,
-            //ease: Power4.easeInOut,
+            ease: "Power4.easeInOut",
         })
 
 
@@ -386,14 +384,14 @@ export default class Hero extends THREE.Group {
         gsap.to(this.pawBL.rotation, {
             x: tPawBLRot,
             duration: sp / 2,
-            //ease: Power1.easeInOut,
+            ease: "Power1.easeInOut",
             yoyo: true,
             repeat: 2
         })
         gsap.to(this.pawBL.rotation, {
             y: tPawBLY,
             duration: sp / 2,
-            //ease: Power1.easeInOut,
+            ease: "Power1.easeInOut",
             yoyo: true,
             repeat: 2
         })
@@ -405,14 +403,14 @@ export default class Hero extends THREE.Group {
         gsap.to(this.pawBR.rotation, {
             x: tPawBRRot,
             duration: sp / 2,
-            //ease: Power1.easeInOut,
+            ease: "Power1.easeInOut",
             yoyo: true,
             repeat: 2
         })
         gsap.to(this.pawBR.rotation, {
             y: tPawBRY,
             duration: sp / 2,
-            //ease: Power1.easeInOut,
+            ease: "Power1.easeInOut",
             yoyo: true,
             repeat: 2
         })
@@ -424,14 +422,14 @@ export default class Hero extends THREE.Group {
         gsap.to(this.pawFL.rotation, {
             x: tPawFLRot,
             duration: sp / 2,
-            //ease: Power1.easeInOut,
+            ease: "Power1.easeInOut",
             yoyo: true,
             repeat: 2
         })
         gsap.to(this.pawFL.rotation, {
             y: tPawFLY,
             duration: sp / 2,
-            //ease: Power1.easeInOut,
+            ease: "Power1.easeInOut",
             yoyo: true,
             repeat: 2
         })
@@ -443,14 +441,14 @@ export default class Hero extends THREE.Group {
         gsap.to(this.pawFR.rotation, {
             x: tPawFRRot,
             duration: sp / 2,
-            //ease: Power1.easeInOut,
+            ease: "Power1.easeInOut",
             yoyo: true,
             repeat: 2
         })
         gsap.to(this.pawFR.rotation, {
             y: tPawFRY,
             duration: sp / 2,
-            //ease: Power1.easeInOut,
+            ease: "Power1.easeInOut",
             yoyo: true,
             repeat: 2
         })
@@ -461,7 +459,7 @@ export default class Hero extends THREE.Group {
         gsap.to(this.mouth.rotation, {
             x: tMouthRot,
             duration: sp,
-            //ease: Power1.easeInOut,
+            ease: "Power1.easeInOut",
         })
 
 
@@ -474,7 +472,7 @@ export default class Hero extends THREE.Group {
             y: tIrisY,
             z: tIrisZ,
             duration: sp,
-            //ease: Power1.easeInOut,
+            ease: "Power1.easeInOut",
         })
 
         //EYES
@@ -482,7 +480,7 @@ export default class Hero extends THREE.Group {
             gsap.to([this.eyeR.scale, this.eyeL.scale], {
                 y: 0,
                 duration: sp / 8,
-                //ease: Power1.easeInOut,
+                ease: "Power1.easeInOut",
                 yoyo: true,
                 repeat: 1
             })
@@ -495,7 +493,7 @@ export default class Hero extends THREE.Group {
         console.log("兔子死亡")
 
         const sp = 1
-        //const ease = Power4.easeOut
+        const ease = "Power4.easeOut"
 
         gsap.killTweensOf(this.eyeL.scale)
         gsap.killTweensOf(this.eyeR.scale)
@@ -508,19 +506,19 @@ export default class Hero extends THREE.Group {
         gsap.to(this.rotation, {
             y: 0,
             duration: sp,
-            //ease,
+            ease,
         })
         gsap.to(this.rotation, {
             y: -7,
             z: 6,
             duration: sp,
-            //ease,
+            ease,
         })
 
         gsap.to(this.head.rotation, {
             x: Math.PI / 6,
             duration: sp,
-            //ease,
+            ease,
             onComplete: args => {
                 this.nod()
             }
@@ -529,27 +527,27 @@ export default class Hero extends THREE.Group {
         gsap.to([this.earL.rotation, this.earR.rotation], {
             x: Math.PI / 3,
             duration: sp,
-            //ease,
+            ease,
         })
 
         gsap.to([this.pawFL.position, this.pawFR.rotation], {
             y: -1,
             z: 3,
             duration: sp,
-            //ease,
+            ease,
         })
 
         gsap.to([this.pawBL.position, this.pawBR.rotation], {
             y: -2,
             z: -3,
             duration: sp,
-            //ease,
+            ease,
         })
 
         gsap.to([this.eyeL.scale, this.eyeR.rotation], {
             y: 1,
             duration: sp,
-            //ease,
+            ease,
         })
     }
 

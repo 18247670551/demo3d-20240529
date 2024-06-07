@@ -1,8 +1,4 @@
 <template>
-<!--  <div id="three-dom" ref="threeDomRef"/>-->
-
-
-
   <div id="world" ref="threeDomRef"/>
   <div id="gameoverInstructions"  ref="gameOverDomRef">
     Game Over

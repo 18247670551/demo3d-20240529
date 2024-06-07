@@ -334,6 +334,13 @@
           <div class="title">狼兔项目--地球</div>
         </div>
 
+        <div class="item" @click="toDemo('示例-狼兔项目')">
+          <div class="image">
+            <img src="/demo/case-cover/wolf-rabbit.png" alt="my-world"/>
+          </div>
+          <div class="title">狼兔项目--重构失败, 求大佬指导</div>
+        </div>
+
 
 
 

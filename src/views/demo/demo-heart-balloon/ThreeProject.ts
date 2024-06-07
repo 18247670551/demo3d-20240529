@@ -25,11 +25,11 @@ export default class ThreeProject extends ThreeCore{
                 far: 100
             }
         })
+        this.balloonCount = balloonCount
 
         this.scene.background = new THREE.Color(0x00ffff) // 天蓝色
         this.camera.position.set(15, 7.5, 30)
 
-        this.balloonCount = balloonCount
 
         const ambientLight = new THREE.AmbientLight(0xffffff, 2)
         this.scene.add(ambientLight)

@@ -1,42 +1,23 @@
 import * as THREE from "three"
 import {gsap} from "gsap"
 
-// Materials
-const blackMat = new THREE.MeshPhongMaterial({
-    color: 0x100707,
-})
-
-const brownMat = new THREE.MeshPhongMaterial({
-    color: 0xb44b39,
-    shininess: 0,
-})
-
-const greenMat = new THREE.MeshPhongMaterial({
-    color: 0x7abf8e,
-    shininess: 0,
-})
-
-const pinkMat = new THREE.MeshPhongMaterial({
-    color: 0xdc5f45,//0xb43b29,//0xff5b49,
-    shininess: 0,
-})
-
-const lightBrownMat = new THREE.MeshPhongMaterial({
-    color: 0xe07a57,
-})
-
-const whiteMat = new THREE.MeshPhongMaterial({
-    color: 0xa49789,
-})
-const skinMat = new THREE.MeshPhongMaterial({
-    color: 0xff9ea5,
-})
 
 export default class BonusParticles extends THREE.Group {
 
 
     constructor() {
         super()
+
+        const greenMat = new THREE.MeshPhongMaterial({
+            color: 0x7abf8e,
+            shininess: 0,
+        })
+
+        const pinkMat = new THREE.MeshPhongMaterial({
+            color: 0xdc5f45,//0xb43b29,//0xff5b49,
+            shininess: 0,
+        })
+
         const bigParticleGeom = new THREE.BoxGeometry(10, 10, 10, 1)
         const smallParticleGeom = new THREE.BoxGeometry(5, 5, 5, 1)
         for (let i = 0; i < 10; i++) {
@@ -48,8 +29,10 @@ export default class BonusParticles extends THREE.Group {
         }
     }
 
-    explose() {
+    explose = () => {
+
         console.log("粒子爆炸")
+
         const explosionSpeed = .5
 
         this.children.reverse().forEach(item => {
@@ -66,8 +49,8 @@ export default class BonusParticles extends THREE.Group {
                     x: tx,
                     y: ty,
                     z: tz,
-                    duration: s
-                    //ease: Power4.easeOut,
+                    duration: s,
+                    ease: "Power4.easeOut",
                 },
             )
             gsap.to(item.scale,
@@ -76,7 +59,7 @@ export default class BonusParticles extends THREE.Group {
                     y: .01,
                     z: .01,
                     duration: s,
-                    //ease: Power4.easeOut,
+                    ease: "Power4.easeOut",
                     onComplete: () => {
                         item.visible = false
                     }

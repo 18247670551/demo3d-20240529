@@ -249,6 +249,10 @@ npm run dev
 ##### 网络收集, 本人重构失败, 拆出模型
 ![preview](./public/demo/case-cover/wr-earth.png)
 
+#### 示例: 狼兔项目
+##### 网络收集, 原版代码在路径中, 哪位大佬能用 three最新版ts对象化封装重构? 求指导
+![preview](./public/demo/case-cover/wolf-rabbit.png)
+
 
 
 

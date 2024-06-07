@@ -1,7 +1,6 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import {Ref} from "vue"
-import Stats from "three/examples/jsm/libs/stats.module"
 import {RoundedBoxGeometry} from "three/examples/jsm/geometries/RoundedBoxGeometry"
 import ThreeCore from "@/three-widget/ThreeCore"
 
@@ -94,6 +93,9 @@ export default class ThreeProject extends ThreeCore{
 
     protected onRenderer() {
         this.fallAnimate()
+
+        this.dropCount.value = this.drops.children.length
+
         this.orbit.update()
     }
 

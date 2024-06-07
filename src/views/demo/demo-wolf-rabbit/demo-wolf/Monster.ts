@@ -253,7 +253,7 @@ export default class Monster extends THREE.Group {
             x: tHeadRotX,
             y: tHeadRotY,
             duration: sp,
-            //ease: Power4.easeInOut,
+            ease: "Power4.easeInOut",
             onComplete: () => {
                 this.nod()
             }
@@ -265,7 +265,7 @@ export default class Monster extends THREE.Group {
         gsap.to(this.tail.rotation, {
             y: tTailRotY,
             duration: sp / 8,
-            //ease:Power1.easeInOut,
+            ease:"Power1.easeInOut",
             yoyo: true,
             repeat: 8
         })
@@ -274,7 +274,7 @@ export default class Monster extends THREE.Group {
         gsap.to([this.eyeR.scale, this.eyeL.scale], {
             y: 0,
             duration: sp / 20,
-            //ease:Power1.easeInOut,
+            ease:"Power1.easeInOut",
             yoyo: true,
             repeat: 1
         })
@@ -282,18 +282,17 @@ export default class Monster extends THREE.Group {
     }
 
     sit = () => {
-
         const sp = 1.2
-        //const ease = Power4.easeOut
+        const ease = "Power4.easeOut"
         gsap.to(this.torso.rotation, {
             x: -1.3,
             duration: sp,
-            //ease:ease
+            ease
         })
         gsap.to(this.torso.position, sp, {
             y: -5,
             duration: sp,
-            //ease: ease,
+            ease,
             onComplete: () => {
                 this.nod()
             }
@@ -304,56 +303,56 @@ export default class Monster extends THREE.Group {
                 x: Math.PI / 3,
                 y: -Math.PI / 3,
                 duration: sp,
-                //ease:ease
+                ease
             })
         gsap.to(this.tail.rotation,
             {
                 x: 2,
                 y: Math.PI / 4,
                 duration: sp,
-                //ease:ease
+                ease
             })
         gsap.to(this.pawBL.rotation,
             {
                 x: -.1,
                 duration: sp,
-                //ease:ease
+                ease
             })
         gsap.to(this.pawBR.rotation,
             {
                 x: -.1,
                 duration: sp,
-                //ease:ease
+                ease
             })
         gsap.to(this.pawFL.rotation,
             {
                 x: 1,
                 duration: sp,
-                //ease:ease
+                ease
             })
         gsap.to(this.pawFR.rotation,
             {
                 x: 1,
                 duration: sp,
-                //ease:ease
+                ease
             })
         gsap.to(this.mouth.rotation,
             {
                 x: .3,
                 duration: sp,
-                //ease:ease
+                ease
             })
         gsap.to(this.eyeL.scale,
             {
                 y: 1,
                 duration: sp,
-                //ease:ease
+                ease
             })
         gsap.to(this.eyeR.scale,
             {
                 y: 1,
                 duration: sp,
-                //ease:ease
+                ease
             })
 
         //TweenMax.to(this.body.rotation, sp, {y:Math.PI/4})

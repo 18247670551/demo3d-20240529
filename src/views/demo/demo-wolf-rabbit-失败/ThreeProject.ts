@@ -5,11 +5,11 @@ import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader"
 import grass_side from 'public/demo/case-cover/all-demo.png'
 import {gsap} from "gsap"
-import BonusParticles from "@/views/demo/demo-wolf-rabbit-失败/BonusParticles";
-import Hero from "@/views/demo/demo-wolf-rabbit-失败/Hero";
-import Carrot from "@/views/demo/demo-wolf-rabbit-失败/Carrot";
-import Monster from "@/views/demo/demo-wolf-rabbit-失败/Monster";
-import Hedgehog from "@/views/demo/demo-wolf-rabbit-失败/Hedgehog";
+import BonusParticles from "@/views/demo/demo-wolf-rabbit-失败/BonusParticles"
+import Hero from "@/views/demo/demo-wolf-rabbit-失败/Hero"
+import Carrot from "@/views/demo/demo-wolf-rabbit-失败/Carrot"
+import Monster from "@/views/demo/demo-wolf-rabbit-失败/Monster"
+import Hedgehog from "@/views/demo/demo-wolf-rabbit-失败/Hedgehog"
 
 const fieldOfView = 50
 const nearPlane = 1
@@ -130,8 +130,9 @@ export default class ThreeProject extends ThreeCore {
         const axes = new THREE.AxesHelper(200)
         this.scene.add(axes)
 
-        //document.addEventListener('mousedown', this.handleMouseDown.bind(this), false)
-        //document.addEventListener('touchend', this.handleMouseDown.bind(this), false)
+        document.addEventListener('mousedown', this.handleMouseDown.bind(this), false)
+        document.addEventListener('touchend', this.handleMouseDown.bind(this), false)
+
 
 
         this.floor = this.addAndGetFloor()
@@ -145,12 +146,10 @@ export default class ThreeProject extends ThreeCore {
     }
 
     protected init() {
-
         this.addTrees()
-        //this.BonusParticles()
-        // setInterval(() => {
-        //     this.hero.hang()
-        // }, 3000)
+        setInterval(() => {
+            this.hero.hang()
+        }, 3000)
     }
 
     protected onRenderer() {
@@ -162,9 +161,11 @@ export default class ThreeProject extends ThreeCore {
             if (this.hero.status == "running") {
                 this.hero.run(this.delta)
             }
+
             this.updateDistance()
             this.updateMonsterPosition()
             this.updateCarrotPosition()
+            this.updateFloorRotation()
 
             this.updateObstaclePosition()
             this.checkCollision()
@@ -213,14 +214,15 @@ export default class ThreeProject extends ThreeCore {
         return monster
     }
 
-    private updateCarrotPosition() {
+    private updateCarrotPosition = () => {
         this.carrot.rotation.y += delta * 6
-        this.carrot.rotation.z = Math.PI / 2 - (floorRotation + this.carrot.angle);
+        this.carrot.rotation.z = Math.PI / 2 - (floorRotation + this.carrot.angle)
         this.carrot.position.y = -floorRadius + Math.sin(floorRotation + this.carrot.angle) * (floorRadius + 50)
         this.carrot.position.x = Math.cos(floorRotation + this.carrot.angle) * (floorRadius + 50)
     }
 
-    private updateMonsterPosition() {
+    private updateMonsterPosition = () => {
+        console.log("this.monster = ", this.monster)
         this.monster.run(this.delta)
         this.monsterPosTarget -= delta * monsterAcceleration
         this.monsterPos += (monsterPosTarget - monsterPos) * delta
@@ -234,24 +236,24 @@ export default class ThreeProject extends ThreeCore {
         this.monster.rotation.z = -Math.PI / 2 + angle
     }
 
-    private updateFloorRotation() {
+    private updateFloorRotation = () => {
         floorRotation += delta * .03 * speed
         floorRotation = floorRotation % (Math.PI * 2)
         this.floor.rotation.z = floorRotation
     }
 
-    private updateLevel() {
+    private updateLevel = () => {
         if (speed >= maxSpeed) return
-        level++;
-        speed += 2;
+        level++
+        speed += 2
     }
 
-    private updateDistance() {
+    private updateDistance = () => {
         distance += delta * speed
         this.fieldDistanceDom.innerHTML = Math.floor(distance / 2).toString()
     }
 
-    private checkCollision() {
+    private checkCollision = () => {
         const db = this.hero.position.clone().sub(this.carrot.position.clone())
         const dm = this.hero.position.clone().sub(this.hedgehog.position.clone())
 
@@ -311,7 +313,7 @@ export default class ThreeProject extends ThreeCore {
         this.bonusParticles.visible = true
         this.bonusParticles.explose()
         this.carrot.angle += Math.PI / 2
-        //speed*=.95;
+        //speed*=.95
         this.monsterPosTarget += .025
     }
 
@@ -340,9 +342,9 @@ export default class ThreeProject extends ThreeCore {
         const topRadius = 1 + Math.random() * 5
         const bottomRadius = 5 + Math.random() * 5
         const mats = [blackMat, brownMat, pinkMat, whiteMat, greenMat, lightBrownMat, pinkMat]
-        const matTrunc = blackMat;//mats[Math.floor(Math.random()*mats.length)]
-        const nhSegments = 3;//Math.ceil(2 + Math.random()*6)
-        const nvSegments = 3;//Math.ceil(2 + Math.random()*6)
+        const matTrunc = blackMat//mats[Math.floor(Math.random()*mats.length)]
+        const nhSegments = 3//Math.ceil(2 + Math.random()*6)
+        const nvSegments = 3//Math.ceil(2 + Math.random()*6)
         const geom = new THREE.CylinderGeometry(topRadius, bottomRadius, truncHeight, nhSegments, nvSegments)
         geom.applyMatrix4(new THREE.Matrix4().makeTranslation(0, truncHeight / 2, 0))
 

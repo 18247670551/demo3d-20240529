@@ -41,20 +41,3 @@ onUnmounted(() => {
   color: red;
 }
 </style>
-
-
-
-<style>
-.balloon-count-label {
-  background: yellow;
-  position: absolute;
-  top: -1000px;
-  left: -300px;
-  width: 300px;
-  height: 100px;
-  font-size: 40px;
-  text-align: center;
-  line-height: 100px;
-  color: red;
-}
-</style>
