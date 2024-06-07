@@ -45,6 +45,17 @@ export default class ThreeProject extends ThreeCore {
         this.addPlane()
     }
 
+    protected onRenderer() {
+        this.orbit.update()
+
+        if (this.pos < 1) {
+            this.fireFly.position.copy(this.curve!.getPointAt(this.pos))
+            this.pos += 0.001
+        } else {
+            this.pos = 0
+        }
+    }
+
     private getCurve() {
         return new THREE.CatmullRomCurve3([
                 //起点
@@ -106,18 +117,6 @@ export default class ThreeProject extends ThreeCore {
         const mat = new THREE.LineBasicMaterial({color: new THREE.Color().setHSL(Math.random(), 0.5, 0.5)})
         const curveObject = new THREE.Line(geo, mat)
         this.scene.add(curveObject)
-    }
-
-
-    protected onRenderer() {
-        this.orbit.update()
-
-        if (this.pos < 1) {
-            this.fireFly.position.copy(this.curve!.getPointAt(this.pos))
-            this.pos += 0.001
-        } else {
-            this.pos = 0
-        }
     }
 
 

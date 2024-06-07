@@ -165,6 +165,13 @@
           <div class="title">物理引擎</div>
         </div>
 
+        <div class="item" @click="toDemo('示例-人物控制')">
+          <div class="image">
+            <img src="/demo/case-cover/player.png" alt="人物控制"/>
+          </div>
+          <div class="title">人物控制</div>
+        </div>
+
 
 
         <div class="item" @click="toDemo('示例-上海2')">
@@ -218,7 +225,14 @@
           <div class="image">
             <img src="/demo/case-cover/points4.png" alt="粒子简例4"/>
           </div>
-          <div class="title">粒子简例4</div>
+          <div class="title">粒子简例4--shader</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-粒子简例5')">
+          <div class="image">
+            <img src="/demo/case-cover/fireworks.png" alt="粒子简例5"/>
+          </div>
+          <div class="title">粒子简例5--烟花-shader</div>
         </div>
 
 

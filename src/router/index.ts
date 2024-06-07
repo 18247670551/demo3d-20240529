@@ -41,12 +41,14 @@ import Points1 from '@/views/demo/demo-points1/Index.vue'
 import Points2 from '@/views/demo/demo-points2/Index.vue'
 import Points3 from '@/views/demo/demo-points3/Index.vue'
 import Points4 from '@/views/demo/demo-points4/Index.vue'
+import Points5 from '@/views/demo/demo-fireworks/Index.vue'
 import Fan from '@/views/demo/demo-fan/Index.vue'
 import F18 from '@/views/demo/demo-f18/Index.vue'
 import Forest from '@/views/demo/demo-forest/Index.vue'
 import Models from '@/views/demo/demo-models/Index.vue'
 import MyWorld from '@/views/demo/demo-my-world/Index.vue'
 import Physics from '@/views/demo/demo-physics/Index.vue'
+import Player from '@/views/demo/demo-player/Index.vue'
 import WRWolf from '@/views/demo/demo-wolf-rabbit/demo-wolf/Index.vue'
 import WRRabbit from '@/views/demo/demo-wolf-rabbit/demo-rabbit/Index.vue'
 import WRHedgehog from '@/views/demo/demo-wolf-rabbit/demo-hedgehog/Index.vue'
@@ -86,12 +88,14 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-粒子简例2', path: '/demo/demo-points2', component: Points2, meta: {title: "示例-粒子简例2", isLogin: true}},
     {name: '示例-粒子简例3', path: '/demo/demo-points3', component: Points3, meta: {title: "示例-粒子简例3", isLogin: true}},
     {name: '示例-粒子简例4', path: '/demo/demo-points4', component: Points4, meta: {title: "示例-粒子简例4", isLogin: true}},
+    {name: '示例-粒子简例5', path: '/demo/demo-points5', component: Points5, meta: {title: "示例-粒子简例5", isLogin: true}},
     {name: '示例-风扇', path: '/demo/demo-fan', component: Fan, meta: {title: "示例-风扇", isLogin: true}},
     {name: '示例-f18', path: '/demo/demo-park', component: F18, meta: {title: "示例-f18", isLogin: true}},
     {name: '示例-树林', path: '/demo/demo-forest', component: Forest, meta: {title: "示例-树林", isLogin: true}},
     {name: '示例-一些模型文件', path: '/demo/demo-models', component: Models, meta: {title: "示例-一些模型文件", isLogin: true}},
     {name: '示例-my-world', path: '/demo/demo-my-world', component: MyWorld, meta: {title: "示例-my-world", isLogin: true}},
     {name: '示例-物理引擎', path: '/demo/demo-physics', component: Physics, meta: {title: "示例-物理引擎", isLogin: true}},
+    {name: '示例-人物控制', path: '/demo/demo-player', component: Player, meta: {title: "示例-人物控制", isLogin: true}},
     {name: '示例-狼兔项目--狼', path: '/demo/demo-wr-wolf', component: WRWolf, meta: {title: "示例-狼兔项目--狼", isLogin: true}},
     {name: '示例-狼兔项目--兔', path: '/demo/demo-wr-rabbit', component: WRRabbit, meta: {title: "示例-狼兔项目--兔", isLogin: true}},
     {name: '示例-狼兔项目--刺猬', path: '/demo/demo-wr-hedgehog', component: WRHedgehog, meta: {title: "示例-狼兔项目--刺猬", isLogin: true}},

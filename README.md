@@ -214,6 +214,18 @@ npm run dev
 
 
 
+#### 示例: 物理引擎
+##### 来源网络
+![preview](./public/demo/case-cover/physics.png)
+
+
+#### 示例: 人物控制
+##### 来源网络
+![preview](./public/demo/case-cover/player.png)
+
+
+
+
 #### 示例: 除臭车间2
 ##### 本人编写, 纯代码建模, 以对象方式调用动画
 ![preview](./public/demo/case-cover/deodorize2.png)
