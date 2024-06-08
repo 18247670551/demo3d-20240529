@@ -1,8 +1,8 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import {basicFragmentShader, basicVertexShader} from "@/views/demo/demo-fireworks/shaders"
-import FireWork from "@/views/demo/demo-fireworks/FireWork"
+import {basicFragmentShader, basicVertexShader} from "@/views/demo/demo-points5/shaders"
+import FireWork from "@/views/demo/demo-points5/FireWork"
 import * as Three from "three"
 
 

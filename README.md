@@ -125,8 +125,13 @@ npm run dev
 
 #
 #### 示例: 飞机
-##### 本人编写, 参照网络案例原模型, 以对象方式重写, 纯代码建模, GUI控制光源和动画
+##### 本人编写, 参照网络案例原模型, 以对象方式重写, 纯代码建模
 ![preview](./public/demo/case-cover/plane.png)
+
+#
+#### 示例: 飞机2
+##### 本人编写, 参照网络案例原模型, 以对象方式重写, 纯代码建模
+![preview](./public/demo/case-cover/plane2.png)
 
 
 #### 示例: 瀑布
@@ -153,15 +158,15 @@ npm run dev
 
 
 
-#### 示例: 粒子简例0--下雨
+#### 示例: 粒子简例0
 ##### 本人编写
-![preview](./public/demo/case-cover/rain0.png)
+![preview](./public/demo/case-cover/points0.png)
 
-#### 示例: 粒子简例1--几何体顶点粒子
+#### 示例: 粒子简例1--粒子动画--下雨
 ##### 来源网络, 重构
 ![preview](./public/demo/case-cover/points1.png)
 
-#### 示例: 粒子简例2--漫天雪花
+#### 示例: 粒子简例2--粒子动画--漫天雪花
 ##### 来源网络, 重构
 ![preview](./public/demo/case-cover/points2.png)
 
@@ -169,14 +174,22 @@ npm run dev
 ##### 来源网络, 重构
 ![preview](./public/demo/case-cover/points3.png)
 
-#### 示例: 粒子简例4--着色器
+#### 示例: 粒子简例4--shader
 ##### 来源网络, 重构
 ![preview](./public/demo/case-cover/points4.png)
 
-#
-#### 示例: 彩虹雨
-##### 来源网络
-![preview](./public/demo/case-cover/rainbow-rain.png)
+#### 示例: 粒子简例5--粒子动画--烟花-shader
+##### 来源网络, 重构
+![preview](./public/demo/case-cover/points5.png)
+
+#### 示例: 粒子简例6--粒子动画-shader
+##### 来源网络, 重构
+![preview](./public/demo/case-cover/points6.png)
+
+#### 示例: 粒子简例7--粒子动画--彩虹雨
+##### 来源网络, 重构
+![preview](./public/demo/case-cover/points7.png)
+
 
 
 

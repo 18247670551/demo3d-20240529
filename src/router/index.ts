@@ -10,10 +10,10 @@ import Empty from '@/views/empty/Index.vue'
 import Protocol from '@/views/protocol/Index.vue'
 import WxUserProtocol from '@/views/protocol/wx-user-protocol/Index.vue'
 import DemoList from '@/views/demo/list/Index.vue'
-import DemoPlane from '@/views/demo/demo-plane/Index.vue'
+import Plane0 from '@/views/demo/demo-plane/Index.vue'
+import Plane2 from '@/views/demo/demo-plane2/Index.vue'
 import DemoRoyalEsplanade from '@/views/demo/demo-royal-esplanade/Index.vue'
 import DamagedHelmet from '@/views/demo/demo-damaged-helmet/Index.vue'
-import RainbowRain from '@/views/demo/demo-rainbow-rain/Index.vue'
 import SkyBox from '@/views/demo/demo-skybox/Index.vue'
 import VRRoom from '@/views/demo/demo-vr-room/Index.vue'
 import Island from '@/views/demo/demo-island/Index.vue'
@@ -36,12 +36,14 @@ import Deodorize2 from '@/views/demo/demo-deodorize2/Index.vue'
 import Curve from '@/views/demo/demo-curve/Index.vue'
 import Pipe0 from '@/views/demo/demo-pipe0/Index.vue'
 import Water0 from '@/views/demo/demo-water0/Index.vue'
-import Rain0 from '@/views/demo/demo-rain0/Index.vue'
+import Points0 from '@/views/demo/demo-points0/Index.vue'
 import Points1 from '@/views/demo/demo-points1/Index.vue'
 import Points2 from '@/views/demo/demo-points2/Index.vue'
 import Points3 from '@/views/demo/demo-points3/Index.vue'
 import Points4 from '@/views/demo/demo-points4/Index.vue'
-import Points5 from '@/views/demo/demo-fireworks/Index.vue'
+import Points5 from '@/views/demo/demo-points5/Index.vue'
+import Points6 from '@/views/demo/demo-points6/Index.vue'
+import Points7 from '@/views/demo/demo-points7/Index.vue'
 import Fan from '@/views/demo/demo-fan/Index.vue'
 import F18 from '@/views/demo/demo-f18/Index.vue'
 import Forest from '@/views/demo/demo-forest/Index.vue'
@@ -58,10 +60,10 @@ import Test from '@/views/demo/demo-test/Index.vue'
 
 const routes: RouteRecordRaw[] = [
 
-    {name: '示例-飞机', path: '/demo/plane', component: DemoPlane, meta: {title: "示例-飞机", isLogin: true}},
+    {name: '示例-飞机', path: '/demo/plane', component: Plane0, meta: {title: "示例-飞机", isLogin: true}},
+    {name: '示例-飞机2', path: '/demo/plane2', component: Plane2, meta: {title: "示例-飞机2", isLogin: true}},
     {name: '示例-损坏的头盔', path: '/demo/damagedhelmet', component: DamagedHelmet, meta: {title: "示例-损坏的头盔", isLogin: true}},
     {name: '示例-皇家滨海大道广场', path: '/demo/royal_esplanade', component: DemoRoyalEsplanade, meta: {title: "示例-皇家滨海大道广场", isLogin: true}},
-    {name: '示例-彩虹雨', path: '/demo/demo-rainbowrain', component: RainbowRain, meta: {title: "示例-彩虹雨", isLogin: true}},
     {name: '示例-天空盒', path: '/demo/demo-skybox', component: SkyBox, meta: {title: "示例-天空盒", isLogin: true}},
     {name: '示例-VR看房', path: '/demo/demo-vr-room', component: VRRoom, meta: {title: "示例-VR看房", isLogin: true}},
     {name: '示例-小岛', path: '/demo/demo-island', component: Island, meta: {title: "示例-小岛", isLogin: true}},
@@ -84,12 +86,14 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-曲线动画', path: '/demo/demo-curve', component: Curve, meta: {title: "示例-曲线动画", isLogin: true}},
     {name: '示例-管道简例', path: '/demo/demo-pipe0', component: Pipe0, meta: {title: "示例-管道简例", isLogin: true}},
     {name: '示例-水面简例', path: '/demo/demo-water0', component: Water0, meta: {title: "示例-水面简例", isLogin: true}},
-    {name: '示例-下雨简例', path: '/demo/demo-rain0', component: Rain0, meta: {title: "示例-下雨简例", isLogin: true}},
+    {name: '示例-粒子简例0', path: '/demo/demo-points0', component: Points0, meta: {title: "示例-粒子简例0", isLogin: true}},
     {name: '示例-粒子简例1', path: '/demo/demo-points1', component: Points1, meta: {title: "示例-粒子简例1", isLogin: true}},
     {name: '示例-粒子简例2', path: '/demo/demo-points2', component: Points2, meta: {title: "示例-粒子简例2", isLogin: true}},
     {name: '示例-粒子简例3', path: '/demo/demo-points3', component: Points3, meta: {title: "示例-粒子简例3", isLogin: true}},
     {name: '示例-粒子简例4', path: '/demo/demo-points4', component: Points4, meta: {title: "示例-粒子简例4", isLogin: true}},
     {name: '示例-粒子简例5', path: '/demo/demo-points5', component: Points5, meta: {title: "示例-粒子简例5", isLogin: true}},
+    {name: '示例-粒子简例6', path: '/demo/demo-points6', component: Points6, meta: {title: "示例-粒子简例6", isLogin: true}},
+    {name: '示例-粒子简例7', path: '/demo/demo-points7', component: Points7, meta: {title: "示例-粒子简例7", isLogin: true}},
     {name: '示例-风扇', path: '/demo/demo-fan', component: Fan, meta: {title: "示例-风扇", isLogin: true}},
     {name: '示例-f18', path: '/demo/demo-park', component: F18, meta: {title: "示例-f18", isLogin: true}},
     {name: '示例-树林', path: '/demo/demo-forest', component: Forest, meta: {title: "示例-树林", isLogin: true}},

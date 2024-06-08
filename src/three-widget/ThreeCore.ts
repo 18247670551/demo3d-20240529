@@ -63,8 +63,6 @@ export default abstract class ThreeCore {
         renderer.setPixelRatio(window.devicePixelRatio)
         //renderer.setClearColor(0xff0000, 1)
 
-        // 是否使用物理上正确的光照模式, 光照强度受光源距离影响, 默认true
-        //renderer.physicallyCorrectLights = true
 
         // 颜色空间, 默认 THREE.SRGBColorSpace
         //renderer.outputColorSpace = THREE.SRGBColorSpace

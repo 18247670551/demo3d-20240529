@@ -80,7 +80,7 @@ export default class ThreeProject extends ThreeCore {
         geo.setAttribute("color", new THREE.BufferAttribute(colors, 3))
 
 
-        const texture = new THREE.TextureLoader().load('/demo/my/wash/smoke1.png')
+        const texture = new THREE.TextureLoader().load('/demo/points3/smoke1.png')
         const pointsMat = new THREE.PointsMaterial({
             map: texture,
             alphaMap: texture,

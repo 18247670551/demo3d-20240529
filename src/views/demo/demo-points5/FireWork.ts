@@ -4,7 +4,7 @@ import {
     fireworkVertexShader,
     startpointFragmentShader,
     startpointVertexShader
-} from "@/views/demo/demo-fireworks/shaders"
+} from "@/views/demo/demo-points5/shaders"
 
 export default class FireWork {
 

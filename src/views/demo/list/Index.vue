@@ -46,6 +46,16 @@
           <div class="title">f18--模型文件</div>
         </div>
 
+        <div class="item" @click="toDemo('示例-一些模型文件')">
+          <div class="image">
+            <img src="/demo/case-cover/models.png" alt="一些模型文件"/>
+          </div>
+          <div class="title">一些模型文件</div>
+        </div>
+
+
+
+
         <div class="item" @click="toDemo('示例-小岛')">
           <div class="image">
             <img src="/demo/case-cover/island.png" alt="小岛"/>
@@ -133,6 +143,13 @@
           <div class="title">飞机--纯代码建模</div>
         </div>
 
+        <div class="item" @click="toDemo('示例-飞机2')">
+          <div class="image">
+            <img src="/demo/case-cover/plane2.png" alt="飞机2"/>
+          </div>
+          <div class="title">飞机2--纯代码建模</div>
+        </div>
+
 
         <div class="item" @click="toDemo('示例-瀑布')">
           <div class="image">
@@ -191,27 +208,25 @@
 
 
 
-
-        <div class="item" @click="toDemo('示例-下雨简例')">
+        <div class="item" @click="toDemo('示例-粒子简例0')">
           <div class="image">
-            <img src="/demo/case-cover/rain0.png" alt="下雨简例"/>
+            <img src="/demo/case-cover/points0.png" alt="粒子简例0"/>
           </div>
-          <div class="title">粒子简例0--下雨</div>
+          <div class="title">粒子简例0</div>
         </div>
-
 
         <div class="item" @click="toDemo('示例-粒子简例1')">
           <div class="image">
             <img src="/demo/case-cover/points1.png" alt="粒子简例1"/>
           </div>
-          <div class="title">粒子简例1--几何体顶点粒子</div>
+          <div class="title">粒子简例1--粒子动画--下雨</div>
         </div>
 
         <div class="item" @click="toDemo('示例-粒子简例2')">
           <div class="image">
             <img src="/demo/case-cover/points2.png" alt="粒子简例2"/>
           </div>
-          <div class="title">粒子简例2--漫天雪花</div>
+          <div class="title">粒子简例2--粒子动画--漫天雪花</div>
         </div>
 
         <div class="item" @click="toDemo('示例-粒子简例3')">
@@ -230,21 +245,23 @@
 
         <div class="item" @click="toDemo('示例-粒子简例5')">
           <div class="image">
-            <img src="/demo/case-cover/fireworks.png" alt="粒子简例5"/>
+            <img src="/demo/case-cover/points5.png" alt="粒子简例5"/>
           </div>
-          <div class="title">粒子简例5--烟花-shader</div>
+          <div class="title">粒子简例5--粒子动画--烟花-shader</div>
         </div>
 
-
-
-
-
-
-        <div class="item" @click="toDemo('示例-彩虹雨')">
+        <div class="item" @click="toDemo('示例-粒子简例6')">
           <div class="image">
-            <img src="/demo/case-cover/rainbow-rain.png" alt="彩虹雨"/>
+            <img src="/demo/case-cover/points6.png" alt="粒子简例6"/>
           </div>
-          <div class="title">彩虹雨--粒子动画</div>
+          <div class="title">粒子简例6--粒子动画-shader</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-粒子简例7')">
+          <div class="image">
+            <img src="/demo/case-cover/points7.png" alt="粒子简例7"/>
+          </div>
+          <div class="title">粒子简例7--粒子动画--彩虹雨</div>
         </div>
 
 
@@ -348,12 +365,7 @@
 
 
 
-        <div class="item" @click="toDemo('示例-一些模型文件')">
-          <div class="image">
-            <img src="/demo/case-cover/models.png" alt="一些模型文件"/>
-          </div>
-          <div class="title">一些模型文件</div>
-        </div>
+
 
 
 

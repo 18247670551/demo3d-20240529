@@ -16,6 +16,7 @@ function init() {
   const dom = threeDomRef.value!
 
   const scene = new THREE.Scene()
+  scene.background = new THREE.Color(0x000000)
 
   const camera = new THREE.PerspectiveCamera(45, dom.clientWidth / dom.clientHeight, 0.1, 1000)
   camera.position.z = 5
@@ -57,7 +58,7 @@ function updateParticleSystem(particleSystem: THREE.Points, particleCount: numbe
 function createParticleSystem(particleCount: number){
 
   const fireTexture = new THREE.TextureLoader()
-      .load('/demo/rainbow-rain/spark1.png')
+      .load('/demo/points7/spark1.png')
 
   const particles = new THREE.BufferGeometry()
   const positions = new Float32Array(particleCount * 3)

@@ -1,13 +1,5 @@
 
 
-
-
-
-
-interface BaseTree{
-    children: []
-}
-
 export const getAllNodeKeyByTree = (tree: any[], keyName: string, keys: string[] = []) => {
     for (let item of tree) {
         keys.push(item[keyName])
