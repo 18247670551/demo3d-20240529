@@ -59,6 +59,7 @@ import WRHedgehog from '@/views/demo/demo-wolf-rabbit/demo-hedgehog/Index.vue'
 import WRMap from '@/views/demo/demo-wolf-rabbit/demo-earth/Index.vue'
 import WolfRabbit from '@/views/demo/demo-wolf-rabbit-失败/Index.vue'
 import Photo3d from '@/views/demo/demo-photo3d/Index.vue'
+import Canvas1 from '@/views/demo/demo-canvas1/Index.vue'
 import Test from '@/views/demo/demo-test/Index.vue'
 
 const routes: RouteRecordRaw[] = [
@@ -112,6 +113,7 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-狼兔项目--地球', path: '/demo/demo-wr-earth', component: WRMap, meta: {title: "示例-狼兔项目--地球", isLogin: true}},
     {name: '示例-狼兔项目', path: '/demo/demo-wolf-rabbit', component: WolfRabbit, meta: {title: "示例-狼兔项目", isLogin: true}},
     {name: '示例-用图片生成3D效果', path: '/demo/demo-photo3d', component: Photo3d, meta: {title: "示例-用图片生成3D效果", isLogin: true}},
+    {name: '示例-canvas1', path: '/demo/demo-canvas1', component: Canvas1, meta: {title: "示例-canvas1", isLogin: true}},
     {name: '测试页面', path: '/demo/demo-test', component: Test, meta: {title: "测试页面", isLogin: true}},
 
 

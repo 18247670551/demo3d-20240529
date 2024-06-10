@@ -370,6 +370,13 @@
           <div class="title">3d文字</div>
         </div>
 
+        <div class="item" @click="toDemo('示例-canvas1')">
+          <div class="image">
+            <img src="/demo/case-cover/canvas1.png" alt="canvas1"/>
+          </div>
+          <div class="title">canvas--绚丽粒子炸裂效果</div>
+        </div>
+
 
 
 
