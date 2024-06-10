@@ -24,14 +24,14 @@ export default class ThreeProject extends ThreeCore {
 
         this.camera.position.set(0, 2000, 5000)
 
-        const ambientLight = new THREE.AmbientLight(0xffffff, 3)
+        const ambientLight = new THREE.AmbientLight(0xffffff, 5)
         this.scene.add(ambientLight)
 
         const directionalLight1 = new THREE.DirectionalLight(0xffffff, 4)
         directionalLight1.position.set(0, 10000, 20000)
         this.scene.add(directionalLight1)
 
-        const directionalLight2 = new THREE.DirectionalLight(0xffffff, 3)
+        const directionalLight2 = new THREE.DirectionalLight(0xffffff, 8)
         directionalLight2.position.set(0, 10000, -20000)
         this.scene.add(directionalLight2)
 

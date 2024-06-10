@@ -8,7 +8,7 @@ export default class ThreeProject extends ThreeCore {
     private readonly orbit: OrbitControls
 
 
-    constructor(dom: HTMLElement, fieldDistanceDom: HTMLElement, gameOverDom: HTMLElement) {
+    constructor(dom: HTMLElement) {
 
         super(dom, {
             cameraOptions: {

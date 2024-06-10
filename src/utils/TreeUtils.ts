@@ -2,7 +2,6 @@ import * as THREE from "three"
 import {Water as Water2 } from "three/examples/jsm/objects/Water2"
 import {acceleratedRaycast, computeBoundsTree, disposeBoundsTree} from "three-mesh-bvh";
 
-
 // 重置UV 是否从中点 还是左上角的点
 export const resetUV = (geometry: THREE.BufferGeometry, isCenter = false) => {
     geometry.computeBoundingBox()
@@ -66,14 +65,6 @@ export const getBoxInfo = (mesh: THREE.Object3D) => {
 export const toMeshSceneCenter = (mesh: THREE.Object3D) => {
     const {center, size} = getBoxInfo(mesh)
     mesh.position.copy(center.negate().setY(0))
-}
-
-export const objectToSceneCenter = (mesh: THREE.Object3D) => {
-    const {center, size} = getBoxInfo(mesh)
-    const position = center.negate().setY(0)
-    position.x = -position.x
-    position.z = -position.z
-    mesh.position.copy(position)
 }
 
 // 自适应几何中心, 外面要再包一层

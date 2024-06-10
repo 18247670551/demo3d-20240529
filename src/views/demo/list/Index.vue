@@ -54,8 +54,6 @@
         </div>
 
 
-
-
         <div class="item" @click="toDemo('示例-小岛')">
           <div class="image">
             <img src="/demo/case-cover/island.png" alt="小岛"/>
@@ -78,8 +76,6 @@
         </div>
 
 
-
-
         <div class="item" @click="toDemo('示例-曲线动画')">
           <div class="image">
             <img src="/demo/case-cover/curve.png" alt="曲线动画"/>
@@ -94,7 +90,6 @@
           </div>
           <div class="title">萤火虫动画</div>
         </div>
-
 
 
         <div class="item" @click="toDemo('示例-水面简例')">
@@ -132,7 +127,7 @@
           <div class="image">
             <img src="/demo/case-cover/earth-moon.png" alt="地月系统"/>
           </div>
-          <div class="title">地月系统--纯代码建模</div>
+          <div class="title">地月系统--纯代码</div>
         </div>
 
 
@@ -140,14 +135,14 @@
           <div class="image">
             <img src="/demo/case-cover/plane.png" alt="飞机"/>
           </div>
-          <div class="title">飞机--纯代码建模</div>
+          <div class="title">飞机--纯代码</div>
         </div>
 
         <div class="item" @click="toDemo('示例-飞机2')">
           <div class="image">
             <img src="/demo/case-cover/plane2.png" alt="飞机2"/>
           </div>
-          <div class="title">飞机2--纯代码建模</div>
+          <div class="title">飞机2--纯代码</div>
         </div>
 
 
@@ -155,7 +150,7 @@
           <div class="image">
             <img src="/demo/case-cover/waterfall.png" alt="瀑布"/>
           </div>
-          <div class="title">瀑布--纯代码建模</div>
+          <div class="title">瀑布--纯代码</div>
         </div>
 
 
@@ -163,9 +158,8 @@
           <div class="image">
             <img src="/demo/case-cover/heart-balloon.png" alt="爱心气球"/>
           </div>
-          <div class="title">爱心气球--纯代码建模</div>
+          <div class="title">爱心气球--纯代码</div>
         </div>
-
 
 
         <div class="item" @click="toDemo('示例-my-world')">
@@ -190,7 +184,6 @@
         </div>
 
 
-
         <div class="item" @click="toDemo('示例-上海2')">
           <div class="image">
             <img src="/demo/case-cover/shanghai2.png" alt="上海2"/>
@@ -203,9 +196,8 @@
           <div class="image">
             <img src="/demo/case-cover/shanghai.png" alt="上海"/>
           </div>
-          <div class="title">上海--纯代码建模</div>
+          <div class="title">上海--纯代码</div>
         </div>
-
 
 
         <div class="item" @click="toDemo('示例-粒子简例0')">
@@ -254,15 +246,24 @@
           <div class="image">
             <img src="/demo/case-cover/points6.png" alt="粒子简例6"/>
           </div>
-          <div class="title">粒子简例6--粒子动画-shader</div>
+          <div class="title">粒子简例6--粒子动画--彩虹雨</div>
         </div>
 
         <div class="item" @click="toDemo('示例-粒子简例7')">
           <div class="image">
             <img src="/demo/case-cover/points7.png" alt="粒子简例7"/>
           </div>
-          <div class="title">粒子简例7--粒子动画--彩虹雨</div>
+          <div class="title">粒子简例7--模型粒子-shader</div>
         </div>
+
+        <div class="item" @click="toDemo('示例-粒子简例8')">
+          <div class="image">
+            <img src="/demo/case-cover/points8.png" alt="粒子简例8"/>
+          </div>
+          <div class="title">粒子简例8--倒计时-shader</div>
+        </div>
+
+
 
 
 
@@ -270,57 +271,50 @@
           <div class="image">
             <img src="/demo/case-cover/truck-wash-room.png" alt="洗消车间"/>
           </div>
-          <div class="title">车辆消杀--洗消车间--纯代码建模</div>
+          <div class="title">车辆消杀--洗消车间--纯代码</div>
         </div>
 
         <div class="item" @click="toDemo('示例-烘干车间')">
           <div class="image">
             <img src="/demo/case-cover/truck-dry-room.png" alt="烘干车间"/>
           </div>
-          <div class="title">车辆消杀--烘干车间--纯代码建模</div>
+          <div class="title">车辆消杀--烘干车间--纯代码</div>
         </div>
 
         <div class="item" @click="toDemo('示例-净水车间')">
           <div class="image">
             <img src="/demo/case-cover/purity.png" alt="净水车间"/>
           </div>
-          <div class="title">净水车间--纯代码建模</div>
+          <div class="title">净水车间--纯代码</div>
         </div>
 
         <div class="item" @click="toDemo('示例-净水车间2')">
           <div class="image">
             <img src="/demo/case-cover/purity2.png" alt="净水车间2"/>
           </div>
-          <div class="title">净水车间2--纯代码建模</div>
+          <div class="title">净水车间2--纯代码</div>
         </div>
 
         <div class="item" @click="toDemo('示例-除臭车间简例')">
           <div class="image">
             <img src="/demo/case-cover/deodorize0.png" alt="除臭车间简例"/>
           </div>
-          <div class="title">除臭车间简例--纯代码建模</div>
+          <div class="title">除臭车间简例--纯代码</div>
         </div>
 
         <div class="item" @click="toDemo('示例-除臭车间')">
           <div class="image">
             <img src="/demo/case-cover/deodorize.png" alt="除臭车间"/>
           </div>
-          <div class="title">除臭车间--纯代码建模</div>
+          <div class="title">除臭车间--纯代码</div>
         </div>
 
         <div class="item" @click="toDemo('示例-除臭车间2')">
           <div class="image">
             <img src="/demo/case-cover/deodorize2.png" alt="除臭车间2"/>
           </div>
-          <div class="title">除臭车间2--纯代码建模</div>
+          <div class="title">除臭车间2--纯代码</div>
         </div>
-
-
-
-
-
-
-
 
 
         <div class="item" @click="toDemo('示例-狼兔项目--狼')">
@@ -355,16 +349,26 @@
           <div class="image">
             <img src="/demo/case-cover/wolf-rabbit.png" alt="my-world"/>
           </div>
-          <div class="title">狼兔项目--重构失败, 求大佬指导</div>
+          <div class="title">狼兔项目--重构失败</div>
         </div>
 
 
 
 
+        <div class="item" @click="toDemo('示例-用图片生成3D效果')">
+          <div class="image">
+            <img src="/demo/case-cover/photo3d.png" alt="my-world"/>
+          </div>
+          <div class="title">用图片生成3D效果</div>
+        </div>
 
 
-
-
+        <div class="item" @click="toDemo('示例-3d文字')">
+          <div class="image">
+            <img src="/demo/case-cover/text3d.png" alt="3d文字"/>
+          </div>
+          <div class="title">3d文字</div>
+        </div>
 
 
 

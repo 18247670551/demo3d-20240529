@@ -1,4 +1,39 @@
+import {repeat} from "lodash"
 
+/**
+ * 二的n次幂
+ * @param n
+ */
+function 二的n次幂(n: number){
+    return 1 << n
+}
+
+/**
+ * 0/1 取反, 只需异或1
+ * @param value
+ */
+export function toggle(value: number){
+    return value ^= 1
+}
+
+/**
+ * 5星打分
+ * console.log(rate(3)) // "★★★☆☆☆"
+ */
+// export const rate = (start: number) => {
+//     const starts = "★★★★★☆☆☆☆☆"
+//     return starts.slice(5-start, 10 - start)
+// }
+
+
+/**
+ * 任意星打分
+ * console.log(rate(3, 10)) // "★★★☆☆☆☆☆☆☆"
+ */
+const rate = (star: number, totalStar: number = 5) =>{
+    const stars = repeat("★", totalStar) + repeat("☆", totalStar)
+    return stars.slice(totalStar-star, totalStar*2 - star)
+}
 
 export const getAllNodeKeyByTree = (tree: any[], keyName: string, keys: string[] = []) => {
     for (let item of tree) {

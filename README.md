@@ -125,22 +125,22 @@ npm run dev
 
 #
 #### 示例: 飞机
-##### 本人编写, 参照网络案例原模型, 以对象方式重写, 纯代码建模
+##### 本人编写, 参照网络案例原模型, 以对象方式重写, 纯代码
 ![preview](./public/demo/case-cover/plane.png)
 
 #
 #### 示例: 飞机2
-##### 本人编写, 参照网络案例原模型, 以对象方式重写, 纯代码建模
+##### 本人编写, 参照网络案例原模型, 以对象方式重写, 纯代码
 ![preview](./public/demo/case-cover/plane2.png)
 
 
 #### 示例: 瀑布
-##### 本人编写, 参照网络案例原模型, 以对象方式重写, 纯代码建模
+##### 本人编写, 参照网络案例原模型, 以对象方式重写, 纯代码
 
 ![preview](./public/demo/case-cover/waterfall.png)
 
 #### 示例: 爱心气球
-##### 来源网络, 纯代码建模
+##### 来源网络, 纯代码
 ![preview](./public/demo/case-cover/heart-balloon.png)
 
 
@@ -178,44 +178,49 @@ npm run dev
 ##### 来源网络, 重构
 ![preview](./public/demo/case-cover/points4.png)
 
-#### 示例: 粒子简例5--粒子动画--烟花-shader
+#### 示例: 粒子简例5--粒子动画-烟花-shader
 ##### 来源网络, 重构
 ![preview](./public/demo/case-cover/points5.png)
 
-#### 示例: 粒子简例6--粒子动画-shader
+#### 示例: 粒子简例6--粒子动画-彩虹雨
 ##### 来源网络, 重构
 ![preview](./public/demo/case-cover/points6.png)
 
-#### 示例: 粒子简例7--粒子动画--彩虹雨
-##### 来源网络, 重构
+#### 示例: 粒子简例7--粒子动画-shader
+##### 本人编写
+![preview](./public/demo/case-cover/points7.png)
+
+#### 示例: 粒子简例8--粒子动画-倒计时-shader
+##### 本人编写
 ![preview](./public/demo/case-cover/points7.png)
 
 
 
 
 
+
 #### 示例: 车辆消杀-清消车间
-##### 本人编写, 纯代码建模, 以对象方式调用动画
+##### 本人编写, 纯代码, 以对象方式调用动画
 ![preview](./public/demo/case-cover/truck-wash-room.png)
 
 #### 示例: 车辆消杀-烘干车间
-##### 本人编写, 纯代码建模, 以对象方式调用动画
+##### 本人编写, 纯代码, 以对象方式调用动画
 ![preview](./public/demo/case-cover/truck-dry-room.png)
 
 #### 示例: 净水车间
-##### 本人编写, 纯代码建模, 以对象方式调用动画
+##### 本人编写, 纯代码, 以对象方式调用动画
 ![preview](./public/demo/case-cover/purity.png)
 
 #### 示例: 除臭车间简例
-##### 本人编写, 纯代码建模, 以对象方式调用动画
+##### 本人编写, 纯代码, 以对象方式调用动画
 ![preview](./public/demo/case-cover/deodorize0.png)
 
 #### 示例: 除臭车间
-##### 本人编写, 纯代码建模, 以对象方式调用动画
+##### 本人编写, 纯代码, 以对象方式调用动画
 ![preview](./public/demo/case-cover/deodorize.png)
 
 #### 示例: 除臭车间2
-##### 本人编写, 纯代码建模, 以对象方式调用动画
+##### 本人编写, 纯代码, 以对象方式调用动画
 ![preview](./public/demo/case-cover/deodorize2.png)
 
 
@@ -240,7 +245,7 @@ npm run dev
 
 
 #### 示例: 除臭车间2
-##### 本人编写, 纯代码建模, 以对象方式调用动画
+##### 本人编写, 纯代码, 以对象方式调用动画
 ![preview](./public/demo/case-cover/deodorize2.png)
 
 
@@ -263,8 +268,19 @@ npm run dev
 ![preview](./public/demo/case-cover/wr-earth.png)
 
 #### 示例: 狼兔项目
-##### 网络收集, 原版代码在路径中, 哪位大佬能用 three最新版ts对象化封装重构? 求指导
+##### 网络收集, 最新版three加ts对象像封装失败, 原版代码在路径中
 ![preview](./public/demo/case-cover/wolf-rabbit.png)
+
+
+
+
+#### 示例: 图片加3D效果, 效果不太好
+##### 本人编写
+![preview](./public/demo/case-cover/photo3d.png)
+
+#### 示例: 3d文字
+##### 本人编写
+![preview](./public/demo/case-cover/text3d.png)
 
 
 

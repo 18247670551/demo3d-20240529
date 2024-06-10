@@ -134,58 +134,70 @@ const loadingSave = ref(false)
 
 function onSubmit() {
   // 测试, 免验证
-  //router.push({name: '首页', replace: true})
-
-  formRef.value.validate((valid: boolean) => {
-    if (!valid) return
-
-    showLoading(loadingSave)
-
-    // mock 打包后失效, 本地环境使用 mock 接口, 打包时直接跳转
-    // 这里写法做演示
-    if (IS_BUILD) {
-
-      const userStore = useUserStore()
-      userStore.setLogin("123", "456")
-      userStore.setUser({
-        clientType: "web",
-        loginTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
-        id: "123",
-        name: "模拟用户",
-        phone: "18999999999",
-        avatar: "",
-      })
-      hideLoading(loadingSave)
-      router.replace({name: '首页'})
-
-    } else {
-
-      // testApi.testGet()
-      //     .then(() => {
-      //       console.log("mock /testGet 请求成功")
-      //     })
-      //     .catch(({msg}) => ElMessage.error(msg))
-      //     .finally(() => hideLoading(loadingSave))
-
-      noauthApi.login(form.value)
-          .then(({data: tokenPair}) => {
-            useUserStore().setLogin(tokenPair.accessToken, tokenPair.refreshToken)
-
-            userApi.getUserInfo()
-                .then(({data: userInfo}) => {
-                  useUserStore().setUser(userInfo)
-                  router.replace({name: '首页'})
-                })
-                .catch(({msg}) => ElMessage.error(msg))
-                .finally(() => hideLoading(loadingSave))
-          })
-          .catch(({msg}) => {
-            ElMessage.error(msg)
-            hideLoading(loadingSave)
-          })
-    }
-    
+  const userStore = useUserStore()
+  userStore.setLogin("123", "456")
+  userStore.setUser({
+    clientType: "web",
+    loginTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+    id: "123",
+    name: "模拟用户",
+    phone: "18999999999",
+    avatar: "",
   })
+  hideLoading(loadingSave)
+  router.replace({name: '首页'})
+
+
+  // formRef.value.validate((valid: boolean) => {
+  //   if (!valid) return
+  //
+  //   showLoading(loadingSave)
+  //
+  //   // mock 打包后失效, 本地环境使用 mock 接口, 打包时直接跳转
+  //   // 这里写法做演示
+  //   if (IS_BUILD) {
+  //
+  //     const userStore = useUserStore()
+  //     userStore.setLogin("123", "456")
+  //     userStore.setUser({
+  //       clientType: "web",
+  //       loginTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
+  //       id: "123",
+  //       name: "模拟用户",
+  //       phone: "18999999999",
+  //       avatar: "",
+  //     })
+  //     hideLoading(loadingSave)
+  //     router.replace({name: '首页'})
+  //
+  //   } else {
+  //
+  //     // testApi.testGet()
+  //     //     .then(() => {
+  //     //       console.log("mock /testGet 请求成功")
+  //     //     })
+  //     //     .catch(({msg}) => ElMessage.error(msg))
+  //     //     .finally(() => hideLoading(loadingSave))
+  //
+  //     noauthApi.login(form.value)
+  //         .then(({data: tokenPair}) => {
+  //           useUserStore().setLogin(tokenPair.accessToken, tokenPair.refreshToken)
+  //
+  //           userApi.getUserInfo()
+  //               .then(({data: userInfo}) => {
+  //                 useUserStore().setUser(userInfo)
+  //                 router.replace({name: '首页'})
+  //               })
+  //               .catch(({msg}) => ElMessage.error(msg))
+  //               .finally(() => hideLoading(loadingSave))
+  //         })
+  //         .catch(({msg}) => {
+  //           ElMessage.error(msg)
+  //           hideLoading(loadingSave)
+  //         })
+  //   }
+  //
+  // })
 
 }
 

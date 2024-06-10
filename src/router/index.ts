@@ -44,6 +44,8 @@ import Points4 from '@/views/demo/demo-points4/Index.vue'
 import Points5 from '@/views/demo/demo-points5/Index.vue'
 import Points6 from '@/views/demo/demo-points6/Index.vue'
 import Points7 from '@/views/demo/demo-points7/Index.vue'
+import Points8 from '@/views/demo/demo-points8/Index.vue'
+import Text3D from '@/views/demo/demo-text3d/Index.vue'
 import Fan from '@/views/demo/demo-fan/Index.vue'
 import F18 from '@/views/demo/demo-f18/Index.vue'
 import Forest from '@/views/demo/demo-forest/Index.vue'
@@ -56,6 +58,7 @@ import WRRabbit from '@/views/demo/demo-wolf-rabbit/demo-rabbit/Index.vue'
 import WRHedgehog from '@/views/demo/demo-wolf-rabbit/demo-hedgehog/Index.vue'
 import WRMap from '@/views/demo/demo-wolf-rabbit/demo-earth/Index.vue'
 import WolfRabbit from '@/views/demo/demo-wolf-rabbit-失败/Index.vue'
+import Photo3d from '@/views/demo/demo-photo3d/Index.vue'
 import Test from '@/views/demo/demo-test/Index.vue'
 
 const routes: RouteRecordRaw[] = [
@@ -94,6 +97,8 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-粒子简例5', path: '/demo/demo-points5', component: Points5, meta: {title: "示例-粒子简例5", isLogin: true}},
     {name: '示例-粒子简例6', path: '/demo/demo-points6', component: Points6, meta: {title: "示例-粒子简例6", isLogin: true}},
     {name: '示例-粒子简例7', path: '/demo/demo-points7', component: Points7, meta: {title: "示例-粒子简例7", isLogin: true}},
+    {name: '示例-粒子简例8', path: '/demo/demo-points8', component: Points8, meta: {title: "示例-粒子简例8", isLogin: true}},
+    {name: '示例-3d文字', path: '/demo/demo-text3d', component: Text3D, meta: {title: "示例-3d文字", isLogin: true}},
     {name: '示例-风扇', path: '/demo/demo-fan', component: Fan, meta: {title: "示例-风扇", isLogin: true}},
     {name: '示例-f18', path: '/demo/demo-park', component: F18, meta: {title: "示例-f18", isLogin: true}},
     {name: '示例-树林', path: '/demo/demo-forest', component: Forest, meta: {title: "示例-树林", isLogin: true}},
@@ -106,6 +111,7 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-狼兔项目--刺猬', path: '/demo/demo-wr-hedgehog', component: WRHedgehog, meta: {title: "示例-狼兔项目--刺猬", isLogin: true}},
     {name: '示例-狼兔项目--地球', path: '/demo/demo-wr-earth', component: WRMap, meta: {title: "示例-狼兔项目--地球", isLogin: true}},
     {name: '示例-狼兔项目', path: '/demo/demo-wolf-rabbit', component: WolfRabbit, meta: {title: "示例-狼兔项目", isLogin: true}},
+    {name: '示例-用图片生成3D效果', path: '/demo/demo-photo3d', component: Photo3d, meta: {title: "示例-用图片生成3D效果", isLogin: true}},
     {name: '测试页面', path: '/demo/demo-test', component: Test, meta: {title: "测试页面", isLogin: true}},
 
 
