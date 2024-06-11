@@ -69,7 +69,7 @@ npm run dev
 #
 #### 示例: F18
 ##### 来源网络, 模型文件
-![preview](./public/demo/case-cover/f18.png)
+![preview](./public/demo/case-cover/F18.png)
 
 
 #### 示例: 小岛
@@ -192,7 +192,7 @@ npm run dev
 
 #### 示例: 粒子简例8--粒子动画-倒计时-shader
 ##### 本人编写
-![preview](./public/demo/case-cover/points7.png)
+![preview](./public/demo/case-cover/points8.png)
 
 
 
@@ -274,13 +274,17 @@ npm run dev
 
 
 
-#### 示例: 图片加3D效果, 效果不太好
+#### 示例: 图片加3D效果, 随便生成的景深, 效果太好
 ##### 本人编写
 ![preview](./public/demo/case-cover/photo3d.png)
 
 #### 示例: 3d文字
 ##### 本人编写
 ![preview](./public/demo/case-cover/text3d.png)
+
+#### 示例: canvas--绚丽粒子炸裂效果
+##### 来源网络
+![preview](./public/demo/case-cover/canvas1.png)
 
 
 

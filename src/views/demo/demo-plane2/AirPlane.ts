@@ -64,14 +64,7 @@ export default class AirPlane extends THREE.Group {
         vs.setY(7, vs.getY(7) + 30)
         vs.setZ(7, vs.getZ(7) - 20)
 
-        //console.log("geomCockpit.attributes = ", geomCockpit.attributes)
-
-        geomCockpit.setAttribute("position", vs)
         geomCockpit.attributes.position.needsUpdate = true
-
-        //geomCockpit.attributes.toPositions.needsUpdate = true
-        //geomCockpit.attributes.oldPositions.needsUpdate = true
-        //geomCockpit.attributes.toPositionsDuration.needsUpdate = true
 
         const cockpit = new THREE.Mesh(geomCockpit, matCockpit)
         cockpit.castShadow = true
@@ -149,7 +142,6 @@ export default class AirPlane extends THREE.Group {
         vs.setY(7, vs.getY(7) + 5)
         vs.setZ(7, vs.getZ(7) - 5)
 
-        geomPropeller.setAttribute("position", vs)
         geomPropeller.attributes.position.needsUpdate = true
 
         const matPropeller = new THREE.MeshPhongMaterial({color: this.options.colors.brown, flatShading: true})

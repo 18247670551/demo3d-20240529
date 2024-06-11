@@ -440,10 +440,10 @@ export default class ThreeProject extends ThreeCore {
             }
 
             z += Math.sin((y + i) * 0.015)
-
             vertices.setXYZ(i, x, y, z)
-            _geometry.attributes.position.needsUpdate = true
         }
+
+        _geometry.attributes.position.needsUpdate = true
 
         resetUV(_geometry)
 
