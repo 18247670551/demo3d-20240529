@@ -1,6 +1,30 @@
 import * as THREE from "three"
-import {Water as Water2 } from "three/examples/jsm/objects/Water2"
-import {acceleratedRaycast, computeBoundsTree, disposeBoundsTree} from "three-mesh-bvh";
+import {Water as Water2} from "three/examples/jsm/objects/Water2"
+import {acceleratedRaycast, computeBoundsTree, disposeBoundsTree} from "three-mesh-bvh"
+import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js'
+
+export function mergeGroup(cargo: THREE.Group): THREE.Mesh | null {
+    const geometries: THREE.BufferGeometry[] = []
+    const meshes: THREE.Mesh[] = []
+    // @ts-ignore
+    cargo.children.map((child: THREE.Mesh) => {
+        meshes.push(child)
+        child.geometry.deleteAttribute('uv')
+        geometries.push(child.geometry.index ? child.geometry.toNonIndexed() : child.geometry.clone())
+    })
+    for (const [i, g] of geometries.entries()) {
+        g.applyMatrix4(meshes[i].matrixWorld)
+    }
+    const mergedGeometry = BufferGeometryUtils.mergeGeometries(geometries, true)
+    // @ts-ignore
+    const materials: THREE.Material[] = cargo.children.map((child: THREE.Mesh) => child.material)
+
+    const mergedMesh = new THREE.Mesh(mergedGeometry.clone(), materials)
+    mergedMesh.scale.copy(cargo.scale)
+    mergedMesh.rotation.copy(cargo.rotation)
+
+    return mergedMesh
+}
 
 // 重置UV 是否从中点 还是左上角的点
 export const resetUV = (geometry: THREE.BufferGeometry, isCenter = false) => {
@@ -82,7 +106,7 @@ export const adjustGroupCenter = (group: THREE.Group) => {
 }
 
 // 给所有几何体都添加 bvh 库计算
-export function initBVH(){
+export function initBVH() {
     THREE.Mesh.prototype.raycast = acceleratedRaycast
     THREE.BufferGeometry.prototype.computeBoundsTree = computeBoundsTree
     THREE.BufferGeometry.prototype.disposeBoundsTree = disposeBoundsTree
@@ -128,7 +152,7 @@ export function reAnchorCenter(mesh: THREE.Mesh) {
     mesh.position.applyMatrix4(m)
 }
 
-export function getCenterPoint(list: [{x: number, y: number}]) {
+export function getCenterPoint(list: [{ x: number, y: number }]) {
     const points: THREE.Vector2[] = []
     for (let i = 0; i < list.length; i++) {
         points.push(new THREE.Vector2(list[i].x, list[i].y))

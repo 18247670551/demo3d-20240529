@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            background: #000;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<canvas></canvas>
+<script>
+
+    function init(){
+        var canvas=document.getElementsByTagName('canvas')[0];
+        var ctx=canvas.getContext('2d');
+        canvas.width=window.innerWidth
+        canvas.height=window.innerHeight
+        ctx.fillStyle='rgba(0,0,0,0)';
+        ctx.fillRect(0,0,window.innerWidth,window.innerHeight)
+
+        var text='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        var x=window.innerWidth/2
+        var y=window.innerHeight
+
+        var particels=[];
+        var num=100;
+        requestAnimationFrame(render)
+
+        function  fade(){
+            ctx.fillStyle = 'rgba(0,0,0,0.1)'
+            ctx.fillRect(0,0,window.innerWidth,window.innerHeight)
+        }
+
+        function render(){
+            fade()
+            particels.push({x:x,y:y,color:[155,100,50,0.8],
+                font:text.charAt([Math.floor(Math.random()*26)]),
+                xSpeed:(Math.random()*20)-10,ySpeed:(Math.random()*10)-10})
+
+            for(var i=0;i<particels.length;i++){
+                var h=particels[i].color[0];
+                var s=particels[i].color[1]+'%'
+                var l=particels[i].color[2]+'%'
+                var a=particels[i].color[3];
+                var hsla=`hsla(${h},${s},${l},${a})`;
+                ctx.font='10px 微软雅黑'
+                ctx.fillStyle=hsla;
+                ctx.fillText(particels[i].font,particels[i].x,particels[i].y);
+                particels[i].x+=particels[i].xSpeed
+                particels[i].y+=particels[i].ySpeed
+
+                particels[i].y*=0.98
+                particels[i].color[0] += 1 // 色调
+                particels[i].color[2] *= 0.99  // 亮度
+                if( particels[i].color[0] > 253 ){
+                    particels[i].color[2] = 100 // 亮度
+                    particels[i].color[3] = 1 // 透明
+                }
+            }
+
+            clear()
+            function clear(){
+                if(particels.length>num){
+                    particels.shift()
+                }
+
+
+            }
+            requestAnimationFrame(render)
+        }
+
+
+    }
+
+
+    init()
+</script>
+</body>
+</html>

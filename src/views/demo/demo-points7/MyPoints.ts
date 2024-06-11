@@ -1,5 +1,6 @@
 import * as THREE from "three"
-import {fragmentShader, vertexShader} from "./shaders"
+import vertexShader from './shader/vertexShader.glsl'
+import fragmentShader from './shader/fragmentShader.glsl'
 
 /**
  * num 粒子数

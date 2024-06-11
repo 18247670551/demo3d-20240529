@@ -246,21 +246,35 @@
           <div class="image">
             <img src="/demo/case-cover/points6.png" alt="粒子简例6"/>
           </div>
-          <div class="title">粒子简例6--粒子动画--彩虹雨</div>
+          <div class="title">粒子简例6--彩虹雨</div>
         </div>
 
         <div class="item" @click="toDemo('示例-粒子简例7')">
           <div class="image">
             <img src="/demo/case-cover/points7.png" alt="粒子简例7"/>
           </div>
-          <div class="title">粒子简例7--模型粒子-shader</div>
+          <div class="title">粒子简例7--模型变形动画-shader</div>
         </div>
 
         <div class="item" @click="toDemo('示例-粒子简例8')">
           <div class="image">
             <img src="/demo/case-cover/points8.png" alt="粒子简例8"/>
           </div>
-          <div class="title">粒子简例8--倒计时-shader</div>
+          <div class="title">粒子简例8--倒计时动画-shader</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-粒子简例9')">
+          <div class="image">
+            <img src="/demo/case-cover/points9.png" alt="粒子简例9"/>
+          </div>
+          <div class="title">粒子简例9--波形动画-shader</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-粒子简例10')">
+          <div class="image">
+            <img src="/demo/case-cover/points10.png" alt="粒子简例10"/>
+          </div>
+          <div class="title">粒子简例10--太阳动画-shader</div>
         </div>
 
 
@@ -370,12 +384,40 @@
           <div class="title">3d文字</div>
         </div>
 
+        <div class="item" @click="toDemo('示例-合并几何体')">
+          <div class="image">
+            <img src="/demo/case-cover/merged-geometry.png" alt="canvas1"/>
+          </div>
+          <div class="title">合并几何体</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-流光墙')">
+          <div class="image">
+            <img src="/demo/case-cover/wall.png" alt="canvas1"/>
+          </div>
+          <div class="title">流光墙</div>
+        </div>
+
+
+
+
+
+
         <div class="item" @click="toDemo('示例-canvas1')">
           <div class="image">
             <img src="/demo/case-cover/canvas1.png" alt="canvas1"/>
           </div>
-          <div class="title">canvas--绚丽粒子炸裂效果</div>
+          <div class="title">canvas1--绚丽粒子炸裂效果</div>
         </div>
+
+        <div class="item" @click="toDemo('示例-canvas2')">
+          <div class="image">
+            <img src="/demo/case-cover/canvas2.png" alt="canvas2"/>
+          </div>
+          <div class="title">canvas2--字母喷泉</div>
+        </div>
+
+
 
 
 

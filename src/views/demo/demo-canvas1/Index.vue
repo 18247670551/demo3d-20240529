@@ -13,8 +13,8 @@ onMounted(() => {
   const canvas = canvasDomRef.value
   const width = canvas.clientWidth
   const height = canvas.clientHeight
-  canvas.width = width * devicePixelRatio
-  canvas.height = height * devicePixelRatio
+  const newWidth = canvas.width = width * devicePixelRatio
+  const newHeight = canvas.height = height * devicePixelRatio
 
   const ctx = canvas.getContext("2d")!
 
@@ -29,7 +29,7 @@ onMounted(() => {
 
   function animate() {
     ctx.fillStyle = "rgba(0, 0, 0, 0.1)"
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.fillRect(0, 0, newWidth, newHeight)
 
     for (let i = 0; i < particles.length; i++) {
       particles[i].update()
@@ -46,7 +46,9 @@ onMounted(() => {
 
   canvas.addEventListener("mousemove", (e: any) => {
     const {offsetX, offsetY} = e
-    createParticles(offsetX, offsetY)
+    const x = offsetX * devicePixelRatio
+    const y = offsetY * devicePixelRatio
+    createParticles(x, y)
   })
 
   animate()

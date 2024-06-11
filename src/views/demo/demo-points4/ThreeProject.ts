@@ -1,94 +1,9 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
+import vertexShader from './shader/vertexShader.glsl'
+import fragmentShader from './shader/fragmentShader.glsl'
 
-
-//顶点着色器
-//import vertexShader from './shader/vertex.glsl'
-//片元着色器
-//import fragmentShader from './shader/fragment.glsl'
-
-// 注意: glsl文件在ts里不能像上面使用 import 导入, 语法错误, 把文件中内容以字符串读进来, 或者直接复制到ts文件中
-const vertexShader = `
-precision lowp float;
-attribute float imgIndex;
-varying float vImgIndex;
-varying vec2 vUv;
-uniform float uTime;
-varying vec3 vColor;
-void main(){
-    vec4 modelPosition = modelMatrix * vec4(position,1.0);
-
-    //获取顶点的角度
-    float angle = atan(modelPosition.x,modelPosition.z);
-    //获取顶点到中心的距离
-    float distanceToCenter = length(modelPosition.xz);
-    //根据顶点到中心的距离，设置旋转偏移的度数
-    float angleOffset = 1.0 / distanceToCenter * uTime;
-    //目前旋转的度数
-    angle += angleOffset;
-    modelPosition.x = cos(angle)*distanceToCenter;
-    modelPosition.z = cos(angle)*distanceToCenter;
-
-    vec4 viewPosition = viewMatrix * modelPosition;
-    gl_Position = projectionMatrix * viewPosition;
-
-
-    //1.设置点大小
-    // gl_PointSize = 80.0;
-    //根据viewPosition的z坐标决定是否远离摄像机
-    gl_PointSize = 100.0 /-viewPosition.z;
-    vImgIndex = imgIndex;
-    vColor = color;
-}
-`
-
-const fragmentShader = `
-precision lowp float;
-varying vec2 vUv;
-//5.纹理
-uniform sampler2D uTexture;
-uniform sampler2D uTexture1;
-uniform sampler2D uTexture2;
-
-varying float vImgIndex;
-varying vec3 vColor;
-
-void main(){
-   //2.vUv不能用，用gl_PointCoord
-   // gl_FragColor = vec4(gl_PointCoord,0.0,1.0);
-
-   //3.渐变圆
-   // float strength = distance(gl_PointCoord,vec2(0.5));
-   // strength *= 2.0;
-   // strength = 1.0 - strength;
-   // gl_FragColor = vec4(strength);
-
-   //4.圆形点
-   // float strength = 1.0 - distance(gl_PointCoord,vec2(0.5));
-   // strength = step(0.5,strength);
-   // gl_FragColor = vec4(strength);
-
-   //5.根据纹理设置图案
-   // vec4 textureColor = texture2D(uTexture,gl_PointCoord);
-   // gl_FragColor = vec4(textureColor);
-
-   //6.根据点的位置设置渐变
-   // vec4 textureColor = texture2D(uTexture,gl_PointCoord);
-   // gl_FragColor = vec4(gl_PointCoord,1.0,textureColor.r);
-
-   //7.根据index判断使用哪个texture
-   vec4 textureColor;
-   if(vImgIndex==0.0){
-      textureColor = texture2D(uTexture,gl_PointCoord);
-   }else if(vImgIndex==1.0){
-      textureColor = texture2D(uTexture1,gl_PointCoord);
-   }else{
-      textureColor = texture2D(uTexture2,gl_PointCoord);
-   }
-   gl_FragColor = vec4(vColor,textureColor.r);
-}
-`
 
 export default class ThreeProject extends ThreeCore {
 

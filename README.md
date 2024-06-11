@@ -194,6 +194,16 @@ npm run dev
 ##### 本人编写
 ![preview](./public/demo/case-cover/points8.png)
 
+#### 示例: 粒子简例9--波形动画-shader
+##### 来源网络, 博客园 作者 郭先生的博客
+##### https://www.cnblogs.com/vadim-web/p/13444198.html
+![preview](./public/demo/case-cover/points9.png)
+
+#### 示例: 粒子简例10--太阳动画-shader
+##### 来源网络, csdn 作者 Jedi Hongbin
+##### https://blog.csdn.net/printf_hello/article/details/127901103?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171811328916800182794673%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=171811328916800182794673&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-4-127901103-null-null.142^v100^pc_search_result_base2&utm_term=three%20shader%20%E7%83%9F%E9%9B%BE&spm=1018.2226.3001.4187
+![preview](./public/demo/case-cover/points10.png)
+
 
 
 
@@ -282,9 +292,17 @@ npm run dev
 ##### 本人编写
 ![preview](./public/demo/case-cover/text3d.png)
 
-#### 示例: canvas--绚丽粒子炸裂效果
+#### 示例: 合并几何体
+##### 本人编写
+![preview](./public/demo/case-cover/merged-geometry.png)
+
+#### 示例: canvas1--绚丽粒子炸裂效果
 ##### 来源网络
 ![preview](./public/demo/case-cover/canvas1.png)
+
+#### 示例: canvas2--字母喷泉
+##### 来源网络
+![preview](./public/demo/case-cover/canvas2.png)
 
 
 

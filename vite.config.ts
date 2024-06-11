@@ -4,6 +4,9 @@ import {createSvgIconsPlugin} from 'vite-plugin-svg-icons'
 import path from "path"
 import viteCompression from "vite-plugin-compression"
 import {viteMockServe} from 'vite-plugin-mock'
+import glsl from "vite-plugin-glsl"
+
+
 
 export default defineConfig(({mode, command}: ConfigEnv): UserConfig => {
 
@@ -45,6 +48,9 @@ export default defineConfig(({mode, command}: ConfigEnv): UserConfig => {
 
         plugins: [
             vue(),
+
+            // ts引入threejs 着色器 *glsl 文件的插件
+            glsl(),
 
             // mock插件
             // viteMockServe({

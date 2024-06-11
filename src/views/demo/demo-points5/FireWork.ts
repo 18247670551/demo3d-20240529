@@ -1,10 +1,8 @@
 import * as Three from "three"
-import {
-    fireworkFragmentShader,
-    fireworkVertexShader,
-    startpointFragmentShader,
-    startpointVertexShader
-} from "@/views/demo/demo-points5/shaders"
+import fireworkFragmentShader from './shader/fireworkFragmentShader.glsl'
+import fireworkVertexShader from './shader/fireworkVertexShader.glsl'
+import startpointFragmentShader from './shader/startpointFragmentShader.glsl'
+import startpointVertexShader from './shader/startpointVertexShader.glsl'
 
 export default class FireWork {
 
