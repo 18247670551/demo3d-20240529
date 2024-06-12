@@ -69,7 +69,7 @@ npm run dev
 #
 #### 示例: F18
 ##### 来源网络, 模型文件
-![preview](./public/demo/case-cover/F18_model.png)
+![preview](./public/demo/case-cover/f18.png)
 
 
 #### 示例: 小岛
