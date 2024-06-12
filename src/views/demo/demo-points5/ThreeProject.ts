@@ -3,8 +3,6 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import FireWork from "@/views/demo/demo-points5/FireWork"
 import * as Three from "three"
-import basicFragmentShader from './shader/basicFragmentShader.glsl'
-import basicVertexShader from './shader/basicVertexShader.glsl'
 
 
 export default class ThreeProject extends ThreeCore{
@@ -41,14 +39,6 @@ export default class ThreeProject extends ThreeCore{
 
         const axes = new THREE.AxesHelper(5)
         this.scene.add(axes)
-
-
-        // 顶点着色器材质——注意要设置两面
-        const shaderMaterial = new THREE.ShaderMaterial({
-            vertexShader: basicVertexShader,
-            fragmentShader: basicFragmentShader,
-            side: THREE.DoubleSide,
-        })
 
         window.addEventListener('click', this.createFireworks)
 

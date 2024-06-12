@@ -41,7 +41,7 @@
 
         <div class="item" @click="toDemo('示例-f18')">
           <div class="image">
-            <img src="/demo/case-cover/F18.png" alt="f18"/>
+            <img src="/demo/case-cover/F18_model.png" alt="f18"/>
           </div>
           <div class="title">F18--模型文件</div>
         </div>

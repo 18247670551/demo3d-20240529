@@ -26,8 +26,7 @@ export default class ThreeProject extends ThreeCore {
         const ambientLight = new THREE.AmbientLight(0xffffff, 4)
         this.scene.add(ambientLight)
 
-        const orbit = new OrbitControls(this.camera, this.renderer.domElement)
-        this.orbit = orbit
+        this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
 
         const uniforms = {
             time: { value: 1 },

@@ -9,7 +9,7 @@ import {random} from "lodash"
  * @param size?: [number]
  * @param scale?: [number]
  */
-export interface MyParticalOptions {
+export interface MyParticleOptions {
     life?: number
     range?: number
     center?: [number, number, number]
@@ -18,14 +18,14 @@ export interface MyParticalOptions {
     scale?: [number]
 }
 
-export default class SmokePartical extends THREE.Points {
+export default class SmokeParticle extends THREE.Points {
 
     private textureLoader = new THREE.TextureLoader()
 
     createTime = 0
     updateTime = 0
 
-    readonly options: Required<MyParticalOptions>
+    readonly options: Required<MyParticleOptions>
 
     private readonly currentSize: [number]
     private readonly currentScale: [number]
@@ -33,7 +33,7 @@ export default class SmokePartical extends THREE.Points {
     private readonly currentPosition: [number, number, number]
     private readonly currentSpeed: [number, number, number]
 
-    constructor(options?: MyParticalOptions) {
+    constructor(options?: MyParticleOptions) {
 
         const geo = new THREE.BufferGeometry()
 
@@ -42,11 +42,11 @@ export default class SmokePartical extends THREE.Points {
         geo.setAttribute('a_size', new THREE.BufferAttribute(new Float32Array([]), 1))
         geo.setAttribute('a_scale', new THREE.BufferAttribute(new Float32Array([]), 1))
 
-        const mat = SmokePartical.createMaterial()
+        const mat = SmokeParticle.createMaterial()
 
         super(geo, mat)
 
-        const defaultOptions: Required<MyParticalOptions> = {
+        const defaultOptions: Required<MyParticleOptions> = {
             life: 6000,
             range: 20,
             center: [0, 50, 0],

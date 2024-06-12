@@ -1,6 +1,6 @@
 import * as THREE from "three"
 import MyGroup from "@/three-widget/MyGroup"
-import SmokePartical from "@/three-widget/my/SmokePartical"
+import SmokeParticle from "@/three-widget/my/SmokeParticle"
 
 interface WashGunOptions {
     radius?: number
@@ -11,7 +11,7 @@ type WashGunDefaultOptions = Required<WashGunOptions>
 
 export class WashGun extends MyGroup<WashGunOptions> {
 
-    private readonly particals: SmokePartical[]
+    private readonly particles: SmokeParticle[]
     private timer: NodeJS.Timeout | null = null
 
     constructor(name: string, options?: WashGunOptions) {
@@ -22,7 +22,7 @@ export class WashGun extends MyGroup<WashGunOptions> {
 
         super(name, defaultOptions, options)
 
-        this.particals = []
+        this.particles = []
         this.addGun()
     }
 
@@ -34,43 +34,43 @@ export class WashGun extends MyGroup<WashGunOptions> {
         this.add(entity)
     }
 
-    private createPartical() {
-        const partical = new SmokePartical()
-        partical.name = "喷雾"
-        this.add(partical)
-        return partical
+    private createParticle() {
+        const particle = new SmokeParticle()
+        particle.name = "喷雾"
+        this.add(particle)
+        return particle
     }
 
-    private removePartical(partical: SmokePartical){
-        partical.removeFromParent()
-        partical.geometry.dispose()
-        const mat = partical.material as THREE.MeshBasicMaterial
+    private removeParticle(particle: SmokeParticle){
+        particle.removeFromParent()
+        particle.geometry.dispose()
+        const mat = particle.material as THREE.MeshBasicMaterial
         mat.dispose()
     }
 
-    private createParticalAnimation(){
+    private createParticleAnimation(){
          this.timer = setInterval(() => {
-            if (this.particals.length < 100) {
-                this.particals.push(this.createPartical())
+            if (this.particles.length < 100) {
+                this.particles.push(this.createParticle())
             }
 
-            this.particals.forEach((partical, index) => {
-                partical.update()
+            this.particles.forEach((particle, index) => {
+                particle.update()
             })
         }, 100)
     }
 
     run() {
-        this.createParticalAnimation()
+        this.createParticleAnimation()
     }
 
     stop() {
         clearInterval(this.timer!)
-        this.particals.forEach((partical, index) => {
-            this.particals.splice(index, 1)
-            this.removePartical(partical)
+        this.particles.forEach((particle, index) => {
+            this.particles.splice(index, 1)
+            this.removeParticle(particle)
         })
-        this.remove(...this.particals)
+        this.remove(...this.particles)
     }
 
 }

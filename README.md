@@ -69,7 +69,7 @@ npm run dev
 #
 #### 示例: F18
 ##### 来源网络, 模型文件
-![preview](./public/demo/case-cover/F18.png)
+![preview](./public/demo/case-cover/F18_model.png)
 
 
 #### 示例: 小岛
@@ -201,7 +201,7 @@ npm run dev
 
 #### 示例: 粒子简例10--太阳动画-shader
 ##### 来源网络, csdn 作者 Jedi Hongbin
-##### https://blog.csdn.net/printf_hello/article/details/127901103?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522171811328916800182794673%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=171811328916800182794673&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-4-127901103-null-null.142^v100^pc_search_result_base2&utm_term=three%20shader%20%E7%83%9F%E9%9B%BE&spm=1018.2226.3001.4187
+##### https://blog.csdn.net/printf_hello/article/details/127901103
 ![preview](./public/demo/case-cover/points10.png)
 
 

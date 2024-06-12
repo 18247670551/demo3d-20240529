@@ -97,15 +97,12 @@ export default class ThreeProject extends ThreeCore {
         geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
         geometry.setAttribute('imgIndex', new THREE.BufferAttribute(imgIndex, 1))
 
-        //设置点材质
         const material = new THREE.ShaderMaterial({
             vertexShader: vertexShader,
             fragmentShader: fragmentShader,
             transparent: true,
             vertexColors: true,
-            //集中的地方更加亮
             blending: THREE.AdditiveBlending,
-            //解决外面的挡住里面的
             depthWrite: false,
             uniforms: {
                 uTexture: {
