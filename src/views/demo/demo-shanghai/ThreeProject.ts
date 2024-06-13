@@ -428,9 +428,11 @@ export default class ThreeProject extends ThreeCore {
         const _geometry = new THREE.CylinderGeometry(2, 3, 18, 7, 50)
 
         // 正弦函数规律性的改变顶点坐标的x轴和z轴
-        const vertices = _geometry.getAttribute("position")
-        for (let i = 0; i < vertices.count; i++) {
-            let x = vertices.getX(i), y = vertices.getY(i), z = vertices.getZ(i)
+        const vs = _geometry.getAttribute("position")
+        for (let i = 0; i < vs.count; i++) {
+            let x = vs.getX(i)
+            let y = vs.getY(i)
+            let z = vs.getZ(i)
 
             x += Math.sin((y + i) * 0.01)
 
@@ -440,7 +442,7 @@ export default class ThreeProject extends ThreeCore {
             }
 
             z += Math.sin((y + i) * 0.015)
-            vertices.setXYZ(i, x, y, z)
+            vs.setXYZ(i, x, y, z)
         }
 
         _geometry.attributes.position.needsUpdate = true

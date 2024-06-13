@@ -384,6 +384,13 @@
           <div class="title">3d文字</div>
         </div>
 
+        <div class="item" @click="toDemo('示例-缓冲几何体')">
+          <div class="image">
+            <img src="/demo/case-cover/buffer-geometry.png" alt="canvas1"/>
+          </div>
+          <div class="title">缓冲几何体</div>
+        </div>
+
         <div class="item" @click="toDemo('示例-合并几何体')">
           <div class="image">
             <img src="/demo/case-cover/merged-geometry.png" alt="canvas1"/>

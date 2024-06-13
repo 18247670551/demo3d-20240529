@@ -8,6 +8,7 @@ import fragmentShader from "./shader/fragmentShader.glsl"
 export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
+
     private readonly material: THREE.ShaderMaterial
 
     constructor(dom: HTMLElement) {
@@ -23,25 +24,36 @@ export default class ThreeProject extends ThreeCore {
         this.scene.background = new THREE.Color(0x000000)
 
 
-        this.camera.position.set(0, 0, 2)
+        this.camera.position.set(0, 5, 10)
 
-        const ambientLight = new THREE.AmbientLight(0xffffff, 10)
+        const ambientLight = new THREE.AmbientLight(0xffffff, 2)
         this.scene.add(ambientLight)
 
-        this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
+        const light = new THREE.DirectionalLight(0xffffff, 2)
+        light.position.set(0, 60, -60)
+        light.castShadow = true
 
-        const axes = new THREE.AxesHelper(20)
+        const shadowLight = new THREE.DirectionalLight(0xffffff, 4)
+        shadowLight.position.set(600, 60, 60)
+        shadowLight.castShadow = true
+
+        this.renderer.shadowMap.enabled = true
+
+        this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
+        this.orbit.target.y = 2
+
+        const axes = new THREE.AxesHelper(5)
         this.scene.add(axes)
 
 
         const bufferGeometry = new THREE.BufferGeometry()
-        const count  = 2000
+        const count = 2000
         const positions = new Float32Array(count * 3)
 
-        for(let i = 0; i < count; i++){
-            positions[i*3] = 0
-            positions[i*3 + 1] = 0
-            positions[i*3 + 2] = 0
+        for (let i = 0; i < count; i++) {
+            positions[i * 3] = 0
+            positions[i * 3 + 1] = 0
+            positions[i * 3 + 2] = 0
         }
         bufferGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3))
         bufferGeometry.attributes.position.needsUpdate = true
@@ -56,8 +68,6 @@ export default class ThreeProject extends ThreeCore {
             fragmentShader
         })
         this.material = material
-        
-        console.log("bufferGeometry = ", bufferGeometry)
 
         const points = new THREE.Points(bufferGeometry, material)
 

@@ -61,6 +61,7 @@ import WRHedgehog from '@/views/demo/demo-wolf-rabbit/demo-hedgehog/Index.vue'
 import WRMap from '@/views/demo/demo-wolf-rabbit/demo-earth/Index.vue'
 import WolfRabbit from '@/views/demo/demo-wolf-rabbit-失败/Index.vue'
 import Photo3d from '@/views/demo/demo-photo3d/Index.vue'
+import BufferGeometry from '@/views/demo/demo-buffer-geometry/Index.vue'
 import MergedGeometry from '@/views/demo/demo-merged-geometry/Index.vue'
 import Canvas1 from '@/views/demo/demo-canvas1/Index.vue'
 import Canvas2 from '@/views/demo/demo-canvas2/Index.vue'
@@ -121,6 +122,7 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-狼兔项目--地球', path: '/demo/demo-wr-earth', component: WRMap, meta: {title: "示例-狼兔项目--地球", isLogin: true}},
     {name: '示例-狼兔项目', path: '/demo/demo-wolf-rabbit', component: WolfRabbit, meta: {title: "示例-狼兔项目", isLogin: true}},
     {name: '示例-用图片生成3D效果', path: '/demo/demo-photo3d', component: Photo3d, meta: {title: "示例-用图片生成3D效果", isLogin: true}},
+    {name: '示例-缓冲几何体', path: '/demo/demo-buffer-geometry', component: BufferGeometry, meta: {title: "示例-缓冲几何体", isLogin: true}},
     {name: '示例-合并几何体', path: '/demo/demo-merged-geometry', component: MergedGeometry, meta: {title: "示例-合并几何体", isLogin: true}},
     {name: '示例-流光墙', path: '/demo/demo-wall', component: Wall, meta: {title: "示例-流光墙", isLogin: true}},
     {name: '示例-俄乌战争', path: '/demo/demo-war', component: War, meta: {title: "示例-俄乌战争", isLogin: true}},

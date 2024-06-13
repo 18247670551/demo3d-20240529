@@ -292,6 +292,10 @@ npm run dev
 ##### 本人编写
 ![preview](./public/demo/case-cover/text3d.png)
 
+#### 示例: 缓冲几何体
+##### 本人编写
+![preview](./public/demo/case-cover/buffer-geometry.png)
+
 #### 示例: 合并几何体
 ##### 本人编写
 ![preview](./public/demo/case-cover/merged-geometry.png)
