@@ -35,9 +35,9 @@ declare global {
     }
 
     interface RendererOptions {
-        antialias: true, //抗锯齿
-        alpha: true,
-        logarithmicDepthBuffer: true //深度缓冲, 解决模型重叠部分不停闪烁问题
+        antialias: boolean, //抗锯齿
+        alpha: boolean,
+        logarithmicDepthBuffer: boolean //深度缓冲, 解决模型重叠部分不停闪烁问题
     }
 
     interface ThreeBaseOptions {

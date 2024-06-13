@@ -398,6 +398,13 @@
           <div class="title">流光墙</div>
         </div>
 
+        <div class="item" @click="toDemo('示例-俄乌战争')">
+          <div class="image">
+            <img src="/demo/case-cover/war.png" alt="canvas1"/>
+          </div>
+          <div class="title">俄乌战争</div>
+        </div>
+
 
 
 

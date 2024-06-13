@@ -296,6 +296,18 @@ npm run dev
 ##### 本人编写
 ![preview](./public/demo/case-cover/merged-geometry.png)
 
+#### 示例: 流光墙
+##### 网络收集
+![preview](./public/demo/case-cover/wall.png)
+
+#### 示例: 俄乌战争
+##### 网络收集
+![preview](./public/demo/case-cover/war.png)
+
+
+
+
+
 #### 示例: canvas1--绚丽粒子炸裂效果
 ##### 来源网络
 ![preview](./public/demo/case-cover/canvas1.png)

@@ -1,9 +1,6 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
-import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader"
-import grass_side from 'public/demo/case-cover/all-demo.png'
 import {gsap} from "gsap"
 import BonusParticles from "@/views/demo/demo-wolf-rabbit-失败/BonusParticles"
 import Hero from "@/views/demo/demo-wolf-rabbit-失败/Hero"

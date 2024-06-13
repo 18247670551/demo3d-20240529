@@ -13,7 +13,7 @@ export default class ThreeProject extends ThreeCore {
         super(dom, {
             cameraOptions: {
                 fov: 45,
-                near: 0.1,
+                near: 1,
                 far: 30000
             }
         })

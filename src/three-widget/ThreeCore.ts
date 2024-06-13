@@ -52,9 +52,13 @@ export default abstract class ThreeCore {
         this.scene.add(this.camera)
 
         const rendererOptions = {
-            antialias: true, //抗锯齿
+            // 抗锯齿
+            antialias: true,
             alpha: true,
-            logarithmicDepthBuffer: true //深度缓冲, 解决模型重叠部分不停闪烁问题
+            // 深度缓冲, 解决模型重叠部分不停闪烁问题
+            // 这个属性会导致精灵材质会被后面的物体遮挡(不知道什么原理),
+            // 只能出现问题的时候, 在那个场景 new ThreeCore继承类的时候, 传入rendererOptions参数, 将此参数改为 false
+            logarithmicDepthBuffer: true
         }
 
         const renderer = new THREE.WebGLRenderer(Object.assign({}, rendererOptions, options.rendererOptions))
