@@ -1,43 +1,43 @@
-import * as Three from "three"
-import fireworkFragmentShader from './shader/fireworkFragmentShader.glsl'
-import fireworkVertexShader from './shader/fireworkVertexShader.glsl'
-import startpointFragmentShader from './shader/startpointFragmentShader.glsl'
-import startpointVertexShader from './shader/startpointVertexShader.glsl'
+import * as THREE from "three"
+import fireworkVertexShader from './fires-shader/vertexShader.glsl'
+import fireworkFragmentShader from './fires-shader/fragmentShader.glsl'
+import startpointVertexShader from './ball-shader/vertexShader.glsl'
+import startpointFragmentShader from './ball-shader/fragmentShader.glsl'
 
 export default class FireWork {
 
-    private color: Three.Color
-    private startGeometry: Three.BufferGeometry
-    private startMaterial: Three.ShaderMaterial
-    private fireworkMaterial: Three.ShaderMaterial
-    private fireworkGeometry: Three.BufferGeometry
-    private clock: Three.Clock
-    startPoint: Three.Points
-    fireworks:Three.Points
+    private color: THREE.Color
+    private startGeometry: THREE.BufferGeometry
+    private startMaterial: THREE.ShaderMaterial
+    private fireworkMaterial: THREE.ShaderMaterial
+    private fireworkGeometry: THREE.BufferGeometry
+    private clock: THREE.Clock
+    startPoint: THREE.Points
+    fireworks:THREE.Points
 
-    constructor(color: Three.Color, from: { x: number, y: number, z: number }, to: { x: number, y: number, z: number }) {
+    constructor(color: THREE.Color, from: { x: number, y: number, z: number }, to: { x: number, y: number, z: number }) {
         this.color = color
 
 
         // 1, 创建烟花发射球
-        this.startGeometry = new Three.BufferGeometry()
+        this.startGeometry = new THREE.BufferGeometry()
         const startPositionArray = new Float32Array(3)
         startPositionArray[0] = from.x
         startPositionArray[1] = from.y
         startPositionArray[2] = from.z
-        this.startGeometry.setAttribute('position', new Three.BufferAttribute(startPositionArray, 3))
+        this.startGeometry.setAttribute('position', new THREE.BufferAttribute(startPositionArray, 3))
 
         const astepArray = new Float32Array(3)
         astepArray[0] = to.x - from.x
         astepArray[1] = to.y - from.y
         astepArray[2] = to.z - from.z
-        this.startGeometry.setAttribute('aStep', new Three.BufferAttribute(astepArray, 3))
+        this.startGeometry.setAttribute('aStep', new THREE.BufferAttribute(astepArray, 3))
 
-        this.startMaterial = new Three.ShaderMaterial({
+        this.startMaterial = new THREE.ShaderMaterial({
             vertexShader: startpointVertexShader,
             fragmentShader: startpointFragmentShader,
             transparent: true,
-            blending: Three.AdditiveBlending,
+            blending: THREE.AdditiveBlending,
             depthWrite: false,
             uniforms: {
                 uTime: {
@@ -52,13 +52,13 @@ export default class FireWork {
             }
         })
 
-        this.startPoint = new Three.Points(this.startGeometry, this.startMaterial)
+        this.startPoint = new THREE.Points(this.startGeometry, this.startMaterial)
 
         // 2, 开始计时
-        this.clock = new Three.Clock()
+        this.clock = new THREE.Clock()
 
         // 3, 创建爆炸火花
-        this.fireworkGeometry = new Three.BufferGeometry()
+        this.fireworkGeometry = new THREE.BufferGeometry()
 
         // 爆炸火花数量
         const fireworkCount = 180 + Math.floor(Math.random() * 180)
@@ -84,15 +84,15 @@ export default class FireWork {
             scaleFireArray[i] = Math.random()
         }
 
-        this.fireworkGeometry.setAttribute('position', new Three.BufferAttribute(positionFirework, 3))
-        this.fireworkGeometry.setAttribute('aRandom', new Three.BufferAttribute(directionArray, 3))
-        this.fireworkGeometry.setAttribute('aScale', new Three.BufferAttribute(scaleFireArray, 1))
+        this.fireworkGeometry.setAttribute('position', new THREE.BufferAttribute(positionFirework, 3))
+        this.fireworkGeometry.setAttribute('aRandom', new THREE.BufferAttribute(directionArray, 3))
+        this.fireworkGeometry.setAttribute('aScale', new THREE.BufferAttribute(scaleFireArray, 1))
 
-        this.fireworkMaterial = new Three.ShaderMaterial({
+        this.fireworkMaterial = new THREE.ShaderMaterial({
             vertexShader: fireworkVertexShader,
             fragmentShader: fireworkFragmentShader,
             transparent: true,
-            blending: Three.AdditiveBlending,
+            blending: THREE.AdditiveBlending,
             depthWrite: false,
             uniforms: {
                 uTime: {
@@ -106,14 +106,14 @@ export default class FireWork {
                 }
             }
         })
-        this.fireworks = new Three.Points(this.fireworkGeometry, this.fireworkMaterial)
+        this.fireworks = new THREE.Points(this.fireworkGeometry, this.fireworkMaterial)
     }
 
     update() {
 
         const elapsedTime = this.clock.getElapsedTime()
 
-        // 烟花生命周期为 5 秒, 小于1秒的刷新烟花球位置, 大于1秒释放烟花球资源, 生成爆转移目标地址火花, 大于5秒释放火花资源
+        // 烟花生命周期为 5 秒, 升天1秒, 小于1秒的刷新烟花球位置, 大于1秒释放烟花球资源, 生成爆转移目标地址火花, 大于5秒释放火花资源
         if (elapsedTime < 1) {
             this.startMaterial.uniforms.uTime.value = elapsedTime
             this.startMaterial.uniforms.uSize.value = 20

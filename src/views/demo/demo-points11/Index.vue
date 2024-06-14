@@ -11,7 +11,9 @@ const threeDomRef = ref<HTMLDivElement | null>(null)
 
 
 onMounted(() => {
+
   three = new ThreeProject(threeDomRef.value!)
+
 })
 
 onUnmounted(() => {

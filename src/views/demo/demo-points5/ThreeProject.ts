@@ -3,6 +3,8 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import FireWork from "@/views/demo/demo-points5/FireWork"
 import * as Three from "three"
+import boxVertexShader from './box-shader/vertexShader.glsl'
+import boxFragmentShader from './box-shader/fragmentShader.glsl'
 
 
 export default class ThreeProject extends ThreeCore{
@@ -10,6 +12,7 @@ export default class ThreeProject extends ThreeCore{
     private readonly orbit: OrbitControls
     private readonly fireworks: FireWork[] = []
 
+    private box: THREE.Mesh
 
     constructor(dom: HTMLElement) {
 
@@ -42,6 +45,22 @@ export default class ThreeProject extends ThreeCore{
 
         window.addEventListener('click', this.createFireworks)
 
+
+        // 烟花发射盘
+        const geometry = new THREE.BoxGeometry(2, 1, 1)
+        const BoxMaterial = new THREE.ShaderMaterial({
+            uniforms: {
+                uColor: {
+                    value: new THREE.Color(0x73162392)
+                }
+            },
+            vertexShader: boxVertexShader,
+            fragmentShader: boxFragmentShader,
+        })
+        const box = new THREE.Mesh(geometry, BoxMaterial)
+        //cube.position.y = -1
+        this.scene.add(box)
+        this.box = box
     }
 
     protected init(){}
@@ -69,6 +88,9 @@ export default class ThreeProject extends ThreeCore{
         let firework = new FireWork(color, {x: 0, y: 0, z: 0}, position)
         this.scene.add(firework.startPoint, firework.fireworks)
         this.fireworks.push(firework)
+
+        // @ts-ignore
+        this.box.material.uniforms.uColor.value = color
     }
 
 

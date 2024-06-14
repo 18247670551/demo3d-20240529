@@ -16,8 +16,8 @@ export default abstract class ThreeCore {
 
     protected readonly textureLoader = new THREE.TextureLoader()
 
-    // 要执行动画的对象集合
-    private readonly myAnimates: Record<string, Function>
+    // 要执行动画的对象集合, 子类可以把自己的动画写进 onRender 也可以 this.addAnimate() 添加到父类动画集合里
+    private readonly animates: Record<string, Function>
 
     protected constructor(dom: HTMLElement, options: ThreeBaseOptions) {
 
@@ -26,7 +26,7 @@ export default abstract class ThreeCore {
 
         this.scene = new THREE.Scene()
         this.clock = new THREE.Clock()
-        this.myAnimates = {}
+        this.animates = {}
 
         const k = dom.clientWidth / dom.clientHeight
 
@@ -110,9 +110,8 @@ export default abstract class ThreeCore {
             this.stats.update()
 
             // 执行动画
-            const delta = this.clock.getDelta()
-            for (const key in this.myAnimates) {
-                this.myAnimates[key](delta)
+            for (const key in this.animates) {
+                this.animates[key]()
             }
 
             this.renderer.render(this.scene, this.camera)
@@ -120,11 +119,11 @@ export default abstract class ThreeCore {
     }
 
     protected addAnimate(name: string, func: Function) {
-        this.myAnimates[name] = func
+        this.animates[name] = func
     }
 
     protected removeAnimate(name: string) {
-        delete this.myAnimates[name]
+        delete this.animates[name]
     }
 
     private onResize = () => {
