@@ -66,6 +66,7 @@ import MergedGeometry from '@/views/demo/demo-merged-geometry/Index.vue'
 import Canvas1 from '@/views/demo/demo-canvas1/Index.vue'
 import Canvas2 from '@/views/demo/demo-canvas2/Index.vue'
 import Wall from '@/views/demo/demo-wall/Index.vue'
+import Fire from '@/views/demo/demo-fire/Index.vue'
 import War from '@/views/demo/demo-war/Index.vue'
 import Test from '@/views/demo/demo-test/Index.vue'
 
@@ -125,6 +126,7 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-缓冲几何体', path: '/demo/demo-buffer-geometry', component: BufferGeometry, meta: {title: "示例-缓冲几何体", isLogin: true}},
     {name: '示例-合并几何体', path: '/demo/demo-merged-geometry', component: MergedGeometry, meta: {title: "示例-合并几何体", isLogin: true}},
     {name: '示例-流光墙', path: '/demo/demo-wall', component: Wall, meta: {title: "示例-流光墙", isLogin: true}},
+    {name: '示例-火焰', path: '/demo/demo-fire', component: Fire, meta: {title: "示例-火焰", isLogin: true}},
     {name: '示例-俄乌战争', path: '/demo/demo-war', component: War, meta: {title: "示例-俄乌战争", isLogin: true}},
     {name: '示例-canvas1', path: '/demo/demo-canvas1', component: Canvas1, meta: {title: "示例-canvas1", isLogin: true}},
     {name: '示例-canvas2', path: '/demo/demo-canvas2', component: Canvas2, meta: {title: "示例-canvas2", isLogin: true}},

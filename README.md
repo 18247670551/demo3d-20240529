@@ -69,7 +69,7 @@ npm run dev
 #
 #### 示例: F18
 ##### 来源网络, 模型文件
-![preview](./public/demo/case-cover/f18.png)
+![preview](./public/demo/case-cover/_f18.png)
 
 
 #### 示例: 小岛
@@ -303,6 +303,10 @@ npm run dev
 #### 示例: 流光墙
 ##### 网络收集
 ![preview](./public/demo/case-cover/wall.png)
+
+#### 示例: 火焰
+##### 网络收集
+![preview](./public/demo/case-cover/fire.png)
 
 #### 示例: 俄乌战争
 ##### 网络收集
