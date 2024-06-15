@@ -1,10 +1,10 @@
 <template>
-  <div class="page-login m-wh100p">
-    <canvas class="m-wh100p" ref="canvasDomRef"/>
+  <div class="page-login m-flex-row m-flex-c m-wh100p">
+    <particles class="m-wh100p m-pos-a"/>
 
-    <div class="login-box m-flex-row">
+    <div class="login-box m-bg-transparent0 m-flex-row">
 
-      <div class="logo m-flex-row m-flex-c m-bg-transparent0">
+      <div class="logo m-flex-row m-flex-c">
         <img class="img" src="/static/images/logo.png" alt="logo"/>
       </div>
 
@@ -56,15 +56,11 @@
   background: radial-gradient(circle, #fff, #1296db); //圆心向外渐变色
 
   .login-box {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-
     .logo {
       width: 500px;
       height: 500px;
       box-shadow: -1px 5px 10px rgba(0, 0, 0, 0.4);
+      background-color: #55b5e5;
 
       img {
         width: 350px;
@@ -108,18 +104,18 @@
 </style>
 
 <script lang="ts" setup>
+// @ts-ignore
+import Particles from "./Particles.vue"
 import * as testApi from "@/api/testApi"
 import * as noauthApi from "@/api/noauthApi"
 import * as userApi from "@/api/userApi"
-import {onMounted, ref} from 'vue'
+import {ref} from 'vue'
 import {useRouter} from 'vue-router'
 import {ElMessage} from 'element-plus'
 import {useUserStore} from '@/store/userStore'
-// @ts-ignore
 import {showLoading, hideLoading} from "@/utils/base"
 import {MockLoginPhone, MockLoginPassword} from "@/constants/mock"
-import dayjs from "dayjs"
-import Particles from "./Particles"
+import dayjs from "dayjs";
 
 const router = useRouter()
 
@@ -134,12 +130,7 @@ const form = ref<LoginUser>({
 })
 
 const formRef = ref()
-const canvasDomRef = ref()
 const loadingSave = ref(false)
-
-onMounted(() => {
-  new Particles(canvasDomRef.value)
-})
 
 function onSubmit() {
   // 测试, 免验证

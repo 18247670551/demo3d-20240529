@@ -41,7 +41,7 @@
 
         <div class="item" @click="toDemo('示例-f18')">
           <div class="image">
-            <img src="/demo/case-cover/_f18.png" alt="f18"/>
+            <img src="/demo/case-cover/fighter-f18.png" alt="f18"/>
           </div>
           <div class="title">F18--模型文件</div>
         </div>
@@ -410,6 +410,20 @@
             <img src="/demo/case-cover/fire.png" alt="火焰"/>
           </div>
           <div class="title">火焰--材质切换动画</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-平面火焰')">
+          <div class="image">
+            <img src="/demo/case-cover/fire2.png" alt="平面火焰"/>
+          </div>
+          <div class="title">平面火焰--shader</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-射线选中物体')">
+          <div class="image">
+            <img src="/demo/case-cover/raycaster.png" alt="射线选中物体"/>
+          </div>
+          <div class="title">射线选中物体</div>
         </div>
 
         <div class="item" @click="toDemo('示例-俄乌战争')">

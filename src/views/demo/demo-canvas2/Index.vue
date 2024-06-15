@@ -27,7 +27,7 @@ onMounted(() => {
   const y = newHeight
 
   const num = 100
-  requestAnimationFrame(render)
+  render()
 
   function fade() {
     ctx.fillStyle = 'rgba(0,0,0,0.1)'
@@ -40,7 +40,7 @@ onMounted(() => {
       x: x,
       y: y,
       color: [155, 100, 50, 0.8],
-      font: text.charAt([Math.floor(Math.random() * 26)]),
+      font: text.charAt(Math.floor(Math.random() * 26)),
       xSpeed: (Math.random() * 20) - 10, ySpeed: (Math.random() * 10) - 10
     })
 
