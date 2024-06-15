@@ -1,9 +1,6 @@
 precision lowp float;
 
 uniform float uTime;
-uniform float uSize;
-
-attribute float aScale;
 attribute vec3 aToPosition;
 
 
@@ -16,5 +13,5 @@ void main() {
 
     gl_Position = projectionMatrix * viewPosition;
 
-    gl_PointSize = uSize * aScale - uTime * 20.0;
+    gl_PointSize = 5.0;
 }
