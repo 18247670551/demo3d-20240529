@@ -41,7 +41,7 @@ export default class ThreeProject extends ThreeCore {
 
     protected init() {
         this.addBigBall()
-        this.addCurveObj()
+        this.addCurve()
         this.addPlane()
     }
 
@@ -99,7 +99,6 @@ export default class ThreeProject extends ThreeCore {
         this.scene.add(ball)
     }
 
-    // 平面
     private addPlane() {
         const mat = new THREE.MeshStandardMaterial()
         const geo = new THREE.PlaneGeometry(50, 50)
@@ -111,12 +110,12 @@ export default class ThreeProject extends ThreeCore {
         this.scene.add(plane)
     }
 
-    private addCurveObj() {
+    private addCurve() {
         const geo = new THREE.BufferGeometry()
         geo.setFromPoints(this.curve.getSpacedPoints(100))
         const mat = new THREE.LineBasicMaterial({color: new THREE.Color().setHSL(Math.random(), 0.5, 0.5)})
-        const curveObject = new THREE.Line(geo, mat)
-        this.scene.add(curveObject)
+        const curve = new THREE.Line(geo, mat)
+        this.scene.add(curve)
     }
 
 

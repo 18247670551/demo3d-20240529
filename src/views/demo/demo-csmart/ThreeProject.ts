@@ -3,7 +3,7 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 import ThreeCore from "@/three-widget/ThreeCore"
 import MyLoader from "@/three-widget/loader/MyLoader"
-import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader";
+import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader"
 
 
 export default class ThreeProject extends ThreeCore{

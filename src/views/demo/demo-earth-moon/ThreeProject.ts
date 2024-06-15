@@ -54,9 +54,10 @@ export default class ThreeProject extends ThreeCore{
         const vertices = []
         for (let i = 0; i < 500; i++) {
             const vertex = new THREE.Vector3
-            vertex.x = 800 * Math.random() - 400
-            vertex.y = 800 * Math.random() - 400
-            vertex.z = 800 * Math.random() - 400
+            // 星星位置分布在 -400 到 400 之间
+            vertex.x = Math.random() * 800 - 400
+            vertex.y = Math.random() * 800 - 400
+            vertex.z = Math.random() * 800 - 400
             vertices.push(vertex.x, vertex.y, vertex.z)
         }
 
@@ -64,15 +65,13 @@ export default class ThreeProject extends ThreeCore{
 
         geo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(vertices), 3))
 
-        const texture = new THREE.TextureLoader().load("/demo/earth-moon/circle.png")
-
         const mat = new THREE.PointsMaterial({
             size: 2,
             sizeAttenuation: true,   //尺寸衰减
             color: 0x4d76cf,
             transparent: true,
             opacity: 1,
-            map: texture
+            map: this.textureLoader.load("/demo/earth-moon/circle.png")
         })
 
         const starSky = new THREE.Points(geo, mat)
@@ -83,9 +82,9 @@ export default class ThreeProject extends ThreeCore{
     private addEarth() {
         const geo = new THREE.SphereGeometry(50, 32, 32)
         const mat = new THREE.MeshPhongMaterial({
-            map: new THREE.TextureLoader().load("/demo/earth-moon/earth_atmos.jpg"),
-            normalMap: new THREE.TextureLoader().load("/demo/earth-moon/earth_normal.jpg"),
-            specularMap: new THREE.TextureLoader().load("/demo/earth-moon/earth_specular.jpg"),
+            map: this.textureLoader.load("/demo/earth-moon/earth_atmos.jpg"),
+            normalMap: this.textureLoader.load("/demo/earth-moon/earth_normal.jpg"),
+            specularMap: this.textureLoader.load("/demo/earth-moon/earth_specular.jpg"),
         })
         const earth = new THREE.Mesh(geo, mat)
         this.scene.add(earth)
@@ -93,12 +92,12 @@ export default class ThreeProject extends ThreeCore{
 
     private createAndGetMoon() {
         const geo = new THREE.SphereGeometry(5, 32, 32)
-        const tex = new THREE.TextureLoader().load('/demo/earth-moon/moon.jpg')
+        const tex = this.textureLoader.load('/demo/earth-moon/moon.jpg')
         let mat = new THREE.MeshStandardMaterial({
             map: tex,
             emissive: 0xffffff,
             emissiveMap: tex
-        });
+        })
         const moon = new THREE.Mesh(geo, mat)
         moon.position.set(100, 0, 0)
         this.scene.add(moon)
@@ -108,7 +107,7 @@ export default class ThreeProject extends ThreeCore{
     private addMoonRing() {
         const geo = new THREE.RingGeometry(95, 105, 64)
 
-        const tex = new THREE.TextureLoader().load("/demo/earth-moon/moon_ring.png")
+        const tex = this.textureLoader.load("/demo/earth-moon/moon_ring.png")
 
         const mat = new THREE.MeshBasicMaterial({
             map: tex,

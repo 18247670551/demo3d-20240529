@@ -3,7 +3,7 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 import {Water} from "three/examples/jsm/objects/Water2"
-import {RGBELoader} from "three/examples/jsm/loaders/RGBELoader";
+import {RGBELoader} from "three/examples/jsm/loaders/RGBELoader"
 
 export default class ThreeProject extends ThreeCore {
 

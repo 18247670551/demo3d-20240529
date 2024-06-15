@@ -284,7 +284,7 @@ npm run dev
 
 
 
-#### 示例: 图片加3D效果, 随便生成的景深, 效果太好
+#### 示例: 图片加3D效果, shader, 随便生成的景深图, 效果不好
 ##### 本人编写
 ![preview](./public/demo/case-cover/photo3d.png)
 

@@ -133,7 +133,6 @@ export default class ThreeProject extends ThreeCore {
     }
 
     private hitEvent = (e: any) => {
-        console.log("碰撞事件 e = ", e)
         // 获取碰撞的强度
         const velocityAlongNormal = e.contact.getImpactVelocityAlongNormal()
         if (velocityAlongNormal > 2) {

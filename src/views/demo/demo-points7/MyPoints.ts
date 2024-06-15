@@ -50,7 +50,6 @@ export default class MyPoints extends THREE.Points {
                 size: {value: allOptions.size},
                 color: {value: shaderColor},
             },
-            // side: 2,
             transparent: true,
             // blending: THREE.AdditiveBlending, // 粒子重叠时加亮
             alphaTest: 0.001,

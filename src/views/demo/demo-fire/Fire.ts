@@ -44,6 +44,7 @@ export default class Fire extends THREE.Group{
         // 设置纹理重复次数
         texture.repeat.set(1 / this.num, 1)
         this.texture = texture
+
         const material = new THREE.MeshBasicMaterial({
             map: texture,
             transparent: true,
@@ -51,6 +52,7 @@ export default class Fire extends THREE.Group{
             side: THREE.DoubleSide,
             depthWrite: false
         })
+
         const mesh = new THREE.Mesh(geometry, material)
 
         // 四个火焰mesh交叉叠加

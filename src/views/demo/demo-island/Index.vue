@@ -70,6 +70,7 @@ function init() {
   const video = document.createElement("video")
   video.src = "/demo/island/sky.mp4"
   video.loop = true
+
   window.addEventListener("click", () => {
     if (video.paused) {
       video.play()

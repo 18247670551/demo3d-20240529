@@ -1,6 +1,7 @@
 import * as THREE from "three"
 import ThreeCore from "@/three-widget/ThreeCore"
-import {fragmentShader, vertexShader} from "@/views/demo/demo-photo3d/shaders"
+import vertexShader from './shader/vertexShader.glsl'
+import fragmentShader from './shader/fragmentShader.glsl'
 
 
 export default class ThreeProject extends ThreeCore {

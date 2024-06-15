@@ -3,7 +3,7 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 
 
-export default class ThreeProject extends ThreeCore{
+export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
 
@@ -31,7 +31,7 @@ export default class ThreeProject extends ThreeCore{
 
     }
 
-    init(){
+    init() {
         this.addSky()
         this.addGround()
         this.addTrees()
@@ -46,8 +46,8 @@ export default class ThreeProject extends ThreeCore{
             })
     }
 
-    private addGround(){
-        const planeGeometry = new THREE.PlaneGeometry(3000,3000)
+    private addGround() {
+        const planeGeometry = new THREE.PlaneGeometry(3000, 3000)
         const texture = this.textureLoader.load("/demo/forest/grass.jpg")
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping
         texture.repeat.set(60, 60)
@@ -57,38 +57,38 @@ export default class ThreeProject extends ThreeCore{
             map: texture
         })
         const plane = new THREE.Mesh(planeGeometry, material)
-        plane.rotateX(Math.PI/2)
+        plane.rotateX(Math.PI / 2)
         this.scene.add(plane)
     }
 
-    private addTrees(){
+    private addTrees() {
         const tree1Mat = new THREE.SpriteMaterial({
             transparent: true,
-            color:0x929f40,
+            color: 0x929f40,
             map: this.textureLoader.load("/demo/forest/tree1.png")
         })
 
         const tree2Mat = new THREE.SpriteMaterial({
             transparent: true,
-            color:0xe1e091,
+            color: 0xe1e091,
             map: this.textureLoader.load("/demo/forest/tree2.png")
         })
 
         const tree3Mat = new THREE.SpriteMaterial({
             transparent: true,
-            color:0xe17241,
+            color: 0x00cc22,
             map: this.textureLoader.load("/demo/forest/tree3.png")
         })
 
         const tree4Mat = new THREE.SpriteMaterial({
             transparent: true,
-            color:0xe14172,
+            color: 0xe14172,
             map: this.textureLoader.load("/demo/forest/tree4.png")
         })
 
         const tree5Mat = new THREE.SpriteMaterial({
             transparent: true,
-            color:0xe19363,
+            color: 0xe19363,
             map: this.textureLoader.load("/demo/forest/tree5.png")
         })
 
@@ -102,7 +102,7 @@ export default class ThreeProject extends ThreeCore{
 
             let tree
 
-            switch (random){
+            switch (random) {
                 case 0:
                     tree = new THREE.Sprite(tree1Mat)
                     break;

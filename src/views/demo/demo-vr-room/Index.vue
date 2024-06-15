@@ -27,9 +27,7 @@ function init() {
   renderer.setSize(window.innerWidth, window.innerHeight)
   dom.appendChild(renderer.domElement)
 
-  // 鼠标控制
   const controls = new OrbitControls(camera, renderer.domElement)
-  // 设置阻尼
   controls.enableDamping = true
   controls.target.set(0, 0, 0)
   controls.update()

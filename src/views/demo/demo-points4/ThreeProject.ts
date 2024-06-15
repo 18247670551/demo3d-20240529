@@ -81,7 +81,7 @@ export default class ThreeProject extends ThreeCore {
 
             //全在x轴上
             positions[current] = Math.cos(branchAngel + distance * params.rotateScale) * distance + randomX
-            positions[current + 1] = 0 + randomY
+            positions[current + 1] = randomY
             positions[current + 2] = Math.sin(branchAngel + distance * params.rotateScale) * distance + randomZ
             //混合颜色，形成渐变:lerp()
             const mixColor = centerColor.clone()
@@ -122,6 +122,7 @@ export default class ThreeProject extends ThreeCore {
                 }
             }
         })
+
         const points = new THREE.Points(geometry, material)
 
         this.scene.add(points)

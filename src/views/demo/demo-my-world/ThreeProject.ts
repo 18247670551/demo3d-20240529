@@ -81,7 +81,8 @@ export default class ThreeProject extends ThreeCore {
 
         const worldWidth = 256
         const worldDepth = 256
-        const grassBlockUnit = 32
+        // 单个方块单元尺寸
+        const grassBlockUnit = 100
 
         // 创建基础方格, 为了省资源, 并未使用6个面的完整立方体,
         // 标准方格实际只用了5个面, 底面未使用到, 所以只创建5个面, 合并成一个几何体
@@ -90,7 +91,7 @@ export default class ThreeProject extends ThreeCore {
         // 第6和第8,即索引5和7为0.5时, 代表使用贴图的上半部分
         // 基本方格的顶面(草地的地面)使用贴图上半部分, 其他面(草地的侧面)都使用下半部分
 
-        // 也可以使用 new THREE.InstancedMesh() 标准网格模型, 大量重复模型时用这个, threejs渲染时有优化, 这个草地基础方格就可以用 box几何体, 六个面
+        // 也可以使用 new THREE.InstancedMesh() 标准网格模型, 大量重复模型时用这个, threejs渲染时有优化
 
         //左边
         const nxGeometry = new THREE.PlaneGeometry(grassBlockUnit, grassBlockUnit)
@@ -161,10 +162,14 @@ export default class ThreeProject extends ThreeCore {
         const geometry = mergeGeometries(geometries)
         geometry.computeBoundingSphere()
         //const texture = new THREE.TextureLoader().load('/demo/my-world/textures/blocks/grass.png')
+        // 图片等资源是可以import引入的, 当项目大时, 可以做专门的资源加载模块, import方式引入资源更方便管理
         const texture = new THREE.TextureLoader().load(grass_png)
         texture.magFilter = THREE.NearestFilter
 
-        const mat = new THREE.MeshStandardMaterial({map: texture, side: THREE.DoubleSide})
+        const mat = new THREE.MeshStandardMaterial({
+            map: texture, 
+            //side: THREE.DoubleSide
+        })
         const mesh = new THREE.Mesh(geometry, mat)
         mesh.castShadow = true
         mesh.receiveShadow = true

@@ -74,7 +74,6 @@ export default class ThreeProject extends ThreeCore {
         const curvePath = new THREE.CurvePath()
         curvePath.curves.push(line1, curve1, line2)
 
-
         const pipe = new DemoPipe("管道1", {
             radius: 60,
             color: 0x777777,
@@ -82,8 +81,6 @@ export default class ThreeProject extends ThreeCore {
             radiusSegments: 16,
             curve: curvePath as Curve<Vector3>,
         })
-
-        console.log("pipe.getBox() = ", pipe.getBox())
 
         this.scene.add(pipe)
         return pipe

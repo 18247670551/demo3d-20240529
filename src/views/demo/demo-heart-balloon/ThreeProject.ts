@@ -69,7 +69,7 @@ export default class ThreeProject extends ThreeCore{
     createAndGetBalloonCountLabel(){
         const label = new CSS2DObject(document.createElement('div'))
 
-        //设层级
+        // 设层级
         label.layers.set(0)
         label.center.set(0, 0)
         // class需要是全局的

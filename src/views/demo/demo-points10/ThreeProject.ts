@@ -2,7 +2,7 @@ import * as THREE from "three"
 import ThreeCore from "@/three-widget/ThreeCore"
 import vertexShader from "./shader/vertexShader.glsl"
 import fragmentShader from "./shader/fragmentShader.glsl"
-import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 
 export default class ThreeProject extends ThreeCore {
 
@@ -53,9 +53,10 @@ export default class ThreeProject extends ThreeCore {
     }
 
     protected onRenderer() {
+        this.orbit.update()
+
         this.material.uniforms.time.value = this.clock.getElapsedTime()
 
-        this.orbit.update()
     }
 
 }

@@ -46,7 +46,7 @@ export default class ThreeProject extends ThreeCore{
     private addSkyBox(){
         // 创建一个半径为1，经纬度分段数位20的球
         const boxBufferGeometry = new THREE.SphereGeometry(500, 50, 50)
-        //纹理加载器
+        // 纹理加载器
         const regbeLoader = new RGBELoader()
         regbeLoader.loadAsync('/demo/island2/050.hdr').then(loader => {
             loader.mapping = THREE.EquirectangularReflectionMapping
@@ -60,7 +60,7 @@ export default class ThreeProject extends ThreeCore{
         })
         const mesh = new THREE.Mesh(boxBufferGeometry, cloudMaterial)
         mesh.geometry.scale(1, -1, 1)
-        //将物体加入到场景
+        // 将物体加入到场景
         this.scene.add(mesh)
 
         const videoELem = document.createElement("video")

@@ -23,7 +23,7 @@ export function createWallByPath(height: number, path: number[][], material: Mat
         }
         return arr.concat([[item, verticesByTwo[i + 1]]])
     }, [])
-    // 3.将四边形面转换为需要渲染的三顶点面
+    // 3.将四边形面转换为需要渲染的三角形面
     const verticesByThree = verticesByFour.reduce((arr, item) => {
         const [[point1, point2], [point3, point4]] = item;
         return arr.concat(

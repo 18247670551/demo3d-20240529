@@ -12,7 +12,7 @@ export default class ThreeProject extends ThreeCore {
     private sound: THREE.Audio | null = null
     private curvePath: THREE.CatmullRomCurve3 | null = null
     private missile: THREE.Mesh | null = null
-    private sprite: THREE.Sprite | null = null
+    private readonly bombFire: THREE.Sprite
 
     private readonly params = {
         iTime: {
@@ -146,7 +146,7 @@ export default class ThreeProject extends ThreeCore {
 
         const sprite = new THREE.Sprite(spriteMaterial)
         sprite.position.set(-5.5, 0.8, 0)
-        this.sprite = sprite
+        this.bombFire = sprite
 
 
         const listener = new THREE.AudioListener()
@@ -188,7 +188,7 @@ export default class ThreeProject extends ThreeCore {
             }
 
             if (t > 0.95) {
-                this.scene.add(this.sprite!)
+                this.scene.add(this.bombFire!)
                 // 判断声音是否播放，如果没有播放则播放
                 if (!this.sound!.isPlaying) {
                     this.sound!.play()

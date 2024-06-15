@@ -1,10 +1,7 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
-import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 import ThreeCore from "@/three-widget/ThreeCore"
 import MyLoader from "@/three-widget/loader/MyLoader"
-import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader";
-import {RGBELoader} from "three/examples/jsm/loaders/RGBELoader";
 
 
 export default class ThreeProject extends ThreeCore{
@@ -41,12 +38,7 @@ export default class ThreeProject extends ThreeCore{
         const loader = new MyLoader()
         const { scene } = await loader.loadGLTF("/demo/shanghai2/shanghai2.glb")
         if(scene){
-            console.log("scene = ", scene)
             scene.scale.set(1000, 1000, 1000)
-
-            scene.children.reverse().forEach(obj => {
-                console.log("obj.name = ", obj.name)
-            })
 
             this.scene.add(scene)
         }else{

@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import {Font, FontLoader} from "three/examples/jsm/loaders/FontLoader"
+import {FontLoader} from "three/examples/jsm/loaders/FontLoader"
 import {TextGeometry} from "three/examples/jsm/geometries/TextGeometry"
 
 
@@ -80,7 +80,6 @@ export default class ThreeProject extends ThreeCore {
                 opacity: 0.9
             })
             const txtMesh = new THREE.Mesh(geometry, txtMater)
-            //txtMesh.position.set(-2, 2.3, -0.4);
             this.scene.add(txtMesh)
         })
     }

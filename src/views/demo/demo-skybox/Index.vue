@@ -19,6 +19,11 @@ function init() {
   const scene = new THREE.Scene()
 
   const camera = new THREE.PerspectiveCamera(45, dom.clientWidth / dom.clientHeight, 0.1, 1000)
+  camera.position.z = 5
+
+  const light = new THREE.DirectionalLight(0xFFFFFF, 2)
+  light.position.set(-1, 2, 4)
+  scene.add(light)
 
   const renderer = new THREE.WebGLRenderer({
     antialias: true, // 反锯齿
@@ -29,27 +34,19 @@ function init() {
 
   dom.appendChild(renderer.domElement)
 
-  // 鼠标控制
   const controls = new OrbitControls(camera, renderer.domElement)
-  // 设置阻尼
   controls.enableDamping = true
   controls.target.set(0, 0, 0)
   controls.update()
 
-  // 光线
-  const light = new THREE.DirectionalLight(0xFFFFFF, 2)
-  light.position.set(-1, 2, 4)
-  scene.add(light)
+
 
   const geometry = new THREE.BoxGeometry(1, 1, 1)
-  const material = new THREE.MeshPhongMaterial({
-    color: "9f9",
-  })
+  const material = new THREE.MeshPhongMaterial({color: "9f9",})
   const cube = new THREE.Mesh(geometry, material)
   scene.add(cube)
-  camera.position.z = 5
 
-  // 天空盒材质
+
   const loader = new THREE.TextureLoader()
   loader.load("/demo/skybox/panorama.jpg", texture => {
     const rt = new THREE.WebGLCubeRenderTarget(texture.image.height)
@@ -59,11 +56,14 @@ function init() {
 
 
   const animate = () => {
-    requestAnimationFrame(animate)
-    cube.rotation.x += 0.01
-    cube.rotation.y += 0.01
+
     controls.update()
     renderer.render(scene, camera)
+
+    cube.rotation.x += 0.01
+    cube.rotation.y += 0.01
+
+    requestAnimationFrame(animate)
   }
 
   animate()

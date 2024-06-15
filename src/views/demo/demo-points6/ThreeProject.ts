@@ -23,7 +23,7 @@ export default class ThreeProject extends ThreeCore {
 
         this.scene.background = new THREE.Color(0x000000)
 
-        this.camera.position.set(0, 1, 3)
+        this.camera.position.set(0, 2, 6)
 
         const ambientLight = new THREE.AmbientLight(0xffffff, 4)
         this.scene.add(ambientLight)
@@ -31,8 +31,8 @@ export default class ThreeProject extends ThreeCore {
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
         this.orbit.target.y = 2
 
-        const axes = new THREE.AxesHelper(2)
-        this.scene.add(axes)
+        // const axes = new THREE.AxesHelper(2)
+        // this.scene.add(axes)
 
         this.particleCount = 2000
 
@@ -54,7 +54,7 @@ export default class ThreeProject extends ThreeCore {
         for (let i = 0; i < this.particleCount; i++) {
             const positions = this.particles.geometry.attributes.position.array
             if (positions[i * 3 + 1] < -5) {
-                positions[i * 3 + 1] = Math.random() * 10 + 4.5
+                positions[i * 3 + 1] = Math.random() * 10 + 5
             } else {
                 positions[i * 3 + 1] -= 0.02
             }
@@ -92,7 +92,7 @@ export default class ThreeProject extends ThreeCore {
         particles.setAttribute('color', new THREE.BufferAttribute(colors, 3))
 
         const particleMaterial = new THREE.PointsMaterial({
-            size: 0.2,
+            size: 0.3,
             map: texture,
             blending: THREE.AdditiveBlending,
             depthTest: false,

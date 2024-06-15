@@ -8,10 +8,8 @@ export default class ThreeProject extends ThreeCore{
 
     private readonly orbit: OrbitControls
 
-
     private readonly fireFlyLight: THREE.PointLight
     private readonly fireFly: THREE.Mesh
-
 
     constructor(dom: HTMLElement) {
 

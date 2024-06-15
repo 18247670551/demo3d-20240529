@@ -2,7 +2,6 @@ import * as THREE from "three"
 import ThreeCore from "@/three-widget/ThreeCore"
 import {Octree} from "three/examples/jsm/math/Octree"
 import {Capsule} from "three/examples/jsm/math/Capsule"
-import {OctreeHelper} from "three/examples/jsm/helpers/OctreeHelper.js";
 
 export default class ThreeProject extends ThreeCore {
 
@@ -111,11 +110,6 @@ export default class ThreeProject extends ThreeCore {
         const worldOctree = new Octree()
         worldOctree.fromGraphNode(group)
         this.worldOctree = worldOctree
-
-
-        // 创建一个octreeHelper
-        //const octreeHelper = new OctreeHelper(worldOctree)
-        //this.scene.add(octreeHelper)
 
 
         // 创建一个平面

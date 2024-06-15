@@ -6,7 +6,6 @@ import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
-    private f18: THREE.Group | null = null
 
     constructor(dom: HTMLElement) {
 
@@ -55,14 +54,17 @@ export default class ThreeProject extends ThreeCore {
 
         Promise.all([f18_explodeTask, f18_v13Task])
             .then(([f18_explode_gltf, f18_v13_gltf]) => {
+
                 const group = new THREE.Group()
                 const f18_v13 = f18_v13_gltf.scene
                 const f18_explode = f18_explode_gltf.scene
+
                 group.add(f18_v13, f18_explode)
+
                 group.scale.set(1000, 1000, 1000)
                 group.rotation.y = Math.PI / 2
+
                 this.scene.add(group)
-                this.f18 = group
             })
     }
 

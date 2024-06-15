@@ -35,7 +35,4 @@ export default class Sun extends THREE.Mesh {
         this.position.set(0,-30,-850)
     }
 
-
-
-
 }
