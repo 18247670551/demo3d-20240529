@@ -48,6 +48,7 @@ npm run dev
 ![preview](public/demo/__case-cover/royal_esplanade.png)
 
 
+#
 #### 示例: vr看房
 ##### 来源网络
 ![preview](public/demo/__case-cover/vr-room.png)
@@ -72,14 +73,17 @@ npm run dev
 ![preview](public/demo/__case-cover/fighter-f18.png)
 
 
+#
 #### 示例: 小岛
 ##### 来源网络, glb文件
 ![preview](public/demo/__case-cover/island.png)
 
+#
 #### 示例: 小岛2
 ##### 来源网络, glb文件
 ![preview](public/demo/__case-cover/island2.png)
 
+#
 #### 示例: 小岛3
 ##### 来源网络, glb文件
 ![preview](public/demo/__case-cover/island3.png)
@@ -88,22 +92,27 @@ npm run dev
 
 
 
+#
 #### 示例: 曲线动画
 ##### 来源网络, 重构
 ![preview](public/demo/__case-cover/curve.png)
 
+#
 #### 示例: 萤火虫动画
 ##### 来源网络, 重构
 ![preview](public/demo/__case-cover/firefly.png)
 
+#
 #### 示例: 水面简例
 ##### 本人编写
 ![preview](public/demo/__case-cover/water0.png)
 
+#
 #### 示例: 管道简例
 ##### 本人编写
 ![preview](public/demo/__case-cover/pipe0.png)
 
+#
 #### 示例: 树林
 ##### 本人编写
 ![preview](public/demo/__case-cover/forest.png)
@@ -137,20 +146,24 @@ npm run dev
 ![preview](public/demo/__case-cover/plane2.png)
 
 
+#
 #### 示例: 瀑布
 ##### 本人编写, 参照网络案例原模型, 以对象方式重写, 纯代码
-
 ![preview](public/demo/__case-cover/waterfall.png)
 
+#
 #### 示例: 爱心气球
 ##### 来源网络, 纯代码
 ![preview](public/demo/__case-cover/heart-balloon.png)
 
 
+#
 #### 示例: 上海--模型文件
 ##### 来源网络
 ![preview](public/demo/__case-cover/shanghai2.png)
 
+
+#
 #### 示例: 上海
 ##### 来源网络, 出自稀土掘金 作者 Funky_Tiger
 ##### 本人重构, 原代码threejs版本较低, 改为最新版本164, 弯曲的楼贴图有bug, 代码中有标出
@@ -161,47 +174,58 @@ npm run dev
 
 
 
+#
 #### 示例: 粒子简例0
 ##### 本人编写
 ![preview](public/demo/__case-cover/points0.png)
 
+#
 #### 示例: 粒子简例1--粒子动画--下雨
 ##### 来源网络, 重构
 ![preview](public/demo/__case-cover/points1.png)
 
+#
 #### 示例: 粒子简例2--粒子动画--漫天雪花
 ##### 来源网络, 重构
 ![preview](public/demo/__case-cover/points2.png)
 
+#
 #### 示例: 粒子简例3--银河系
 ##### 来源网络, 重构
 ![preview](public/demo/__case-cover/points3.png)
 
+#
 #### 示例: 粒子简例4--shader
 ##### 来源网络, 重构
 ![preview](public/demo/__case-cover/points4.png)
 
+#
 #### 示例: 粒子简例5--粒子动画-烟花-shader
 ##### 来源网络, 重构
 ![preview](public/demo/__case-cover/points5.png)
 
+#
 #### 示例: 粒子简例6--粒子动画-彩虹雨
 ##### 来源网络, 重构
 ![preview](public/demo/__case-cover/points6.png)
 
+#
 #### 示例: 粒子简例7--粒子动画-shader
 ##### 本人编写
 ![preview](public/demo/__case-cover/points7.png)
 
+#
 #### 示例: 粒子简例8--粒子动画-倒计时-shader
 ##### 本人编写
 ![preview](public/demo/__case-cover/points8.png)
 
+#
 #### 示例: 粒子简例9--波形动画-shader
 ##### 来源网络, 博客园 作者 郭先生的博客
 ##### https://www.cnblogs.com/vadim-web/p/13444198.html
 ![preview](public/demo/__case-cover/points9.png)
 
+#
 #### 示例: 粒子简例10--太阳动画-shader
 ##### 来源网络, csdn 作者 Jedi Hongbin
 ##### https://blog.csdn.net/printf_hello/article/details/127901103
@@ -212,32 +236,39 @@ npm run dev
 
 
 
+#
 #### 示例: 车辆消杀-清消车间
 ##### 本人编写, 纯代码, 以对象方式调用动画
 ![preview](public/demo/__case-cover/truck-wash-room.png)
 
+#
 #### 示例: 车辆消杀-烘干车间
 ##### 本人编写, 纯代码, 以对象方式调用动画
 ![preview](public/demo/__case-cover/truck-dry-room.png)
 
+#
 #### 示例: 净水车间
 ##### 本人编写, 纯代码, 以对象方式调用动画
 ![preview](public/demo/__case-cover/purity.png)
 
+#
 #### 示例: 除臭车间简例
 ##### 本人编写, 纯代码, 以对象方式调用动画
 ![preview](public/demo/__case-cover/deodorize0.png)
 
+#
 #### 示例: 除臭车间
 ##### 本人编写, 纯代码, 以对象方式调用动画
 ![preview](public/demo/__case-cover/deodorize.png)
 
+#
 #### 示例: 除臭车间2
 ##### 本人编写, 纯代码, 以对象方式调用动画
 ![preview](public/demo/__case-cover/deodorize2.png)
 
 
 
+#
 #### 示例: 我的世界随机地图
 ##### 来源网络, csdn 作者 X01动力装甲
 ##### https://webgl.blog.csdn.net/article/details/83965754
@@ -245,11 +276,13 @@ npm run dev
 
 
 
+#
 #### 示例: 物理引擎
 ##### 来源网络
 ![preview](public/demo/__case-cover/physics.png)
 
 
+#
 #### 示例: 人物控制
 ##### 来源网络
 ![preview](public/demo/__case-cover/player.png)
@@ -257,6 +290,7 @@ npm run dev
 
 
 
+#
 #### 示例: 除臭车间2
 ##### 本人编写, 纯代码, 以对象方式调用动画
 ![preview](public/demo/__case-cover/deodorize2.png)
@@ -264,22 +298,27 @@ npm run dev
 
 
 
+#
 #### 示例: 狼兔项目--狼--纯代码
 ##### 网络收集, 本人重构失败, 拆出模型
 ![preview](public/demo/__case-cover/wr-wolf.png)
 
+#
 #### 示例: 狼兔项目--兔--纯代码
 ##### 网络收集, 本人重构失败, 拆出模型
 ![preview](public/demo/__case-cover/wr-rabbit.png)
 
+#
 #### 示例: 狼兔项目--刺猬--纯代码
 ##### 网络收集, 本人重构失败, 拆出模型
 ![preview](public/demo/__case-cover/wr-hedgehog.png)
 
+#
 #### 示例: 狼兔项目--地球--纯代码
 ##### 网络收集, 本人重构失败, 拆出模型
 ![preview](public/demo/__case-cover/wr-earth.png)
 
+#
 #### 示例: 狼兔项目
 ##### 网络收集, 最新版three加ts对象像封装失败, 原版代码在路径中
 ![preview](public/demo/__case-cover/wolf-rabbit.png)
@@ -287,41 +326,56 @@ npm run dev
 
 
 
+#
 #### 示例: 图片加3D效果, shader, 随便生成的景深图, 效果不好
 ##### 本人编写
 ![preview](public/demo/__case-cover/photo3d.png)
 
+#
 #### 示例: 3d文字
 ##### 本人编写
 ![preview](public/demo/__case-cover/text3d.png)
 
+#
 #### 示例: 缓冲几何体
 ##### 本人编写
 ![preview](public/demo/__case-cover/buffer-geometry.png)
 
+#
 #### 示例: 合并几何体
 ##### 本人编写
 ![preview](public/demo/__case-cover/merged-geometry.png)
 
+#
 #### 示例: 流光墙
 ##### 网络收集
 ![preview](public/demo/__case-cover/wall.png)
 
+#
 #### 示例: 火焰
 ![preview](public/demo/__case-cover/fire.png)
 
+#
 #### 示例: 火焰2
 ![preview](public/demo/__case-cover/fire2.png)
 
+#
 #### 示例: 原始着色器--波动
 ![preview](public/demo/__case-cover/shader-wave.png)
 
+#
 #### 示例: 简单场景1--草地 公路
 ![preview](public/demo/__case-cover/scene1.png)
 
+#
+#### 示例: 圆椎圆柱做简单的logo
+![preview](public/demo/__case-cover/logo.png)
+
+#
 #### 示例: 射线选中物体
 ![preview](public/demo/__case-cover/raycaster.png)
 
+#
 #### 示例: 俄乌战争
 ##### 网络收集
 ![preview](public/demo/__case-cover/war.png)
@@ -330,10 +384,12 @@ npm run dev
 
 
 
+#
 #### 示例: canvas1--绚丽粒子炸裂效果
 ##### 来源网络
 ![preview](public/demo/__case-cover/canvas1.png)
 
+#
 #### 示例: canvas2--字母喷泉
 ##### 来源网络
 ![preview](public/demo/__case-cover/canvas2.png)

@@ -36,15 +36,13 @@ export default class ThreeProject extends ThreeCore{
 
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
         this.orbit.autoRotate = true
-        this.orbit.autoRotateSpeed = 0.5
+        //this.orbit.autoRotateSpeed = 0.5
 
 
         this.addStars()
         this.addEarth()
         this.addMoonRing()
         this.moon = this.addAndGetMoon()
-
-
     }
 
     init(){}

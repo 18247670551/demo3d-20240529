@@ -50,10 +50,9 @@ export default class ThreeProject extends ThreeCore {
         this.orbit.update()
     }
 
-
     private addSkyBox() {
-        const rgbeLoader = new RGBELoader().setPath("/demo/island3/")
-        rgbeLoader.load("animestyled_hdr.hdr", texture => {
+        const rgbeLoader = new RGBELoader()
+        rgbeLoader.load("/demo/island3/animestyled_hdr.hdr", texture => {
             texture.mapping = THREE.EquirectangularReflectionMapping
             this.scene.background = texture
         })
@@ -78,9 +77,9 @@ export default class ThreeProject extends ThreeCore {
             color: 0x00719e,
             flowDirection: new THREE.Vector2(1, 1),
             scale: 1,
-            flowMap: textureLoader.load("/demo/island2/Water_1_M_Flow.jpg"),
-            normalMap0: textureLoader.load("/demo/island2/Water_1_M_Normal.jpg"),
-            normalMap1: textureLoader.load("/demo/island2/Water_2_M_Normal.jpg"),
+            flowMap: textureLoader.load("/demo/island3/Water_1_M_Flow.jpg"),
+            normalMap0: textureLoader.load("/demo/island3/Water_1_M_Normal.jpg"),
+            normalMap1: textureLoader.load("/demo/island3/Water_2_M_Normal.jpg"),
         })
         waterMesh.rotation.x = -Math.PI / 2
         this.scene.add(waterMesh)
