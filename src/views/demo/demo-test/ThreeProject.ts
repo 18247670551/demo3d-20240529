@@ -3,12 +3,12 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import vertexShader from "./shader/vertexShader.glsl"
 import fragmentShader from "./shader/fragmentShader.glsl"
+import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
+
 
 export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
-
-    private readonly watersMaterial: THREE.ShaderMaterial
 
     constructor(dom: HTMLElement) {
 
@@ -20,21 +20,22 @@ export default class ThreeProject extends ThreeCore {
             }
         })
 
-        this.scene.background = new THREE.Color(0x000000)
-
+        this.scene.background = new THREE.Color(0x00ff00)
 
         this.camera.position.set(0, 5, 15)
 
-        const ambientLight = new THREE.AmbientLight(0xffffff, 2)
+        const ambientLight = new THREE.AmbientLight(0xffffff, 6)
         this.scene.add(ambientLight)
 
-        const light = new THREE.DirectionalLight(0xffffff, 2)
+        const light = new THREE.DirectionalLight(0xffffff, 12)
         light.position.set(0, 60, -60)
         light.castShadow = true
+        this.scene.add(light)
 
-        const shadowLight = new THREE.DirectionalLight(0xffffff, 4)
+        const shadowLight = new THREE.DirectionalLight(0xffffff, 14)
         shadowLight.position.set(600, 60, 60)
         shadowLight.castShadow = true
+        this.scene.add(shadowLight)
 
         this.renderer.shadowMap.enabled = true
 
@@ -46,59 +47,54 @@ export default class ThreeProject extends ThreeCore {
 
 
 
+        // 模型加载进度管理
+        const manager = new THREE.LoadingManager()
+        manager.onStart = (url, loaded, total) => {}
+        manager.onLoad = () => {}
+        manager.onProgress = async(url, loaded, total) => {
 
-        // 水雾数量 2000
-        const watersCount = 2000
+            const progress = Math.floor(loaded / total * 100)
 
-        const watersGeometry = new THREE.BufferGeometry()
-
-        const positions = new Float32Array(watersCount * 3)
-        //const toPositions = new Float32Array(watersCount * 3)
-        const toPositions = new Float32Array(watersCount * 3)
-
-        // const to = {
-        //     x: Math.random() - 0.5,
-        //     y: Math.abs(Math.random() + 1.2),
-        //     z: Math.random() - 0.5
-        // }
-
-        for (let i = 0; i < watersCount; i++) {
-
-            positions[i * 3] = 0
-            positions[i * 3 + 1] = 0
-            positions[i * 3 + 2] = 0
-
-            // 每个水点发射角度
-            const theta = Math.random() * 30 //θ
-            const phi = Math.random() * 30 //φ
-            const r = 5
-            // toPositions[i * 3] = r * Math.sin(theta) + r * Math.sin(phi)
-            // toPositions[i * 3 + 1] = r * Math.cos(theta) + r * Math.cos(phi)
-            // toPositions[i * 3 + 2] = r * Math.sin(theta) + r * Math.cos(phi)
-            toPositions[i * 3] = r * Math.sin(theta) + r * Math.sin(phi)
-            toPositions[i * 3 + 1] = r * Math.cos(theta) + r * Math.cos(phi)
-            toPositions[i * 3 + 2] = r * Math.sin(theta) + r * Math.cos(phi)
+            if (progress === 100) {
+               console.log("加载完成")
+            } else {
+                console.log("progress = ", progress)
+            }
         }
 
-        watersGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
-        watersGeometry.setAttribute('aToPosition', new THREE.BufferAttribute(toPositions, 3))
+        const loader = new GLTFLoader(manager)
 
-        const watersMaterial = new THREE.ShaderMaterial({
-            vertexShader,
-            fragmentShader,
-            transparent: true,
-            blending: THREE.AdditiveBlending,
-            depthWrite: false,
-            uniforms: {
-                uTime: {
-                    value: 0
-                },
-            }
+        // 植物细胞
+        loader.load("/demo/cell/plant_cell.glb", ({scene: obj}) => {
+
+            console.log("obj = ", obj)
+
+            obj.traverse((child) => {
+                if (child.isMesh) {
+                    child.material.metalness = 1
+                    child.material.roughness = 0
+                }
+            })
+
+            obj.scale.set(10, 10, 10)
+
+            this.scene.add(obj)
         })
-        this.watersMaterial = watersMaterial
+        // // 动物细胞
+        // loader.load(AnimalCellModel, function (mesh) {
+        //     mesh.scene.traverse(function (child) {
+        //         if (child.isMesh) {
+        //             child.material.metalness = 1;
+        //             child.material.roughness = 0;
+        //         }
+        //     });
+        //     mesh.scene.position.set(0, -8, 0);
+        //     mesh.scene.scale.set(120, 120, 120);
+        //     _this.animalCell = mesh.scene;
+        //     _this.animalGroup.add(mesh.scene);
+        // });
 
-        const waters = new THREE.Points(watersGeometry, watersMaterial)
-        this.scene.add(waters)
+
     }
 
     protected init() {
@@ -109,7 +105,7 @@ export default class ThreeProject extends ThreeCore {
         const elapsed = this.clock.getElapsedTime()
         this.orbit.update()
 
-        this.watersMaterial.uniforms.uTime.value = elapsed
+        //this.watersMaterial.uniforms.uTime.value = elapsed
     }
 
 }

@@ -33,10 +33,12 @@ export default class ThreeProject extends ThreeCore {
         const light = new THREE.DirectionalLight(0xffffff, 2)
         light.position.set(0, 60, -60)
         light.castShadow = true
+        this.scene.add(light)
 
         const shadowLight = new THREE.DirectionalLight(0xffffff, 4)
         shadowLight.position.set(600, 60, 60)
         shadowLight.castShadow = true
+        this.scene.add(shadowLight)
 
         this.renderer.shadowMap.enabled = true
 

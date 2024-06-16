@@ -24,8 +24,6 @@ export default class ThreeProject extends ThreeCore {
             }
         })
 
-        //this.scene.background = new THREE.Color(0x99cccc)
-
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
         this.scene.add(ambientLight)
 
@@ -47,12 +45,14 @@ export default class ThreeProject extends ThreeCore {
         this.pointLight1.decay = 0.1
         this.scene.add(this.pointLight1)
 
-        this.camera.position.set(4000, 1000, 2000)
+        this.camera.position.set(4000, 1500, 2000)
 
 
         this.renderer.shadowMap.enabled = true
 
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
+        this.orbit.maxPolarAngle = Math.PI / 2 //垂直旋转的角度的上限，范围是0到Math.PI
+        this.orbit.target.y = 1000
 
         const axes = new THREE.AxesHelper(20)
         this.scene.add(axes)
@@ -168,7 +168,7 @@ export default class ThreeProject extends ThreeCore {
 
         const mat = new THREE.MeshStandardMaterial({
             map: texture, 
-            //side: THREE.DoubleSide
+            side: THREE.DoubleSide
         })
         const mesh = new THREE.Mesh(geometry, mat)
         mesh.castShadow = true

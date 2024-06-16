@@ -4,7 +4,7 @@ import {LensflareElement, Lensflare} from 'three/examples/jsm/objects/Lensflare'
 import {TextureLoader} from "three"
 import {Water} from "three/examples/jsm/objects/Water"
 import ThreeCore from "@/three-widget/ThreeCore"
-import {resetUV} from "@/utils/TreeUtils";
+import {resetUV} from "@/three-widget/ThreeUtils";
 
 
 export default class ThreeProject extends ThreeCore {

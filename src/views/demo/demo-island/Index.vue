@@ -10,6 +10,8 @@ import {RGBELoader} from "three/examples/jsm/loaders/RGBELoader"
 import {Water} from "three/examples/jsm/objects/Water2"
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader"
+import Stats from "three/examples/jsm/libs/stats.module"
+
 
 const threeDomRef = ref<HTMLDivElement | null>(null)
 
@@ -27,6 +29,10 @@ function init() {
   camera.aspect = dom.clientWidth / dom.clientHeight
   camera.updateProjectionMatrix()
   scene.add(camera)
+
+  const stats = new Stats()
+  dom.appendChild(stats.dom)
+
 
   const light = new THREE.DirectionalLight(0xffffff, 1)
   light.position.set(-100, 100, 10)
@@ -109,6 +115,7 @@ function init() {
   controls.update()
 
   const animate = () => {
+    stats.update()
     renderer.render(scene, camera)
     requestAnimationFrame(animate)
   }

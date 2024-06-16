@@ -36,9 +36,6 @@ export default class ThreeProject extends ThreeCore {
         this.orbit.target.y = 100
         this.orbit.update()
 
-        const axes = new THREE.AxesHelper(200)
-        this.scene.add(axes)
-
     }
 
 

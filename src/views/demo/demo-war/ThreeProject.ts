@@ -1,6 +1,7 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
+import vertexShader from './shader/vertexShader.glsl'
 import fragmentShader from './shader/fragmentShader.glsl'
 import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader"
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
@@ -141,6 +142,8 @@ export default class ThreeProject extends ThreeCore {
                 vUv = uv;
                 `
             )
+            // 不要使用这个顶点着色器, 普通顶点着色器使精灵材质失去永远面向你的特性, 要使用上面替换原着色器部分内容的方式
+            //shader.vertexShader = vertexShader
             shader.fragmentShader = fragmentShader
         }
 

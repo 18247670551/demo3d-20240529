@@ -46,7 +46,7 @@ export default class Earth extends THREE.Group {
     private addEarth(){
         const geom = new THREE.CylinderGeometry(600, 600, 1700, 40, 10)
         geom.applyMatrix4(new THREE.Matrix4().makeRotationX(-Math.PI / 2))
-        const mat = new THREE.MeshPhongMaterial({
+        const mat = new THREE.MeshLambertMaterial({
             color: 0x629265,
             flatShading: true
         })
@@ -105,13 +105,13 @@ export default class Earth extends THREE.Group {
 
         const group = new THREE.Group
 
-        const leavesMat = new THREE.MeshStandardMaterial({
+        const leavesMat = new THREE.MeshLambertMaterial({
             color: this.options.colors.green,
             flatShading: true
         })
 
         const truckGeo = new THREE.BoxGeometry(10, 20, 10)
-        const truckMat = new THREE.MeshBasicMaterial({color: this.options.colors.brown})
+        const truckMat = new THREE.MeshLambertMaterial({color: this.options.colors.brown})
         const truck = new THREE.Mesh(truckGeo, truckMat)
         truck.castShadow = true
         truck.receiveShadow = true
@@ -119,24 +119,27 @@ export default class Earth extends THREE.Group {
 
         const leaves1Geo = new THREE.CylinderGeometry(1, 12 * 3, 12 * 3, 4)
         const leaves1 = new THREE.Mesh(leaves1Geo, leavesMat)
+        leaves1.position.y = 20
         leaves1.castShadow = true
         leaves1.receiveShadow = true
-        leaves1.position.y = 20
         group.add(leaves1)
 
         const leaves2Geo = new THREE.CylinderGeometry(1, 9 * 3, 9 * 3, 4)
         const leaves2 = new THREE.Mesh(leaves2Geo, leavesMat)
-        leaves2.castShadow = true
         leaves2.position.y = 40
+        leaves2.castShadow = true
         leaves2.receiveShadow = true
         group.add(leaves2)
 
         const leaves3Geo = new THREE.CylinderGeometry(1, 6 * 3, 6 * 3, 4)
         const leaves3 = new THREE.Mesh(leaves3Geo, leavesMat)
-        leaves3.castShadow = true
         leaves3.position.y = 55
+        leaves3.castShadow = true
         leaves3.receiveShadow = true
         group.add(leaves3)
+
+        group.castShadow = true
+        group.receiveShadow = true
 
         return group
     }

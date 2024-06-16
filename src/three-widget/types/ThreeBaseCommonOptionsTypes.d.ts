@@ -28,6 +28,7 @@ declare global {
         dampingFactor?: number //动态阻尼系数(鼠标拖拽旋转灵敏度)
         enableZoom?: boolean //缩放
         autoRotate?: boolean //自动旋转
+        autoRotateSpeed?: number //自动旋转速度, 默认值2.0, 相当于60fps时每转一周需要30秒
         minDistance?: number //设置相机距离原点的最近距离
         maxDistance?: number //设置相机距离原点的最远距离
         enablePan?: boolean //开启右键拖拽

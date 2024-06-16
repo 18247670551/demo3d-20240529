@@ -51,33 +51,28 @@ export default class ThreeProject extends ThreeCore {
             }
         })
 
-        this.scene.fog = new THREE.Fog(0xf7d9aa, 100, 950)
+        this.scene.fog = new THREE.Fog(0xf7d9aa, 100, 1000)
 
         this.camera.position.set(0, 150, 100)
 
-        const hemisphereLight = new THREE.HemisphereLight(0xaaaaaa, 0x000000, 9)
+        const hemisphereLight = new THREE.HemisphereLight(0xaaaaaa, 0x000000, 3)
         this.scene.add(hemisphereLight)
 
-        const light = new THREE.DirectionalLight(0xffffff, 6)
+        const light = new THREE.DirectionalLight(0xffffff, 2)
         light.position.set(0, 600, -600)
+
         light.castShadow = true
+        this.scene.add(light)
 
-        const shadowLight = new THREE.DirectionalLight(0xffffff, 9)
+        const shadowLight = new THREE.DirectionalLight(0xffffff, 4)
         shadowLight.position.set(600, 600, 600)
+
         shadowLight.castShadow = true
+        this.scene.add(shadowLight)
 
-        shadowLight.shadow.camera.left = -650
-        shadowLight.shadow.camera.right = 650
-        shadowLight.shadow.camera.top = 650
-        shadowLight.shadow.camera.bottom = -650
-        shadowLight.shadow.camera.near = 1
-        shadowLight.shadow.camera.far = 1000
-        shadowLight.shadow.mapSize.width = 2048
-        shadowLight.shadow.mapSize.height = 2048
-
-        this.scene.add(hemisphereLight)
 
         this.renderer.shadowMap.enabled = true
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap
 
 
         const earth = new Earth()
@@ -122,7 +117,6 @@ export default class ThreeProject extends ThreeCore {
     }
 
     private normalize(v: number, vMin: number, vMax: number, tMin: number, tMax: number) {
-
         const nv = Math.max(Math.min(v, vMax), vMin)
         const dv = vMax - vMin
         const pc = (nv - vMin) / dv
@@ -137,8 +131,8 @@ export default class ThreeProject extends ThreeCore {
         const targetX = this.normalize(this.mousePos.x, -.75, .75, -100, -20)
 
 
-        this.airplane.position.x += (targetX - this.airplane.position.x) * 0.1
-        this.airplane.position.y += (targetY - this.airplane.position.y) * 0.1
+        this.airplane.position.x += (targetX - this.airplane.position.x) * 0.05
+        this.airplane.position.y += (targetY - this.airplane.position.y) * 0.05
 
         this.airplane.rotation.x = (this.airplane.position.y - targetY) * 0.0064
         this.airplane.rotation.y = (this.airplane.position.x - targetX) * 0.0064

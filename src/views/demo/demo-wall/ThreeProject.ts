@@ -3,7 +3,7 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import vertexShader from "./shader/vertexShader.glsl"
 import fragmentShader from "./shader/fragmentShader.glsl"
-import {createWallByPath} from "@/utils/wallUtils"
+import {pathToWallGeometry} from "@/utils/wallUtils"
 
 
 export default class ThreeProject extends ThreeCore {
@@ -45,22 +45,16 @@ export default class ThreeProject extends ThreeCore {
 
         const mat = new THREE.ShaderMaterial({
             uniforms: {
-                time: {
-                    value: 0,
-                },
-                bgTexture: {
-                    value: bgTexture,
-                },
-                flowTexture: {
-                    value: flowTexture,
-                },
+                time: {value: 0,},
+                bgTexture: {value: bgTexture,},
+                flowTexture: {value: flowTexture,},
             },
             transparent: true,
             depthWrite: false,
             depthTest: false,
             side: THREE.DoubleSide,
-            vertexShader: vertexShader,
-            fragmentShader: fragmentShader,
+            vertexShader,
+            fragmentShader,
         })
 
         this.mat = mat
@@ -76,8 +70,10 @@ export default class ThreeProject extends ThreeCore {
             [-500, 0, -300],
             [800, 0, -400],
         ]
-        const wallMesh = createWallByPath(100, path, mat, true)
-        this.scene.add(wallMesh)
+        const wallGeo = pathToWallGeometry(path, 100)
+
+        const wall = new THREE.Mesh(wallGeo, mat)
+        this.scene.add(wall)
 
     }
 
@@ -88,6 +84,4 @@ export default class ThreeProject extends ThreeCore {
         this.orbit.update()
         this.mat.uniforms.time.value += 0.01
     }
-
-
 }
