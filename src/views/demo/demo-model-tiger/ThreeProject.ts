@@ -8,9 +8,10 @@ import {GUI} from "dat.gui"
 export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
-    private animations: Record<string, THREE.AnimationMixer> = {}
+    private readonly mixers: THREE.AnimationMixer[] = []
+    private readonly animations: Record<string, THREE.AnimationAction> = {}
     private guiObj = {
-        run: false,
+        "跑": false,
     }
 
     constructor(dom: HTMLElement) {
@@ -27,18 +28,18 @@ export default class ThreeProject extends ThreeCore {
 
         this.camera.position.set(20, 10, 50)
 
-        const ambientLight = new THREE.AmbientLight(0xffffff, 10)
+        const ambientLight = new THREE.AmbientLight(0xffffff, 4)
         this.scene.add(ambientLight)
 
-        const light = new THREE.DirectionalLight(0xffffff, 2)
-        light.position.set(0, 60, -600)
-        light.castShadow = true
-        this.scene.add(light)
-
-        const shadowLight = new THREE.DirectionalLight(0xffffff, 5)
-        shadowLight.position.set(10, 60, 600)
-        shadowLight.castShadow = true
-        this.scene.add(shadowLight)
+        // const light = new THREE.DirectionalLight(0xffffff, 1)
+        // light.position.set(0, 60, -600)
+        // light.castShadow = true
+        // this.scene.add(light)
+        //
+        // const shadowLight = new THREE.DirectionalLight(0xffffff, 4)
+        // shadowLight.position.set(10, 60, 600)
+        // shadowLight.castShadow = true
+        // this.scene.add(shadowLight)
 
         this.renderer.shadowMap.enabled = true
 
@@ -66,10 +67,9 @@ export default class ThreeProject extends ThreeCore {
 
         const loader = new GLTFLoader(manager)
         
-        loader.load("/demo/tiger/tiger.gltf", ({scene: obj, animations}) => {
-            
-            console.log("obj = ", obj)
-            console.log("animations = ", animations)
+        loader.load("/demo/tiger/tiger.gltf", gltf => {
+
+            const {scene: obj, animations} = gltf
 
             obj.traverse((child: any) => {
                 if (child.isMesh) {
@@ -81,16 +81,16 @@ export default class ThreeProject extends ThreeCore {
                     child.material.color = new THREE.Color(0xffffff)
                 }
             })
+            obj.scale.set(1.5, 1.5, 1.5)
             obj.rotation.y = -Math.PI/2
+            this.scene.add(obj)
+
 
             const mixer = new THREE.AnimationMixer(obj)
+            const clip1 = mixer.clipAction(animations[0])
+            this.animations["跑"] = clip1
 
-            const runAction = mixer.clipAction(animations[0])
-            runAction.play()
-            //runAction.setLoop(THREE.LoopRepeat, 100)
-            this.animations.run = mixer
-
-            this.scene.add(obj)
+            this.mixers.push(mixer)
         })
 
         this.addGUI()
@@ -104,16 +104,20 @@ export default class ThreeProject extends ThreeCore {
     protected onRenderer() {
         this.orbit.update()
 
-        if(this.guiObj.run){
-            // update 参数是动画更新速度, 默认每秒60次, 值为 1/60, 这个老虎模型跑的速度有点快, 设为 1/120
-            this.animations.run?.update(1 / 120)
-        }
+        // update 参数是动画更新速度, 默认每秒60次, 值为 1/60, 这个老虎模型跑的速度有点快, 设为 1/120
+        this.mixers.forEach(item => item.update(1/60))
     }
 
     private addGUI(){
         const gui = new GUI()
 
-        gui.add(this.guiObj, "run").name("走")
+        gui.add(this.guiObj, "跑").onChange((value: boolean) => {
+            if(value){
+                this.animations["跑"].play()
+            }else{
+                this.animations["跑"].stop()
+            }
+        })
     }
 
 }

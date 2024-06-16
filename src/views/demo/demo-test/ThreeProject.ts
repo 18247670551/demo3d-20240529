@@ -1,8 +1,6 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
-import {GUI} from "dat.gui";
 
 
 export default class ThreeProject extends ThreeCore {
@@ -48,54 +46,6 @@ export default class ThreeProject extends ThreeCore {
         // const axes = new THREE.AxesHelper(10)
         // this.scene.add(axes)
 
-
-        // 模型加载进度管理
-        const manager = new THREE.LoadingManager()
-        manager.onStart = (url, loaded, total) => {
-        }
-        manager.onLoad = () => {
-        }
-        manager.onProgress = async (url, loaded, total) => {
-
-            const progress = Math.floor(loaded / total * 100)
-
-            if (progress === 100) {
-                console.log("加载完成")
-            } else {
-                console.log("progress = ", progress)
-            }
-        }
-
-        const loader = new GLTFLoader(manager)
-        
-        loader.load("/demo/tiger/tiger.gltf", ({scene: obj, animations}) => {
-            
-            console.log("obj = ", obj)
-            console.log("animations = ", animations)
-
-            obj.traverse((child: any) => {
-                if (child.isMesh) {
-                    child.castShadow = true
-                    child.material.metalness = 0
-                    child.material.roughness = .8
-                    child.material.transparent = true
-                    child.material.side = THREE.DoubleSide
-                    child.material.color = new THREE.Color(0xffffff)
-                }
-            })
-            obj.rotation.y = -Math.PI/2
-
-            const mixer = new THREE.AnimationMixer(obj)
-
-            const runAction = mixer.clipAction(animations[0])
-            runAction.play()
-            //runAction.setLoop(THREE.LoopRepeat, 100)
-            this.animations.run = mixer
-
-            this.scene.add(obj)
-        })
-
-        this.addGUI()
     }
 
 
@@ -110,12 +60,6 @@ export default class ThreeProject extends ThreeCore {
             // update 参数是动画更新速度, 默认每秒60次, 值为 1/60, 这个老虎模型跑的速度有点快, 设为 1/120
             this.animations.run?.update(1 / 120)
         }
-    }
-
-    private addGUI(){
-        const gui = new GUI()
-
-        gui.add(this.guiObj, "run").name("走")
     }
 
 }

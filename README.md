@@ -32,7 +32,7 @@ npm run dev
 
 #
 #### 示例总览
-![preview](public/demo/__case-cover/all-demo.png)
+![preview](public/demo/__case-cover/__preview.png)
 
 
 
@@ -370,6 +370,14 @@ npm run dev
 #
 #### 示例: 圆椎圆柱做简单的logo
 ![preview](public/demo/__case-cover/logo.png)
+
+#
+#### 示例: 模型--老虎-模型动画
+![preview](public/demo/__case-cover/model-tiger.png)
+
+#
+#### 示例: 模型--狐狸-模型动画
+![preview](public/demo/__case-cover/model-fox.png)
 
 #
 #### 示例: 射线选中物体

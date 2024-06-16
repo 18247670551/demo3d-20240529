@@ -72,7 +72,8 @@ import PlaneFire from '@/views/demo/demo-fire2/Index.vue'
 import ShaderWave from '@/views/demo/demo-shader-wave/Index.vue'
 import Scene1 from '@/views/demo/demo-scene1/Index.vue'
 import Logo from '@/views/demo/demo-logo/Index.vue'
-import Tiger from '@/views/demo/demo-tiger/Index.vue'
+import ModelTiger from '@/views/demo/demo-model-tiger/Index.vue'
+import ModelFox from '@/views/demo/demo-model-fox/Index.vue'
 import Raycaster from '@/views/demo/demo-raycaster/Index.vue'
 import War from '@/views/demo/demo-war/Index.vue'
 import Test from '@/views/demo/demo-test/Index.vue'
@@ -139,7 +140,8 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-shader-wave', path: '/demo/demo-shader-wave', component: ShaderWave, meta: {title: "示例-shader-wave", isLogin: true}},
     {name: '示例-简单场景1', path: '/demo/demo-scene1', component: Scene1, meta: {title: "示例-简单场景1", isLogin: true}},
     {name: '示例-圆椎圆柱做简单的logo', path: '/demo/demo-logo', component: Logo, meta: {title: "示例-圆椎圆柱做简单的logo", isLogin: true}},
-    {name: '示例-老虎', path: '/demo/demo-tiger', component: Tiger, meta: {title: "示例-老虎", isLogin: true}},
+    {name: '示例-模型-老虎', path: '/demo/demo-model-tiger', component: ModelTiger, meta: {title: "示例-模型-老虎", isLogin: true}},
+    {name: '示例-模型-狐狸', path: '/demo/demo-model-fox', component: ModelFox, meta: {title: "示例-模型-狐狸", isLogin: true}},
     {name: '示例-射线选中物体', path: '/demo/demo-raycaster', component: Raycaster, meta: {title: "示例-射线选中物体", isLogin: true}},
     {name: '示例-俄乌战争', path: '/demo/demo-war', component: War, meta: {title: "示例-俄乌战争", isLogin: true}},
     {name: '示例-canvas1', path: '/demo/demo-canvas1', component: Canvas1, meta: {title: "示例-canvas1", isLogin: true}},

@@ -91,6 +91,16 @@ export default class ThreeProject extends ThreeCore {
             color: 0xe19363,
             map: this.textureLoader.load("/demo/forest/tree5.png")
         })
+        const tree6Mat = new THREE.SpriteMaterial({
+            transparent: true,
+            color: 0xe914f7,
+            map: this.textureLoader.load("/demo/forest/tree6.png")
+        })
+        const tree7Mat = new THREE.SpriteMaterial({
+            transparent: true,
+            color: 0xe14f56,
+            map: this.textureLoader.load("/demo/forest/tree7.png")
+        })
 
         const group = new THREE.Group()
 
@@ -98,14 +108,11 @@ export default class ThreeProject extends ThreeCore {
 
         for (let i = 0; i < 500; i++) {
 
-            random = THREE.MathUtils.randInt(0, 9)
+            random = THREE.MathUtils.randInt(1, 9)
 
             let tree
 
             switch (random) {
-                case 0:
-                    tree = new THREE.Sprite(tree1Mat)
-                    break;
                 case 1:
                     tree = new THREE.Sprite(tree1Mat)
                     break;
@@ -119,19 +126,19 @@ export default class ThreeProject extends ThreeCore {
                     tree = new THREE.Sprite(tree3Mat)
                     break;
                 case 5:
-                    tree = new THREE.Sprite(tree4Mat)
-                    break;
-                case 6:
                     tree = new THREE.Sprite(tree5Mat)
                     break;
+                case 6:
+                    tree = new THREE.Sprite(tree6Mat)
+                    break;
                 case 7:
-                    tree = new THREE.Sprite(tree1Mat)
+                    tree = new THREE.Sprite(tree7Mat)
                     break;
                 case 8:
-                    tree = new THREE.Sprite(tree2Mat)
+                    tree = new THREE.Sprite(tree1Mat)
                     break;
                 case 9:
-                    tree = new THREE.Sprite(tree3Mat)
+                    tree = new THREE.Sprite(tree2Mat)
                     break;
                 default:
                     throw new Error("不可能到达的错误")

@@ -447,11 +447,18 @@
           <div class="title">圆椎圆柱做简单的logo</div>
         </div>
 
-        <div class="item" @click="toDemo('示例-老虎')">
+        <div class="item" @click="toDemo('示例-模型-老虎')">
           <div class="image">
-            <img src="/demo/__case-cover/tiger.png" alt="老虎"/>
+            <img src="/demo/__case-cover/model-tiger.png" alt="老虎"/>
           </div>
-          <div class="title">老虎--模型动画</div>
+          <div class="title">模型--老虎-模型动画</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-模型-狐狸')">
+          <div class="image">
+            <img src="/demo/__case-cover/model-fox.png" alt="狐狸"/>
+          </div>
+          <div class="title">模型--狐狸-模型动画</div>
         </div>
 
         <div class="item" @click="toDemo('示例-射线选中物体')">

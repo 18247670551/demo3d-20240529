@@ -84,7 +84,7 @@ export default class ThreeProject extends ThreeCore {
         this.water = water
 
 
-        // 天空
+        // 天空, 必须同时创建太阳, 否则没有效果
         // turbidity 浑浊度
         // rayleigh 视觉效果就是傍晚晚霞的红光的深度
         // luminance 视觉效果整体提亮或变暗
@@ -191,16 +191,7 @@ export default class ThreeProject extends ThreeCore {
             item.update(delta)
         })
 
-        this.camera.position.y += Math.sin(this.clock.getElapsedTime()) / 50
-
-        // if(this.camera.position.y <= 40){
-        //     this.camera.position.y += 1
-        // }else if(this.camera.position.y >= 50){
-        //     this.camera.position.y -= 1
-        // }
-        
-        console.log("this.camera.position.y = ", this.camera.position.y)
-
+        this.camera.position.y += Math.sin(this.clock.getElapsedTime()) / 30
     }
 
 }
