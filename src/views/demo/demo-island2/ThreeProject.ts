@@ -71,6 +71,9 @@ export default class ThreeProject extends ThreeCore {
         orbit.target.set(0, 30, 0)
         this.orbit = orbit
 
+        // const axes = new THREE.AxesHelper(100)
+        // this.scene.add(axes)
+
 
         // 海
         const waterTexture = this.textureLoader.load('/demo/island2/waternormals.jpg', texture => {
@@ -160,16 +163,18 @@ export default class ThreeProject extends ThreeCore {
             this.scene.add(gltf.scene)
         })
 
+        // 下面给鸟飞行路径加了实体化预览, 加了标志点, 按颜色调试路径更方便
+        const pathPointPositions = [
+            new THREE.Vector3(0, 50, -100), // 红
+            new THREE.Vector3(100, 70, -150), // 绿
+            new THREE.Vector3(150, 50, 0), // 蓝
+            new THREE.Vector3(0, 60, 60), // 黄
+            new THREE.Vector3(-150, 80, 40), // 棕
+            new THREE.Vector3(-200, 70, -50), // 粉
+        ]
+
         // 鸟飞行路径
-        const birdPath = new THREE.CatmullRomCurve3([
-                new THREE.Vector3(-130, 50, -50),
-                new THREE.Vector3(50, 70, -150),
-                new THREE.Vector3(150, 40, 0),
-                new THREE.Vector3(0, 50, 60),
-                new THREE.Vector3(-150, 70, 0),
-            ],
-            true,
-        )
+        const birdPath = new THREE.CatmullRomCurve3(pathPointPositions, true,)
         this.birdPath = birdPath
 
         // 鸟飞行路径实体化预览
@@ -180,6 +185,40 @@ export default class ThreeProject extends ThreeCore {
         this.birdPathLine = birdPathLine
         this.birdPathLine.visible = false
         this.scene.add(birdPathLine)
+
+        const pathPointGeo = new THREE.SphereGeometry(2)
+        const pathPointMat1 = new THREE.MeshBasicMaterial({color: 'red'})
+        const pathPointMat2 = new THREE.MeshBasicMaterial({color: 'green'})
+        const pathPointMat3 = new THREE.MeshBasicMaterial({color: 'blue'})
+        const pathPointMat4 = new THREE.MeshBasicMaterial({color: 'yellow'})
+        const pathPointMat5 = new THREE.MeshBasicMaterial({color: 'brown'})
+        const pathPointMat6 = new THREE.MeshBasicMaterial({color: 'pink'})
+
+        const pathPoint1 = new THREE.Mesh(pathPointGeo, pathPointMat1)
+        const pathPoint2 = new THREE.Mesh(pathPointGeo, pathPointMat2)
+        const pathPoint3 = new THREE.Mesh(pathPointGeo, pathPointMat3)
+        const pathPoint4 = new THREE.Mesh(pathPointGeo, pathPointMat4)
+        const pathPoint5 = new THREE.Mesh(pathPointGeo, pathPointMat5)
+        const pathPoint6 = new THREE.Mesh(pathPointGeo, pathPointMat6)
+
+        pathPoint1.position.copy(pathPointPositions[0])
+        pathPoint2.position.copy(pathPointPositions[1])
+        pathPoint3.position.copy(pathPointPositions[2])
+        pathPoint4.position.copy(pathPointPositions[3])
+        pathPoint5.position.copy(pathPointPositions[4])
+        pathPoint6.position.copy(pathPointPositions[5])
+
+        const pathPoints = new THREE.Group()
+        pathPoints.add(
+            pathPoint1,
+            pathPoint2,
+            pathPoint3,
+            pathPoint4,
+            pathPoint5,
+            pathPoint6,
+        )
+        birdPathLine.add(pathPoints)
+
 
         // 鸟
         loader.load("/demo/island2/flamingo.glb", gltf => {
@@ -221,14 +260,12 @@ export default class ThreeProject extends ThreeCore {
 
             this.bird!.position.set(current.x, current.y, current.z)
 
-            // 因为模型加载进来默认面部是正对Z轴负方向的，所以直接lookAt会导致出现倒着跑的现象，这里用重新设置朝向的方法来解决
-            // this.bird!.lookAt(target.x, target.y, target.z)
-
             //以下代码在多段路径时可重复执行
             const mtx = new THREE.Matrix4() //创建一个4维矩阵
             // 注意第一个参数是target, 否则鸟是倒着飞
-            mtx.lookAt(target, this.bird!.position, this.bird!.up)
-            mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(0, 0, 0, 'ZYX')))
+            mtx.lookAt(this.bird!.position, target, this.bird!.up)
+            // THREE.Euler 参数值跟模型默认朝向有关, 如果出现模型倒飞, 一般调整Y轴, 旋转 Math.PI 或 Math.PI/2 或 -Math.PI/2
+            mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(0, Math.PI, 0, 'ZYX')))
             // Quaternion 四元数在threejs中用于表示rotation（旋转）
             const rotation = new THREE.Quaternion().setFromRotationMatrix(mtx) //计算出需要进行旋转的四元数值
             this.bird!.quaternion.slerp(rotation, 0.2)
@@ -239,7 +276,7 @@ export default class ThreeProject extends ThreeCore {
         }
     }
 
-    private addGUI(){
+    private addGUI() {
         const gui = new GUI()
         gui.add(this.birdPathLine, "visible").name("飞行轨迹")
     }

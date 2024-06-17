@@ -183,11 +183,15 @@ router.beforeEach((to, _, next) => {
     }
 
     if (to.meta.isLogin) {
-        if (useUserStore().isLogin()) {
-            next()
-        } else {
-            next('/login')
-        }
+
+        // todo 调试期不做登录拦截
+        next()
+
+        //if (useUserStore().isLogin()) {
+        //    next()
+        //} else {
+        //    next('/login')
+        //}
     } else {
         next()
     }
