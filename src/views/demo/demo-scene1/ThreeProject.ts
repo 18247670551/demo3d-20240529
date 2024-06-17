@@ -255,7 +255,6 @@ export default class ThreeProject extends ThreeCore {
         this.scene.add(car)
         this.car = car
 
-
     }
 
 
@@ -267,16 +266,16 @@ export default class ThreeProject extends ThreeCore {
 
             this.car!.position.set(current.x, current.y, current.z)
 
-            // 因为模型加载进来默认面部是正对Z轴负方向的，所以直接lookAt会导致出现倒着跑的现象，这里用重新设置朝向的方法来解决
-            // this.car!.lookAt(target.x, target.y, target.z)
-
-            //以下代码在多段路径时可重复执行
-            const mtx = new THREE.Matrix4() //创建一个4维矩阵
-            // 注意第一个参数是target, 否则鸟是倒着飞
+            const mtx = new THREE.Matrix4()
             mtx.lookAt(target, this.car!.position, this.car!.up)
-            mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(0, -Math.PI/2, 0, 'ZYX')))
+            // THREE.Euler 参数值跟模型默认朝向有关, 如果出现模型倒跑侧跑, 调整XYZ轴顺序,
+            // 模型默认朝向Z轴正方向的, 不需要 mtx.multiply() 这步旋转角度
+            // 其它情况, 会导致出现倒着跑或侧着跑的现象,
+            // 尝试调整旋转角度, 模型默认朝向X轴正方向的, 参数为 new THREE.Euler(0, -Math.PI / 2, 0, 'XYZ')
+            // 建议做模型时, 让模型默认朝向为Z轴正方向
+            mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(0, -Math.PI / 2, 0, 'ZYX')))
             // Quaternion 四元数在threejs中用于表示rotation（旋转）
-            const rotation = new THREE.Quaternion().setFromRotationMatrix(mtx) //计算出需要进行旋转的四元数值
+            const rotation = new THREE.Quaternion().setFromRotationMatrix(mtx)
             this.car!.quaternion.slerp(rotation, 0.2)
 
             this.progress += this.carVelocity
@@ -291,7 +290,6 @@ export default class ThreeProject extends ThreeCore {
 
 
     protected onRenderer() {
-        const elapsed = this.clock.getElapsedTime()
         this.orbit.update()
 
         this.carUpdate()

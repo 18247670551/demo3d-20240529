@@ -461,6 +461,13 @@
           <div class="title">模型--狐狸-模型动画</div>
         </div>
 
+        <div class="item" @click="toDemo('示例-模型-小米su7')">
+          <div class="image">
+            <img src="/demo/__case-cover/su7_car.png" alt="小米su7"/>
+          </div>
+          <div class="title">模型--小米su7</div>
+        </div>
+
         <div class="item" @click="toDemo('示例-射线选中物体')">
           <div class="image">
             <img src="/demo/__case-cover/raycaster.png" alt="射线选中物体"/>

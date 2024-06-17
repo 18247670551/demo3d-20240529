@@ -95,6 +95,7 @@ export default class ThreeProject extends ThreeCore {
         this.water = water
 
 
+
         // 天空, 必须同时创建太阳, 否则没有效果
         const skyOptions = {
             turbidity: 1, //浑浊度
@@ -106,7 +107,7 @@ export default class ThreeProject extends ThreeCore {
         }
         const sky = new Sky()
         sky.scale.setScalar(10000)
-        this.scene.add(sky)
+
 
         const phi = THREE.MathUtils.degToRad(90 - skyOptions.elevation)
         const theta = THREE.MathUtils.degToRad(skyOptions.azimuth)
@@ -123,6 +124,9 @@ export default class ThreeProject extends ThreeCore {
 
         const pmremGenerator = new THREE.PMREMGenerator(this.renderer)
         this.scene.environment = pmremGenerator.fromScene(sky as any as THREE.Scene).texture
+
+        this.scene.add(sky)
+
 
 
         // 虹
@@ -226,10 +230,9 @@ export default class ThreeProject extends ThreeCore {
             bird.scale.set(0.2, 0.2, 0.2)
 
             //bird.position.set(-100, 80, -100)
-            console.log("birdPath.getPointAt(0) = ", birdPath.getPointAt(0))
+            // 直接把鸟放在飞行路径上第一个点
             bird.position.copy(birdPath.getPointAt(0))
 
-            //bird.rotation.y = -Math.PI / 3
             bird.castShadow = true
             this.scene.add(bird)
             this.bird = bird
@@ -260,14 +263,17 @@ export default class ThreeProject extends ThreeCore {
 
             this.bird!.position.set(current.x, current.y, current.z)
 
-            //以下代码在多段路径时可重复执行
-            const mtx = new THREE.Matrix4() //创建一个4维矩阵
-            // 注意第一个参数是target, 否则鸟是倒着飞
-            mtx.lookAt(this.bird!.position, target, this.bird!.up)
-            // THREE.Euler 参数值跟模型默认朝向有关, 如果出现模型倒飞, 一般调整Y轴, 旋转 Math.PI 或 Math.PI/2 或 -Math.PI/2
-            mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(0, Math.PI, 0, 'ZYX')))
-            // Quaternion 四元数在threejs中用于表示rotation（旋转）
-            const rotation = new THREE.Quaternion().setFromRotationMatrix(mtx) //计算出需要进行旋转的四元数值
+            const mtx = new THREE.Matrix4()
+            mtx.lookAt(target, this.bird!.position, this.bird!.up)
+            // THREE.Euler 参数值跟模型默认朝向有关, 如果出现模型倒跑侧跑, 调整XYZ轴顺序,
+            // 模型默认朝向Z轴正方向的, 不需要 mtx.multiply() 这步旋转角度
+            // 其它情况, 会导致出现倒着跑或侧着跑的现象,
+            // 尝试调整旋转角度, 模型默认朝向X轴正方向的, 参数为 new THREE.Euler(0, -Math.PI / 2, 0, 'XYZ')
+            // 建议做模型时, 让模型默认朝向为Z轴正方向
+            //mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(0, 0, 0, 'XYZ')))
+
+
+            const rotation = new THREE.Quaternion().setFromRotationMatrix(mtx)
             this.bird!.quaternion.slerp(rotation, 0.2)
 
             this.progress += this.birdVelocity
