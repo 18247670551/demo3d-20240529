@@ -65,24 +65,24 @@ void main() {
     float n = noise(vec2(uv.x * 20. + time, uv.y * 20. + time));
 
     float l = length(uv);
-    if(l < BORDER) {
+    if (l < BORDER) {
         t *= .8;
         alpha = (1. - pow(((BORDER - l) / BORDER), 0.22) * 0.7);
         alpha = clamp(alpha - light(uv, 0.2, 0.0, 1.3, .7) * .55, .0, 1.);
         f = flare(angle * 1.0, alpha, -t * .5 + alpha);
         f2 = flare(angle * 1.0, alpha * 1.2, ((-t + alpha * .5 + 0.38134)));
 
-    } else if(alpha < 0.001) {
+    } else if (alpha < 0.001) {
         f = alpha;
     } else {
         f = flare(angle, alpha, t) * 1.3;
     }
     gl_FragColor = vec4(vec3(f * (1.0 + sin(angle - t * 4.) * .3) + f2 * f2 * f2, f * alpha + f2 * f2 * 2.0, f * alpha * 0.5 + f2 * (1.0 + sin(angle + t * 4.) * .3)), 1.0);
 
-    if(length(uv) > 0.3 && gl_FragColor.r < 0.3) {
+    if (length(uv) > 0.3 && gl_FragColor.r < 0.3) {
         // gl_FragColor.a = 0.;
         gl_FragColor.a = gl_FragColor.r;
-        if(gl_FragColor.r < 0.2) {
+        if (gl_FragColor.r < 0.2) {
             gl_FragColor.a = gl_FragColor.r * gl_FragColor.r;
         }
     }

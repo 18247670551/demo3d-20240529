@@ -39,18 +39,18 @@ export default class ThreeProject extends ThreeCore {
         const texture = loader.load("public/demo/shader-wave/img.png")
 
         const shadeMaterial = new THREE.RawShaderMaterial({
+            uniforms: {
+                uTime: {value: 0},
+                uTexture: {value: texture},
+            },
             vertexShader,
             fragmentShader,
             // wireframe:true,
             side: THREE.DoubleSide,
-            uniforms: {
-                uTime: { value: 0 },
-                uTexture: { value: texture },
-            },
         })
         this.shadeMaterial = shadeMaterial
 
-        const plane = new THREE.Mesh(new THREE.PlaneGeometry(1, 1, 64, 64), shadeMaterial)
+        const plane = new THREE.Mesh(new THREE.PlaneGeometry(2, 2, 128, 128), shadeMaterial)
         this.scene.add(plane)
     }
 

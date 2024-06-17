@@ -1,8 +1,9 @@
 precision lowp float;
-varying vec2 vUv;
-varying float deep;
 
 uniform sampler2D uTexture;
+
+varying vec2 vUv;
+varying float deep;
 
 void main () {
     // gl_FragColor = vec4(vUv, 0.0, 1.0);

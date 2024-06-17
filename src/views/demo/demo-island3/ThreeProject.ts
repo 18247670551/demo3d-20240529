@@ -69,14 +69,14 @@ export default class ThreeProject extends ThreeCore {
     }
 
     private addWater() {
-        const circleGeometry = new THREE.CircleGeometry(2000, 100)
+        const circleGeometry = new THREE.CircleGeometry(2000, 30)
         const textureLoader = new THREE.TextureLoader()
         const waterMesh = new Water(circleGeometry, {
             textureWidth: 1024,
             textureHeight: 1024,
             color: 0x00719e,
-            flowDirection: new THREE.Vector2(1, 1),
-            scale: 1,
+            flowDirection: new THREE.Vector2(1, 1), //流动方向
+            scale: 2,
             flowMap: textureLoader.load("/demo/island3/Water_1_M_Flow.jpg"),
             normalMap0: textureLoader.load("/demo/island3/Water_1_M_Normal.jpg"),
             normalMap1: textureLoader.load("/demo/island3/Water_2_M_Normal.jpg"),

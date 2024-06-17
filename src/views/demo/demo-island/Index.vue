@@ -33,8 +33,10 @@ function init() {
   const stats = new Stats()
   dom.appendChild(stats.dom)
 
+  const ambientLight = new THREE.AmbientLight(0xffffff, 1)
+  scene.add(ambientLight)
 
-  const light = new THREE.DirectionalLight(0xffffff, 1)
+  const light = new THREE.DirectionalLight(0xffffff, 3)
   light.position.set(-100, 100, 10)
   scene.add(light)
 
@@ -49,20 +51,22 @@ function init() {
 
   // 创建水面
   const waterGeo = new THREE.CircleGeometry(300, 64)
-  const waterTexLoader = new THREE.TextureLoader()
+  const textureLoader = new THREE.TextureLoader()
   const water = new Water(waterGeo, {
     textureWidth: 1024,
     textureHeight: 1024,
     color: 0xeeeeff,
-    flowDirection: new THREE.Vector2(1, 1),
+    flowDirection: new THREE.Vector2(1, 1), //流动方向
     scale: 2,
-    normalMap0: waterTexLoader.load("/demo/island/Water_1_M_Normal.jpg"),
-    normalMap1: waterTexLoader.load("/demo/island/Water_2_M_Normal.jpg"),
+    flowMap: textureLoader.load("/demo/island/Water_1_M_Flow.jpg"),
+    normalMap0: textureLoader.load("/demo/island/Water_1_M_Normal.jpg"),
+    normalMap1: textureLoader.load("/demo/island/Water_2_M_Normal.jpg"),
   })
   // 水平面抬高3米淹没石头
   water.position.y = 3
   // 水面旋转至水平
   water.rotation.x = -Math.PI / 2
+  scene.add(water)
 
 
   // 创建天空球体
@@ -73,29 +77,20 @@ function init() {
   const skyMat = new THREE.MeshBasicMaterial({
     map: new THREE.TextureLoader().load("/demo/island/sky.jpg")
   })
-  const video = document.createElement("video")
-  video.src = "/demo/island/sky.mp4"
-  video.loop = true
-
-  window.addEventListener("click", () => {
-    if (video.paused) {
-      video.play()
-      skyMat.map = new THREE.VideoTexture(video)
-      skyMat.map.needsUpdate = true
-    }
-  })
   const sky = new THREE.Mesh(skyGeo, skyMat)
   scene.add(sky)
 
-
-  // 载入环境纹理
-  const hdrLoader = new RGBELoader()
-  hdrLoader.loadAsync("/demo/island/050.hdr").then((texture) => {
-    texture.mapping = THREE.EquirectangularReflectionMapping
-    scene.background = texture
-    scene.environment = texture
-  })
-  scene.add(water)
+  // const video = document.createElement("video")
+  // video.src = "/demo/island/sky.mp4"
+  // video.loop = true
+  //
+  // window.addEventListener("click", () => {
+  //   if (video.paused) {
+  //     video.play()
+  //     skyMat.map = new THREE.VideoTexture(video)
+  //     skyMat.map.needsUpdate = true
+  //   }
+  // })
 
 
   // 添加小岛模型

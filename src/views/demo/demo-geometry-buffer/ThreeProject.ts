@@ -1,6 +1,8 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
+import {Line2} from "three/examples/jsm/lines/Line2";
+import {LineGeometry} from "three/examples/jsm/lines/LineGeometry";
 
 
 export default class ThreeProject extends ThreeCore {
@@ -45,18 +47,18 @@ export default class ThreeProject extends ThreeCore {
 
         // 用 BufferGeometry 自己写一个 BoxGeometry
         // 长度100, 为方便坐标定位, 使用半长度
-        const num = 50
+        const size = 50
 
         const data: { position: number[], normal: number[], uv: number[] }[] = []
 
-        data.push({position: [num, num, num], normal: [0, 1, 0], uv: [0, 0]})
-        data.push({position: [num, num, -num], normal: [0, 1, 0], uv: [1, 0]})
-        data.push({position: [-num, num, -num], normal: [0, 1, 0], uv: [1, 1]})
-        data.push({position: [-num, num, num], normal: [0, 1, 0], uv: [0, 1]})
-        data.push({position: [num, -num, num], normal: [0, 1, 0], uv: [0, 0]})
-        data.push({position: [num, -num, -num], normal: [0, 1, 0], uv: [1, 0]})
-        data.push({position: [-num, -num, -num], normal: [0, 1, 0], uv: [1, 1]})
-        data.push({position: [-num, -num, num], normal: [0, 1, 0], uv: [0, 1]})
+        data.push({position: [size, size, size], normal: [0, 1, 0], uv: [0, 0]})
+        data.push({position: [size, size, -size], normal: [0, 1, 0], uv: [1, 0]})
+        data.push({position: [-size, size, -size], normal: [0, 1, 0], uv: [1, 1]})
+        data.push({position: [-size, size, size], normal: [0, 1, 0], uv: [0, 1]})
+        data.push({position: [size, -size, size], normal: [0, 1, 0], uv: [0, 0]})
+        data.push({position: [size, -size, -size], normal: [0, 1, 0], uv: [1, 0]})
+        data.push({position: [-size, -size, -size], normal: [0, 1, 0], uv: [1, 1]})
+        data.push({position: [-size, -size, size], normal: [0, 1, 0], uv: [0, 1]})
 
         const bufferGeometry = new THREE.BufferGeometry()
 
@@ -99,12 +101,12 @@ export default class ThreeProject extends ThreeCore {
         bufferGeometry.index = new THREE.BufferAttribute(new Uint16Array(indexs), 1)
 
         // 材质
-        const face1Texture = this.textureLoader.load("/demo/buffer-geometry/face1.png")
-        const face2Texture = this.textureLoader.load("/demo/buffer-geometry/face2.png")
-        const face3Texture = this.textureLoader.load("/demo/buffer-geometry/face3.png")
-        const face4Texture = this.textureLoader.load("/demo/buffer-geometry/face4.png")
-        const face5Texture = this.textureLoader.load("/demo/buffer-geometry/face5.png")
-        const face6Texture = this.textureLoader.load("/demo/buffer-geometry/face6.png")
+        const face1Texture = this.textureLoader.load("/demo/geometry-buffer/face1.png")
+        const face2Texture = this.textureLoader.load("/demo/geometry-buffer/face2.png")
+        const face3Texture = this.textureLoader.load("/demo/geometry-buffer/face3.png")
+        const face4Texture = this.textureLoader.load("/demo/geometry-buffer/face4.png")
+        const face5Texture = this.textureLoader.load("/demo/geometry-buffer/face5.png")
+        const face6Texture = this.textureLoader.load("/demo/geometry-buffer/face6.png")
 
         const faceMat1 = new THREE.MeshStandardMaterial({map: face1Texture, color: 0xfff000})
         const faceMat2 = new THREE.MeshStandardMaterial({map: face2Texture, color: 0x00ff00})
@@ -147,7 +149,9 @@ export default class ThreeProject extends ThreeCore {
         boxLines.position.x = 150
         this.scene.add(boxLines)
 
-        // mesh模型也可以直接以线框架模式显示, 不需要像上面创建线框
+
+
+        // mesh模型也可以直接以线框架模式显示, 不需要像上面创建线框, 显示线框的时候是不显示面材质的
         const yellowWireframeMat = new THREE.MeshBasicMaterial({color: "yellow", wireframe:true})
         const boxWireframe = new THREE.Mesh(bufferGeometry, yellowWireframeMat)
         boxWireframe.position.x = -150

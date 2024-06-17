@@ -28,14 +28,11 @@ export default class ThreeProject extends ThreeCore {
 
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
 
-        const uniforms = {
-            time: { value: 1 },
-            iResolution: { value: new THREE.Vector2(300, 300) },
-            iMouse: { value: new THREE.Vector3(0, 0, 0) },
-        }
-
         const material = new THREE.ShaderMaterial({
-            uniforms,
+            uniforms: {
+                time: { value: 1 },
+                iResolution: { value: new THREE.Vector2(300, 300) },
+            },
             vertexShader,
             fragmentShader,
             transparent: true,
@@ -56,7 +53,6 @@ export default class ThreeProject extends ThreeCore {
         this.orbit.update()
 
         this.material.uniforms.time.value = this.clock.getElapsedTime()
-
     }
 
 }

@@ -393,14 +393,14 @@
 
         <div class="item" @click="toDemo('示例-缓冲几何体')">
           <div class="image">
-            <img src="/demo/__case-cover/buffer-geometry.png" alt="canvas1"/>
+            <img src="/demo/__case-cover/geometry-buffer.png" alt="canvas1"/>
           </div>
           <div class="title">缓冲几何体</div>
         </div>
 
         <div class="item" @click="toDemo('示例-合并几何体')">
           <div class="image">
-            <img src="/demo/__case-cover/merged-geometry.png" alt="canvas1"/>
+            <img src="/demo/__case-cover/geometry-merged.png" alt="canvas1"/>
           </div>
           <div class="title">合并几何体</div>
         </div>

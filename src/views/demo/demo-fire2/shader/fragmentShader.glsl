@@ -1,31 +1,28 @@
 uniform float iTime;
-uniform vec2 iMouse;
 varying vec2 vUv;
 
-vec3 mod289(vec3 x) {
-    return x - floor(x * (1.0 / 289.0)) * 289.0;
+vec3 mod289(vec3 v3) {
+    return v3 - floor(v3 * (1.0 / 289.0)) * 289.0;
 }
 
-vec4 mod289(vec4 x) {
-    return x - floor(x * (1.0 / 289.0)) * 289.0;
+vec4 mod289(vec4 v4) {
+    return v4 - floor(v4 * (1.0 / 289.0)) * 289.0;
 }
 
-vec4 permute(vec4 x) {
-    return mod289(((x * 34.0) + 1.0) * x);
+vec4 permute(vec4 v4) {
+    return mod289(((v4 * 34.0) + 1.0) * v4);
 }
 
-vec4 taylorInvSqrt(vec4 r)
-{
+vec4 taylorInvSqrt(vec4 r) {
     return 1.79284291400159 - 0.85373472095314 * r;
 }
 
-float snoise(vec3 v)
-{
+float snoise(vec3 v3) {
     const vec2 C = vec2(1.0 / 6.0, 1.0 / 3.0);
     const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
 
-    vec3 i = floor(v + dot(v, C.yyy));
-    vec3 x0 = v - i + dot(i, C.xxx);
+    vec3 i = floor(v3 + dot(v3, C.yyy));
+    vec3 x0 = v3 - i + dot(i, C.xxx);
 
     vec3 g = step(x0.yzx, x0.xyz);
     vec3 l = 1.0 - g;
@@ -76,8 +73,7 @@ float snoise(vec3 v)
 
     vec4 m = max(0.6 - vec4(dot(x0, x0), dot(x1, x1), dot(x2, x2), dot(x3, x3)), 0.0);
     m = m * m;
-    return 42.0 * dot(m * m, vec4(dot(p0, x0), dot(p1, x1),
-                                  dot(p2, x2), dot(p3, x3)));
+    return 42.0 * dot(m * m, vec4(dot(p0, x0), dot(p1, x1), dot(p2, x2), dot(p3, x3)));
 }
 
 const float STEPS = 4.;

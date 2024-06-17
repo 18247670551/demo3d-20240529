@@ -184,6 +184,30 @@ export default class ThreeProject extends ThreeCore {
             })
     }
 
+    private addAndGetWater() {
+        const waterGeometry = new THREE.PlaneGeometry(10000, 10000)
+        const texture = new THREE.TextureLoader().load('/demo/water0/water_texture0.jpg')
+        texture.wrapS = texture.wrapT = THREE.RepeatWrapping
+        const water = new Water(
+            waterGeometry,
+            {
+                textureWidth: 512,
+                textureHeight: 512,
+                waterNormals: texture,
+                sunDirection: new THREE.Vector3(),
+                sunColor: 0xffffff,
+                waterColor: 0x294f9a,
+                distortionScale: 3.7,
+            }
+        )
+        water.rotation.x = -Math.PI / 2
+        water.position.y = -2
+        water.receiveShadow = true
+        this.scene.add(water)
+
+        return water
+    }
+
     protected onRenderer() {
         this.orbit.update()
 
@@ -239,31 +263,6 @@ export default class ThreeProject extends ThreeCore {
 
         mesh.position.set(0, 0, 50)
         this.scene.add(mesh)
-    }
-
-
-    private addAndGetWater() {
-        const waterGeometry = new THREE.PlaneGeometry(10000, 10000)
-        const texture = new THREE.TextureLoader().load('/demo/water0/water_texture0.jpg')
-        texture.wrapS = texture.wrapT = THREE.RepeatWrapping
-        const water = new Water(
-            waterGeometry,
-            {
-                textureWidth: 512,
-                textureHeight: 512,
-                waterNormals: texture,
-                sunDirection: new THREE.Vector3(),
-                sunColor: 0xffffff,
-                waterColor: 0x294f9a,
-                distortionScale: 3.7,
-            }
-        )
-        water.rotation.x = -Math.PI / 2
-        water.position.y = -2
-        water.receiveShadow = true
-        this.scene.add(water)
-
-        return water
     }
 
     // 东方明珠

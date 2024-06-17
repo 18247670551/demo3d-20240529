@@ -339,12 +339,12 @@ npm run dev
 #
 #### 示例: 缓冲几何体
 ##### 本人编写
-![preview](public/demo/__case-cover/buffer-geometry.png)
+![preview](public/demo/__case-cover/geometry-buffer.png)
 
 #
 #### 示例: 合并几何体
 ##### 本人编写
-![preview](public/demo/__case-cover/merged-geometry.png)
+![preview](public/demo/__case-cover/geometry-merged.png)
 
 #
 #### 示例: 流光墙

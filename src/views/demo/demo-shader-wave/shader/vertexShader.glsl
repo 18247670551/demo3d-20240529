@@ -15,9 +15,8 @@ varying float deep;
 void main () {
     vUv = uv;
     vec4 modelPostion = modelMatrix * vec4(position, 1.0);
-    // modelPostion.x += position.y;
+
     modelPostion.z += sin((position.x + uTime) * 10.0) * 0.05;
-    modelPostion.z += sin((position.y + uTime) * 10.0) * 0.05;
 
     deep = modelPostion.z;
 

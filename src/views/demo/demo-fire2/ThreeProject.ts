@@ -37,12 +37,10 @@ export default class ThreeProject extends ThreeCore {
 
         const material = new THREE.ShaderMaterial({
             uniforms: {
-                iTime: { value: 0 },
-                iResolution: { value: new THREE.Vector3(1, 1, 1) },
-                iMouse: { value: new THREE.Vector2(0.0, 0.0) },
+                iTime: {value: 0},
             },
-            fragmentShader: fragmentShader,
-            vertexShader: vertexShader,
+            fragmentShader,
+            vertexShader,
             side: THREE.DoubleSide,
             transparent: true,
         })
@@ -59,7 +57,8 @@ export default class ThreeProject extends ThreeCore {
         const elapsed = this.clock.getElapsedTime()
         this.orbit.update()
 
-        this.material.uniforms.iTime.value += 0.01
+        //this.material.uniforms.iTime.value += 0.01
+        this.material.uniforms.iTime.value = elapsed
     }
 
 }

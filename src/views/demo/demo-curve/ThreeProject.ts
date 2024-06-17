@@ -8,7 +8,9 @@ export default class ThreeProject extends ThreeCore {
 
     private readonly curve: THREE.CatmullRomCurve3
     private readonly fireFly: THREE.Mesh
-    private pos = 1
+    private progress = 1
+    private velocity = 0.001
+
 
     constructor(dom: HTMLElement) {
 
@@ -48,26 +50,31 @@ export default class ThreeProject extends ThreeCore {
     protected onRenderer() {
         this.orbit.update()
 
-        if (this.pos < 1) {
-            this.fireFly.position.copy(this.curve!.getPointAt(this.pos))
-            this.pos += 0.001
+        if (this.progress < 1) {
+            this.fireFly.position.copy(this.curve!.getPointAt(this.progress))
+            this.progress += this.velocity
         } else {
-            this.pos = 0
+            this.progress = 0
         }
     }
 
     private getCurve() {
         return new THREE.CatmullRomCurve3([
-                //起点
                 new THREE.Vector3(-10, 0, 10),
-                //中间节点
                 new THREE.Vector3(-5, 10, -10),
                 new THREE.Vector3(2, 5, -5),
-                //终点
                 new THREE.Vector3(10, 0, 10),
             ],
             true,
         )
+    }
+
+    private addCurve() {
+        const geo = new THREE.BufferGeometry()
+        geo.setFromPoints(this.curve.getSpacedPoints(100))
+        const mat = new THREE.LineBasicMaterial({color: new THREE.Color().setHSL(Math.random(), 0.5, 0.5)})
+        const curve = new THREE.Line(geo, mat)
+        this.scene.add(curve)
     }
 
     private addAndGetFireFlyLight() {
@@ -108,14 +115,6 @@ export default class ThreeProject extends ThreeCore {
         plane.receiveShadow = true
 
         this.scene.add(plane)
-    }
-
-    private addCurve() {
-        const geo = new THREE.BufferGeometry()
-        geo.setFromPoints(this.curve.getSpacedPoints(100))
-        const mat = new THREE.LineBasicMaterial({color: new THREE.Color().setHSL(Math.random(), 0.5, 0.5)})
-        const curve = new THREE.Line(geo, mat)
-        this.scene.add(curve)
     }
 
 

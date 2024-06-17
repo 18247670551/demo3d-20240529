@@ -10,7 +10,7 @@ export default class ThreeProject extends ThreeCore{
     private readonly moon: THREE.Mesh
     private readonly clouds: THREE.Mesh
     private readonly curve: THREE.EllipseCurve
-    private pos = 0
+    private progress = 0
 
     constructor(dom: HTMLElement) {
 
@@ -116,13 +116,13 @@ export default class ThreeProject extends ThreeCore{
         this.clouds.rotation.x += 0.002
 
         // 公转
-        if (this.pos < 1) {
-            this.moon.position.x = this.curve.getPointAt(this.pos).x
+        if (this.progress < 1) {
+            this.moon.position.x = this.curve.getPointAt(this.progress).x
             this.moon.position.y = 0
-            this.moon.position.z = this.curve.getPointAt(this.pos).y
-            this.pos += 0.001
+            this.moon.position.z = this.curve.getPointAt(this.progress).y
+            this.progress += 0.001
         } else {
-            this.pos = 0
+            this.progress = 0
         }
 
     }
