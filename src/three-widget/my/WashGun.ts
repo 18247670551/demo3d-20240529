@@ -9,7 +9,7 @@ interface WashGunOptions {
 type WashGunDefaultOptions = Required<WashGunOptions>
 
 
-export class WashGun extends MyGroup<WashGunOptions> {
+export default class WashGun extends MyGroup<WashGunOptions> {
 
     private readonly particles: SmokeParticle[]
     private timer: NodeJS.Timeout | null = null

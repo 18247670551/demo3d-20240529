@@ -130,13 +130,6 @@
           <div class="title">地月系统--纯代码</div>
         </div>
 
-        <div class="item" @click="toDemo('示例-地月系统2')">
-          <div class="image">
-            <img src="/demo/__case-cover/earthmoon2.png" alt="地月系统2"/>
-          </div>
-          <div class="title">地月系统2--纯代码</div>
-        </div>
-
 
         <div class="item" @click="toDemo('示例-飞机')">
           <div class="image">
@@ -456,11 +449,11 @@
 
 
 
-        <div class="item" @click="toDemo('示例-圆椎圆柱做简单的logo')">
+        <div class="item" @click="toDemo('示例-简单的logo')">
           <div class="image">
-            <img src="/demo/__case-cover/logo.png" alt="圆椎圆柱做简单的logo"/>
+            <img src="/demo/__case-cover/logo.png" alt="简单的logo"/>
           </div>
-          <div class="title">圆椎圆柱做简单的logo</div>
+          <div class="title">简单的logo</div>
         </div>
 
         <div class="item" @click="toDemo('示例-模型-老虎')">

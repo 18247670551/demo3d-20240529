@@ -23,7 +23,7 @@ import Waterfall from '@/views/demo/demo-waterfall/Index.vue'
 import HeartBalloon from '@/views/demo/demo-heart-balloon/Index.vue'
 import Csmart from '@/views/demo/demo-csmart/Index.vue'
 import EarthMoon from '@/views/demo/demo-earthmoon/Index.vue'
-import EarthMoon2 from '@/views/demo/demo-earthmoon2/Index.vue'
+import EarthMoon2 from '@/views/demo/demo-earthmoon/Index.vue'
 import ShangHai from '@/views/demo/demo-shanghai/Index.vue'
 import ShangHai2 from '@/views/demo/demo-shanghai2/Index.vue'
 import Firefly from '@/views/demo/demo-firefly/Index.vue'
@@ -95,7 +95,6 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-爱心气球', path: '/demo/demo-heart-balloon', component: HeartBalloon, meta: {title: "示例-爱心气球", isLogin: true}},
     {name: '示例-csmart', path: '/demo/demo-csmart', component: Csmart, meta: {title: "示例-csmart", isLogin: true}},
     {name: '示例-地月系统', path: '/demo/demo-earthmoon', component: EarthMoon, meta: {title: "示例-地月系统", isLogin: true}},
-    {name: '示例-地月系统2', path: '/demo/demo-earthmoon2', component: EarthMoon2, meta: {title: "示例-地月系统2", isLogin: true}},
     {name: '示例-上海', path: '/demo/demo-shanghai', component: ShangHai, meta: {title: "示例-上海", isLogin: true}},
     {name: '示例-上海2', path: '/demo/demo-shanghai2', component: ShangHai2, meta: {title: "示例-上海2", isLogin: true}},
     {name: '示例-萤火虫动画', path: '/demo/demo-firefly', component: Firefly, meta: {title: "示例-萤火虫动画", isLogin: true}},
@@ -142,7 +141,7 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-shader-wave', path: '/demo/demo-shader-wave', component: ShaderWave, meta: {title: "示例-shader-wave", isLogin: true}},
     {name: '示例-简单场景1', path: '/demo/demo-scene1', component: Scene1, meta: {title: "示例-简单场景1", isLogin: true}},
     {name: '示例-简单场景2', path: '/demo/demo-scene2', component: Scene2, meta: {title: "示例-简单场景2", isLogin: true}},
-    {name: '示例-圆椎圆柱做简单的logo', path: '/demo/demo-logo', component: Logo, meta: {title: "示例-圆椎圆柱做简单的logo", isLogin: true}},
+    {name: '示例-简单的logo', path: '/demo/demo-logo', component: Logo, meta: {title: "示例-简单的logo", isLogin: true}},
     {name: '示例-模型-老虎', path: '/demo/demo-model-tiger', component: ModelTiger, meta: {title: "示例-模型-老虎", isLogin: true}},
     {name: '示例-模型-狐狸', path: '/demo/demo-model-fox', component: ModelFox, meta: {title: "示例-模型-狐狸", isLogin: true}},
     {name: '示例-模型-小米su7', path: '/demo/demo-model-su7', component: ModelSu7, meta: {title: "示例-模型-小米su7", isLogin: true}},

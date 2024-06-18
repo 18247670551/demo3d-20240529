@@ -34,7 +34,7 @@ export default class ThreeProject extends ThreeCore {
 
         this.scene.background = new THREE.Color(0x000000)
 
-        this.camera.position.set(0, 0, 100)
+        this.camera.position.set(0, 0, 60)
 
         const ambientLight = new THREE.AmbientLight(0xffffff, 2)
         this.scene.add(ambientLight)

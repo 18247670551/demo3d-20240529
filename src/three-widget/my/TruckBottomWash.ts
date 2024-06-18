@@ -24,7 +24,7 @@ export interface TruckBottomWashOptions {
 }
 
 
-export class TruckBottomWash extends MyGroup<TruckBottomWashOptions> {
+export default class TruckBottomWash extends MyGroup<TruckBottomWashOptions> {
 
     private textureLoader = new THREE.TextureLoader()
 

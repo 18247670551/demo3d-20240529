@@ -1,15 +1,28 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
-import {gsap} from "gsap"
 import ThreeCore from "@/three-widget/ThreeCore"
 
 
-export default class ThreeProject extends ThreeCore{
+export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
+    private readonly earth: THREE.Mesh
+    private readonly moon: THREE.Mesh
+    private readonly clouds: THREE.Mesh
+    private readonly curve: THREE.EllipseCurve
 
-    private time = {value: 0}
-    readonly moon: THREE.Mesh
+
+    private earthRadius = 10 // 月球公转半径
+    private earthLoopTime = 15 * 1000 // 地球自转一圈的时间
+
+    private cloudsLoopRadius = 11 // 云层半径
+    private cloudsLoopXTime = 24 * 1000 // 云层 X轴 转一圈
+    private cloudsLoopYTime = 30 * 1000 // 云层 Y轴 转一圈
+
+    private moonLoopTime = 20 * 1000 // 月球公转
+    private moonRadius = 4 // 月球公转半径
+    private moonLoopRadius = 40 // 月球公转半径
+
 
     constructor(dom: HTMLElement) {
 
@@ -17,56 +30,41 @@ export default class ThreeProject extends ThreeCore{
             cameraOptions: {
                 fov: 75,
                 near: 0.1,
-                far: 100000
+                far: 1000
             }
         })
 
         // 星空背景色
         this.scene.background = new THREE.Color(0x030311)
 
-        this.camera.position.set(0, 50, 300)
+        this.camera.position.set(0, 20, 50)
 
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6)
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
         this.scene.add(ambientLight)
 
         const directionalLight1 = new THREE.DirectionalLight(0xffffff, 2)
-        directionalLight1.position.set(0, 500, 500)
+        directionalLight1.position.set(0, 50, 50)
         this.scene.add(directionalLight1)
-
 
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
         this.orbit.autoRotate = true
-        //this.orbit.autoRotateSpeed = 0.5
+        this.orbit.autoRotateSpeed = 0.3
 
 
-        this.addStars()
-        this.addEarth()
-        this.addMoonRing()
-        this.moon = this.addAndGetMoon()
-    }
-
-    init(){}
-
-    onRenderer() {
-        this.orbit.update()
-        this.moonAnimate()
-    }
-
-    private addStars() {
         const starsCount = 500
         const positions = []
         for (let i = 0; i < starsCount; i++) {
-            positions[i*3] = Math.random() * 800 - 400
-            positions[i*3 + 1] = Math.random() * 800 - 400
-            positions[i*3 + 2] = Math.random() * 800 - 400
+            positions[i * 3] = Math.random() * 200 - 100
+            positions[i * 3 + 1] = Math.random() * 200 - 100
+            positions[i * 3 + 2] = Math.random() * 200 - 100
         }
 
-        const geo = new THREE.BufferGeometry()
+        const starGeo = new THREE.BufferGeometry()
+        starGeo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(positions), 3))
+        starGeo.attributes.position.needsUpdate = true
 
-        geo.setAttribute("position", new THREE.BufferAttribute(new Float32Array(positions), 3))
-
-        const mat = new THREE.PointsMaterial({
-            size: 2,
+        const starMat = new THREE.PointsMaterial({
+            size: 0.5,
             sizeAttenuation: true,   //尺寸衰减
             color: 0x4d76cf,
             transparent: true,
@@ -74,67 +72,67 @@ export default class ThreeProject extends ThreeCore{
             map: this.textureLoader.load("/demo/earthmoon/circle.png")
         })
 
-        const stars = new THREE.Points(geo, mat)
-
+        const stars = new THREE.Points(starGeo, starMat)
         this.scene.add(stars)
-    }
 
-    private addEarth() {
-        const geo = new THREE.SphereGeometry(50, 32, 32)
-        const mat = new THREE.MeshPhongMaterial({
-            map: this.textureLoader.load("/demo/earthmoon/earth_atmos.jpg"),
-            normalMap: this.textureLoader.load("/demo/earthmoon/earth_normal.jpg"),
-            specularMap: this.textureLoader.load("/demo/earthmoon/earth_specular.jpg"),
-        })
-        const earth = new THREE.Mesh(geo, mat)
+
+        const earth = new THREE.Mesh(
+            new THREE.SphereGeometry(this.earthRadius, 64, 64),
+            new THREE.MeshStandardMaterial({
+                map: this.textureLoader.load('/demo/earthmoon/earth_basic.jpeg'),
+                normalMap: this.textureLoader.load('/demo/earthmoon/earth_normal.jpeg'),
+                roughnessMap: this.textureLoader.load('/demo/earthmoon/earth_rough.jpeg'),
+                normalScale: new THREE.Vector2(10, 10),
+                metalness: .1
+            })
+        )
+        earth.rotation.y = -Math.PI
         this.scene.add(earth)
-    }
+        this.earth = earth
 
-    private addMoonRing() {
-        const geo = new THREE.RingGeometry(95, 105, 64)
 
-        const texture = this.textureLoader.load("/demo/earthmoon/moon_ring.png")
-
-        const mat = new THREE.MeshBasicMaterial({
-            map: texture,
+        const clouds = new THREE.Mesh(new THREE.SphereGeometry(this.cloudsLoopRadius, 64, 64), new THREE.MeshLambertMaterial({
+            alphaMap: this.textureLoader.load('/demo/earthmoon/clouds.jpeg'),
             transparent: true,
-            blending: THREE.AdditiveBlending,
-            side: THREE.DoubleSide,
-            depthWrite: false,
-            opacity: 0.5,
-        })
+            opacity: .4,
+            depthTest: true
+        }))
+        this.scene.add(clouds)
+        this.clouds = clouds
 
-        const moonRing = new THREE.Mesh(geo, mat)
-        moonRing.rotation.x = -Math.PI / 2
-        this.scene.add(moonRing)
-    }
 
-    private addAndGetMoon() {
-        const geo = new THREE.SphereGeometry(5, 32, 32)
-        const tex = this.textureLoader.load('/demo/earthmoon/moon.jpg')
-        let mat = new THREE.MeshStandardMaterial({
-            map: tex,
-            emissive: 0xffffff,
-            emissiveMap: tex
-        })
-        const moon = new THREE.Mesh(geo, mat)
-        moon.position.set(100, 0, 0)
+        const moon = new THREE.Mesh(new THREE.SphereGeometry(this.moonRadius, 32, 32), new THREE.MeshStandardMaterial({
+            map: this.textureLoader.load('/demo/earthmoon/moon_basic.jpeg'),
+            normalMap: this.textureLoader.load('/demo/earthmoon/moon_normal.jpeg'),
+            roughnessMap: this.textureLoader.load('/demo/earthmoon/moon_roughness.jpeg'),
+            normalScale: new THREE.Vector2(10, 10),
+            metalness: .1
+        }))
+        moon.position.set(2, 0, 0)
+        moon.scale.set(0.5, 0.5, 0.5)
         this.scene.add(moon)
-        return moon
+        this.moon = moon
+
+        // 月球轨道
+        this.curve = new THREE.EllipseCurve(0, 0, this.moonLoopRadius, this.moonLoopRadius, 0, 2 * Math.PI, true, 0)
+
     }
 
-    moonAnimate = () => {
-        gsap.to(this.time, {
-            value:1,
-            duration: 10,
-            repeat:-1,
-            ease:'linear',
-            onUpdate:() => {
-                this.moon.position.x = 100 * Math.cos(this.time.value * Math.PI * 2)
-                this.moon.position.z = 100 * Math.sin(this.time.value * Math.PI * 2)
-                this.moon.position.y = 0
-            }
-        })
+    init() {
+    }
+
+    onRenderer() {
+        this.orbit.update()
+
+        const time = Date.now()
+
+        this.earth.rotation.y = Math.PI * 2 * ((time % this.earthLoopTime) / this.earthLoopTime)
+        this.clouds.rotation.x = Math.PI * 2 * ((time % this.cloudsLoopXTime) / this.cloudsLoopXTime)
+        this.clouds.rotation.y = Math.PI * 2 * ((time % this.cloudsLoopYTime) / this.cloudsLoopYTime)
+
+        const temp = this.curve.getPointAt((time % this.moonLoopTime) / this.moonLoopTime)
+        this.moon.position.set(temp.x, 0, temp.y)
+
     }
 
 }

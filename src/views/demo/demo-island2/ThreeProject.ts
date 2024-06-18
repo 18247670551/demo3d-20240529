@@ -8,21 +8,40 @@ import {Sky} from "three/examples/jsm/objects/Sky"
 import vertexShader from "./shader/rainbow/vertexShader.glsl"
 import fragmentShader from "./shader/rainbow/fragmentShader.glsl"
 import {GUI} from "dat.gui";
+import {TransformControls} from "three/examples/jsm/controls/TransformControls"
+
 
 export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
+
     private readonly mixers: THREE.AnimationMixer[] = []
     private readonly water: Water
 
     private bird: THREE.Object3D | null = null
+
     // 鸟飞行轨迹
     private birdPath: THREE.CatmullRomCurve3
     private birdPathLine: THREE.Line
-    // 鸟飞行速度
-    private birdVelocity = 0.001
-    // 鸟飞行进度 0 - 1
-    private progress = 0
+    // 轨迹锚点
+    private birdPathLineAnchorPoints: THREE.Mesh[]
+
+    private guiParams = {
+        birdPathPreview: false,
+    }
+
+
+    private readonly birdPathPoints = [
+        new THREE.Vector3(0, 50, -100), // 红
+        new THREE.Vector3(100, 70, -150), // 绿
+        new THREE.Vector3(150, 50, 0), // 蓝
+        new THREE.Vector3(0, 60, 60), // 黄
+        new THREE.Vector3(-150, 80, 40), // 棕
+        new THREE.Vector3(-200, 70, -50), // 粉
+    ]
+
+    private loopTime = 10 * 1000 // 循环一圈的时间
+
 
     constructor(dom: HTMLElement) {
 
@@ -60,6 +79,7 @@ export default class ThreeProject extends ThreeCore {
 
         this.scene.add(pointLight)
 
+        this.renderer.shadowMap.enabled = true
         this.renderer.toneMappingExposure = 1.25  //色调映射曝光度
 
         const orbit = new OrbitControls(this.camera, this.renderer.domElement)
@@ -76,6 +96,113 @@ export default class ThreeProject extends ThreeCore {
 
 
         // 海
+        this.water = this.createWater()
+        this.scene.add(this.water)
+
+
+
+        // 天空
+        const skyOptions = {
+            turbidity: 1, //浑浊度
+            rayleigh: 2, //阳光散射，黄昏效果的程度, 视觉效果就是傍晚晚霞的红光的深度
+            mieCoefficient: 0.005, //散射系数, 太阳对比度，清晰度
+            mieDirectionalG: 0.7, //定向散射值
+            elevation: 3, //太阳高度
+            azimuth: 180, //太阳水平方向位置
+        }
+        const {sky, sun} = this.createSky(skyOptions)
+        this.scene.add(sky)
+
+        // 把太阳矢量传给水面
+        this.water.material.uniforms['sunDirection'].value.copy(sun).normalize()
+
+        const pmremGenerator = new THREE.PMREMGenerator(this.renderer)
+        this.scene.environment = pmremGenerator.fromScene(sky as any as THREE.Scene).texture
+
+
+
+
+        // 彩虹
+        const rainBow = this.createRainbow()
+        rainBow.position.set(0, -50, -300)
+        this.scene.add(rainBow)
+
+
+
+        this.addIsland()
+
+
+        // 下面给鸟飞行路径加了实体化预览, 加了标志点, 按颜色调试路径更方便
+        const {anchorPoints, curve, curveLine} = this.createBirdPath()
+
+        this.birdPathLineAnchorPoints = anchorPoints
+        this.scene.add(...anchorPoints)
+
+        this.birdPath = curve
+
+        this.birdPathLine = curveLine
+        this.scene.add(curveLine)
+
+
+        this.addBird()
+
+        this.addGUI()
+
+
+
+        // 添加可编辑轨道能力
+        const control = new TransformControls(this.camera, this.renderer.domElement)
+        this.scene.add(control)
+
+        const rayCaster = new THREE.Raycaster()
+        const mouse = new THREE.Vector2()
+
+        // 修改曲线后同步修改实体线条
+        control.addEventListener('dragging-changed', (event) => {
+            // 需要先关闭轨道控制器, 否则控制混乱
+            this.orbit.enabled = !event.value
+            if (!event.value) {
+                const points = curve.getPoints(50)
+                curveLine.geometry.setFromPoints(points)
+            }
+        })
+
+        this.renderer.domElement.addEventListener('click', (event) => {
+                // 取消默认的右键菜单等功能
+                event.preventDefault()
+
+                mouse.x = (event.offsetX / this.renderer.domElement.clientWidth) * 2 - 1
+                mouse.y = -(event.offsetY / this.renderer.domElement.clientHeight) * 2 + 1
+
+                // 更新射线投射器的起点和方向
+                rayCaster.setFromCamera(mouse, this.camera)
+                // 射线与模型相交的情况
+                const intersects = rayCaster.intersectObjects(anchorPoints)
+
+                if (intersects.length) {
+                    const target = intersects[0].object
+                    control.attach(target) // 绑定controls和方块
+                } else {
+                    control.detach()
+                }
+            },
+            false
+        )
+
+    }
+
+    private addGUI() {
+        const gui = new GUI()
+        gui.addFolder('飞行轨迹 锚点可编辑')
+        gui.add(this.guiParams, "birdPathPreview").name("飞行轨迹").onChange(value => {
+            this.birdPathLineAnchorPoints.forEach(anchorPoint => {
+                anchorPoint.visible = value
+            })
+            this.birdPathLine.visible = value
+        })
+    }
+
+    private createWater(){
         const waterTexture = this.textureLoader.load('/demo/island2/waternormals.jpg', texture => {
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping
         })
@@ -91,27 +218,19 @@ export default class ThreeProject extends ThreeCore {
             fog: this.scene.fog !== undefined
         });
         water.rotation.x = -Math.PI / 2
-        this.scene.add(water)
-        this.water = water
+        return water
+    }
 
-
+    private createSky(skyOptions: any){
 
         // 天空, 必须同时创建太阳, 否则没有效果
-        const skyOptions = {
-            turbidity: 1, //浑浊度
-            rayleigh: 2, //阳光散射，黄昏效果的程度, 视觉效果就是傍晚晚霞的红光的深度
-            mieCoefficient: 0.005, //散射系数, 太阳对比度，清晰度
-            mieDirectionalG: 0.7, //定向散射值
-            elevation: 3, //太阳高度
-            azimuth: 180, //太阳水平方向位置
-        }
         const sky = new Sky()
         sky.scale.setScalar(10000)
-
 
         const phi = THREE.MathUtils.degToRad(90 - skyOptions.elevation)
         const theta = THREE.MathUtils.degToRad(skyOptions.azimuth)
         const sun = new THREE.Vector3()
+
         sun.setFromSphericalCoords(1, phi, theta)
 
         const skyUniforms = sky.material.uniforms
@@ -120,16 +239,12 @@ export default class ThreeProject extends ThreeCore {
         skyUniforms['mieCoefficient'].value = skyOptions.mieCoefficient
         skyUniforms['mieDirectionalG'].value = skyOptions.mieDirectionalG
         skyUniforms['sunPosition'].value.copy(sun)
-        water.material.uniforms['sunDirection'].value.copy(sun).normalize()
 
-        const pmremGenerator = new THREE.PMREMGenerator(this.renderer)
-        this.scene.environment = pmremGenerator.fromScene(sky as any as THREE.Scene).texture
+        return {sky, sun}
+    }
 
-        this.scene.add(sky)
+    private createRainbow(){
 
-
-
-        // 虹
         const material = new THREE.ShaderMaterial({
             side: THREE.DoubleSide,
             uniforms: {},
@@ -138,23 +253,16 @@ export default class ThreeProject extends ThreeCore {
             transparent: true,
             opacity: 0.2,
         })
-        const geometry = new THREE.TorusGeometry(300, 15, 32, 64)
-        const torus = new THREE.Mesh(geometry, material)
-        torus.position.set(0, -50, -300)
-        this.scene.add(torus)
+
+        return new THREE.Mesh(
+            new THREE.TorusGeometry(300, 15, 32, 64),
+            material
+        )
+    }
 
 
-        const manager = new THREE.LoadingManager()
-        manager.onProgress = async (url, loaded, total) => {
-            if (Math.floor(loaded / total * 100) === 100) {
-                //this.setState({ loadingProcess: Math.floor(loaded / total * 100) })
-            } else {
-                //this.setState({ loadingProcess: Math.floor(loaded / total * 100) })
-            }
-        }
-
-        // 岛
-        const loader = new GLTFLoader(manager)
+    private addIsland(){
+        const loader = new GLTFLoader()
         loader.load("/demo/island2/island.glb", gltf => {
             gltf.scene.traverse((child: any) => {
                 if (child.isMesh) {
@@ -166,72 +274,40 @@ export default class ThreeProject extends ThreeCore {
             gltf.scene.scale.set(33, 33, 33)
             this.scene.add(gltf.scene)
         })
+    }
 
-        // 下面给鸟飞行路径加了实体化预览, 加了标志点, 按颜色调试路径更方便
-        const pathPointPositions = [
-            new THREE.Vector3(0, 50, -100), // 红
-            new THREE.Vector3(100, 70, -150), // 绿
-            new THREE.Vector3(150, 50, 0), // 蓝
-            new THREE.Vector3(0, 60, 60), // 黄
-            new THREE.Vector3(-150, 80, 40), // 棕
-            new THREE.Vector3(-200, 70, -50), // 粉
-        ]
 
-        // 鸟飞行路径
-        const birdPath = new THREE.CatmullRomCurve3(pathPointPositions, true,)
-        this.birdPath = birdPath
+    private createBirdPath(){
 
-        // 鸟飞行路径实体化预览
-        const birdPathGeo = new THREE.BufferGeometry()
-        birdPathGeo.setFromPoints(birdPath.getSpacedPoints(1000))
-        const birdPathMat = new THREE.LineBasicMaterial({color: 0x00ff00, linewidth: 10})
-        const birdPathLine = new THREE.Line(birdPathGeo, birdPathMat)
-        this.birdPathLine = birdPathLine
-        this.birdPathLine.visible = false
-        this.scene.add(birdPathLine)
+        const anchorPoints = this.birdPathPoints.map(position => this.createAnchorPoint(position))
 
-        const pathPointGeo = new THREE.SphereGeometry(2)
-        const pathPointMat1 = new THREE.MeshBasicMaterial({color: 'red'})
-        const pathPointMat2 = new THREE.MeshBasicMaterial({color: 'green'})
-        const pathPointMat3 = new THREE.MeshBasicMaterial({color: 'blue'})
-        const pathPointMat4 = new THREE.MeshBasicMaterial({color: 'yellow'})
-        const pathPointMat5 = new THREE.MeshBasicMaterial({color: 'brown'})
-        const pathPointMat6 = new THREE.MeshBasicMaterial({color: 'pink'})
-
-        const pathPoint1 = new THREE.Mesh(pathPointGeo, pathPointMat1)
-        const pathPoint2 = new THREE.Mesh(pathPointGeo, pathPointMat2)
-        const pathPoint3 = new THREE.Mesh(pathPointGeo, pathPointMat3)
-        const pathPoint4 = new THREE.Mesh(pathPointGeo, pathPointMat4)
-        const pathPoint5 = new THREE.Mesh(pathPointGeo, pathPointMat5)
-        const pathPoint6 = new THREE.Mesh(pathPointGeo, pathPointMat6)
-
-        pathPoint1.position.copy(pathPointPositions[0])
-        pathPoint2.position.copy(pathPointPositions[1])
-        pathPoint3.position.copy(pathPointPositions[2])
-        pathPoint4.position.copy(pathPointPositions[3])
-        pathPoint5.position.copy(pathPointPositions[4])
-        pathPoint6.position.copy(pathPointPositions[5])
-
-        const pathPoints = new THREE.Group()
-        pathPoints.add(
-            pathPoint1,
-            pathPoint2,
-            pathPoint3,
-            pathPoint4,
-            pathPoint5,
-            pathPoint6,
+        const curve = new THREE.CatmullRomCurve3(
+            // 这里参数一定要用 anchorPoints 的 position, 后面会做编辑飞行轨迹, 调整的是anchorPoint的position, 这里需要的是引用的 anchorPoint 的 position, curve才会同时跟着变
+            anchorPoints.map(anchorPoint => anchorPoint.position),
+            true,
+            "chordal" //曲线类型
         )
-        birdPathLine.add(pathPoints)
 
 
-        // 鸟
+        const curveLine = new THREE.LineLoop(
+            new THREE.BufferGeometry().setFromPoints(curve.getPoints(1000)),
+            new THREE.LineBasicMaterial({color: 0x00ff00})
+        )
+        curveLine.visible = false
+
+        return {anchorPoints, curve, curveLine}
+    }
+
+
+    private addBird(){
+        const loader = new GLTFLoader()
         loader.load("/demo/island2/flamingo.glb", gltf => {
             const bird = gltf.scene.children[0]
             bird.scale.set(0.2, 0.2, 0.2)
 
             //bird.position.set(-100, 80, -100)
             // 直接把鸟放在飞行路径上第一个点
-            bird.position.copy(birdPath.getPointAt(0))
+            bird.position.copy(this.birdPath.getPointAt(0))
 
             bird.castShadow = true
             this.scene.add(bird)
@@ -249,43 +325,21 @@ export default class ThreeProject extends ThreeCore {
             mixer2.clipAction(gltf.animations[0]).setDuration(1.8).play()
             this.mixers.push(mixer2)
         })
-
-        this.addGUI()
-
     }
 
-    // 让模型沿着运动轨迹移动
-    private birdUpdate() {
-        if (this.progress <= 1 - this.birdVelocity) {
-            // 用当前点和目标点计算出鸟头朝向
-            const current = this.birdPath.getPointAt(this.progress)
-            const target = this.birdPath.getPointAt(this.progress + this.birdVelocity)
-
-            this.bird!.position.set(current.x, current.y, current.z)
-
-            const mtx = new THREE.Matrix4()
-            mtx.lookAt(target, this.bird!.position, this.bird!.up)
-            // THREE.Euler 参数值跟模型默认朝向有关, 如果出现模型倒跑侧跑, 调整XYZ轴顺序,
-            // 模型默认朝向Z轴正方向的, 不需要 mtx.multiply() 这步旋转角度
-            // 其它情况, 会导致出现倒着跑或侧着跑的现象,
-            // 尝试调整旋转角度, 模型默认朝向X轴正方向的, 参数为 new THREE.Euler(0, -Math.PI / 2, 0, 'XYZ')
-            // 建议做模型时, 让模型默认朝向为Z轴正方向
-            //mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(0, 0, 0, 'XYZ')))
 
 
-            const rotation = new THREE.Quaternion().setFromRotationMatrix(mtx)
-            this.bird!.quaternion.slerp(rotation, 0.2)
-
-            this.progress += this.birdVelocity
-        } else {
-            this.progress = 0
-        }
+    private createAnchorPoint(position: { x: number, y: number, z: number }) {
+        const geometry = new THREE.SphereGeometry(2)
+        const material = new THREE.MeshBasicMaterial({color: 0xff0000})
+        const anchorPoint = new THREE.Mesh(geometry, material);
+        anchorPoint.position.copy(position)
+        anchorPoint.visible = false
+        return anchorPoint
     }
 
-    private addGUI() {
-        const gui = new GUI()
-        gui.add(this.birdPathLine, "visible").name("飞行轨迹")
-    }
+
+
 
 
     protected init() {
@@ -305,9 +359,20 @@ export default class ThreeProject extends ThreeCore {
 
         this.water.material.uniforms.time.value += 1 / 60
 
-        // 鸟飞行路径
-        if (this.bird) {
-            this.birdUpdate()
+
+
+        const loopTime = this.loopTime
+
+        const time = Date.now()
+        const per = (time % loopTime) / loopTime // 计算当前时间进度百分比
+
+        if(this.bird){
+            const position = this.birdPath.getPointAt(per)
+            this.bird!.position.copy(position)
+
+            const tangent = this.birdPath.getTangentAt(per)
+            const lookAtVec = tangent.add(position) // 位置向量和切线向量相加即为所需朝向的点向量
+            this.bird!.lookAt(lookAtVec)
         }
 
     }

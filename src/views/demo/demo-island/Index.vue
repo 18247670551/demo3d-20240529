@@ -6,7 +6,6 @@
 import {onMounted, ref} from "vue"
 import * as THREE from 'three'
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
-import {RGBELoader} from "three/examples/jsm/loaders/RGBELoader"
 import {Water} from "three/examples/jsm/objects/Water2"
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader"
@@ -18,6 +17,7 @@ const threeDomRef = ref<HTMLDivElement | null>(null)
 onMounted(() => {
   init()
 })
+
 
 function init() {
   const dom = threeDomRef.value!
@@ -45,6 +45,18 @@ function init() {
     logarithmicDepthBuffer: true, // 对数深度缓存
   })
 
+  window.addEventListener("resize", () => {
+    const width = dom.clientWidth
+    const height = dom.clientHeight
+
+    camera.aspect = width / height
+    camera.updateProjectionMatrix()
+
+    // 更新renderer
+    renderer.setSize(width, height)
+    renderer.setPixelRatio(window.devicePixelRatio)
+  }, false)
+
   renderer.setSize(dom.clientWidth, dom.clientHeight)
   renderer.setPixelRatio(window.devicePixelRatio)
   dom.appendChild(renderer.domElement)
@@ -62,8 +74,6 @@ function init() {
     normalMap0: textureLoader.load("/demo/island/Water_1_M_Normal.jpg"),
     normalMap1: textureLoader.load("/demo/island/Water_2_M_Normal.jpg"),
   })
-  // 水平面抬高3米淹没石头
-  water.position.y = 3
   // 水面旋转至水平
   water.rotation.x = -Math.PI / 2
   scene.add(water)
@@ -100,7 +110,7 @@ function init() {
   loader.setDRACOLoader(dracoLoader)
   loader.load("/demo/island/island2.glb", (gltf) => {
     const isLand = gltf.scene
-    // isLand.position.y = -50
+    isLand.position.y = -3
     scene.add(isLand)
   })
 

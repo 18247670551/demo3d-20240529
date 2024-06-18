@@ -4,8 +4,8 @@ import {GUI} from "dat.gui"
 import Room from "@/three-widget/my/Room"
 import Truck from "@/three-widget/my/Truck"
 import TruckBodyWash from "@/three-widget/my/TruckBodyWash"
-import {TruckBottomWash} from "@/three-widget/my/TruckBottomWash"
-import {WashGun} from "@/three-widget/my/WashGun"
+import TruckBottomWash from "@/three-widget/my/TruckBottomWash"
+import WashGun from "@/three-widget/my/WashGun"
 import ThreeCore from "@/three-widget/ThreeCore"
 
 

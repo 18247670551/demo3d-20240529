@@ -131,11 +131,6 @@ npm run dev
 ![preview](public/demo/__case-cover/earthmoon.png)
 
 #
-#### 示例: 地月2
-![preview](public/demo/__case-cover/earthmoon2.png)
-
-
-#
 #### 示例: 飞机
 ##### 本人编写, 参照网络案例原模型, 以对象方式重写, 纯代码
 ![preview](public/demo/__case-cover/plane.png)
@@ -368,7 +363,11 @@ npm run dev
 ![preview](public/demo/__case-cover/scene1.png)
 
 #
-#### 示例: 圆椎圆柱做简单的logo
+#### 示例: 简单场景2--过山车, 可调整轨道
+![preview](public/demo/__case-cover/scene2.png)
+
+#
+#### 示例: 简单的logo
 ![preview](public/demo/__case-cover/logo.png)
 
 #
