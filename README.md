@@ -364,7 +364,7 @@ npm run dev
 ![preview](public/demo/__case-cover/shader-wave.png)
 
 #
-#### 示例: 简单场景1--草地 公路
+#### 示例: 简单场景1--轨迹车辆, 镜头跟随
 ![preview](public/demo/__case-cover/scene1.png)
 
 #

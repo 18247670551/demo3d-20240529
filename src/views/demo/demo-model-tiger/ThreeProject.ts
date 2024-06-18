@@ -10,7 +10,7 @@ export default class ThreeProject extends ThreeCore {
     private readonly orbit: OrbitControls
     private readonly mixers: THREE.AnimationMixer[] = []
     private readonly animations: Record<string, THREE.AnimationAction> = {}
-    private guiObj = {
+    private readonly guiObj = {
         "跑": false,
     }
 

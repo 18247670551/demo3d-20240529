@@ -6,7 +6,8 @@ export default abstract class ThreeCore {
 
     protected readonly dom: HTMLElement
     protected readonly scene: THREE.Scene
-    protected readonly camera: THREE.PerspectiveCamera | THREE.OrthographicCamera
+    protected camera: THREE.PerspectiveCamera | THREE.OrthographicCamera
+    protected readonly defaultCamera: THREE.PerspectiveCamera | THREE.OrthographicCamera
     protected readonly renderer: THREE.WebGLRenderer
 
     protected readonly clock: THREE.Clock
@@ -31,7 +32,7 @@ export default abstract class ThreeCore {
         const k = dom.clientWidth / dom.clientHeight
 
         if ("fov" in options.cameraOptions) {
-            this.camera = new THREE.PerspectiveCamera(
+            this.defaultCamera = new THREE.PerspectiveCamera(
                 options.cameraOptions.fov,
                 k,
                 options.cameraOptions.near,
@@ -39,7 +40,7 @@ export default abstract class ThreeCore {
             )
         } else {
             const s = options.cameraOptions.s
-            this.camera = new THREE.OrthographicCamera(
+            this.defaultCamera = new THREE.OrthographicCamera(
                 -s * k,
                 s * k,
                 s,
@@ -49,6 +50,7 @@ export default abstract class ThreeCore {
             )
         }
 
+        this.camera = this.defaultCamera
         this.scene.add(this.camera)
 
         const rendererOptions = {
@@ -162,9 +164,7 @@ export default abstract class ThreeCore {
 
         this.onDestroy()
 
-        // 取消动画
         this.renderer.setAnimationLoop(null)
-
         this.renderer.renderLists.dispose()
         this.renderer.dispose()
         this.renderer.forceContextLoss()

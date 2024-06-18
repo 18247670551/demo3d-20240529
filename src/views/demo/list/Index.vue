@@ -437,7 +437,7 @@
           <div class="image">
             <img src="/demo/__case-cover/scene1.png" alt="简单场景1"/>
           </div>
-          <div class="title">简单场景1--草地 公路</div>
+          <div class="title">简单场景1--轨迹车辆, 镜头跟随</div>
         </div>
 
         <div class="item" @click="toDemo('示例-圆椎圆柱做简单的logo')">

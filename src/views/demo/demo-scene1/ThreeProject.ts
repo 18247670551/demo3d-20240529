@@ -5,14 +5,19 @@ import grassPic from "./texture/grass.jpg"
 import treePic from "./texture/tree.png"
 import roadPic from "./texture/road.jpg"
 import {Sky} from "three/examples/jsm/objects/Sky"
-import Truck from "@/three-widget/my/Truck"
+import {GUI} from "dat.gui"
 
 
 export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
+    private readonly guiObj = {
+        carPathLine: true,
+        carCamera: false,
+    }
 
-    private car: Truck
+    private car: THREE.Mesh
+    private carCamera: THREE.PerspectiveCamera
 
     private carPath: THREE.CatmullRomCurve3
     private carPathLine: THREE.Line
@@ -29,7 +34,7 @@ export default class ThreeProject extends ThreeCore {
             }
         })
 
-        this.camera.position.set(0, 100, 300)
+        this.camera.position.set(0, 80, 260)
         this.scene.background = new THREE.Color(0x000000)
 
         const ambientLight = new THREE.AmbientLight(0xffffff, 1)
@@ -54,8 +59,8 @@ export default class ThreeProject extends ThreeCore {
         // this.scene.add(axes)
 
 
-        const worldWidth = 1000
-        const worldHeight = 1000
+        const worldWidth = 600
+        const worldHeight = 600
         const grassColor = 0xc0ea3b
         const roadWidth = 10
 
@@ -155,43 +160,6 @@ export default class ThreeProject extends ThreeCore {
         tree.position.set(-10, 0, -10)
         this.scene.add(tree)
 
-        // 创建五环
-        const cycleGeo = new THREE.TorusGeometry(10, 1, 10, 32)
-        const cycleMat1 = new THREE.MeshLambertMaterial({color: 0x0885c2})
-        const cycleMat2 = new THREE.MeshLambertMaterial({color: 0xfbb132})
-        const cycleMat3 = new THREE.MeshLambertMaterial({color: 0x000000})
-        const cycleMat4 = new THREE.MeshLambertMaterial({color: 0x1c8b3c})
-        const cycleMat5 = new THREE.MeshLambertMaterial({color: 0xed334e})
-
-        const cycle1 = new THREE.Mesh(cycleGeo, cycleMat1)
-        const cycle2 = new THREE.Mesh(cycleGeo, cycleMat2)
-        const cycle3 = new THREE.Mesh(cycleGeo, cycleMat3)
-        const cycle4 = new THREE.Mesh(cycleGeo, cycleMat4)
-        const cycle5 = new THREE.Mesh(cycleGeo, cycleMat5)
-
-
-        // 以第三个为中间, 向两边延展
-        cycle1.position.set(-25, 0, 0)
-        cycle2.position.set(-12.5, -10, -0.5)
-        cycle3.position.set(0, 0, 0)
-        cycle4.position.set(12.5, -10, 0.5)
-        cycle5.position.set(25, 0, 0)
-
-
-        const cycles = new THREE.Group()
-        cycles.add(
-            cycle1,
-            cycle2,
-            cycle3,
-            cycle4,
-            cycle5,
-        )
-        cycles.scale.set(0.1, 0.1, 0.1)
-        cycles.position.y = 5
-
-        this.scene.add(cycles)
-
-
         // 下面路径加了实体化预览, 加了标志点, 按颜色调试路径更方便
         const pathPointPositions = [
             new THREE.Vector3(0, 0.1, -100), // 红
@@ -249,12 +217,70 @@ export default class ThreeProject extends ThreeCore {
         carPathLine.add(pathPoints)
 
 
-        const car = new Truck("车")
-        car.scale.set(0.002, 0.002, 0.002)
+        const car = new THREE.Mesh(
+            new THREE.BoxGeometry(8, 12, 40),
+            [
+                new THREE.MeshLambertMaterial({color: "#00ff00"}),
+                new THREE.MeshLambertMaterial({color: "#00ff00"}),
+
+                new THREE.MeshLambertMaterial({color: "#ff0000"}),
+                new THREE.MeshLambertMaterial({color: "#ff0000"}),
+
+                new THREE.MeshLambertMaterial({color: "#ffff00"}),
+                new THREE.MeshLambertMaterial({color: "#0000ff"}),
+            ]
+        )
+        // 给车加个五环车标, 创建五环
+        const cycleGeo = new THREE.TorusGeometry(10, 1, 10, 32)
+        const cycleMat1 = new THREE.MeshLambertMaterial({color: 0x0885c2})
+        const cycleMat2 = new THREE.MeshLambertMaterial({color: 0xfbb132})
+        const cycleMat3 = new THREE.MeshLambertMaterial({color: 0x000000})
+        const cycleMat4 = new THREE.MeshLambertMaterial({color: 0x1c8b3c})
+        const cycleMat5 = new THREE.MeshLambertMaterial({color: 0xed334e})
+
+        const cycle1 = new THREE.Mesh(cycleGeo, cycleMat1)
+        const cycle2 = new THREE.Mesh(cycleGeo, cycleMat2)
+        const cycle3 = new THREE.Mesh(cycleGeo, cycleMat3)
+        const cycle4 = new THREE.Mesh(cycleGeo, cycleMat4)
+        const cycle5 = new THREE.Mesh(cycleGeo, cycleMat5)
+
+        // 以第三个为中间, 向两边延展
+        cycle1.position.set(-25, 0, 0)
+        cycle2.position.set(-12.5, -10, -0.5)
+        cycle3.position.set(0, 0, 0)
+        cycle4.position.set(12.5, -10, 0.5)
+        cycle5.position.set(25, 0, 0)
+
+
+        const cycles = new THREE.Group()
+        cycles.add(
+            cycle1,
+            cycle2,
+            cycle3,
+            cycle4,
+            cycle5,
+        )
+        cycles.scale.set(0.1, 0.1, 0.1)
+        cycles.position.y = 4
+        cycles.position.z = 20.2
+
+        car.add(cycles)
+
         car.position.copy(carPath.getPointAt(0))
         this.scene.add(car)
         this.car = car
 
+        const carCamera = new THREE.PerspectiveCamera(
+            (this.options.cameraOptions as PerspectiveCameraOptions).fov,
+            this.dom.clientWidth / this.dom.clientHeight,
+            this.options.cameraOptions.near,
+            this.options.cameraOptions.far)
+        const carCameraHelper = new THREE.CameraHelper(carCamera)
+        this.scene.add(carCamera)
+        this.carCamera = carCamera
+        this.scene.add(carCameraHelper)
+
+        this.addGUI()
     }
 
 
@@ -266,6 +292,25 @@ export default class ThreeProject extends ThreeCore {
 
             this.car!.position.set(current.x, current.y, current.z)
 
+            // const mtx = new THREE.Matrix4()
+            // mtx.lookAt(target, this.car!.position, this.car!.up)
+            // // THREE.Euler 参数值跟模型默认朝向有关, 如果出现模型倒跑侧跑, 调整XYZ轴顺序,
+            // // 模型默认朝向Z轴正方向的, 不需要 mtx.multiply() 这步旋转角度
+            // // 其它情况, 会导致出现倒着跑或侧着跑的现象,
+            // // 尝试调整旋转角度, 模型默认朝向X轴正方向的, 参数为 new THREE.Euler(0, -Math.PI / 2, 0, 'XYZ')
+            // // 建议做模型时, 让模型默认朝向为Z轴正方向
+            // //mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(0, 0, 0, 'ZYX')))
+            // // Quaternion 四元数在threejs中用于表示rotation（旋转）
+            // const rotation = new THREE.Quaternion().setFromRotationMatrix(mtx)
+            // this.car!.quaternion.slerp(rotation, 1)
+            //
+            //
+            // mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(-Math.PI / 10, Math.PI, 0, 'ZYX')))
+            // const rotation1 = new THREE.Quaternion().setFromRotationMatrix(mtx)
+            // this.carCamera.position.set(this.car.position.x, this.car.position.y + 20, this.car.position.z)
+            // this.carCamera.quaternion.slerp(rotation1, 1)
+
+
             const mtx = new THREE.Matrix4()
             mtx.lookAt(target, this.car!.position, this.car!.up)
             // THREE.Euler 参数值跟模型默认朝向有关, 如果出现模型倒跑侧跑, 调整XYZ轴顺序,
@@ -273,10 +318,19 @@ export default class ThreeProject extends ThreeCore {
             // 其它情况, 会导致出现倒着跑或侧着跑的现象,
             // 尝试调整旋转角度, 模型默认朝向X轴正方向的, 参数为 new THREE.Euler(0, -Math.PI / 2, 0, 'XYZ')
             // 建议做模型时, 让模型默认朝向为Z轴正方向
-            mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(0, -Math.PI / 2, 0, 'ZYX')))
+            //mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(0, 0, 0, 'ZYX')))
             // Quaternion 四元数在threejs中用于表示rotation（旋转）
             const rotation = new THREE.Quaternion().setFromRotationMatrix(mtx)
-            this.car!.quaternion.slerp(rotation, 0.2)
+            this.car!.quaternion.slerp(rotation, 1)
+
+
+            mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(-Math.PI / 8, Math.PI, 0, 'ZYX')))
+            const rotation1 = new THREE.Quaternion().setFromRotationMatrix(mtx)
+            const carDirection = new THREE.Vector3()
+            this.car!.getWorldDirection(carDirection)
+            this.carCamera.position.set(this.car.position.x, this.car.position.y + 20, this.car.position.z)
+            this.carCamera.quaternion.slerp(rotation1, 1)
+
 
             this.progress += this.carVelocity
         } else {
@@ -284,6 +338,19 @@ export default class ThreeProject extends ThreeCore {
         }
     }
 
+    private addGUI() {
+        const gui = new GUI()
+
+        gui.add(this.guiObj, "carPathLine").name("显示路径").onChange(value => this.carPathLine.visible = value)
+
+        gui.add(this.guiObj, "carCamera").name("切换相机").onChange(value => {
+            if (value) {
+                this.camera = this.carCamera
+            } else {
+                this.camera = this.defaultCamera
+            }
+        })
+    }
 
     protected init() {
     }
