@@ -218,7 +218,7 @@ export default class ThreeProject extends ThreeCore {
 
 
         const car = new THREE.Mesh(
-            new THREE.BoxGeometry(8, 12, 40),
+            new THREE.BoxGeometry(8, 12, 30),
             [
                 new THREE.MeshLambertMaterial({color: "#00ff00"}),
                 new THREE.MeshLambertMaterial({color: "#00ff00"}),
@@ -262,7 +262,7 @@ export default class ThreeProject extends ThreeCore {
         )
         cycles.scale.set(0.1, 0.1, 0.1)
         cycles.position.y = 4
-        cycles.position.z = 20.2
+        cycles.position.z = 15.2
 
         car.add(cycles)
 
@@ -324,11 +324,11 @@ export default class ThreeProject extends ThreeCore {
             this.car!.quaternion.slerp(rotation, 1)
 
 
-            mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(-Math.PI / 8, Math.PI, 0, 'ZYX')))
+            mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(-Math.PI / 15, Math.PI, 0, 'ZYX')))
             const rotation1 = new THREE.Quaternion().setFromRotationMatrix(mtx)
             const carDirection = new THREE.Vector3()
             this.car!.getWorldDirection(carDirection)
-            this.carCamera.position.set(this.car.position.x, this.car.position.y + 20, this.car.position.z)
+            this.carCamera.position.set(this.car.position.x, this.car.position.y + 15, this.car.position.z)
             this.carCamera.quaternion.slerp(rotation1, 1)
 
 
