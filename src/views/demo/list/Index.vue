@@ -433,12 +433,28 @@
           <div class="title">波动--shader</div>
         </div>
 
+
+
+
+
         <div class="item" @click="toDemo('示例-简单场景1')">
           <div class="image">
             <img src="/demo/__case-cover/scene1.png" alt="简单场景1"/>
           </div>
           <div class="title">简单场景1--轨迹车辆, 镜头跟随</div>
         </div>
+
+        <div class="item" @click="toDemo('示例-简单场景2')">
+          <div class="image">
+            <img src="/demo/__case-cover/scene2.png" alt="简单场景2"/>
+          </div>
+          <div class="title">简单场景2--可编辑轨迹过山车</div>
+        </div>
+
+
+
+
+
 
         <div class="item" @click="toDemo('示例-圆椎圆柱做简单的logo')">
           <div class="image">

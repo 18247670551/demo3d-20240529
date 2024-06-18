@@ -30,8 +30,6 @@ export default class ThreeProject extends ThreeCore {
 
         this.camera.position.set(0, 50, 100)
 
-        this.renderer.shadowMap.enabled = true
-
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
 
         const axes = new THREE.AxesHelper(10)
