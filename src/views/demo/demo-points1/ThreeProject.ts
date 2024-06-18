@@ -7,7 +7,6 @@ export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
 
-
     private readonly points: THREE.Points
     private readonly pointCount = 3000
     private readonly range = 160
@@ -23,9 +22,9 @@ export default class ThreeProject extends ThreeCore {
             }
         })
 
-        this.scene.background = new THREE.Color(0x333333)
+        this.scene.background = new THREE.Color(0x000000)
 
-        this.camera.position.set(0, 0, 100)
+        this.camera.position.set(0, 20, 100)
 
         const ambientLight = new THREE.AmbientLight(0xffffff, 4)
         this.scene.add(ambientLight)
@@ -35,8 +34,8 @@ export default class ThreeProject extends ThreeCore {
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
         this.orbit.target.y = 40
 
-        const axes = new THREE.AxesHelper(20)
-        this.scene.add(axes)
+        // const axes = new THREE.AxesHelper(20)
+        // this.scene.add(axes)
 
 
         this.points = this.addAndGerPoints()
@@ -51,11 +50,10 @@ export default class ThreeProject extends ThreeCore {
         this.rainAnimation()
     }
 
-    private rainAnimation () {
+    private rainAnimation() {
 
         const positions = this.points.geometry.attributes.position.array
 
-        // 更新粒子位置
         for (let i = 0; i < this.pointCount; i++) {
             if (positions[i * 3 + 1] < 0) {
                 positions[i * 3 + 1] = Math.random() * this.range * 1.5
@@ -67,9 +65,10 @@ export default class ThreeProject extends ThreeCore {
     }
 
     private addAndGerPoints() {
+
         const textureLoader = new THREE.TextureLoader()
         const loadTexture = textureLoader.load("/demo/points1/rain.png")
-        // 创建几何体
+
         const geom = new THREE.BufferGeometry()
 
         const properties = {

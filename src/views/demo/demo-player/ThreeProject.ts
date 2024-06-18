@@ -100,7 +100,6 @@ export default class ThreeProject extends ThreeCore {
 
 
         // 创建人物胶囊
-
         const player = new THREE.Mesh(
             new THREE.CapsuleGeometry(0.35, 1, 32),
             new THREE.MeshStandardMaterial({color: 0xffff00})

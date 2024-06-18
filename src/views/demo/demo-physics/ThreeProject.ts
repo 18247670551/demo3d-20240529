@@ -9,15 +9,18 @@ export default class ThreeProject extends ThreeCore {
     private delta = 0
 
     private readonly orbit: OrbitControls
+
     private readonly world: CANNON.World
-    private readonly cubWorldMat: CANNON.Material
+    // 重力9.8, 向下, 与y轴方向相反, 负值
+    private readonly gravity = {x: 0, y: -9.8, z: 0}
+
     private readonly cubes: {
         mesh: THREE.Mesh, // 渲染
         body: CANNON.Body // 物理
-    }[]
+    }[] = []
 
 
-    private hideSound = new Audio("/demo/physics/jida.wav")
+    private hitSound = new Audio("/demo/physics/hit.wav")
 
     constructor(dom: HTMLElement) {
 
@@ -31,20 +34,27 @@ export default class ThreeProject extends ThreeCore {
 
         this.scene.background = new THREE.Color(0x000000)
 
-        this.camera.position.set(5, 5, 18)
+        this.camera.position.set(5, 10, 20)
 
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.2)
         this.scene.add(ambientLight)
 
-        // 环境光
-        const light = new THREE.DirectionalLight(0xffffff, 0.5)
-        light.castShadow = true
-        this.scene.add(light)
+        const light1 = new THREE.DirectionalLight(0xffffff, 0.3)
+        light1.position.set(20, 30, -30)
+        light1.castShadow = true
+        this.scene.add(light1)
+
+        const light2 = new THREE.DirectionalLight(0xffffff, 1)
+        light2.position.set(20, 30, 30)
+        light2.castShadow = true
+        this.scene.add(light2)
+
+
 
         this.renderer.shadowMap.enabled = true
 
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
-        this.orbit.target.y = -2
+        this.orbit.target.y = 4
 
         const axes = new THREE.AxesHelper(5)
         this.scene.add(axes)
@@ -52,28 +62,19 @@ export default class ThreeProject extends ThreeCore {
         // 创建物理世界
         const world = new CANNON.World()
         this.world = world
-        // 重力9.8, 向下, 与y轴方向相反, 负值
-        world.gravity.set(0, -9.8, 0)
 
-        this.cubes = []
+        world.gravity.set(this.gravity.x, this.gravity.y, this.gravity.z)
 
-        const cubWorldMat = new CANNON.Material("cube")
-        this.cubWorldMat = cubWorldMat
-
-        window.addEventListener('click', () => {
-            this.createCube()
-        })
-
+        // 地面
         const floor = new THREE.Mesh(
             new THREE.PlaneGeometry(20, 20),
             new THREE.MeshStandardMaterial({side: THREE.DoubleSide})
         )
-        floor.position.set(0, -5, 0)
         floor.rotation.x = -Math.PI / 2
         floor.receiveShadow = true
         this.scene.add(floor)
 
-        // 创建物理地面
+        // 地面对应的物理地面
         const floorShape = new CANNON.Plane()
         const floorBody = new CANNON.Body()
         const floorWorldMat = new CANNON.Material("floor")
@@ -88,10 +89,12 @@ export default class ThreeProject extends ThreeCore {
         world.addBody(floorBody)
 
 
+        const cubWorldMat = new CANNON.Material("cube")
+
         // 设置2种材质碰撞的参数
         const defaultContactMaterial = new CANNON.ContactMaterial(cubWorldMat, floorWorldMat, {
-            friction: 0.1, // 摩擦力
-            restitution: 0.7 // 弹性
+            friction: 0.2, // 摩擦力
+            restitution: 0.6 // 弹性
         })
 
         // 将材料的关联设置添加到物理世界
@@ -100,13 +103,19 @@ export default class ThreeProject extends ThreeCore {
         // 设置世界碰撞的默认材料
         world.defaultContactMaterial = defaultContactMaterial
 
+
+        window.addEventListener('click', () => {
+            this.createCube(cubWorldMat)
+        })
+
     }
 
-    private createCube() {
+    private createCube(material: CANNON.Material) {
         const cubeGeo = new THREE.BoxGeometry(1, 1, 1)
         const cubeMat = new THREE.MeshStandardMaterial()
         const cube = new THREE.Mesh(cubeGeo, cubeMat)
         cube.castShadow = true
+        cube.receiveShadow = true
 
         this.scene.add(cube)
 
@@ -115,8 +124,12 @@ export default class ThreeProject extends ThreeCore {
             shape: cubeShape,
             position: new CANNON.Vec3(0, 0, 0),
             mass: 1, //物理质量
-            material: this.cubWorldMat
+            material: material
         })
+
+
+        cubeBody.position.y = 10
+
         cubeBody.applyForce(
             new CANNON.Vec3(1, 0, 0), // 施加力大小和方向
             new CANNON.Vec3(1, 0, 0), // 施加力的位置
@@ -137,14 +150,14 @@ export default class ThreeProject extends ThreeCore {
         const velocityAlongNormal = e.contact.getImpactVelocityAlongNormal()
         if (velocityAlongNormal > 2) {
             // 从0开始播放
-            this.hideSound.currentTime = 0
+            this.hitSound.currentTime = 0
             let volume = velocityAlongNormal / 20
             // 播放音量值0-1, 超过1会报错
             if(volume > 1){
                 volume = 1
             }
-            this.hideSound.volume = volume
-            this.hideSound.play()
+            this.hitSound.volume = volume
+            this.hitSound.play()
         }
     }
 
