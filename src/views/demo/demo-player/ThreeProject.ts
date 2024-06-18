@@ -100,6 +100,7 @@ export default class ThreeProject extends ThreeCore {
 
 
         // 创建人物胶囊
+
         const player = new THREE.Mesh(
             new THREE.CapsuleGeometry(0.35, 1, 32),
             new THREE.MeshStandardMaterial({color: 0xffff00})
@@ -107,6 +108,21 @@ export default class ThreeProject extends ThreeCore {
         player.castShadow = true
         player.receiveShadow = true
         player.position.set(0, 0.85, 0)
+
+        const head = new THREE.Mesh(
+            new THREE.SphereGeometry(0.25),
+            new THREE.MeshStandardMaterial({color: 0xeeeeee})
+        )
+        head.position.y = 1
+        const legs = new THREE.Mesh(
+            new THREE.BoxGeometry(1.8, 0.2, 0.2),
+            new THREE.MeshStandardMaterial({color: 0xeeeeee})
+        )
+        legs.position.y = 0.4
+
+        player.add(head)
+        player.add(legs)
+
         this.player = player
 
         // 将相机作为胶囊的子元素，就可以实现跟随
