@@ -69,10 +69,13 @@ import Wall from '@/views/demo/demo-wall/Index.vue'
 import Fire from '@/views/demo/demo-fire/Index.vue'
 import PlaneFire from '@/views/demo/demo-fire2/Index.vue'
 import ShaderWave from '@/views/demo/demo-shader-wave/Index.vue'
+import ShaderLightCylinder from '@/views/demo/demo-shader-light-cylinder/Index.vue'
 import Scene1 from '@/views/demo/demo-scene1/Index.vue'
 import Scene2 from '@/views/demo/demo-scene2/Index.vue'
 import Scene3 from '@/views/demo/demo-scene3/Index.vue'
 import TextureDoor from '@/views/demo/demo-texture-door/Index.vue'
+import AnimationDoor from '@/views/demo/demo-animation-door/Index.vue'
+import AnimationMagicCircle from '@/views/demo/demo-animation-magic-circle/Index.vue'
 import Logo from '@/views/demo/demo-logo/Index.vue'
 import ModelTiger from '@/views/demo/demo-model-tiger/Index.vue'
 import ModelFox from '@/views/demo/demo-model-fox/Index.vue'
@@ -109,6 +112,9 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-曲线动画', path: '/demo/demo-curve', component: Curve, meta: {title: "示例-曲线动画", isLogin: true}},
     {name: '示例-管道简例', path: '/demo/demo-pipe0', component: Pipe0, meta: {title: "示例-管道简例", isLogin: true}},
     {name: '示例-水面简例', path: '/demo/demo-water0', component: Water0, meta: {title: "示例-水面简例", isLogin: true}},
+
+
+
     {name: '示例-粒子简例0', path: '/demo/demo-points0', component: Points0, meta: {title: "示例-粒子简例0", isLogin: true}},
     {name: '示例-粒子简例1', path: '/demo/demo-points1', component: Points1, meta: {title: "示例-粒子简例1", isLogin: true}},
     {name: '示例-粒子简例2', path: '/demo/demo-points2', component: Points2, meta: {title: "示例-粒子简例2", isLogin: true}},
@@ -120,6 +126,9 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-粒子简例8', path: '/demo/demo-points8', component: Points8, meta: {title: "示例-粒子简例8", isLogin: true}},
     {name: '示例-粒子简例9', path: '/demo/demo-points9', component: Points9, meta: {title: "示例-粒子简例9", isLogin: true}},
     {name: '示例-粒子简例10', path: '/demo/demo-points10', component: Points10, meta: {title: "示例-粒子简例10", isLogin: true}},
+
+
+
     {name: '示例-3d文字', path: '/demo/demo-text3d', component: Text3D, meta: {title: "示例-3d文字", isLogin: true}},
     {name: '示例-风扇', path: '/demo/demo-fan', component: Fan, meta: {title: "示例-风扇", isLogin: true}},
     {name: '示例-f18', path: '/demo/demo-park', component: F18, meta: {title: "示例-f18", isLogin: true}},
@@ -139,11 +148,22 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-流光墙', path: '/demo/demo-wall', component: Wall, meta: {title: "示例-流光墙", isLogin: true}},
     {name: '示例-火焰', path: '/demo/demo-fire', component: Fire, meta: {title: "示例-火焰", isLogin: true}},
     {name: '示例-平面火焰', path: '/demo/demo-fire2', component: PlaneFire, meta: {title: "示例-平面火焰", isLogin: true}},
-    {name: '示例-shader-wave', path: '/demo/demo-shader-wave', component: ShaderWave, meta: {title: "示例-shader-wave", isLogin: true}},
+
+
+    {name: '示例-shader-波动', path: '/demo/demo-shader-wave', component: ShaderWave, meta: {title: "示例-shader-波动", isLogin: true}},
+    {name: '示例-shader-光环柱', path: '/demo/demo-shader-light-cylinder', component: ShaderLightCylinder, meta: {title: "示例-shader-光环柱", isLogin: true}},
+
+
     {name: '示例-简单场景1', path: '/demo/demo-scene1', component: Scene1, meta: {title: "示例-简单场景1", isLogin: true}},
     {name: '示例-简单场景2', path: '/demo/demo-scene2', component: Scene2, meta: {title: "示例-简单场景2", isLogin: true}},
     {name: '示例-简单场景3', path: '/demo/demo-scene3', component: Scene3, meta: {title: "示例-简单场景3", isLogin: true}},
+
     {name: '示例-材质示例1', path: '/demo/demo-texture-door', component: TextureDoor, meta: {title: "示例-材质示例1", isLogin: true}},
+
+    {name: '示例-动画1', path: '/demo/demo-animation-door', component: AnimationDoor, meta: {title: "示例-动画1", isLogin: true}},
+    {name: '示例-动画2', path: '/demo/demo-animation-magic-circle', component: AnimationMagicCircle, meta: {title: "示例-动画2", isLogin: true}},
+
+
     {name: '示例-简单的logo', path: '/demo/demo-logo', component: Logo, meta: {title: "示例-简单的logo", isLogin: true}},
     {name: '示例-模型-老虎', path: '/demo/demo-model-tiger', component: ModelTiger, meta: {title: "示例-模型-老虎", isLogin: true}},
     {name: '示例-模型-狐狸', path: '/demo/demo-model-fox', component: ModelFox, meta: {title: "示例-模型-狐狸", isLogin: true}},

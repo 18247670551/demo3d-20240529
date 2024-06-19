@@ -419,14 +419,19 @@
           <div class="title">平面火焰--shader</div>
         </div>
 
-        <div class="item" @click="toDemo('示例-shader-wave')">
+        <div class="item" @click="toDemo('示例-shader-波动')">
           <div class="image">
             <img src="/demo/__case-cover/shader-wave.png" alt="波动--shader"/>
           </div>
           <div class="title">波动--shader</div>
         </div>
 
-
+        <div class="item" @click="toDemo('示例-shader-光环柱')">
+          <div class="image">
+            <img src="/demo/__case-cover/shader-light-cylinder.png" alt="shader-光环柱"/>
+          </div>
+          <div class="title">光环柱--shader</div>
+        </div>
 
 
 
@@ -456,6 +461,23 @@
             <img src="/demo/__case-cover/texture-door.png" alt="材质示例1"/>
           </div>
           <div class="title">材质示例--门</div>
+        </div>
+
+
+
+
+        <div class="item" @click="toDemo('示例-动画1')">
+          <div class="image">
+            <img src="/demo/__case-cover/animation-door.png" alt="动画1--门"/>
+          </div>
+          <div class="title">示例-动画1--门</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-动画2')">
+          <div class="image">
+            <img src="/demo/__case-cover/animation-magic-circle.gif" alt="动画2--魔法阵"/>
+          </div>
+          <div class="title">示例-动画2--魔法阵</div>
         </div>
 
 

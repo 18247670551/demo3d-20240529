@@ -375,11 +375,21 @@ npm run dev
 #### 示例: 简单场景3--房子, 有开门动画
 ![preview](public/demo/__case-cover/scene3.png)
 
+
+
 #
 #### 示例: 材质示例1
 ![preview](public/demo/__case-cover/texture-door.png)
 
+#
+#### 示例: 示例-动画1--门
+![preview](public/demo/__case-cover/animation-door.png)
 
+#
+#### 示例: 示例-动画2--魔法阵
+#### 来源网络 csdn 作者 ~在水一方
+#### https://blog.csdn.net/qq_40147088/article/details/128418022
+![preview](public/demo/__case-cover/animation-magic-circle.gif)
 
 
 
