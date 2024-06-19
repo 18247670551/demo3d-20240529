@@ -444,6 +444,20 @@
           <div class="title">简单场景2--可编辑轨迹过山车</div>
         </div>
 
+        <div class="item" @click="toDemo('示例-简单场景3')">
+          <div class="image">
+            <img src="/demo/__case-cover/scene3.png" alt="简单场景3"/>
+          </div>
+          <div class="title">简单场景3--房子-带开门动画</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-材质示例1')">
+          <div class="image">
+            <img src="/demo/__case-cover/texture-door.png" alt="材质示例1"/>
+          </div>
+          <div class="title">材质示例--门</div>
+        </div>
+
 
 
 

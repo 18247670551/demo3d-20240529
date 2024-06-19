@@ -23,7 +23,6 @@ import Waterfall from '@/views/demo/demo-waterfall/Index.vue'
 import HeartBalloon from '@/views/demo/demo-heart-balloon/Index.vue'
 import Csmart from '@/views/demo/demo-csmart/Index.vue'
 import EarthMoon from '@/views/demo/demo-earthmoon/Index.vue'
-import EarthMoon2 from '@/views/demo/demo-earthmoon/Index.vue'
 import ShangHai from '@/views/demo/demo-shanghai/Index.vue'
 import ShangHai2 from '@/views/demo/demo-shanghai2/Index.vue'
 import Firefly from '@/views/demo/demo-firefly/Index.vue'
@@ -72,6 +71,8 @@ import PlaneFire from '@/views/demo/demo-fire2/Index.vue'
 import ShaderWave from '@/views/demo/demo-shader-wave/Index.vue'
 import Scene1 from '@/views/demo/demo-scene1/Index.vue'
 import Scene2 from '@/views/demo/demo-scene2/Index.vue'
+import Scene3 from '@/views/demo/demo-scene3/Index.vue'
+import TextureDoor from '@/views/demo/demo-texture-door/Index.vue'
 import Logo from '@/views/demo/demo-logo/Index.vue'
 import ModelTiger from '@/views/demo/demo-model-tiger/Index.vue'
 import ModelFox from '@/views/demo/demo-model-fox/Index.vue'
@@ -141,6 +142,8 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-shader-wave', path: '/demo/demo-shader-wave', component: ShaderWave, meta: {title: "示例-shader-wave", isLogin: true}},
     {name: '示例-简单场景1', path: '/demo/demo-scene1', component: Scene1, meta: {title: "示例-简单场景1", isLogin: true}},
     {name: '示例-简单场景2', path: '/demo/demo-scene2', component: Scene2, meta: {title: "示例-简单场景2", isLogin: true}},
+    {name: '示例-简单场景3', path: '/demo/demo-scene3', component: Scene3, meta: {title: "示例-简单场景3", isLogin: true}},
+    {name: '示例-材质示例1', path: '/demo/demo-texture-door', component: TextureDoor, meta: {title: "示例-材质示例1", isLogin: true}},
     {name: '示例-简单的logo', path: '/demo/demo-logo', component: Logo, meta: {title: "示例-简单的logo", isLogin: true}},
     {name: '示例-模型-老虎', path: '/demo/demo-model-tiger', component: ModelTiger, meta: {title: "示例-模型-老虎", isLogin: true}},
     {name: '示例-模型-狐狸', path: '/demo/demo-model-fox', component: ModelFox, meta: {title: "示例-模型-狐狸", isLogin: true}},

@@ -358,6 +358,11 @@ npm run dev
 #### 示例: 原始着色器--波动
 ![preview](public/demo/__case-cover/shader-wave.png)
 
+
+
+
+
+
 #
 #### 示例: 简单场景1--轨迹车辆, 镜头跟随
 ![preview](public/demo/__case-cover/scene1.png)
@@ -365,6 +370,19 @@ npm run dev
 #
 #### 示例: 简单场景2--过山车, 可调整轨道
 ![preview](public/demo/__case-cover/scene2.png)
+
+#
+#### 示例: 简单场景3--房子, 有开门动画
+![preview](public/demo/__case-cover/scene3.png)
+
+#
+#### 示例: 材质示例1
+![preview](public/demo/__case-cover/texture-door.png)
+
+
+
+
+
 
 #
 #### 示例: 简单的logo

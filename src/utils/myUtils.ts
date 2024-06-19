@@ -1,39 +1,39 @@
 import {repeat} from "lodash"
+import * as THREE from "three";
 
 /**
- * 二的n次幂
- * @param n
+ * 用 THREE.Vector3[] 生成有圆角连接的折线, 圆角采集贝塞尔曲线
+ * @param v3s
  */
-function 二的n次幂(n: number){
-    return 1 << n
+export const createCurvePoints = (v3s: THREE.Vector3[]) => {
+
+    if (v3s.length <= 2) {
+        return v3s
+    }
+    const points: THREE.Vector3[] = []
+
+    for (let i = 0; i < v3s.length - 2; i++) {
+        const line1 = new THREE.LineCurve3(v3s[i], v3s[i + 1])
+        const line2 = new THREE.LineCurve3(v3s[i + 1], v3s[i + 2])
+
+        let line1Points: THREE.Vector3[]
+        if (i == 0) {
+            line1Points = line1.getPoints(100).slice(0, 80)
+        } else {
+            line1Points = line1.getPoints(100).slice(20)
+        }
+        const line2Points = line2.getPoints(100).slice(20)
+
+        const curve1 = new THREE.QuadraticBezierCurve3(line1Points[79], v3s[1], line2Points[0])
+        const curve1Points = curve1.getPoints(100)
+
+        points.push(...line1Points, ...curve1Points, ...line2Points)
+    }
+
+    return points
+
 }
 
-/**
- * 0/1 取反, 只需异或1
- * @param value
- */
-export function toggle(value: number){
-    return value ^= 1
-}
-
-/**
- * 5星打分
- * console.log(rate(3)) // "★★★☆☆☆"
- */
-// export const rate = (start: number) => {
-//     const starts = "★★★★★☆☆☆☆☆"
-//     return starts.slice(5-start, 10 - start)
-// }
-
-
-/**
- * 任意星打分
- * console.log(rate(3, 10)) // "★★★☆☆☆☆☆☆☆"
- */
-const rate = (star: number, totalStar: number = 5) =>{
-    const stars = repeat("★", totalStar) + repeat("☆", totalStar)
-    return stars.slice(totalStar-star, totalStar*2 - star)
-}
 
 export const getAllNodeKeyByTree = (tree: any[], keyName: string, keys: string[] = []) => {
     for (let item of tree) {
@@ -49,11 +49,11 @@ export const getAllNodeKeyByTree = (tree: any[], keyName: string, keys: string[]
     return keys
 }
 
-export const timeOut = (fn:Function,time:number) => {
-    let timer=setTimeout(()=>{
+export const timeOut = (fn: Function, time: number) => {
+    let timer = setTimeout(() => {
         fn()
         clearTimeout(timer)
-    },time)
+    }, time)
 }
 
 export const sleep = (time: number) => {
@@ -118,7 +118,6 @@ export const printf = (template: string, value?: string, regex: RegExp = /%s/g, 
 }
 
 
-
 /**
  * 生成随机字符串
  * @param len 生成个数
@@ -179,4 +178,38 @@ export const positionArrayToPath = (position_arr: { x: number; y: number }[]) =>
     }
 
     return path_str
+}
+
+
+/**
+ * 二的n次幂
+ * @param n
+ */
+function 二的n次幂(n: number) {
+    return 1 << n
+}
+
+/**
+ * 0/1 取反, 只需异或1
+ * @param value
+ */
+export function toggle(value: number) {
+    return value ^= 1
+}
+
+
+// 5星打分
+// export const rate = (start: number) => {
+//     const starts = "★★★★★☆☆☆☆☆"
+//     return starts.slice(5-start, 10 - start)
+// }
+
+
+/**
+ * 任意星打分
+ * console.log(rate(3, 10)) // "★★★☆☆☆☆☆☆☆"
+ */
+const rate = (star: number, totalStar: number = 5) => {
+    const stars = repeat("★", totalStar) + repeat("☆", totalStar)
+    return stars.slice(totalStar - star, totalStar * 2 - star)
 }

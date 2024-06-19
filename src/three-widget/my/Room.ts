@@ -319,9 +319,6 @@ export default class Room extends MyGroup<RoomOptions> {
                 duration: 3,
                 ease: "none",
                 paused: true,
-                onUpdate: () => {
-
-                },
                 onStart: () => {
                     door.working = true
                 },

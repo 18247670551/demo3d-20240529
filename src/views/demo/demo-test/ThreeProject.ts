@@ -1,6 +1,7 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
+import {createCurvePoints} from "@/utils/myUtils"
 
 
 export default class ThreeProject extends ThreeCore {
@@ -44,22 +45,11 @@ export default class ThreeProject extends ThreeCore {
 
         const v3s = [
             new THREE.Vector3(0, 0, 0),
-            new THREE.Vector3(20, 10, 30),
-            new THREE.Vector3(10, 4, 20),
+            new THREE.Vector3(0, 0, 30),
         ]
 
-        const line1 = new THREE.LineCurve3(v3s[0], v3s[1])
-        const line2 = new THREE.LineCurve3(v3s[1], v3s[2])
-
-        const line1Points = line1.getPoints(100).slice(0, 80)
-        const line2Points = line2.getPoints(100).slice(20)
-
-        const curve1 = new THREE.QuadraticBezierCurve3(line1Points[79], v3s[1], line2Points[0])
-
-        const curve1Points = curve1.getPoints(100)
-
         const geometry = new THREE.BufferGeometry()
-        geometry.setFromPoints([...line1Points, ...curve1Points, ...line2Points])
+        geometry.setFromPoints(createCurvePoints(v3s))
 
         const line = new THREE.Line(
             geometry,
@@ -67,6 +57,13 @@ export default class ThreeProject extends ThreeCore {
         )
 
         this.scene.add(line)
+
+    }
+
+    
+    private createLine(startV3: THREE.Vector3, endV3: THREE.Vector3){
+
+
 
     }
 
