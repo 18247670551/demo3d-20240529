@@ -7,7 +7,7 @@ import {Lensflare, LensflareElement} from "three/examples/jsm/objects/Lensflare"
 import {Sky} from "three/examples/jsm/objects/Sky"
 import vertexShader from "./shader/rainbow/vertexShader.glsl"
 import fragmentShader from "./shader/rainbow/fragmentShader.glsl"
-import {GUI} from "dat.gui";
+import {GUI} from "dat.gui"
 import {TransformControls} from "three/examples/jsm/controls/TransformControls"
 
 

@@ -6,7 +6,7 @@ export default abstract class ThreeCore {
 
     protected readonly dom: HTMLElement
     protected readonly scene: THREE.Scene
-    protected camera: THREE.PerspectiveCamera | THREE.OrthographicCamera
+    protected readonly camera: THREE.PerspectiveCamera | THREE.OrthographicCamera
     protected readonly defaultCamera: THREE.PerspectiveCamera | THREE.OrthographicCamera
     protected readonly renderer: THREE.WebGLRenderer
 
@@ -98,10 +98,11 @@ export default abstract class ThreeCore {
         }, 2000)
     }
 
+    // 子类必须覆写
     protected abstract init(): void
-
+    // 提供给子类覆写
     protected onRenderer() {}
-
+    // 提供给子类覆写
     protected onDestroy() {}
 
 

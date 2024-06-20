@@ -3,7 +3,7 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import grassPic from "@/views/demo/demo-scene3/texture/grass.jpg"
 import House from "@/views/demo/demo-scene3/House"
-import {GUI} from "dat.gui";
+import {GUI} from "dat.gui"
 
 
 export default class ThreeProject extends ThreeCore {
@@ -101,7 +101,8 @@ export default class ThreeProject extends ThreeCore {
 
         const mesh = new THREE.Mesh(
             new THREE.CircleGeometry(100, 64),
-            new THREE.MeshLambertMaterial({color: 0x00ff00, side: THREE.DoubleSide, map: texture}))
+            new THREE.MeshLambertMaterial({color: 0x00ff00, side: THREE.DoubleSide, map: texture})
+        )
 
         mesh.rotateX(-Math.PI / 2)
         // 地面略向下移动一点, 防止与地面物体接触面闪烁

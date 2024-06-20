@@ -10,22 +10,24 @@ export default class ThreeProject extends ThreeCore {
     private readonly analyser = this.audioCtx.createAnalyser()
     private readonly source = this.audioCtx.createBufferSource()
 
-    private readonly STEP = 50
+    private readonly STEP = 10
     private readonly CUBE_NUM = Math.ceil(1024 / this.STEP)
-    private readonly cubes :THREE.Group
+    private readonly cubes: THREE.Group
 
     constructor(dom: HTMLElement) {
 
         super(dom, {
+
+            // 注意相机参数, 传的 s, 不是 fov , 使用的是正交相机, 透视相机的近大远小在此场景不合适
             cameraOptions: {
-                fov: 45,
+                s: 500,
                 near: 0.1,
                 far: 10000
             }
         })
 
-        this.camera.position.set(0, 300, 400)
-        //this.scene.background = new THREE.Color(0x000000)
+        this.camera.position.set(0, 0, 800)
+        this.scene.background = new THREE.Color(0x000000)
 
         // const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
         // this.scene.add(ambientLight)
@@ -46,11 +48,9 @@ export default class ThreeProject extends ThreeCore {
 
         for (let i = 0; i < this.CUBE_NUM; i++) {
             const geometry = new THREE.BoxGeometry(10, 10, 10)
-            const material = new THREE.MeshPhongMaterial({color: "#52d3fa"})
+            const material = new THREE.MeshBasicMaterial({color: "#52d3fa"})
             const cube = new THREE.Mesh(geometry, material)
             cube.translateX((10 + 10) * i)
-            cube.translateY(1)
-
             cubes.add(cube)
         }
         cubes.translateX(-(10 + 10) * this.CUBE_NUM / 2)
@@ -58,8 +58,7 @@ export default class ThreeProject extends ThreeCore {
         this.scene.add(cubes)
         this.cubes = cubes
 
-
-        fetch('/static/music/一路生花.mp3')
+        fetch('/static/music/喀什葛尔胡杨.mp3')
             .then(function (response) {
                 if (!response.ok) {
                     throw new Error("HTTP error, status = " + response.status)
@@ -77,11 +76,6 @@ export default class ThreeProject extends ThreeCore {
                 this.source.start(0)
             })
 
-
-        // setTimeout(() => {
-        //     this.play()
-        // }, 5000)
-
     }
 
     protected init() {
@@ -94,25 +88,27 @@ export default class ThreeProject extends ThreeCore {
         const {STEP, cubes} = this
 
         const frequencyData = new Uint8Array(this.analyser.frequencyBinCount)
-
+        this.analyser.getByteFrequencyData(frequencyData)
         const averageFrequencyData = []
 
-        for (let i = 0; i< frequencyData.length; i += STEP) {
+        for (let i = 0; i < frequencyData.length; i += STEP) {
             let sum = 0;
-            for(let j = i; j < i + STEP; j++) {
+            for (let j = i; j < i + STEP; j++) {
                 sum += frequencyData[j]
             }
             averageFrequencyData.push(sum / STEP)
         }
 
-        this.analyser.getByteFrequencyData(frequencyData)
-
         for (let i = 0; i < averageFrequencyData.length; i++) {
-            cubes.children[i].scale.y = Math.floor(averageFrequencyData[i] * 0.4)
+            cubes.children[i].scale.y = Math.floor(averageFrequencyData[i] * 0.3)
         }
 
-        //this.scene.rotateX(0.005)
+    }
 
+    protected onDestroy() {
+        this.analyser.disconnect()
+        this.source.disconnect()
+        this.audioCtx.close()
     }
 
 }

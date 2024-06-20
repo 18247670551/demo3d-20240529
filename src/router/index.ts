@@ -73,6 +73,7 @@ import ShaderLightCylinder from '@/views/demo/demo-shader-light-cylinder/Index.v
 import Scene1 from '@/views/demo/demo-scene1/Index.vue'
 import Scene2 from '@/views/demo/demo-scene2/Index.vue'
 import Scene3 from '@/views/demo/demo-scene3/Index.vue'
+import SceneHauntedHouse from '@/views/demo/demo-scene4/Index.vue'
 import TextureDoor from '@/views/demo/demo-texture-door/Index.vue'
 import AnimationDoor from '@/views/demo/demo-animation-door/Index.vue'
 import AnimationMagicCircle from '@/views/demo/demo-animation-magic-circle/Index.vue'
@@ -162,6 +163,7 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-简单场景1', path: '/demo/demo-scene1', component: Scene1, meta: {title: "示例-简单场景1", isLogin: true}},
     {name: '示例-简单场景2', path: '/demo/demo-scene2', component: Scene2, meta: {title: "示例-简单场景2", isLogin: true}},
     {name: '示例-简单场景3', path: '/demo/demo-scene3', component: Scene3, meta: {title: "示例-简单场景3", isLogin: true}},
+    {name: '示例-简单场景4', path: '/demo/demo-scene4', component: SceneHauntedHouse, meta: {title: "示例-简单场景4", isLogin: true}},
 
     {name: '示例-材质示例1', path: '/demo/demo-texture-door', component: TextureDoor, meta: {title: "示例-材质示例1", isLogin: true}},
 

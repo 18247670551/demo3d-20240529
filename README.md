@@ -375,6 +375,12 @@ npm run dev
 #### 示例: 简单场景3--房子, 有开门动画
 ![preview](public/demo/__case-cover/scene3.png)
 
+#
+#### 示例: 简单场景4--鬼屋
+#### 来源: csdn 作者 sayid760
+#### https://blog.csdn.net/qq_14993375/article/details/125240762
+![preview](public/demo/__case-cover/scene-haunted-house.png)
+
 
 
 #

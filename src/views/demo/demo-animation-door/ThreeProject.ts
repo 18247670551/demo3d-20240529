@@ -2,7 +2,7 @@ import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import * as BufferGeometryUtils from "three/examples/jsm/utils/BufferGeometryUtils"
-import {GUI} from "dat.gui";
+import {GUI} from "dat.gui"
 
 
 export default class ThreeProject extends ThreeCore {

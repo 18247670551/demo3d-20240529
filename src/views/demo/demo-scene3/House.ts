@@ -1,4 +1,5 @@
 import * as THREE from "three"
+import ground8Pic from "./texture/ground8.jpg"
 import wallPic from "./texture/wall.webp"
 import topPic from "./texture/top.jpg"
 import wood2Pic from "./texture/wood2.jpg"
@@ -37,7 +38,11 @@ export default class House extends THREE.Group {
         // 为保证整个房子尺寸是希望的尺寸, 地板长宽需要减2个(侧墙厚度一半)
         const floorGeo = new THREE.BoxGeometry(length - wallDepth, wallDepth, width)
         floorGeo.translate(0, wallDepth / 2, 0)
-        const floorMat = new THREE.MeshLambertMaterial({color: 0xcccccc})
+
+        const ground8Texture = this.textureLoader.load(ground8Pic)
+        ground8Texture.wrapS = ground8Texture.wrapT = THREE.RepeatWrapping
+        //ground8Texture.repeat.set(6, 1)
+        const floorMat = new THREE.MeshLambertMaterial({color: 0xcccccc, map: ground8Texture})
         const floor = new THREE.Mesh(floorGeo, floorMat)
         floor.name = "地板"
         this.add(floor)
@@ -122,7 +127,7 @@ export default class House extends THREE.Group {
 
 
         const topTexture = this.textureLoader.load(topPic)
-        topTexture.center.set(0.5, 0.5)
+        //topTexture.center.set(0.5, 0.5)
         topTexture.rotation = Math.PI/2
         topTexture.wrapS = topTexture.wrapT = THREE.RepeatWrapping
         topTexture.repeat.set(3, 2)

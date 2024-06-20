@@ -456,6 +456,17 @@
           <div class="title">简单场景3--房子-带开门动画</div>
         </div>
 
+        <div class="item" @click="toDemo('示例-简单场景4')">
+          <div class="image">
+            <img src="/demo/__case-cover/scene-haunted-house.png" alt="简单场景4"/>
+          </div>
+          <div class="title">简单场景4--鬼屋</div>
+        </div>
+
+
+
+
+
         <div class="item" @click="toDemo('示例-材质示例1')">
           <div class="image">
             <img src="/demo/__case-cover/texture-door.png" alt="材质示例1"/>

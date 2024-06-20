@@ -1,13 +1,13 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import door_alphaPic from "./texture/alpha.jpg"
-import door_ambientOcclusionPic from "./texture/ambientOcclusion.jpg"
-import door_colorPic from "./texture/color.jpg"
-import door_heightPic from "./texture/height.jpg"
-import door_metalnessPic from "./texture/metalness.jpg"
-import door_normalPic from "./texture/normal.jpg"
-import door_roughnessPic from "./texture/roughness.jpg"
+import door_alphaPic from "./texture/door/alpha.jpg"
+import door_ambientOcclusionPic from "./texture/door/ambientOcclusion.jpg"
+import door_colorPic from "./texture/door/color.jpg"
+import door_heightPic from "./texture/door/height.jpg"
+import door_metalnessPic from "./texture/door/metalness.jpg"
+import door_normalPic from "./texture/door/normal.jpg"
+import door_roughnessPic from "./texture/door/roughness.jpg"
 
 
 export default class ThreeProject extends ThreeCore {
