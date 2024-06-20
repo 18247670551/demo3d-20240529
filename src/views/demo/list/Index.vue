@@ -466,18 +466,32 @@
 
 
 
-        <div class="item" @click="toDemo('示例-动画1')">
+        <div class="item" @click="toDemo('示例-动画--门')">
           <div class="image">
-            <img src="/demo/__case-cover/animation-door.png" alt="动画1--门"/>
+            <img src="/demo/__case-cover/animation-door.png" alt="动画--门"/>
           </div>
-          <div class="title">示例-动画1--门</div>
+          <div class="title">动画--门</div>
         </div>
 
-        <div class="item" @click="toDemo('示例-动画2')">
+        <div class="item" @click="toDemo('示例-动画--魔法阵')">
           <div class="image">
-            <img src="/demo/__case-cover/animation-magic-circle.gif" alt="动画2--魔法阵"/>
+            <img src="/demo/__case-cover/animation-magic-circle.gif" alt="动画--魔法阵"/>
           </div>
-          <div class="title">示例-动画2--魔法阵</div>
+          <div class="title">动画--魔法阵</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-动画--时光机')">
+          <div class="image">
+            <img src="/demo/__case-cover/animation-time-machine.png" alt="动画--时光机"/>
+          </div>
+          <div class="title">动画--时光机</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-动画--音乐可视化')">
+          <div class="image">
+            <img src="/demo/__case-cover/animation-music-visualize.png" alt="动画--音乐可视化"/>
+          </div>
+          <div class="title">动画--音乐可视化</div>
         </div>
 
 
@@ -491,6 +505,9 @@
           </div>
           <div class="title">简单的logo</div>
         </div>
+
+
+
 
         <div class="item" @click="toDemo('示例-模型-老虎')">
           <div class="image">
@@ -512,6 +529,16 @@
           </div>
           <div class="title">模型--小米su7</div>
         </div>
+
+        <div class="item" @click="toDemo('示例-模型-爆炸效果')">
+          <div class="image">
+            <img src="/demo/__case-cover/model-bomb.png" alt="爆炸效果"/>
+          </div>
+          <div class="title">模型--爆炸效果</div>
+        </div>
+
+
+
 
         <div class="item" @click="toDemo('示例-射线选中物体')">
           <div class="image">

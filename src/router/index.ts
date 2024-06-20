@@ -76,9 +76,14 @@ import Scene3 from '@/views/demo/demo-scene3/Index.vue'
 import TextureDoor from '@/views/demo/demo-texture-door/Index.vue'
 import AnimationDoor from '@/views/demo/demo-animation-door/Index.vue'
 import AnimationMagicCircle from '@/views/demo/demo-animation-magic-circle/Index.vue'
+import AnimationTimeMachine from '@/views/demo/demo-animation-time-machine/Index.vue'
+import AnimationMusicVisualize from '@/views/demo/demo-animation-music-visualize/Index.vue'
 import Logo from '@/views/demo/demo-logo/Index.vue'
+
 import ModelTiger from '@/views/demo/demo-model-tiger/Index.vue'
 import ModelFox from '@/views/demo/demo-model-fox/Index.vue'
+import ModelBomb from '@/views/demo/demo-model-bomb/Index.vue'
+
 import ModelSu7 from '@/views/demo/demo-model-su7/Index.vue'
 import Raycaster from '@/views/demo/demo-raycaster/Index.vue'
 import War from '@/views/demo/demo-war/Index.vue'
@@ -160,14 +165,20 @@ const routes: RouteRecordRaw[] = [
 
     {name: '示例-材质示例1', path: '/demo/demo-texture-door', component: TextureDoor, meta: {title: "示例-材质示例1", isLogin: true}},
 
-    {name: '示例-动画1', path: '/demo/demo-animation-door', component: AnimationDoor, meta: {title: "示例-动画1", isLogin: true}},
-    {name: '示例-动画2', path: '/demo/demo-animation-magic-circle', component: AnimationMagicCircle, meta: {title: "示例-动画2", isLogin: true}},
+    {name: '示例-动画--门', path: '/demo/demo-animation-door', component: AnimationDoor, meta: {title: "示例-动画--门", isLogin: true}},
+    {name: '示例-动画--魔法阵', path: '/demo/demo-animation-magic-circle', component: AnimationMagicCircle, meta: {title: "示例-动画--魔法阵", isLogin: true}},
+    {name: '示例-动画--时光机', path: '/demo/demo-animation-time-machine', component: AnimationTimeMachine, meta: {title: "示例-动画--时光机", isLogin: true}},
+    {name: '示例-动画--音乐可视化', path: '/demo/demo-animation-music-visualize', component: AnimationMusicVisualize, meta: {title: "示例-动画--音乐可视化", isLogin: true}},
 
 
     {name: '示例-简单的logo', path: '/demo/demo-logo', component: Logo, meta: {title: "示例-简单的logo", isLogin: true}},
+
     {name: '示例-模型-老虎', path: '/demo/demo-model-tiger', component: ModelTiger, meta: {title: "示例-模型-老虎", isLogin: true}},
     {name: '示例-模型-狐狸', path: '/demo/demo-model-fox', component: ModelFox, meta: {title: "示例-模型-狐狸", isLogin: true}},
     {name: '示例-模型-小米su7', path: '/demo/demo-model-su7', component: ModelSu7, meta: {title: "示例-模型-小米su7", isLogin: true}},
+    {name: '示例-模型-爆炸效果', path: '/demo/demo-model-bomb', component: ModelBomb, meta: {title: "示例-模型-爆炸效果", isLogin: true}},
+
+
     {name: '示例-射线选中物体', path: '/demo/demo-raycaster', component: Raycaster, meta: {title: "示例-射线选中物体", isLogin: true}},
     {name: '示例-俄乌战争', path: '/demo/demo-war', component: War, meta: {title: "示例-俄乌战争", isLogin: true}},
     {name: '示例-canvas1', path: '/demo/demo-canvas1', component: Canvas1, meta: {title: "示例-canvas1", isLogin: true}},

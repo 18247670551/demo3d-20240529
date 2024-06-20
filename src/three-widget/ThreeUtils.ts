@@ -2,8 +2,18 @@ import * as THREE from "three"
 import {Water as Water2} from "three/examples/jsm/objects/Water2"
 import {acceleratedRaycast, computeBoundsTree, disposeBoundsTree} from "three-mesh-bvh"
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js'
-import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
-import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
+
+
+// 获取两个模型的世界矩阵, 通过invert获取逆矩阵, 通过矩阵相乘获取一个模型相对另一个模型的相对矩阵
+export function getReleaseMatrix(model1: THREE.Mesh, model2: THREE.Mesh) {
+    model1.updateMatrixWorld()
+    model2.updateMatrixWorld()
+    // 计算物料相对于夹爪的变换矩阵
+    const materialMatrix = new THREE.Matrix4().copy(model2.matrixWorld)
+    materialMatrix.premultiply(model1.matrixWorld.clone().invert())
+    return materialMatrix
+}
 
 export function mergeGroup(cargo: THREE.Group): THREE.Mesh | null {
     const geometries: THREE.BufferGeometry[] = []

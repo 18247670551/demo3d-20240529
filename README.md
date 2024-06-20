@@ -382,14 +382,26 @@ npm run dev
 ![preview](public/demo/__case-cover/texture-door.png)
 
 #
-#### 示例: 示例-动画1--门
+#### 示例: 动画--门
 ![preview](public/demo/__case-cover/animation-door.png)
 
 #
-#### 示例: 示例-动画2--魔法阵
-#### 来源网络 csdn 作者 ~在水一方
+#### 示例: 动画--魔法阵
+#### 来源: csdn 作者 ~在水一方
 #### https://blog.csdn.net/qq_40147088/article/details/128418022
 ![preview](public/demo/__case-cover/animation-magic-circle.gif)
+
+#
+#### 示例: 动画--时光机
+#### 来源: 稀土掘金 作者 zxg_神说要有光
+#### https://juejin.cn/post/7258319655285178428
+![preview](public/demo/__case-cover/animation-time-machine.png)
+
+#
+#### 示例: 动画--音乐可视化
+#### 来源: 稀土掘金 作者 zxg_神说要有光
+#### https://mp.weixin.qq.com/s?__biz=Mzg3OTYzMDkzMg==&mid=2247486665&idx=1&sn=6dee71f9b99c49c89590174a24a8a96e&chksm=cf00c3f2f8774ae46dcbc886fded5c36a835730d2c0813975864c3a9faa1748c106886733e53&token=475014312&lang=zh_CN#rd
+![preview](public/demo/__case-cover/animation-music-visualize.png)
 
 
 

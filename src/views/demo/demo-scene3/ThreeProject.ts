@@ -3,11 +3,15 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import grassPic from "@/views/demo/demo-scene3/texture/grass.jpg"
 import House from "@/views/demo/demo-scene3/House"
+import {GUI} from "dat.gui";
 
 
 export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
+    private readonly house: House
+
+
     private loopTime = 10 * 1000 // loopTime: 循环一圈的时间
 
     constructor(dom: HTMLElement) {
@@ -47,6 +51,7 @@ export default class ThreeProject extends ThreeCore {
         this.addGround()
 
         const house = new House()
+        this.house = house
 
         this.scene.add(house)
 
@@ -60,7 +65,7 @@ export default class ThreeProject extends ThreeCore {
 
                 raycaster.setFromCamera(mousePoint, this.camera)
 
-                const intersects = raycaster.intersectObjects([house.door], true)
+                const intersects = raycaster.intersectObject(house.door, true)
                 if (!intersects.length) return
                 // 射线只检测了一个房门, 如果点中房门, intersects[0]必然是 house.door, 这里关闭ts检测
                 // @ts-ignore
@@ -68,6 +73,24 @@ export default class ThreeProject extends ThreeCore {
             },
             false
         )
+
+        this.addGUI()
+
+    }
+
+    private addGUI(){
+
+        const guiParams = {
+            "开门": () => this.house.door.open(),
+            "关门": () => this.house.door.toggle(),
+            "鼠标点击门也可以控制": () => this.house.door.toggle(),
+        }
+
+        const gui = new GUI()
+
+        gui.add(guiParams, "开门")
+        gui.add(guiParams, "关门")
+        gui.add(guiParams, "鼠标点击门也可以控制")
 
     }
 

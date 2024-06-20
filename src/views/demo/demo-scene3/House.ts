@@ -125,7 +125,7 @@ export default class House extends THREE.Group {
         topTexture.center.set(0.5, 0.5)
         topTexture.rotation = Math.PI/2
         topTexture.wrapS = topTexture.wrapT = THREE.RepeatWrapping
-        topTexture.repeat.set(5, 2)
+        topTexture.repeat.set(3, 2)
         const topMat = new THREE.MeshLambertMaterial({color: "#fa7e58", map: topTexture})
 
         // 左侧房顶
