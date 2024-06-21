@@ -36,27 +36,45 @@ export default class ThreeProject extends ThreeCore {
         this.scene.add(axesHelper)
 
 
-        const box1 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshBasicMaterial({color: this.defaultMeshColor}))
+
+
+        const ambientLight = new THREE.AmbientLight(0xffffff, 1)
+        this.scene.add(ambientLight)
+
+        const light = new THREE.DirectionalLight(0xffffff, 1)
+        light.position.set(50, 100, -300)
+        light.castShadow = true
+        this.scene.add(light)
+
+        const shadowLight = new THREE.DirectionalLight(0xffffff, 4)
+        shadowLight.position.set(50, 100, 300)
+        shadowLight.castShadow = true
+        this.scene.add(shadowLight)
+
+
+
+
+        const box1 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshStandardMaterial({color: this.defaultMeshColor}))
         box1.name = "盒1"
         box1.position.x = -50
 
-        const box2 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshBasicMaterial({color: this.defaultMeshColor}))
+        const box2 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshStandardMaterial({color: this.defaultMeshColor}))
         box2.name = "盒2"
         box2.position.x = box1.position.x + 20
 
-        const box3 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshBasicMaterial({color: this.defaultMeshColor}))
+        const box3 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshStandardMaterial({color: this.defaultMeshColor}))
         box3.name = "盒3"
         box3.position.x = box1.position.x + 40
 
-        const box4 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshBasicMaterial({color: this.defaultMeshColor}))
+        const box4 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshStandardMaterial({color: this.defaultMeshColor}))
         box4.name = "盒4"
         box4.position.x = box1.position.x + 60
 
-        const box5 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshBasicMaterial({color: this.defaultMeshColor}))
+        const box5 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshStandardMaterial({color: this.defaultMeshColor}))
         box5.name = "盒5"
         box5.position.x = box1.position.x + 80
 
-        const box6 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshBasicMaterial({color: this.defaultMeshColor}))
+        const box6 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshStandardMaterial({color: this.defaultMeshColor}))
         box6.name = "盒6"
         box6.position.x = box1.position.x + 100
 

@@ -50,7 +50,7 @@ export default class ThreeProject extends ThreeCore {
 
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
         this.orbit.autoRotate = true
-        this.orbit.target.y = 7
+        this.orbit.target.y = 4
 
         // const axesHelper = new THREE.AxesHelper(20)
         // this.scene.add(axesHelper)

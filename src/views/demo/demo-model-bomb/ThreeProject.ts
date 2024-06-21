@@ -82,7 +82,7 @@ export default class ThreeProject extends ThreeCore {
             obj.receiveShadow = true
             this.scene.add(obj)
 
-            obj.children[0].children.reverse().forEach((child: any) => {
+            obj.traverse((child: any) => {
                 if (child.isMesh) {
                     child.receiveShadow = true
                 }

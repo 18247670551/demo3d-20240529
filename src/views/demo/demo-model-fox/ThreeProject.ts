@@ -53,7 +53,7 @@ export default class ThreeProject extends ThreeCore {
 
         // 添加狐狸模型
         const gltfLoader = new GLTFLoader()
-        gltfLoader.load('/demo/scence1/Fox.glb', gltf => {
+        gltfLoader.load('/demo/model-box/Fox.glb', gltf => {
             gltf.scene.traverse((child: any) => {
                 if (child.isMesh) {
                     child.castShadow = true

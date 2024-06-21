@@ -34,7 +34,7 @@ export default class BonusParticles extends THREE.Group {
 
         const explosionSpeed = .5
 
-        this.children.reverse().forEach(item => {
+        this.traverse(item => {
             const tx = -50 + Math.random() * 100
             const ty = -50 + Math.random() * 100
             const tz = -50 + Math.random() * 100

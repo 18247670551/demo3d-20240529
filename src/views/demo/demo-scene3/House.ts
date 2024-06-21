@@ -181,7 +181,7 @@ export default class House extends THREE.Group {
         this.add(this.door)
 
 
-        this.children.reverse().forEach(item => {
+        this.traverse(item => {
             item.castShadow = true
             item.receiveShadow = true
         })

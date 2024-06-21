@@ -2,6 +2,12 @@ import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
+import face1Pic from "/public/demo/geometry-buffer/face1.png"
+import face2Pic from "/public/demo/geometry-buffer/face2.png"
+import face3Pic from "/public/demo/geometry-buffer/face3.png"
+import face4Pic from "/public/demo/geometry-buffer/face4.png"
+import face5Pic from "/public/demo/geometry-buffer/face5.png"
+import face6Pic from "/public/demo/geometry-buffer/face6.png"
 
 
 export default class ThreeProject extends ThreeCore {
@@ -44,81 +50,121 @@ export default class ThreeProject extends ThreeCore {
         this.scene.add(axesHelper)
 
 
-        // 用 BufferGeometry 自己写一个 BoxGeometry
-        // 长度100, 为方便坐标定位, 使用半长度
-        const size = 50
-
-        const data: { position: number[], normal: number[], uv: number[] }[] = []
-
-        data.push({position: [size, size, size], normal: [0, 1, 0], uv: [0, 0]})
-        data.push({position: [size, size, -size], normal: [0, 1, 0], uv: [1, 0]})
-        data.push({position: [-size, size, -size], normal: [0, 1, 0], uv: [1, 1]})
-        data.push({position: [-size, size, size], normal: [0, 1, 0], uv: [0, 1]})
-        data.push({position: [size, -size, size], normal: [0, 1, 0], uv: [0, 0]})
-        data.push({position: [size, -size, -size], normal: [0, 1, 0], uv: [1, 0]})
-        data.push({position: [-size, -size, -size], normal: [0, 1, 0], uv: [1, 1]})
-        data.push({position: [-size, -size, size], normal: [0, 1, 0], uv: [0, 1]})
-
+        // 用 BufferGeometry 自己写一个 长宽高都为100 的 BoxGeometry
         const bufferGeometry = new THREE.BufferGeometry()
 
-        const positions: number[] = []
-        const normals: number[] = []
-        const uvs: number[] = []
-        data.forEach(item => {
-            positions.push(item.position[0], item.position[1], item.position[2])
-            normals.push(item.normal[0], item.normal[1], item.normal[2])
-            uvs.push(item.uv[0], item.uv[1])
-        })
+        const positions: number[] = [
+            50, 50, 50,
+            50, 50, -50,
+            50, -50, 50,
+            50, -50, -50,
+            -50, 50, -50,
+            -50, 50, 50,
+            -50, -50, -50,
+            -50, -50, 50,
+            -50, 50, -50,
+            50, 50, -50,
+            -50, 50, 50,
+            50, 50, 50,
+            -50, -50, 50,
+            50, -50, 50,
+            -50, -50, -50,
+            50, -50, -50,
+            -50, 50, 50,
+            50, 50, 50,
+            -50, -50, 50,
+            50, -50, 50,
+            50, 50, -50,
+            -50, 50, -50,
+            50, -50, -50,
+            -50, -50, -50
+        ]
+        const normals: number[] = [
+            1, 0, 0,
+            1, 0, 0,
+            1, 0, 0,
+            1, 0, 0,
+            -1, 0, 0,
+            -1, 0, 0,
+            -1, 0, 0,
+            -1, 0, 0,
+            0, 1, 0,
+            0, 1, 0,
+            0, 1, 0,
+            0, 1, 0,
+            0, -1, 0,
+            0, -1, 0,
+            0, -1, 0,
+            0, -1, 0,
+            0, 0, 1,
+            0, 0, 1,
+            0, 0, 1,
+            0, 0, 1,
+            0, 0, -1,
+            0, 0, -1,
+            0, 0, -1,
+            0, 0, -1
+        ]
+        const uvs: number[] = [
+            0, 1,
+            1, 1,
+            0, 0,
+            1, 0,
+            0, 1,
+            1, 1,
+            0, 0,
+            1, 0,
+            0, 1,
+            1, 1,
+            0, 0,
+            1, 0,
+            0, 1,
+            1, 1,
+            0, 0,
+            1, 0,
+            0, 1,
+            1, 1,
+            0, 0,
+            1, 0,
+            0, 1,
+            1, 1,
+            0, 0,
+            1, 0
+        ]
+        const indexs = [
+            0, 2, 1,
+            2, 3, 1,
+            4, 6, 5,
+            6, 7, 5,
+            8, 10, 9,
+            10, 11, 9,
+            12, 14, 13,
+            14, 15, 13,
+            16, 18, 17,
+            18, 19, 17,
+            20, 22, 21,
+            22, 23, 21
+        ]
+
 
         bufferGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3))
+        bufferGeometry.index = new THREE.BufferAttribute(new Uint16Array(indexs), 1)
         bufferGeometry.setAttribute("normal", new THREE.BufferAttribute(new Float32Array(normals), 3))
         bufferGeometry.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(uvs), 2))
 
+        const face1Texture = getTextureLoader().load(face1Pic)
+        const face2Texture = getTextureLoader().load(face2Pic)
+        const face3Texture = getTextureLoader().load(face3Pic)
+        const face4Texture = getTextureLoader().load(face4Pic)
+        const face5Texture = getTextureLoader().load(face5Pic)
+        const face6Texture = getTextureLoader().load(face6Pic)
 
-        // 索引
-        const indexs = [
-            0, 4, 5,
-            0, 5, 1,
-
-            1, 5, 6,
-            1, 6, 2,
-
-            2, 6, 7,
-            2, 7, 3,
-
-            3, 7, 4,
-            3, 4, 0,
-
-            // 0, 2, 3,
-            // 0, 1, 2,
-            1, 2, 3,
-            1, 3, 0,
-
-            4, 7, 6,
-            4, 6, 5
-        ]
-        bufferGeometry.index = new THREE.BufferAttribute(new Uint16Array(indexs), 1)
-
-        // 材质
-        const face1Texture = getTextureLoader().load("/demo/geometry-buffer/face1.png")
-        const face2Texture = getTextureLoader().load("/demo/geometry-buffer/face2.png")
-        const face3Texture = getTextureLoader().load("/demo/geometry-buffer/face3.png")
-        const face4Texture = getTextureLoader().load("/demo/geometry-buffer/face4.png")
-        const face5Texture = getTextureLoader().load("/demo/geometry-buffer/face5.png")
-        const face6Texture = getTextureLoader().load("/demo/geometry-buffer/face6.png")
-
-        const faceMat1 = new THREE.MeshStandardMaterial({map: face1Texture, color: 0xfff000})
-        const faceMat2 = new THREE.MeshStandardMaterial({map: face2Texture, color: 0x00ff00})
-        const faceMat3 = new THREE.MeshStandardMaterial({map: face3Texture, color: 0x453453})
-        const faceMat4 = new THREE.MeshStandardMaterial({map: face4Texture, color: 0x00ffff})
-        const faceMat5 = new THREE.MeshStandardMaterial({map: face5Texture, color: 0x0000ff})
-        const faceMat6 = new THREE.MeshStandardMaterial({map: face6Texture, transparent: true, opacity: 0.8})
-        // const faceMat1 = new THREE.MeshBasicMaterial({map: face1Texture})
-        // const faceMat2 = new THREE.MeshBasicMaterial({map: face2Texture})
-        // const faceMat3 = new THREE.MeshBasicMaterial({map: face3Texture})
-        // const faceMat4 = new THREE.MeshBasicMaterial({map: face4Texture})
-        // const faceMat5 = new THREE.MeshBasicMaterial({map: face5Texture})
-        // const faceMat6 = new THREE.MeshBasicMaterial({map: face6Texture})
+        const faceMat1 = new THREE.MeshStandardMaterial({map: face1Texture, color: "#ff0000"})
+        const faceMat2 = new THREE.MeshStandardMaterial({map: face2Texture, color: "#00ff00"})
+        const faceMat3 = new THREE.MeshStandardMaterial({map: face3Texture, color: "#ffffff"})
+        const faceMat4 = new THREE.MeshStandardMaterial({map: face4Texture, color: "#ffff00"})
+        const faceMat5 = new THREE.MeshStandardMaterial({map: face5Texture, color: "#00ffff"})
+        const faceMat6 = new THREE.MeshStandardMaterial({map: face6Texture, color: "#ff00ff"})
 
         // 索引(面)与材质关联
         let groups = []
@@ -131,14 +177,8 @@ export default class ThreeProject extends ThreeCore {
 
         bufferGeometry.groups = groups
 
-        //bufferGeometry.computeVertexNormals()
-
-        //const box = new THREE.Mesh(bufferGeometry, faceMat1)
-
-        // 本例是网上抄来的, 这里有问题, 只有顶面和底面的贴图能贴上, 侧面四个面四个顶点的uv坐标两两重合, 也就是贴图面积为0, 贴不上图
-        const box = new THREE.Mesh(bufferGeometry, [faceMat1, faceMat2, faceMat3, faceMat4, faceMat5, faceMat6])
-        this.scene.add(box)
-
+        const bufferMesh = new THREE.Mesh(bufferGeometry, [faceMat1, faceMat2, faceMat3, faceMat4, faceMat5, faceMat6])
+        this.scene.add(bufferMesh)
 
 
         // 转换模型为线框, 观察自定义三角形情况
@@ -149,12 +189,20 @@ export default class ThreeProject extends ThreeCore {
         this.scene.add(boxLines)
 
 
-
         // mesh模型也可以直接以线框架模式显示, 不需要像上面创建线框, 显示线框的时候是不显示面材质的
-        const yellowWireframeMat = new THREE.MeshBasicMaterial({color: "yellow", wireframe:true})
+        const yellowWireframeMat = new THREE.MeshBasicMaterial({color: "yellow", wireframe: true})
         const boxWireframe = new THREE.Mesh(bufferGeometry, yellowWireframeMat)
         boxWireframe.position.x = -150
         this.scene.add(boxWireframe)
+
+
+        // 可以把系统自带的 THREE.BoxGeometry 显示出来, 并打印 与 自己写的做对比
+        // const boxGeo = new THREE.BoxGeometry(100, 100, 100)
+        // const boxMat = new THREE.MeshBasicMaterial({color: "red", wireframe: true})
+        // const box = new THREE.Mesh(boxGeo, boxMat)
+        // box.position.x = -150
+        // box.position.z = 150
+        // this.scene.add(box)
 
     }
 

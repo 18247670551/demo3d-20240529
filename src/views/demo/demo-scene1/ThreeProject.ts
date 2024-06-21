@@ -2,28 +2,32 @@ import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import grassPic from "./texture/grass.jpg"
-import treePic from "./texture/tree.png"
+
 import roadPic from "./texture/road.jpg"
 import {Sky} from "three/examples/jsm/objects/Sky"
 import {GUI} from "dat.gui"
-import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
+import {getGltfLoader, getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
+
+
     private readonly guiObj = {
-        carPathLine: true,
-        carCamera: false,
+        curveLine: true,
+        carCameraFlow: false,
+        orbitFlow: false
     }
 
-    private car: THREE.Mesh
+
     private carCamera: THREE.PerspectiveCamera
 
-    private carPath: THREE.CatmullRomCurve3
-    private carPathLine: THREE.Line
-    private carVelocity = 0.001
-    private progress = 0
+    private car: THREE.Group | null = null
+    private loopTime = 10 * 1000 // loopTime: 循环一圈的时间
+
+    private curve: THREE.CatmullRomCurve3
+    private curveLine: THREE.Line
 
     constructor(dom: HTMLElement) {
 
@@ -125,192 +129,143 @@ export default class ThreeProject extends ThreeCore {
         this.scene.environment = pmremGenerator.fromScene(this.scene).texture
 
 
-        // 添加树
-        const treeMaterial = new THREE.MeshPhysicalMaterial({
-            map: new THREE.TextureLoader().load(treePic),
-            transparent: true,
-            side: THREE.DoubleSide,
-            metalness: .2,
-            roughness: .8,
-            depthTest: true,
-            depthWrite: false,
-            fog: false,
-            reflectivity: 0.1,
-        })
-
-        const treeCustomDepthMaterial = new THREE.MeshDepthMaterial({
-            depthPacking: THREE.RGBADepthPacking,
-            map: new THREE.TextureLoader().load(treePic),
-            alphaTest: 0.5
-        })
-
-        const treeGeo = new THREE.PlaneGeometry(2, 4)
-        treeGeo.translate(0, 2, 0)
-        const treePlan1 = new THREE.Mesh(treeGeo)
-        treePlan1.material = treeMaterial
-        treePlan1.customDepthMaterial = treeCustomDepthMaterial
-        const treePlan2 = treePlan1.clone()
-        treePlan2.rotation.y += Math.PI / 4
-        const treePlan3 = treePlan2.clone()
-        treePlan3.rotation.y += Math.PI / 4
-        const treePlan4 = treePlan3.clone()
-        treePlan4.rotation.y += Math.PI / 4
-
-        const tree = new THREE.Group()
-        tree.add(treePlan1, treePlan2, treePlan3, treePlan4)
-        tree.position.set(-10, 0, -10)
-        this.scene.add(tree)
-
-        // 下面路径加了实体化预览, 加了标志点, 按颜色调试路径更方便
-        const pathPointPositions = [
-            new THREE.Vector3(0, 0.1, -100), // 红
-            new THREE.Vector3(100, 0.1, -150), // 绿
-            new THREE.Vector3(150, 0.1, 0), // 蓝
-            new THREE.Vector3(0, 0.1, 60), // 黄
-            new THREE.Vector3(-150, 0.1, 40), // 棕
-            new THREE.Vector3(-200, 0.1, -50), // 粉
+        // 下面路径加了实体化预览, 加了锚点, 按颜色调试路径更方便
+        const anchorParams = [
+            {color: "#ff0000", position: new THREE.Vector3(0, 0.1, -100)},
+            {color: "#00ff00", position: new THREE.Vector3(100, 0.1, -150)},
+            {color: "#0000ff", position: new THREE.Vector3(150, 0.1, 0)},
+            {color: "#ffff00", position: new THREE.Vector3(0, 0.1, 60)},
+            {color: "#00ffff", position: new THREE.Vector3(-150, 0.1, 40)},
+            {color: "#ff00ff", position: new THREE.Vector3(-200, 0.1, -50)},
         ]
 
         // 路径
-        const carPath = new THREE.CatmullRomCurve3(pathPointPositions, true,)
-        this.carPath = carPath
+        const curve = new THREE.CatmullRomCurve3(anchorParams.map(param => param.position), true)
+        this.curve = curve
 
         // 路径实体化预览
-        const carPathGeo = new THREE.BufferGeometry()
-        carPathGeo.setFromPoints(carPath.getSpacedPoints(1000))
-        const carPathMat = new THREE.LineBasicMaterial({color: 0x00ff00, linewidth: 10})
-        const carPathLine = new THREE.Line(carPathGeo, carPathMat)
-        this.carPathLine = carPathLine
-        //this.carPathLine.visible = false
-        this.scene.add(carPathLine)
+        const curveGeo = new THREE.BufferGeometry()
+        curveGeo.setFromPoints(curve.getSpacedPoints(1000))
+        const curveMat = new THREE.LineBasicMaterial({color: 0x00ff00, linewidth: 10})
+        const curveLine = new THREE.Line(curveGeo, curveMat)
+        this.curveLine = curveLine
+        this.scene.add(curveLine)
 
         const pathPointGeo = new THREE.SphereGeometry(2)
-        const pathPointMat1 = new THREE.MeshBasicMaterial({color: 'red'})
-        const pathPointMat2 = new THREE.MeshBasicMaterial({color: 'green'})
-        const pathPointMat3 = new THREE.MeshBasicMaterial({color: 'blue'})
-        const pathPointMat4 = new THREE.MeshBasicMaterial({color: 'yellow'})
-        const pathPointMat5 = new THREE.MeshBasicMaterial({color: 'brown'})
-        const pathPointMat6 = new THREE.MeshBasicMaterial({color: 'pink'})
 
-        const pathPoint1 = new THREE.Mesh(pathPointGeo, pathPointMat1)
-        const pathPoint2 = new THREE.Mesh(pathPointGeo, pathPointMat2)
-        const pathPoint3 = new THREE.Mesh(pathPointGeo, pathPointMat3)
-        const pathPoint4 = new THREE.Mesh(pathPointGeo, pathPointMat4)
-        const pathPoint5 = new THREE.Mesh(pathPointGeo, pathPointMat5)
-        const pathPoint6 = new THREE.Mesh(pathPointGeo, pathPointMat6)
+        const anchors = new THREE.Group()
 
-        pathPoint1.position.copy(pathPointPositions[0])
-        pathPoint2.position.copy(pathPointPositions[1])
-        pathPoint3.position.copy(pathPointPositions[2])
-        pathPoint4.position.copy(pathPointPositions[3])
-        pathPoint5.position.copy(pathPointPositions[4])
-        pathPoint6.position.copy(pathPointPositions[5])
+        anchorParams.map(param => {
+            const anchor = new THREE.Mesh(
+                pathPointGeo,
+                new THREE.MeshBasicMaterial({color: param.color})
+            )
+            anchor.position.copy(param.position)
+            anchors.add(anchor)
+        })
 
-        const pathPoints = new THREE.Group()
-        pathPoints.add(
-            pathPoint1,
-            pathPoint2,
-            pathPoint3,
-            pathPoint4,
-            pathPoint5,
-            pathPoint6,
-        )
-        carPathLine.add(pathPoints)
+        curveLine.add(anchors)
 
 
-        const car = new THREE.Mesh(
-            new THREE.BoxGeometry(8, 12, 30),
-            [
-                new THREE.MeshLambertMaterial({color: "#00ff00"}),
-                new THREE.MeshLambertMaterial({color: "#00ff00"}),
+        // const car = new THREE.Mesh(
+        //     new THREE.BoxGeometry(8, 12, 30),
+        //     [
+        //         new THREE.MeshLambertMaterial({color: "#ff0000"}),
+        //         new THREE.MeshLambertMaterial({color: "#00ff00"}),
+        //         new THREE.MeshLambertMaterial({color: "#0000ff"}),
+        //         new THREE.MeshLambertMaterial({color: "#ffff00"}),
+        //         new THREE.MeshLambertMaterial({color: "#00ffff"}),
+        //         new THREE.MeshLambertMaterial({color: "#ff00ff"}),
+        //     ]
+        // )
+        // car.position.copy(curve.getPointAt(0))
+        // this.car = car
+        // this.scene.add(car)
 
-                new THREE.MeshLambertMaterial({color: "#ff0000"}),
-                new THREE.MeshLambertMaterial({color: "#ff0000"}),
 
-                new THREE.MeshLambertMaterial({color: "#ffff00"}),
-                new THREE.MeshLambertMaterial({color: "#0000ff"}),
-            ]
-        )
+        const glassMat = new THREE.MeshPhysicalMaterial({
+            metalness: 0.0,//玻璃非金属  金属度设置0
+            roughness: 0.0,//玻璃表面光滑
+            envMapIntensity: 1.0,
+            transmission: 1.0,//透射度(透光率)
+            ior: 1.5,//折射率
+        })
+
+        const wheelMat = new THREE.MeshPhongMaterial({
+            color: "#fff8ee",
+            specular: "#aff8ef", // 材质的反射色
+            shininess: 30 // 材质的光泽程度
+        })
+
+        const tireMat = new THREE.MeshLambertMaterial({
+            color: "#15181b",
+        })
+
+        const bodyMat = new THREE.MeshPhongMaterial({
+            color: "#dd0625",
+            specular: "#ff0000", // 材质的反射色
+            shininess: 50 // 材质的光泽程度
+        })
 
 
-        car.position.copy(carPath.getPointAt(0))
-        this.scene.add(car)
-        this.car = car
+        getGltfLoader().load("public/demo/scene1/car.glb", glb => {
+            const car = glb.scene
+
+            console.log("car = ", car)
+
+            car.traverse((child: any) => {
+
+                //console.log("child = ", child)
+
+                if (child.isMesh) {
+                    if (child.name.includes("wheel")) {
+                        child.material = wheelMat
+                    } else if (child.name.includes("tire")) {
+                        child.material = tireMat
+                    } else if (child.name.includes("glass")) {
+                        child.material = glassMat
+                    } else {
+                        child.material = bodyMat
+                    }
+                }
+            })
+
+            car.position.copy(curve.getPointAt(0))
+            this.car = car
+            this.scene.add(car)
+        })
+
 
         const carCamera = new THREE.PerspectiveCamera(
             (this.options.cameraOptions as PerspectiveCameraOptions).fov,
             this.dom.clientWidth / this.dom.clientHeight,
             this.options.cameraOptions.near,
             this.options.cameraOptions.far)
-        const carCameraHelper = new THREE.CameraHelper(carCamera)
-        this.scene.add(carCamera)
+        carCamera.position.set(0, 10, 0)
         this.carCamera = carCamera
+        this.scene.add(carCamera)
+
+
+        const carCameraHelper = new THREE.CameraHelper(carCamera)
         this.scene.add(carCameraHelper)
+
 
         this.addGUI()
     }
 
 
-    private carUpdate() {
-        if (this.progress <= 1 - this.carVelocity) {
-            // 用当前点和目标点计算出鸟头朝向
-            const current = this.carPath.getPointAt(this.progress)
-            const target = this.carPath.getPointAt(this.progress + this.carVelocity)
-
-            this.car!.position.set(current.x, current.y, current.z)
-
-            // const mtx = new THREE.Matrix4()
-            // mtx.lookAt(target, this.car!.position, this.car!.up)
-            // // THREE.Euler 参数值跟模型默认朝向有关, 如果出现模型倒跑侧跑, 调整XYZ轴顺序,
-            // // 模型默认朝向Z轴正方向的, 不需要 mtx.multiply() 这步旋转角度
-            // // 其它情况, 会导致出现倒着跑或侧着跑的现象,
-            // // 尝试调整旋转角度, 模型默认朝向X轴正方向的, 参数为 new THREE.Euler(0, -Math.PI / 2, 0, 'XYZ')
-            // // 建议做模型时, 让模型默认朝向为Z轴正方向
-            // //mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(0, 0, 0, 'ZYX')))
-            // // Quaternion 四元数在threejs中用于表示rotation（旋转）
-            // const rotation = new THREE.Quaternion().setFromRotationMatrix(mtx)
-            // this.car!.quaternion.slerp(rotation, 1)
-            //
-            //
-            // mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(-Math.PI / 10, Math.PI, 0, 'ZYX')))
-            // const rotation1 = new THREE.Quaternion().setFromRotationMatrix(mtx)
-            // this.carCamera.position.set(this.car.position.x, this.car.position.y + 20, this.car.position.z)
-            // this.carCamera.quaternion.slerp(rotation1, 1)
-
-
-            const mtx = new THREE.Matrix4()
-            mtx.lookAt(target, this.car!.position, this.car!.up)
-            // THREE.Euler 参数值跟模型默认朝向有关, 如果出现模型倒跑侧跑, 调整XYZ轴顺序,
-            // 模型默认朝向Z轴正方向的, 不需要 mtx.multiply() 这步旋转角度
-            // 其它情况, 会导致出现倒着跑或侧着跑的现象,
-            // 尝试调整旋转角度, 模型默认朝向X轴正方向的, 参数为 new THREE.Euler(0, -Math.PI / 2, 0, 'XYZ')
-            // 建议做模型时, 让模型默认朝向为Z轴正方向
-            //mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(0, 0, 0, 'ZYX')))
-            // Quaternion 四元数在threejs中用于表示rotation（旋转）
-            const rotation = new THREE.Quaternion().setFromRotationMatrix(mtx)
-            this.car!.quaternion.slerp(rotation, 1)
-
-
-            mtx.multiply(new THREE.Matrix4().makeRotationFromEuler(new THREE.Euler(-Math.PI / 15, Math.PI, 0, 'ZYX')))
-            const rotation1 = new THREE.Quaternion().setFromRotationMatrix(mtx)
-            const carDirection = new THREE.Vector3()
-            this.car!.getWorldDirection(carDirection)
-            this.carCamera.position.set(this.car.position.x, this.car.position.y + 15, this.car.position.z)
-            this.carCamera.quaternion.slerp(rotation1, 1)
-
-
-            this.progress += this.carVelocity
-        } else {
-            this.progress = 0
-        }
-    }
-
     private addGUI() {
+
+
+
+
         const gui = new GUI()
 
-        gui.add(this.guiObj, "carPathLine").name("显示路径").onChange(value => this.carPathLine.visible = value)
+        gui.add(this.guiObj, "curveLine").name("显示路径").onChange(value => this.curveLine.visible = value)
 
-        gui.add(this.guiObj, "carCamera").name("切换相机").onChange(value => {
+        gui.add(this.guiObj, "orbitFlow").name("控制器跟随")
+
+        gui.add(this.guiObj, "carCameraFlow").name("切换相机").onChange(value => {
             if (value) {
                 this.camera = this.carCamera
             } else {
@@ -326,7 +281,46 @@ export default class ThreeProject extends ThreeCore {
     protected onRenderer() {
         this.orbit.update()
 
-        this.carUpdate()
+        const loopTime = this.loopTime
+
+        const time = Date.now()
+        const per = (time % loopTime) / loopTime // 计算当前时间进度百分比
+
+
+        if (this.car) {
+            // 更新车位置
+            const position = this.curve.getPointAt(per)
+
+            if(this.guiObj.orbitFlow){
+                // 主相机视角时, 控制器跟随车辆
+                this.orbit.target = position
+            }
+
+
+            this.car.position.copy(position)
+
+
+            // 更新车朝向
+            const tangent = this.curve.getTangentAt(per)
+
+            const lookAtVec = tangent.add(position) // 位置向量和切线向量相加即为所需朝向的点向量
+            this.car.lookAt(lookAtVec)
+
+
+            // 更新车顶相机位置
+            this.carCamera.position.set(this.car.position.x, this.car.position.y + 8, this.car.position.z)
+
+            let a = per + 0.05
+            if (a > 1) {
+                a = a - 1
+            }
+
+            // 这里相机 lookAt 位置实际是错的, 这样得到的视野和真实世界的情况不一致, 车头向左摆时, 视角却还是右的, 不同步
+            // todo 以后再更正
+            this.carCamera.lookAt(this.curve.getPointAt(a))
+        }
+
+
     }
 
 }

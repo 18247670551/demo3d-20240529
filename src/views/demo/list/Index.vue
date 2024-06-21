@@ -531,6 +531,13 @@
           <div class="title">奥运会logo</div>
         </div>
 
+        <div class="item" @click="toDemo('示例-简易树')">
+          <div class="image">
+            <img src="/demo/__case-cover/mesh-simple-tree.png" alt="简易树"/>
+          </div>
+          <div class="title">简易树</div>
+        </div>
+
 
 
 

@@ -4,6 +4,9 @@ import ThreeCore from "@/three-widget/ThreeCore"
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 import {GUI} from "dat.gui"
 import {MeshoptDecoder} from "three/examples/jsm/libs/meshopt_decoder.module"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
+
+
 import matcap_0Pic from "./texture/matcap_0.png"
 import matcap_2Pic from "./texture/matcap_2.png"
 import matcap_3Pic from "./texture/matcap_3.png"
@@ -11,6 +14,7 @@ import matcap_4Pic from "./texture/matcap_4.png"
 import matcap_5Pic from "./texture/matcap_5.png"
 import matcap_6Pic from "./texture/matcap_6.png"
 import matcap_7Pic from "./texture/matcap_7.png"
+
 
 
 export default class ThreeProject extends ThreeCore {
@@ -119,7 +123,7 @@ export default class ThreeProject extends ThreeCore {
             obj.receiveShadow = true
             this.scene.add(obj)
 
-            obj.children[0].children.reverse().forEach((child: any) => {
+            obj.traverse((child: any) => {
                 if (child.isMesh) {
                     child.receiveShadow = true
                 }
