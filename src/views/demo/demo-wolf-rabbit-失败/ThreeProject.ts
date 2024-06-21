@@ -124,8 +124,8 @@ export default class ThreeProject extends ThreeCore {
 
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
 
-        const axes = new THREE.AxesHelper(200)
-        this.scene.add(axes)
+        const axesHelper = new THREE.AxesHelper(200)
+        this.scene.add(axesHelper)
 
         document.addEventListener('mousedown', this.handleMouseDown.bind(this), false)
         document.addEventListener('touchend', this.handleMouseDown.bind(this), false)

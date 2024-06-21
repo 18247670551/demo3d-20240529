@@ -56,8 +56,8 @@ export default class ThreeProject extends ThreeCore {
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
         this.orbit.target.y = 4
 
-        const axes = new THREE.AxesHelper(5)
-        this.scene.add(axes)
+        const axesHelper = new THREE.AxesHelper(5)
+        this.scene.add(axesHelper)
 
         // 创建物理世界
         const world = new CANNON.World()

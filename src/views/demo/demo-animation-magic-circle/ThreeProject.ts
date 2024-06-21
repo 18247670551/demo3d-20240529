@@ -12,15 +12,33 @@ import guangyunPic from "./texture/guangyun.png"
 export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
-    private readonly circles: THREE.Mesh[] = []
-    private readonly particles: THREE.Points[] = []
-    private readonly arounds: THREE.Mesh[] = []
-    private readonly arounds2: THREE.Mesh[] = []
 
-    private readonly circleRotateSpeed = 0.02
-    private readonly aroundRotateSpeed = 0.01
-    private readonly pointFloatSpeed = 0.01
+
+    // 法阵高度
     private readonly height = 2
+
+
+    // 圆形底
+    private readonly circle: THREE.Mesh[] = []
+    private readonly circleRadius = 1
+    private readonly circleRotateSpeed = 0.02
+
+
+    // 两个旋转光环
+    private readonly ring1: THREE.Mesh[] = []
+    private readonly ring2: THREE.Mesh[] = []
+    private readonly ringRadius = 0.5
+    private readonly ringScaleOffset = 0.01
+    private readonly ringRotateSpeed = 0.01
+
+
+    // 粒子
+    private readonly particles: THREE.Points[] = []
+    private readonly particlesMinSize = 0.04
+    private readonly particlesMaxSize = 0.15
+    private readonly particlesRangeRadius = 0.8
+    private readonly particlesFloatSpeed = 0.01
+
 
     constructor(dom: HTMLElement) {
 
@@ -35,6 +53,24 @@ export default class ThreeProject extends ThreeCore {
         this.camera.position.set(0, 2, 4)
         this.scene.background = new THREE.Color(0x000000)
 
+        this.renderer.shadowMap.enabled = true
+
+        this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
+        this.orbit.minDistance = 0.001
+        this.orbit.target.y = 1
+
+        // const axesHelper = new THREE.AxesHelper(10)
+        // this.scene.add(axesHelper)
+
+        const gridHelper = new THREE.GridHelper(2)
+        this.scene.add(gridHelper)
+
+
+
+
+
+
+
         const ambientLight = new THREE.AmbientLight(0xffffff, 1)
         this.scene.add(ambientLight)
 
@@ -48,24 +84,6 @@ export default class ThreeProject extends ThreeCore {
         directionalLight2.castShadow = true
         this.scene.add(directionalLight2)
 
-        this.renderer.shadowMap.enabled = true
-
-        this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
-        this.orbit.minDistance = 0.001
-        this.orbit.target.y = 1
-
-        const axes = new THREE.AxesHelper(10)
-        this.scene.add(axes)
-
-
-        const segment = 32
-        const circleRadius = 1
-        const aroundRadius = 0.5
-        const aroundScaleOffset = 0.01
-        const height = 2
-        const pointRangeRadius = 0.8
-        const pointMinSize = 0.04
-        const pointMaxSize = 0.15
 
 
         const point1Texture = this.textureLoader.load(point1Pic)
@@ -82,11 +100,13 @@ export default class ThreeProject extends ThreeCore {
             point4Texture,
         ]
 
+        const {height, circleRadius, ringRadius, ringScaleOffset, particlesMaxSize, particlesMinSize, particlesRangeRadius} = this
+
 
         const group = new THREE.Group()
 
 
-        const circleGeo = new THREE.CircleGeometry(circleRadius, segment)
+        const circleGeo = new THREE.CircleGeometry(circleRadius, 64)
         const circleMat = new THREE.MeshBasicMaterial({
             map: magicTexture,
             transparent: true,
@@ -95,49 +115,43 @@ export default class ThreeProject extends ThreeCore {
         })
         const circle = new THREE.Mesh(circleGeo, circleMat)
         circle.rotateX(-Math.PI / 2)
-        this.circles.push(circle)
+        this.circle.push(circle)
         group.add(circle)
 
-        const aroundGeo = this.getCylinderGeo(aroundRadius, height)
-        const aroundMat = new THREE.MeshBasicMaterial({
+        const ringGeo = this.getCylinderGeo(ringRadius, height)
+        const ringMat = new THREE.MeshBasicMaterial({
             map: guangyunTexture,
             transparent: true,
             side: THREE.DoubleSide,
             wireframe: false,
             depthWrite: false
         })
-        const around = new THREE.Mesh(aroundGeo, aroundMat)
-        this.arounds.push(around)
-        group.add(around)
+        const ring1 = new THREE.Mesh(ringGeo, ringMat)
+        this.ring1.push(ring1)
+        group.add(ring1)
 
-        const around2 = around.clone()
-        around2.userData.aroundScaleOffset = aroundScaleOffset
-        around2.userData._type = around2._type
-        group.add(around2)
-        this.arounds2.push(around2)
+        const ring2 = ring1.clone()
+        ring2.userData.ringScaleOffset = ringScaleOffset
+        group.add(ring2)
+        this.ring2.push(ring2)
 
 
+        // 有几种粒子材质图片, 每种图片做一次点云
         for (let j = 0; j < 10; j++) {
             for (let i = 0; i < pointTextures.length; i++) {
-                const sprite = this.getPoints(pointRangeRadius, height, pointTextures[i], pointMinSize, pointMaxSize, this.pointFloatSpeed)
-                this.particles.push(sprite)
-                group.add(sprite)
+                const particles = this.getParticles(particlesRangeRadius, height, pointTextures[i], particlesMinSize, particlesMaxSize, this.particlesFloatSpeed)
+                this.particles.push(particles)
+                group.add(particles)
             }
         }
 
         this.scene.add(group)
-
-
     }
 
-    /**
-     * 获取点云效果
-     */
-    private getPoints(radius: number, height: number, texture: THREE.Texture, pointMinSize: number, pointMaxSize: number, pointFloatSpeed: number) {
+    private getParticles(radius: number, height: number, texture: THREE.Texture, pointMinSize: number, pointMaxSize: number, pointFloatSpeed: number) {
         const geometry = new THREE.BufferGeometry()
-        const vertices = [0, 0, 0]
 
-        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3))
+        geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array([0, 0, 0]), 3))
 
         const material = new THREE.PointsMaterial({
             size: Math.random() * (pointMaxSize - pointMinSize) + pointMinSize,
@@ -148,55 +162,60 @@ export default class ThreeProject extends ThreeCore {
             opacity: 0.2 + Math.random() * 0.8
         })
 
-        const particle = new THREE.Points(geometry, material)
-        particle.userData.floatSpeed = 0.001 + Math.random() * pointFloatSpeed
-        particle.userData.radius = radius
-        particle.position.x = Math.random() * radius * 2 - radius
-        particle.position.y = Math.random() * height
-        particle.position.z = Math.random() * radius * 2 - radius
-        return particle
+        const particles = new THREE.Points(geometry, material)
+        particles.userData.floatSpeed = 0.001 + Math.random() * pointFloatSpeed
+        particles.userData.radius = radius
+        particles.position.x = Math.random() * radius * 2 - radius
+        particles.position.y = Math.random() * height
+        particles.position.z = Math.random() * radius * 2 - radius
+
+        return particles
     }
 
     /**
-     * 获取圆柱几何体
-     * @param {*} radius 半径
-     * @param {*} height 高度
-     * @param {*} segment 分段数
+     * 自定义圆柱几何体, 只有圆柱侧面, 没有顶和底
      */
-    private getCylinderGeo(radius = 1, height = 1, segment = 32) {
-        let bottomPos = []
+    private getCylinderGeo(radius = 1, height = 1, segment = 64) {
+
+        const bottomPos = []
         const topPos = []
-        let bottomUvs = []
+
+        const bottomUvs = []
         const topUvs = []
+
         const angleOffset = (Math.PI * 2) / segment
         const uvOffset = 1 / (segment - 1)
+
         for (let i = 0; i < segment; i++) {
             const x = Math.cos(angleOffset * i) * radius
             const z = Math.sin(angleOffset * i) * radius
+
             bottomPos.push(x, 0, z)
-            bottomUvs.push(i * uvOffset, 0)
             topPos.push(x, height, z)
+
+            bottomUvs.push(i * uvOffset, 0)
             topUvs.push(i * uvOffset, 1)
         }
-        bottomPos = bottomPos.concat(topPos)
-        bottomUvs = bottomUvs.concat(topUvs)
 
-        const face = []
+        const positions = bottomPos.concat(topPos)
+        const uvs = bottomUvs.concat(topUvs)
+
+        const index = []
 
         for (let i = 0; i < segment; i++) {
             if (i != segment - 1) {
-                face.push(i + segment + 1, i, i + segment)
-                face.push(i, i + segment + 1, i + 1)
+                index.push(i + segment + 1, i, i + segment)
+                index.push(i, i + segment + 1, i + 1)
             } else {
-                face.push(segment, i, i + segment)
-                face.push(i, segment, 0)
+                index.push(segment, i, i + segment)
+                index.push(i, segment, 0)
             }
         }
 
         const geo = new THREE.BufferGeometry()
-        geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(bottomPos), 3))
-        geo.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(bottomUvs), 2))
-        geo.setIndex(new THREE.BufferAttribute(new Uint16Array(face), 1))
+        geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3))
+        geo.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(uvs), 2))
+        geo.setIndex(new THREE.BufferAttribute(new Uint16Array(index), 1))
         return geo
     }
 
@@ -207,56 +226,52 @@ export default class ThreeProject extends ThreeCore {
 
     protected onRenderer() {
         this.orbit.update()
-        this.updateCircles()
-        this.updateAround()
+        this.updateCircle()
+        this.updateRing()
         this.updatePartical()
     }
 
 
-    /**
-     * 更新传送阵底部的圆
-     */
-    private updateCircles() {
-        for (let i = 0; i < this.circles.length; i++) {
-            this.circles[i].rotateZ(this.circleRotateSpeed)
+    private updateCircle() {
+        for (let i = 0; i < this.circle.length; i++) {
+            this.circle[i].rotateZ(this.circleRotateSpeed)
         }
     }
 
-    /**
-     * 更新传送阵四周的光壁
-     */
-    private updateAround() {
-        for (let i = 0; i < this.arounds.length; i++) {
-            this.arounds[i].rotateY(this.aroundRotateSpeed)
+
+    private updateRing() {
+
+        for (let i = 0; i < this.ring1.length; i++) {
+            this.ring1[i].rotateY(this.ringRotateSpeed)
         }
-        for (let i = 0; i < this.arounds2.length; i++) {
-            this.arounds2[i].rotateY(-this.aroundRotateSpeed)
-            if (this.arounds2[i].scale.x < 0.9 || this.arounds2[i].scale.x > 1.4) {
-                this.arounds2[i].userData.aroundScaleOffset *= -1
+
+        for (let i = 0; i < this.ring2.length; i++) {
+            this.ring2[i].rotateY(-this.ringRotateSpeed)
+            if (this.ring2[i].scale.x < 0.9 || this.ring2[i].scale.x > 1.4) {
+                this.ring2[i].userData.ringScaleOffset *= -1
             }
-            this.arounds2[i].scale.x -= this.arounds2[i].userData.aroundScaleOffset
-            this.arounds2[i].scale.z -= this.arounds2[i].userData.aroundScaleOffset
+            this.ring2[i].scale.x -= this.ring2[i].userData.ringScaleOffset
+            this.ring2[i].scale.z -= this.ring2[i].userData.ringScaleOffset
         }
     }
 
-    /**
-     * 更新光点效果
-     */
+
     private updatePartical() {
-        for (let i = 0; i < this.particles.length; i++) {
-            this.particles[i].position.y += this.particles[i].userData.floatSpeed
-            if (this.particles[i].position.y >= this.height) {
-                //更新位置，y=0，x，z随机
-                this.particles[i].position.y = 0
-                this.particles[i].position.x =
-                    Math.random() * this.particles[i].userData.radius * 2 - this.particles[i].userData.radius
-                this.particles[i].position.z =
-                    Math.random() * this.particles[i].userData.radius * 2 - this.particles[i].userData.radius
 
-                //随机上升速度
-                this.particles[i].userData.floatSpeed = 0.001 + Math.random() * this.pointFloatSpeed
+        for (let i = 0; i < this.particles.length; i++) {
+
+            this.particles[i].position.y += this.particles[i].userData.floatSpeed
+
+            if (this.particles[i].position.y >= this.height) {
+
+                this.particles[i].position.y = 0
+                this.particles[i].position.x = Math.random() * this.particles[i].userData.radius * 2 - this.particles[i].userData.radius
+                this.particles[i].position.z = Math.random() * this.particles[i].userData.radius * 2 - this.particles[i].userData.radius
+
+                this.particles[i].userData.floatSpeed = 0.001 + Math.random() * this.particlesFloatSpeed
             }
         }
+
     }
 
 }

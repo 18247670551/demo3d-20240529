@@ -44,8 +44,8 @@ export default class ThreeProject extends ThreeCore {
 
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
 
-        // const axes = new THREE.AxesHelper(100)
-        // this.scene.add(axes)
+        // const axesHelper = new THREE.AxesHelper(100)
+        // this.scene.add(axesHelper)
 
 
         const door_alphaTexture = this.textureLoader.load(door_alphaPic)
@@ -74,9 +74,7 @@ export default class ThreeProject extends ThreeCore {
             normalMap: door_normalTexture,
         })
 
-        const material0 = new THREE.MeshStandardMaterial({
-            color: "#e85020",
-        })
+        const material0 = new THREE.MeshStandardMaterial({color: "#e85020",})
 
         const geometry = new THREE.BoxGeometry(1000, 1900, 50)
         geometry.setAttribute("uv2", geometry.getAttribute("uv").clone())

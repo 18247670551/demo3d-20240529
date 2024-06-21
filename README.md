@@ -354,9 +354,20 @@ npm run dev
 #### 示例: 火焰2
 ![preview](public/demo/__case-cover/fire2.png)
 
+
 #
 #### 示例: 原始着色器--波动
 ![preview](public/demo/__case-cover/shader-wave.png)
+
+
+#
+#### 示例: 光环柱--shader
+![preview](public/demo/__case-cover/shader-light-cylinder.png)
+
+
+#
+#### 示例: 点标记
+![preview](public/demo/__case-cover/point-tag.png)
 
 
 
@@ -395,7 +406,7 @@ npm run dev
 #### 示例: 动画--魔法阵
 #### 来源: csdn 作者 ~在水一方
 #### https://blog.csdn.net/qq_40147088/article/details/128418022
-![preview](public/demo/__case-cover/animation-magic-circle.gif)
+![preview](public/demo/__case-cover/animation-magic-circle.png)
 
 #
 #### 示例: 动画--时光机

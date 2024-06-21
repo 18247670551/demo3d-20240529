@@ -70,6 +70,7 @@ import Fire from '@/views/demo/demo-fire/Index.vue'
 import PlaneFire from '@/views/demo/demo-fire2/Index.vue'
 import ShaderWave from '@/views/demo/demo-shader-wave/Index.vue'
 import ShaderLightCylinder from '@/views/demo/demo-shader-light-cylinder/Index.vue'
+import PointTag from '@/views/demo/demo-animation-point-tag/Index.vue'
 import Scene1 from '@/views/demo/demo-scene1/Index.vue'
 import Scene2 from '@/views/demo/demo-scene2/Index.vue'
 import Scene3 from '@/views/demo/demo-scene3/Index.vue'
@@ -158,6 +159,7 @@ const routes: RouteRecordRaw[] = [
 
     {name: '示例-shader-波动', path: '/demo/demo-shader-wave', component: ShaderWave, meta: {title: "示例-shader-波动", isLogin: true}},
     {name: '示例-shader-光环柱', path: '/demo/demo-shader-light-cylinder', component: ShaderLightCylinder, meta: {title: "示例-shader-光环柱", isLogin: true}},
+    {name: '示例-点标记', path: '/demo/demo-animation-point-tag', component: PointTag, meta: {title: "示例-点标记", isLogin: true}},
 
 
     {name: '示例-简单场景1', path: '/demo/demo-scene1', component: Scene1, meta: {title: "示例-简单场景1", isLogin: true}},

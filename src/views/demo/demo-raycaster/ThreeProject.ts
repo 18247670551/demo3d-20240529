@@ -32,8 +32,8 @@ export default class ThreeProject extends ThreeCore {
 
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
 
-        const axes = new THREE.AxesHelper(10)
-        this.scene.add(axes)
+        const axesHelper = new THREE.AxesHelper(10)
+        this.scene.add(axesHelper)
 
 
         const box1 = new THREE.Mesh(new THREE.BoxGeometry(10, 10, 10), new THREE.MeshBasicMaterial({color: this.defaultMeshColor}))

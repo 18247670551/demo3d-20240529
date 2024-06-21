@@ -40,8 +40,8 @@ export default class ThreeProject extends ThreeCore {
         this.orbit.target.y = 1500
         this.orbit.update()
 
-        const axes = new THREE.AxesHelper(200)
-        this.scene.add(axes)
+        const axesHelper = new THREE.AxesHelper(200)
+        this.scene.add(axesHelper)
 
         this.pipe = this.addAndGetPipe()
 

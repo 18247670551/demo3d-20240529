@@ -39,8 +39,8 @@ export default class ThreeProject extends ThreeCore {
         const ambientLight = new THREE.AmbientLight(0xffffff, 2)
         this.scene.add(ambientLight)
 
-        const axes = new THREE.AxesHelper(20)
-        this.scene.add(axes)
+        const axesHelper = new THREE.AxesHelper(20)
+        this.scene.add(axesHelper)
 
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
         this.orbit.target.y = 30

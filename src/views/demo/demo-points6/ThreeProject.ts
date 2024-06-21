@@ -31,8 +31,8 @@ export default class ThreeProject extends ThreeCore {
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
         this.orbit.target.y = 2
 
-        // const axes = new THREE.AxesHelper(2)
-        // this.scene.add(axes)
+        // const axesHelper = new THREE.AxesHelper(2)
+        // this.scene.add(axesHelper)
 
         this.particleCount = 2000
 

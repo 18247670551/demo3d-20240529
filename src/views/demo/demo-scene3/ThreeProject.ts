@@ -45,8 +45,8 @@ export default class ThreeProject extends ThreeCore {
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
         this.orbit.target.y = 10
 
-        // const axes = new THREE.AxesHelper(100)
-        // this.scene.add(axes)
+        // const axesHelper = new THREE.AxesHelper(100)
+        // this.scene.add(axesHelper)
 
         this.addGround()
 

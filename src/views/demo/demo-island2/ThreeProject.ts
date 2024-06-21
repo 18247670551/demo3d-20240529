@@ -91,8 +91,8 @@ export default class ThreeProject extends ThreeCore {
         orbit.target.set(0, 30, 0)
         this.orbit = orbit
 
-        // const axes = new THREE.AxesHelper(100)
-        // this.scene.add(axes)
+        // const axesHelper = new THREE.AxesHelper(100)
+        // this.scene.add(axesHelper)
 
 
         // 海

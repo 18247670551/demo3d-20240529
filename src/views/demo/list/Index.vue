@@ -433,6 +433,13 @@
           <div class="title">光环柱--shader</div>
         </div>
 
+        <div class="item" @click="toDemo('示例-点标记')">
+          <div class="image">
+            <img src="/demo/__case-cover/point-tag.png" alt="点标记"/>
+          </div>
+          <div class="title">点标记</div>
+        </div>
+
 
 
         <div class="item" @click="toDemo('示例-简单场景1')">
@@ -486,7 +493,7 @@
 
         <div class="item" @click="toDemo('示例-动画--魔法阵')">
           <div class="image">
-            <img src="/demo/__case-cover/animation-magic-circle.gif" alt="动画--魔法阵"/>
+            <img src="/demo/__case-cover/animation-magic-circle.png" alt="动画--魔法阵"/>
           </div>
           <div class="title">动画--魔法阵</div>
         </div>

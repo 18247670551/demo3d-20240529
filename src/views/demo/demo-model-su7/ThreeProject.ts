@@ -42,8 +42,8 @@ export default class ThreeProject extends ThreeCore {
         this.orbit.target.y = 10
         this.orbit.autoRotate = true
 
-        // const axes = new THREE.AxesHelper(10)
-        // this.scene.add(axes)
+        // const axesHelper = new THREE.AxesHelper(10)
+        // this.scene.add(axesHelper)
 
 
         // 展台
