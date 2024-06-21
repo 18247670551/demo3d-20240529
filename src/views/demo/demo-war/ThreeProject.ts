@@ -1,11 +1,9 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import vertexShader from './shader/vertexShader.glsl'
 import fragmentShader from './shader/fragmentShader.glsl'
-import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader"
-import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 import {SpriteMaterial} from "three"
+import {getDracoGltfLoader, getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 export default class ThreeProject extends ThreeCore {
 
@@ -63,15 +61,8 @@ export default class ThreeProject extends ThreeCore {
 
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
 
-
-        const dracoLoader = new DRACOLoader()
-        dracoLoader.setDecoderPath("/draco/")
-        const dracoGltfLoader = new GLTFLoader()
-        dracoGltfLoader.setDRACOLoader(dracoLoader)
-
-
-
-        dracoGltfLoader.load("/demo/war/ew8.glb", (gltf) => {
+        
+        getDracoGltfLoader().load("/demo/war/ew8.glb", (gltf) => {
             const obj = gltf.scene
 
             obj.traverse(child => {
@@ -119,13 +110,13 @@ export default class ThreeProject extends ThreeCore {
             }
             shader.uniforms.iTime = this.params.iTime
             shader.uniforms.iChannel0 = {
-                value: this.textureLoader.load("/demo/war/ichannel0.png"),
+                value: getTextureLoader().load("/demo/war/ichannel0.png"),
             }
             shader.uniforms.iChannel1 = {
-                value: this.textureLoader.load("/demo/war/ichannel1.png"),
+                value: getTextureLoader().load("/demo/war/ichannel1.png"),
             }
             shader.uniforms.iChannel2 = {
-                value: this.textureLoader.load("/demo/war/ichannel2.png"),
+                value: getTextureLoader().load("/demo/war/ichannel2.png"),
             }
             shader.uniforms.iMouse = {value: new THREE.Vector2(0, 0)}
             shader.vertexShader = shader.vertexShader.replace(

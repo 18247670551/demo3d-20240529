@@ -55,7 +55,7 @@ export default class CirculatingFan extends MyGroup<HeatingFanOptions> {
 
     private addAndGetLeaf() {
         const geometry = new THREE.CircleGeometry(this.options.leafRadius, 30)
-        const texture = this.textureLoader.load("/demo/my/dry/fanLeaf_blue.png")
+        const texture = getTextureLoader().load("/demo/my/dry/fanLeaf_blue.png")
         
         texture.colorSpace = THREE.SRGBColorSpace
 

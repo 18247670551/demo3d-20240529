@@ -8,7 +8,7 @@ import door_heightPic from "./texture/door/height.jpg"
 import door_metalnessPic from "./texture/door/metalness.jpg"
 import door_normalPic from "./texture/door/normal.jpg"
 import door_roughnessPic from "./texture/door/roughness.jpg"
-
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 export default class ThreeProject extends ThreeCore {
 
@@ -48,13 +48,13 @@ export default class ThreeProject extends ThreeCore {
         // this.scene.add(axesHelper)
 
 
-        const door_alphaTexture = this.textureLoader.load(door_alphaPic)
-        const door_ambientTexture = this.textureLoader.load(door_ambientOcclusionPic)
-        const door_colorTexture = this.textureLoader.load(door_colorPic)
-        const door_heightTexture = this.textureLoader.load(door_heightPic)
-        const door_metalnessTexture = this.textureLoader.load(door_metalnessPic)
-        const door_normalTexture = this.textureLoader.load(door_normalPic)
-        const door_roughnessTexture = this.textureLoader.load(door_roughnessPic)
+        const door_alphaTexture = getTextureLoader().load(door_alphaPic)
+        const door_ambientTexture = getTextureLoader().load(door_ambientOcclusionPic)
+        const door_colorTexture = getTextureLoader().load(door_colorPic)
+        const door_heightTexture = getTextureLoader().load(door_heightPic)
+        const door_metalnessTexture = getTextureLoader().load(door_metalnessPic)
+        const door_normalTexture = getTextureLoader().load(door_normalPic)
+        const door_roughnessTexture = getTextureLoader().load(door_roughnessPic)
 
 
         const material = new THREE.MeshStandardMaterial({

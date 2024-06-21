@@ -50,7 +50,7 @@ export default class ThreeProject extends ThreeCore {
         const planeGeo = new THREE.CylinderGeometry(34, 34, 5, 64, 1)
         planeGeo.translate(0, -2.5, 0)
         const planeMat = new THREE.MeshMatcapMaterial({
-            matcap: this.textureLoader.load(matcap_4Pic),
+            matcap: getTextureLoader().load(matcap_4Pic),
             color: 0xffffff
         })
         const plane = new THREE.Mesh(planeGeo, planeMat)

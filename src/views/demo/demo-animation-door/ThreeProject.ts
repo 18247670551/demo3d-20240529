@@ -24,7 +24,7 @@ export default class ThreeProject extends ThreeCore {
             }
         })
 
-        this.camera.position.set(0, 0, 5000)
+        this.camera.position.set(3000, 2000, 5000)
         this.scene.background = new THREE.Color(0x000000)
 
         const ambientLight = new THREE.AmbientLight(0xffffff, 1)
@@ -45,8 +45,11 @@ export default class ThreeProject extends ThreeCore {
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
         this.orbit.target.y = 1500
 
-        const axesHelper = new THREE.AxesHelper(100)
-        this.scene.add(axesHelper)
+        // const axesHelper = new THREE.AxesHelper(100)
+        // this.scene.add(axesHelper)
+
+
+
 
 
         const width = 1200
@@ -92,29 +95,28 @@ export default class ThreeProject extends ThreeCore {
 
         // 关键帧轨道
         const rotationTrack = new THREE.KeyframeTrack(
-            // 这个 door.rotation[y] 中 door指的是 mesh 的 name 属性, 即: 模型应该给name赋值, 这里才能取到
-            // 或者写 .rotation[y] 不要带名字, 则表示执行此动作的模型本身
+            // 如果动画模型是个组形式, 可以用执行动画的mesh的名字(前提这个mesh必须已经设置过name)来调用: meshName.rotation[y]
+            // 如果动画模型是个单mesh, 可以直接写: .rotation[y]
             'door.rotation[y]',
-            [0, 3],
-            [0, -Math.PI / 2]
+            [0, 1,  2], // 关键帧时间点, 最大值要是这一组中动画时长最大的那个, 这里最大 3 秒
+            [0, -Math.PI / 4,  -Math.PI / 2] // 关键帧时间点对应的属性值, 与前一参数数量必须保持一致 mesh 的属性值
         )
 
-        const clip = new THREE.AnimationClip(
+        const openAction = new THREE.AnimationClip(
             'open',
-            3,
-            // 动画轨道, 同轨道可以放多个动画
-            [
-                rotationTrack,
-            ]
+            // 要大于等于所有轨道动画时间最大值, 否则动画播放不完全
+            2,
+            [rotationTrack,] // 动画轨道, 同轨道可以放多个动画
         )
 
         const mixer = new THREE.AnimationMixer(door)
-        const clipAction = mixer.clipAction(clip)
-        clipAction.setLoop(THREE.LoopOnce, 1) // 只播放一次, 默认为 infinity 循环播放
-        clipAction.timeScale = 1 // 播放速度, 默认1, 为0时动画暂停, 负数时动画会反向执行
+        const openAnimation = mixer.clipAction(openAction)
+        openAnimation.setLoop(THREE.LoopOnce, 1) // 只播放一次, 默认为 infinity 循环播放
+        //openAnimation.timeScale = 1 // 播放速度, 默认1, 为0时动画暂停, 负数时动画会反向执行
+        openAnimation.clampWhenFinished = true // 动画播放完成后停留
 
         this.mixers.push(mixer)
-        this.animations["开门"] = clipAction
+        this.animations["开门"] = openAnimation
 
         this.addGUI()
     }
@@ -123,11 +125,25 @@ export default class ThreeProject extends ThreeCore {
 
         const guiParams = {
             "开门": () => {
-                this.animations.timeScale = 1
+                if(this.animations["开门"].isRunning()){
+                    console.log("门正忙, 请稍等")
+                    return
+                }
+                // timeScale 置为 1, 让动画正向播放, .reset() 不会重置 timeScale 为默认值 1, 所以要手动重置
+                this.animations["开门"].timeScale = 1
+                // 再次使用动画必须重置,
+                this.animations["开门"].reset()
                 this.animations["开门"].play()
             },
             "关门": () => {
-                this.animations.timeScale = -1
+                if(this.animations["开门"].isRunning()){
+                    console.log("门正忙, 请稍等")
+                    return
+                }
+                // timeScale 置为 -1, 让动画反向播放
+                this.animations["开门"].timeScale = -1
+                // 动画播放完成时, paused 为置为 true, 必须置为 false, 反向动画才会播放
+                this.animations["开门"].paused = false
                 this.animations["开门"].play()
             },
         }
@@ -136,9 +152,6 @@ export default class ThreeProject extends ThreeCore {
 
         gui.add(guiParams, "开门")
         gui.add(guiParams, "关门")
-
-
-
 
     }
 
@@ -149,8 +162,8 @@ export default class ThreeProject extends ThreeCore {
 
     protected onRenderer() {
         this.orbit.update()
-        //this.mixers.forEach(mixer => mixer.update(this.clock.getDelta()))
-        this.mixers.forEach(mixer => mixer.update(1 / 60))
+        this.mixers.forEach(mixer => mixer.update(this.clock.getDelta()))
+        //this.mixers.forEach(mixer => mixer.update(1 / 60))
     }
 
 }

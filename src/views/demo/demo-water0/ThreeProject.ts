@@ -2,6 +2,7 @@ import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import {Water} from "three/examples/jsm/objects/Water"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 export default class ThreeProject extends ThreeCore{
@@ -51,7 +52,7 @@ export default class ThreeProject extends ThreeCore{
 
     private addAndGetWater(){
         const waterGeometry = new THREE.PlaneGeometry(10000, 10000)
-        const texture = new THREE.TextureLoader().load('/demo/water0/water_texture0.jpg',  (texture) => {
+        const texture = getTextureLoader().load('/demo/water0/water_texture0.jpg',  (texture) => {
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping
         })
         const water = new Water(

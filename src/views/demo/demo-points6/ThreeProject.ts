@@ -65,7 +65,7 @@ export default class ThreeProject extends ThreeCore {
 
     private createParticles(){
 
-        const texture = this.textureLoader.load('/demo/points6/spark1.png')
+        const texture = getTextureLoader().load('/demo/points6/spark1.png')
 
         const particles = new THREE.BufferGeometry()
         const positions = new Float32Array(this.particleCount * 3)

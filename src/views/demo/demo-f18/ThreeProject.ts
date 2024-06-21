@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
+import {getGltfLoader} from "@/three-widget/loader/ThreeLoader"
 
 export default class ThreeProject extends ThreeCore {
 
@@ -47,10 +47,8 @@ export default class ThreeProject extends ThreeCore {
 
     private async addF18() {
 
-        const gltfLoader = new GLTFLoader()
-
-        const f18_explodeTask = gltfLoader.loadAsync("/demo/f18/f18_explode.glb")
-        const f18_v13Task = gltfLoader.loadAsync("/demo/f18/f18_v13.glb")
+        const f18_explodeTask = getGltfLoader().loadAsync("/demo/f18/f18_explode.glb")
+        const f18_v13Task = getGltfLoader().loadAsync("/demo/f18/f18_v13.glb")
 
         Promise.all([f18_explodeTask, f18_v13Task])
             .then(([f18_explode_gltf, f18_v13_gltf]) => {

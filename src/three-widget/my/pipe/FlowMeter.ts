@@ -36,7 +36,7 @@ export default class FlowMeter extends BasePipeJoin {
         const dialRadius = 250
         const dialWidth = 150
 
-        const texture_front = this.textureLoader.load("/demo/my/common/meter/flowMeter_front.png")
+        const texture_front = getTextureLoader().load("/demo/my/common/meter/flowMeter_front.png")
         
         texture_front.colorSpace = THREE.SRGBColorSpace
         

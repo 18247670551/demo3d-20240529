@@ -1,8 +1,7 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import {Line2} from "three/examples/jsm/lines/Line2";
-import {LineGeometry} from "three/examples/jsm/lines/LineGeometry";
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 export default class ThreeProject extends ThreeCore {
@@ -101,12 +100,12 @@ export default class ThreeProject extends ThreeCore {
         bufferGeometry.index = new THREE.BufferAttribute(new Uint16Array(indexs), 1)
 
         // 材质
-        const face1Texture = this.textureLoader.load("/demo/geometry-buffer/face1.png")
-        const face2Texture = this.textureLoader.load("/demo/geometry-buffer/face2.png")
-        const face3Texture = this.textureLoader.load("/demo/geometry-buffer/face3.png")
-        const face4Texture = this.textureLoader.load("/demo/geometry-buffer/face4.png")
-        const face5Texture = this.textureLoader.load("/demo/geometry-buffer/face5.png")
-        const face6Texture = this.textureLoader.load("/demo/geometry-buffer/face6.png")
+        const face1Texture = getTextureLoader().load("/demo/geometry-buffer/face1.png")
+        const face2Texture = getTextureLoader().load("/demo/geometry-buffer/face2.png")
+        const face3Texture = getTextureLoader().load("/demo/geometry-buffer/face3.png")
+        const face4Texture = getTextureLoader().load("/demo/geometry-buffer/face4.png")
+        const face5Texture = getTextureLoader().load("/demo/geometry-buffer/face5.png")
+        const face6Texture = getTextureLoader().load("/demo/geometry-buffer/face6.png")
 
         const faceMat1 = new THREE.MeshStandardMaterial({map: face1Texture, color: 0xfff000})
         const faceMat2 = new THREE.MeshStandardMaterial({map: face2Texture, color: 0x00ff00})

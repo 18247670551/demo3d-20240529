@@ -7,8 +7,6 @@ import {onMounted, ref} from "vue"
 import * as THREE from 'three'
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import {Water} from "three/examples/jsm/objects/Water2"
-import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
-import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader"
 import Stats from "three/examples/jsm/libs/stats.module"
 
 

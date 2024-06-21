@@ -1,5 +1,6 @@
 import * as THREE from "three"
 import {random} from "lodash"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 /**
  * @param life?: number
@@ -19,8 +20,6 @@ export interface MyParticleOptions {
 }
 
 export default class SmokeParticle extends THREE.Points {
-
-    private textureLoader = new THREE.TextureLoader()
 
     createTime = 0
     updateTime = 0
@@ -114,7 +113,7 @@ export default class SmokeParticle extends THREE.Points {
 
 
     static createMaterial() {
-        const texture = new THREE.TextureLoader().load("/demo/my/wash/smoke1.png")
+        const texture = getTextureLoader().load("/demo/my/wash/smoke1.png")
         
         texture.colorSpace = THREE.SRGBColorSpace
 

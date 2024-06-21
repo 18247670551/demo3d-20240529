@@ -9,7 +9,7 @@ import vertexShader from "./shader/rainbow/vertexShader.glsl"
 import fragmentShader from "./shader/rainbow/fragmentShader.glsl"
 import {GUI} from "dat.gui"
 import {TransformControls} from "three/examples/jsm/controls/TransformControls"
-
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 export default class ThreeProject extends ThreeCore {
 
@@ -66,8 +66,8 @@ export default class ThreeProject extends ThreeCore {
         pointLight.position.set(0, 45, -2000)
 
         // 镜头光晕
-        const textureFlare0 = this.textureLoader.load("/demo/island2/lensflare0.png")
-        const textureFlare1 = this.textureLoader.load("/demo/island2/lensflare1.png")
+        const textureFlare0 = getTextureLoader().load("/demo/island2/lensflare0.png")
+        const textureFlare1 = getTextureLoader().load("/demo/island2/lensflare1.png")
         const lensflare = new Lensflare()
 
         lensflare.addElement(new LensflareElement(textureFlare0, 600, 0, pointLight.color))
@@ -203,7 +203,7 @@ export default class ThreeProject extends ThreeCore {
     }
 
     private createWater(){
-        const waterTexture = this.textureLoader.load('/demo/island2/waternormals.jpg', texture => {
+        const waterTexture = getTextureLoader().load('/demo/island2/waternormals.jpg', texture => {
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping
         })
         const waterGeometry = new THREE.PlaneGeometry(10000, 10000)

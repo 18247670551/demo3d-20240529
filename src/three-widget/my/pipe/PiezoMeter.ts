@@ -37,7 +37,7 @@ export default class PiezoMeter extends BasePipeJoin {
         const dialRadius = 250
         const dialWidth = 150
 
-        const texture_front = this.textureLoader.load("/demo/my/common/meter/piezoMeter.png")
+        const texture_front = getTextureLoader().load("/demo/my/common/meter/piezoMeter.png")
         
         texture_front.colorSpace = THREE.SRGBColorSpace
 

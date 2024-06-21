@@ -86,12 +86,12 @@ export default class ThreeProject extends ThreeCore {
 
 
 
-        const point1Texture = this.textureLoader.load(point1Pic)
-        const point2Texture = this.textureLoader.load(point2Pic)
-        const point3Texture = this.textureLoader.load(point3Pic)
-        const point4Texture = this.textureLoader.load(point4Pic)
-        const magicTexture = this.textureLoader.load(magicPic)
-        const guangyunTexture = this.textureLoader.load(guangyunPic)
+        const point1Texture = getTextureLoader().load(point1Pic)
+        const point2Texture = getTextureLoader().load(point2Pic)
+        const point3Texture = getTextureLoader().load(point3Pic)
+        const point4Texture = getTextureLoader().load(point4Pic)
+        const magicTexture = getTextureLoader().load(magicPic)
+        const guangyunTexture = getTextureLoader().load(guangyunPic)
 
         const pointTextures = [
             point1Texture,

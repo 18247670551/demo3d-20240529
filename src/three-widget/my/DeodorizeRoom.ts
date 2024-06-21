@@ -1,5 +1,6 @@
 import * as THREE from "three"
 import MyGroup from "@/three-widget/MyGroup"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 /**
  * @param squareLength?: number
@@ -208,7 +209,7 @@ export default class DeodorizeRoom extends MyGroup<DeodorizeChannelOptions> {
         topGeo.translate(this.options.squareLength / 2, this.options.squareThickness / 2, this.options.squareWidth / 2)
 
         const loader = new THREE.TextureLoader()
-        const sideTexture = this.textureLoader.load("/demo/my/deodorize/body_0.jpg")
+        const sideTexture = getTextureLoader().load("/demo/my/deodorize/body_0.jpg")
         sideTexture.wrapS = sideTexture.wrapT = THREE.RepeatWrapping
         sideTexture.repeat.set(10, 1)
 
@@ -259,7 +260,7 @@ export default class DeodorizeRoom extends MyGroup<DeodorizeChannelOptions> {
             bevelEnabled: false
         }
 
-        const sideTexture = this.textureLoader.load("/demo/my/deodorize/body_0.jpg")
+        const sideTexture = getTextureLoader().load("/demo/my/deodorize/body_0.jpg")
         sideTexture.wrapS = sideTexture.wrapT = THREE.RepeatWrapping
         sideTexture.repeat.set(0.003, 0.0003)
 
@@ -308,7 +309,7 @@ export default class DeodorizeRoom extends MyGroup<DeodorizeChannelOptions> {
             bevelEnabled: false
         }
 
-        const sideTexture = this.textureLoader.load("/demo/my/deodorize/body_0.jpg")
+        const sideTexture = getTextureLoader().load("/demo/my/deodorize/body_0.jpg")
         sideTexture.wrapS = sideTexture.wrapT = THREE.RepeatWrapping
         sideTexture.repeat.set(0.003, 0.0003)
 

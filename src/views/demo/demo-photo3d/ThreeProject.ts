@@ -25,8 +25,8 @@ export default class ThreeProject extends ThreeCore {
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.9)
         this.scene.add(ambientLight)
 
-        const texture = this.textureLoader.load("/demo/photo3d/photo.jpg")
-        const depthTexture = this.textureLoader.load("/demo/photo3d/photo_d.png")
+        const texture = getTextureLoader().load("/demo/photo3d/photo.jpg")
+        const depthTexture = getTextureLoader().load("/demo/photo3d/photo_d.png")
 
 
 

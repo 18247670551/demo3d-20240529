@@ -1,6 +1,17 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
+import {getCubeTextureLoader, getTextureLoader} from "@/three-widget/loader/ThreeLoader"
+
+
+import tree1Pic from "/public/demo/forest/tree1.png"
+import tree2Pic from "/public/demo/forest/tree2.png"
+import tree3Pic from "/public/demo/forest/tree3.png"
+import tree4Pic from "/public/demo/forest/tree4.png"
+import tree5Pic from "/public/demo/forest/tree5.png"
+import tree6Pic from "/public/demo/forest/tree6.png"
+import tree7Pic from "/public/demo/forest/tree7.png"
+
 
 
 export default class ThreeProject extends ThreeCore {
@@ -38,8 +49,7 @@ export default class ThreeProject extends ThreeCore {
     }
 
     private addSky() {
-        const loader = new THREE.CubeTextureLoader()
-        loader.setPath('/demo/forest/skybox/').load(
+        getCubeTextureLoader().setPath('/demo/forest/skybox/').load(
             ['left.jpg', 'right.jpg', 'top.jpg', 'bottom.jpg', 'front.jpg', 'back.jpg'],
             texture => {
                 this.scene.background = texture
@@ -48,7 +58,7 @@ export default class ThreeProject extends ThreeCore {
 
     private addGround() {
         const planeGeometry = new THREE.PlaneGeometry(3000, 3000)
-        const texture = this.textureLoader.load("/demo/forest/grass.jpg")
+        const texture = getTextureLoader().load("/demo/forest/grass.jpg")
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping
         texture.repeat.set(60, 60)
         const material = new THREE.MeshBasicMaterial({
@@ -62,87 +72,30 @@ export default class ThreeProject extends ThreeCore {
     }
 
     private addTrees() {
-        const tree1Mat = new THREE.SpriteMaterial({
-            transparent: true,
-            color: 0x929f40,
-            map: this.textureLoader.load("/demo/forest/tree1.png")
-        })
 
-        const tree2Mat = new THREE.SpriteMaterial({
-            transparent: true,
-            color: 0xe1e091,
-            map: this.textureLoader.load("/demo/forest/tree2.png")
-        })
+        const matParams = [
+            {color: "#929f40", map: tree1Pic},
+            {color: "#e1e091", map: tree2Pic},
+            {color: "#00cc22", map: tree3Pic},
+            {color: "#014301", map: tree4Pic},
+            {color: "#e19363", map: tree5Pic},
+            {color: "#717e05", map: tree6Pic},
+            {color: "#fd693b", map: tree7Pic},
+        ]
 
-        const tree3Mat = new THREE.SpriteMaterial({
-            transparent: true,
-            color: 0x00cc22,
-            map: this.textureLoader.load("/demo/forest/tree3.png")
-        })
-
-        const tree4Mat = new THREE.SpriteMaterial({
-            transparent: true,
-            color: 0xe14172,
-            map: this.textureLoader.load("/demo/forest/tree4.png")
-        })
-
-        const tree5Mat = new THREE.SpriteMaterial({
-            transparent: true,
-            color: 0xe19363,
-            map: this.textureLoader.load("/demo/forest/tree5.png")
-        })
-        const tree6Mat = new THREE.SpriteMaterial({
-            transparent: true,
-            color: 0xe914f7,
-            map: this.textureLoader.load("/demo/forest/tree6.png")
-        })
-        const tree7Mat = new THREE.SpriteMaterial({
-            transparent: true,
-            color: 0xe14f56,
-            map: this.textureLoader.load("/demo/forest/tree7.png")
-        })
+        const mats = matParams.map(param =>
+            new THREE.SpriteMaterial({
+                transparent: true,
+                color: param.color,
+                map: getTextureLoader().load(param.map)
+            })
+        )
 
         const group = new THREE.Group()
 
-        let random = 0
-
         for (let i = 0; i < 500; i++) {
 
-            random = THREE.MathUtils.randInt(1, 9)
-
-            let tree
-
-            switch (random) {
-                case 1:
-                    tree = new THREE.Sprite(tree1Mat)
-                    break;
-                case 2:
-                    tree = new THREE.Sprite(tree2Mat)
-                    break;
-                case 3:
-                    tree = new THREE.Sprite(tree2Mat)
-                    break;
-                case 4:
-                    tree = new THREE.Sprite(tree3Mat)
-                    break;
-                case 5:
-                    tree = new THREE.Sprite(tree5Mat)
-                    break;
-                case 6:
-                    tree = new THREE.Sprite(tree6Mat)
-                    break;
-                case 7:
-                    tree = new THREE.Sprite(tree7Mat)
-                    break;
-                case 8:
-                    tree = new THREE.Sprite(tree1Mat)
-                    break;
-                case 9:
-                    tree = new THREE.Sprite(tree2Mat)
-                    break;
-                default:
-                    throw new Error("不可能到达的错误")
-            }
+            const tree = new THREE.Sprite(mats[THREE.MathUtils.randInt(0, mats.length - 1)])
 
             const x = THREE.MathUtils.randFloatSpread(2000)
             const z = THREE.MathUtils.randFloatSpread(2000)

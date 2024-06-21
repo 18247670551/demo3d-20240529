@@ -80,7 +80,9 @@ import AnimationDoor from '@/views/demo/demo-animation-door/Index.vue'
 import AnimationMagicCircle from '@/views/demo/demo-animation-magic-circle/Index.vue'
 import AnimationTimeMachine from '@/views/demo/demo-animation-time-machine/Index.vue'
 import AnimationMusicVisualize from '@/views/demo/demo-animation-music-visualize/Index.vue'
-import Logo from '@/views/demo/demo-logo/Index.vue'
+
+import PyramidLogo from '@/views/demo/demo-mesh-pyramid-logo/Index.vue'
+import OlympicLogo from '@/views/demo/demo-mesh-olympic-logo/Index.vue'
 
 import ModelTiger from '@/views/demo/demo-model-tiger/Index.vue'
 import ModelFox from '@/views/demo/demo-model-fox/Index.vue'
@@ -175,7 +177,8 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-动画--音乐可视化', path: '/demo/demo-animation-music-visualize', component: AnimationMusicVisualize, meta: {title: "示例-动画--音乐可视化", isLogin: true}},
 
 
-    {name: '示例-简单的logo', path: '/demo/demo-logo', component: Logo, meta: {title: "示例-简单的logo", isLogin: true}},
+    {name: '示例-金字塔logo', path: '/demo/demo-mesh-pyramid-logo', component: PyramidLogo, meta: {title: "示例-金字塔logo", isLogin: true}},
+    {name: '示例-奥运会logo', path: '/demo/demo-mesh-olympic-logo', component: OlympicLogo, meta: {title: "示例-奥运会logo", isLogin: true}},
 
     {name: '示例-模型-老虎', path: '/demo/demo-model-tiger', component: ModelTiger, meta: {title: "示例-模型-老虎", isLogin: true}},
     {name: '示例-模型-狐狸', path: '/demo/demo-model-fox', component: ModelFox, meta: {title: "示例-模型-狐狸", isLogin: true}},

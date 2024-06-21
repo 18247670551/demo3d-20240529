@@ -367,6 +367,8 @@ npm run dev
 
 #
 #### 示例: 点标记
+#### 来源 csdn 作者 焦焦焦焦焦
+#### https://blog.csdn.net/weixin_60645637/article/details/135520320
 ![preview](public/demo/__case-cover/point-tag.png)
 
 
@@ -424,8 +426,12 @@ npm run dev
 
 
 #
-#### 示例: 简单的logo
-![preview](public/demo/__case-cover/logo.png)
+#### 示例: 金字塔logo
+![preview](public/demo/__case-cover/mesh-pyramid-logo.png)
+
+#
+#### 示例: 奥运会logo
+![preview](public/demo/__case-cover/mesh-olympic-logo.png)
 
 #
 #### 示例: 模型--老虎-模型动画

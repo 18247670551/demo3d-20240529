@@ -58,7 +58,7 @@ export default class HeatingFan extends MyGroup<HeatingFanOptions> {
 
     private addAndGetLeaf() {
         const geometry = new THREE.CircleGeometry(this.options.leafRadius, 32)
-        const texture = this.textureLoader.load("/demo/my/dry/fanLeaf_red.png")
+        const texture = getTextureLoader().load("/demo/my/dry/fanLeaf_red.png")
         
         texture.colorSpace = THREE.SRGBColorSpace
 

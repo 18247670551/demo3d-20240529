@@ -47,7 +47,7 @@ export default class PlaneText extends MyGroup<PlaneTextOptions> {
 
         // 创建图标
         const iconGeometry = new THREE.PlaneGeometry(iconWidth, iconHeight)
-        const iconTexture = this.textureLoader.load(iconPath)
+        const iconTexture = getTextureLoader().load(iconPath)
         
         iconTexture.colorSpace = THREE.SRGBColorSpace
         const iconMaterial = new THREE.MeshBasicMaterial({

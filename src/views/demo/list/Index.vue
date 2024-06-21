@@ -517,11 +517,18 @@
 
 
 
-        <div class="item" @click="toDemo('示例-简单的logo')">
+        <div class="item" @click="toDemo('示例-金字塔logo')">
           <div class="image">
-            <img src="/demo/__case-cover/logo.png" alt="简单的logo"/>
+            <img src="/demo/__case-cover/mesh-pyramid-logo.png" alt="金字塔logo"/>
           </div>
-          <div class="title">简单的logo</div>
+          <div class="title">金字塔logo</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-奥运会logo')">
+          <div class="image">
+            <img src="/demo/__case-cover/mesh-olympic-logo.png" alt="奥运会logo"/>
+          </div>
+          <div class="title">奥运会logo</div>
         </div>
 
 

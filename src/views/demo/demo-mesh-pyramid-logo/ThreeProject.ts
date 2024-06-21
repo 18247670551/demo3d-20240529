@@ -1,6 +1,10 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
+
+import PyramidLogo from "./PyramidLogo"
+
 import matcap_0Pic from "./texture/matcap_0.png"
 import matcap_2Pic from "./texture/matcap_2.png"
 import matcap_3Pic from "./texture/matcap_3.png"
@@ -14,7 +18,6 @@ import matcap_7Pic from "./texture/matcap_7.png"
 export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
-    private readonly logoMaterial: THREE.Material
 
     constructor(dom: HTMLElement) {
 
@@ -47,62 +50,40 @@ export default class ThreeProject extends ThreeCore {
 
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
         this.orbit.autoRotate = true
-        this.orbit.target.y = 10
+        this.orbit.target.y = 7
 
         // const axesHelper = new THREE.AxesHelper(20)
         // this.scene.add(axesHelper)
 
 
+
+
         const textures = [
-            this.textureLoader.load(matcap_0Pic),
-            this.textureLoader.load(matcap_2Pic),
-            this.textureLoader.load(matcap_3Pic),
-            this.textureLoader.load(matcap_4Pic),
-            this.textureLoader.load(matcap_5Pic),
-            this.textureLoader.load(matcap_6Pic),
-            this.textureLoader.load(matcap_7Pic),
+            getTextureLoader().load(matcap_0Pic),
+            getTextureLoader().load(matcap_2Pic),
+            getTextureLoader().load(matcap_3Pic),
+            getTextureLoader().load(matcap_4Pic),
+            getTextureLoader().load(matcap_5Pic),
+            getTextureLoader().load(matcap_6Pic),
+            getTextureLoader().load(matcap_7Pic),
         ]
 
-        this.logoMaterial = new THREE.MeshMatcapMaterial({
-            matcap: textures[0],
-            side: THREE.DoubleSide,
-        })
+        const logo = new PyramidLogo()
 
-        const logo = this.createLogo()
         this.scene.add(logo)
 
         let i = 0
         setInterval(() => {
-            // @ts-ignore
-            this.logoMaterial.matcap = textures[i%6]
+            logo.material.map = textures[i % 6]
             i++
         }, 2000)
-    }
-
-    private createLogo(){
-        const group = new THREE.Group()
-
-        const cone = new THREE.Mesh(new THREE.ConeGeometry(4, 4, 4), this.logoMaterial)
-        cone.position.y = 12
-        group.add(cone)
-
-        const cylinder = new THREE.Mesh(new THREE.CylinderGeometry(6, 10, 4, 4, 1), this.logoMaterial)
-        cylinder.position.y = 6
-        group.add(cylinder)
-
-        const cylinder2 = new THREE.Mesh(new THREE.CylinderGeometry(12, 16, 4, 4, 1), this.logoMaterial)
-        group.add(cylinder2)
-
-        return group
     }
 
 
     protected init() {
     }
 
-
     protected onRenderer() {
-        const elapsed = this.clock.getElapsedTime()
         this.orbit.update()
     }
 

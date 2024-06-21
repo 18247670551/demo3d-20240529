@@ -12,7 +12,7 @@ import door_heightPic from "@/views/demo/demo-texture-door/texture/door/height.j
 import door_metalnessPic from "@/views/demo/demo-texture-door/texture/door/metalness.jpg"
 import door_normalPic from "@/views/demo/demo-texture-door/texture/door/normal.jpg"
 import door_roughnessPic from "@/views/demo/demo-texture-door/texture/door/roughness.jpg"
-
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 export default class ThreeProject extends ThreeCore {
 
@@ -127,7 +127,7 @@ export default class ThreeProject extends ThreeCore {
         /**
          * 屋顶
          */
-        const roofTexture = this.textureLoader.load(roofPic)
+        const roofTexture = getTextureLoader().load(roofPic)
         const roofGeo = new THREE.ConeGeometry(houseWidth / 2 * 1.8, roofHeight, 4)
         roofGeo.translate(0, roofHeight / 2, 0)
         const roofMat = new THREE.MeshStandardMaterial({color: "#fa7e58", map: roofTexture})
@@ -140,8 +140,8 @@ export default class ThreeProject extends ThreeCore {
         /**
          * 墙
          */
-        const wallsColorTexture = this.textureLoader.load(brick1_1Pic)
-        const wallsAlphaTexture = this.textureLoader.load(brick1_2Pic)
+        const wallsColorTexture = getTextureLoader().load(brick1_1Pic)
+        const wallsAlphaTexture = getTextureLoader().load(brick1_2Pic)
         wallsColorTexture.wrapT = wallsColorTexture.wrapS = THREE.RepeatWrapping
         wallsColorTexture.repeat.set(2, 2)
         wallsAlphaTexture.wrapT = wallsAlphaTexture.wrapS = THREE.RepeatWrapping
@@ -164,13 +164,13 @@ export default class ThreeProject extends ThreeCore {
         /**
          * 门
          */
-        const door_alphaTexture = this.textureLoader.load(door_alphaPic)
-        const door_ambientTexture = this.textureLoader.load(door_ambientOcclusionPic)
-        const door_colorTexture = this.textureLoader.load(door_colorPic)
-        const door_heightTexture = this.textureLoader.load(door_heightPic)
-        const door_metalnessTexture = this.textureLoader.load(door_metalnessPic)
-        const door_normalTexture = this.textureLoader.load(door_normalPic)
-        const door_roughnessTexture = this.textureLoader.load(door_roughnessPic)
+        const door_alphaTexture = getTextureLoader().load(door_alphaPic)
+        const door_ambientTexture = getTextureLoader().load(door_ambientOcclusionPic)
+        const door_colorTexture = getTextureLoader().load(door_colorPic)
+        const door_heightTexture = getTextureLoader().load(door_heightPic)
+        const door_metalnessTexture = getTextureLoader().load(door_metalnessPic)
+        const door_normalTexture = getTextureLoader().load(door_normalPic)
+        const door_roughnessTexture = getTextureLoader().load(door_roughnessPic)
 
         const door = new THREE.Mesh(
             new THREE.PlaneGeometry(2.2, 2.2, 100, 100),

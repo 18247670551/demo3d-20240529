@@ -4,6 +4,7 @@ import {LineMaterial} from "three/examples/jsm/lines/LineMaterial"
 import {Line2} from "three/examples/jsm/lines/Line2"
 import gsap from "gsap"
 import MyGroup from "@/three-widget/MyGroup"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 /**
@@ -278,7 +279,7 @@ export default class Room extends MyGroup<RoomOptions> {
         const geometry = new THREE.PlaneGeometry(this.options.doorWidth, this.options.doorHeight, 1, 1)
         geometry.translate(0, -this.options.doorHeight/2, 0)
 
-        const texture = new THREE.TextureLoader().load("/demo/my/common/room/door3.png")
+        const texture = getTextureLoader().load("/demo/my/common/room/door3.png")
         
         texture.colorSpace = THREE.SRGBColorSpace
 

@@ -105,7 +105,7 @@ export default class Ultrafiltration extends MyGroup<UltrafiltrationOptions> {
         const logoHeight = 1000
         const geo = new THREE.BoxGeometry(width, logoHeight, thickness )
 
-        const texture = this.textureLoader.load("/demo/my/purity/purity_device_logo.png")
+        const texture = getTextureLoader().load("/demo/my/purity/purity_device_logo.png")
         
         texture.colorSpace = THREE.SRGBColorSpace
         const logoMat = new THREE.MeshPhongMaterial({map: texture, color: 0xFFFFFF, transparent: true, opacity: 1, side: THREE.DoubleSide})
@@ -415,7 +415,7 @@ export default class Ultrafiltration extends MyGroup<UltrafiltrationOptions> {
         const group = new THREE.Group()
         group.name = "滤芯"
 
-        const texture = this.textureLoader.load("/demo/my/purity/purity_filter.png")
+        const texture = getTextureLoader().load("/demo/my/purity/purity_filter.png")
         
         texture.colorSpace = THREE.SRGBColorSpace
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping

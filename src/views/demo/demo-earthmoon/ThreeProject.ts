@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 export default class ThreeProject extends ThreeCore {
 
@@ -69,7 +69,7 @@ export default class ThreeProject extends ThreeCore {
             color: 0x4d76cf,
             transparent: true,
             opacity: 1,
-            map: this.textureLoader.load("/demo/earthmoon/circle.png")
+            map: getTextureLoader().load("/demo/earthmoon/circle.png")
         })
 
         const stars = new THREE.Points(starGeo, starMat)
@@ -79,9 +79,9 @@ export default class ThreeProject extends ThreeCore {
         const earth = new THREE.Mesh(
             new THREE.SphereGeometry(this.earthRadius, 64, 64),
             new THREE.MeshStandardMaterial({
-                map: this.textureLoader.load('/demo/earthmoon/earth_basic.jpeg'),
-                normalMap: this.textureLoader.load('/demo/earthmoon/earth_normal.jpeg'),
-                roughnessMap: this.textureLoader.load('/demo/earthmoon/earth_rough.jpeg'),
+                map: getTextureLoader().load('/demo/earthmoon/earth_basic.jpeg'),
+                normalMap: getTextureLoader().load('/demo/earthmoon/earth_normal.jpeg'),
+                roughnessMap: getTextureLoader().load('/demo/earthmoon/earth_rough.jpeg'),
                 normalScale: new THREE.Vector2(10, 10),
                 metalness: .1
             })
@@ -92,7 +92,7 @@ export default class ThreeProject extends ThreeCore {
 
 
         const clouds = new THREE.Mesh(new THREE.SphereGeometry(this.cloudsLoopRadius, 64, 64), new THREE.MeshLambertMaterial({
-            alphaMap: this.textureLoader.load('/demo/earthmoon/clouds.jpeg'),
+            alphaMap: getTextureLoader().load('/demo/earthmoon/clouds.jpeg'),
             transparent: true,
             opacity: .4,
             depthTest: true
@@ -102,9 +102,9 @@ export default class ThreeProject extends ThreeCore {
 
 
         const moon = new THREE.Mesh(new THREE.SphereGeometry(this.moonRadius, 32, 32), new THREE.MeshStandardMaterial({
-            map: this.textureLoader.load('/demo/earthmoon/moon_basic.jpeg'),
-            normalMap: this.textureLoader.load('/demo/earthmoon/moon_normal.jpeg'),
-            roughnessMap: this.textureLoader.load('/demo/earthmoon/moon_roughness.jpeg'),
+            map: getTextureLoader().load('/demo/earthmoon/moon_basic.jpeg'),
+            normalMap: getTextureLoader().load('/demo/earthmoon/moon_normal.jpeg'),
+            roughnessMap: getTextureLoader().load('/demo/earthmoon/moon_roughness.jpeg'),
             normalScale: new THREE.Vector2(10, 10),
             metalness: .1
         }))

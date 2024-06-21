@@ -40,7 +40,7 @@ export default class ThreeProject extends ThreeCore {
 
 
         // 时空通道
-        const stormTexture = this.textureLoader.load(stormPic)
+        const stormTexture = getTextureLoader().load(stormPic)
         stormTexture.wrapS = stormTexture.wrapT = THREE.RepeatWrapping
         stormTexture.repeat.set(1, 2)
         this.stormTexture = stormTexture
@@ -61,7 +61,7 @@ export default class ThreeProject extends ThreeCore {
 
 
         // 时光机平台
-        const metalTexture = this.textureLoader.load(metalPic)
+        const metalTexture = getTextureLoader().load(metalPic)
         metalTexture.wrapS = metalTexture.wrapT = THREE.RepeatWrapping
         metalTexture.repeat.set(10, 10)
 

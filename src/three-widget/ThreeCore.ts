@@ -6,7 +6,7 @@ export default abstract class ThreeCore {
 
     protected readonly dom: HTMLElement
     protected readonly scene: THREE.Scene
-    protected readonly camera: THREE.PerspectiveCamera | THREE.OrthographicCamera
+    protected camera: THREE.PerspectiveCamera | THREE.OrthographicCamera
     protected readonly defaultCamera: THREE.PerspectiveCamera | THREE.OrthographicCamera
     protected readonly renderer: THREE.WebGLRenderer
 
@@ -14,8 +14,6 @@ export default abstract class ThreeCore {
     protected readonly options: ThreeBaseOptions
 
     protected readonly stats: Stats
-
-    protected readonly textureLoader = new THREE.TextureLoader()
 
     // 要执行动画的对象集合, 子类可以把自己的动画写进 onRender 也可以 this.addAnimate() 添加到父类动画集合里
     private readonly animates: Record<string, Function>

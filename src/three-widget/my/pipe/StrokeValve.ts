@@ -67,7 +67,7 @@ export default class StrokeValve extends BasePipeJoin {
         const meterRadius = 120
         const meterHeight = 20
 
-        const texture_front = this.textureLoader.load("/demo/my/common/meter/valve.png")
+        const texture_front = getTextureLoader().load("/demo/my/common/meter/valve.png")
         
         texture_front.colorSpace = THREE.SRGBColorSpace
 

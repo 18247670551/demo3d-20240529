@@ -1,6 +1,7 @@
 import * as THREE from "three"
 import gsap from "gsap"
 import MyGroup from "@/three-widget/MyGroup"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 /**
  * @param trackLength?: number
@@ -122,7 +123,7 @@ export default class TruckBottomWash extends MyGroup<TruckBottomWashOptions> {
 
     private createWheel() {
 
-        const wheelTexture = this.textureLoader.load("/demo/my/wash/wheel.png")
+        const wheelTexture = getTextureLoader().load("/demo/my/wash/wheel.png")
         
         wheelTexture.colorSpace = THREE.SRGBColorSpace
 
@@ -133,7 +134,7 @@ export default class TruckBottomWash extends MyGroup<TruckBottomWashOptions> {
         })
 
 
-        const tyreTexture = this.textureLoader.load("/demo/my/wash/tyre_0.png")
+        const tyreTexture = getTextureLoader().load("/demo/my/wash/tyre_0.png")
         
         tyreTexture.colorSpace = THREE.SRGBColorSpace
 

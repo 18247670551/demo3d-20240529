@@ -5,6 +5,7 @@ import {TextureLoader} from "three"
 import {Water} from "three/examples/jsm/objects/Water"
 import ThreeCore from "@/three-widget/ThreeCore"
 import {resetUV} from "@/three-widget/ThreeUtils";
+import {getCubeTextureLoader, getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 export default class ThreeProject extends ThreeCore {
@@ -176,8 +177,7 @@ export default class ThreeProject extends ThreeCore {
     }
 
     private addSky() {
-        const loader = new THREE.CubeTextureLoader()
-        loader.setPath('/demo/shanghai/skybox/').load(
+        getCubeTextureLoader().setPath('/demo/shanghai/skybox/').load(
             ['left.jpg', 'right.jpg', 'top.jpg', 'bottom.jpg', 'front.jpg', 'back.jpg'],
             texture => {
                 this.scene.background = texture
@@ -186,7 +186,7 @@ export default class ThreeProject extends ThreeCore {
 
     private addAndGetWater() {
         const waterGeometry = new THREE.PlaneGeometry(10000, 10000)
-        const texture = new THREE.TextureLoader().load('/demo/water0/water_texture0.jpg')
+        const texture = getTextureLoader().load('/demo/water0/water_texture0.jpg')
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping
         const water = new Water(
             waterGeometry,
@@ -528,7 +528,7 @@ export default class ThreeProject extends ThreeCore {
         const _geometry7 = new THREE.BoxGeometry(2, 1.3, 2)
         const _geometry8 = new THREE.BoxGeometry(1.5, 1, 1.5)
 
-        const texture = new THREE.TextureLoader().load("/demo/shanghai/JMtowerbody.jpg")// 颜色贴图
+        const texture = getTextureLoader().load("/demo/shanghai/JMtowerbody.jpg")// 颜色贴图
         texture.colorSpace = THREE.SRGBColorSpace
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping // 水平和竖直方向重复贴图
         texture.repeat.set(0.5, 1)

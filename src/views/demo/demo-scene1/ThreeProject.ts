@@ -6,6 +6,7 @@ import treePic from "./texture/tree.png"
 import roadPic from "./texture/road.jpg"
 import {Sky} from "three/examples/jsm/objects/Sky"
 import {GUI} from "dat.gui"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
 
 
 export default class ThreeProject extends ThreeCore {
@@ -64,8 +65,8 @@ export default class ThreeProject extends ThreeCore {
         const grassColor = 0xc0ea3b
         const roadWidth = 10
 
-        const grassTexture = this.textureLoader.load(grassPic)
-        const roadTexture = this.textureLoader.load(roadPic)
+        const grassTexture = getTextureLoader().load(grassPic)
+        const roadTexture = getTextureLoader().load(roadPic)
 
 
         const grassGeo = new THREE.PlaneGeometry(worldWidth, worldHeight)
@@ -230,41 +231,7 @@ export default class ThreeProject extends ThreeCore {
                 new THREE.MeshLambertMaterial({color: "#0000ff"}),
             ]
         )
-        // 给车加个五环车标, 创建五环
-        const cycleGeo = new THREE.TorusGeometry(10, 1, 10, 32)
-        const cycleMat1 = new THREE.MeshLambertMaterial({color: 0x0885c2})
-        const cycleMat2 = new THREE.MeshLambertMaterial({color: 0xfbb132})
-        const cycleMat3 = new THREE.MeshLambertMaterial({color: 0x000000})
-        const cycleMat4 = new THREE.MeshLambertMaterial({color: 0x1c8b3c})
-        const cycleMat5 = new THREE.MeshLambertMaterial({color: 0xed334e})
 
-        const cycle1 = new THREE.Mesh(cycleGeo, cycleMat1)
-        const cycle2 = new THREE.Mesh(cycleGeo, cycleMat2)
-        const cycle3 = new THREE.Mesh(cycleGeo, cycleMat3)
-        const cycle4 = new THREE.Mesh(cycleGeo, cycleMat4)
-        const cycle5 = new THREE.Mesh(cycleGeo, cycleMat5)
-
-        // 以第三个为中间, 向两边延展
-        cycle1.position.set(-25, 0, 0)
-        cycle2.position.set(-12.5, -10, -0.5)
-        cycle3.position.set(0, 0, 0)
-        cycle4.position.set(12.5, -10, 0.5)
-        cycle5.position.set(25, 0, 0)
-
-
-        const cycles = new THREE.Group()
-        cycles.add(
-            cycle1,
-            cycle2,
-            cycle3,
-            cycle4,
-            cycle5,
-        )
-        cycles.scale.set(0.1, 0.1, 0.1)
-        cycles.position.y = 4
-        cycles.position.z = 15.2
-
-        car.add(cycles)
 
         car.position.copy(carPath.getPointAt(0))
         this.scene.add(car)

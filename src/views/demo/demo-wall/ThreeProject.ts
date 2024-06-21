@@ -4,6 +4,7 @@ import ThreeCore from "@/three-widget/ThreeCore"
 import vertexShader from "./shader/vertexShader.glsl"
 import fragmentShader from "./shader/fragmentShader.glsl"
 import {pathToWallGeometry} from "@/utils/wallUtils"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 export default class ThreeProject extends ThreeCore {
@@ -36,9 +37,8 @@ export default class ThreeProject extends ThreeCore {
         this.scene.add(axesHelper)
 
 
-        const loader = new THREE.TextureLoader()
-        const bgTexture = loader.load("/demo/wall/1.png")
-        const flowTexture = loader.load("/demo/wall/2.png")
+        const bgTexture = getTextureLoader().load("/demo/wall/1.png")
+        const flowTexture = getTextureLoader().load("/demo/wall/2.png")
 
         bgTexture.wrapS = THREE.RepeatWrapping
         flowTexture.wrapS = THREE.RepeatWrapping

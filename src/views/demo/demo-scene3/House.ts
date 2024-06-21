@@ -4,6 +4,7 @@ import wallPic from "./texture/wall.webp"
 import topPic from "./texture/top.jpg"
 import wood2Pic from "./texture/wood2.jpg"
 import gsap from "gsap"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 interface HouseOptions {
@@ -39,7 +40,7 @@ export default class House extends THREE.Group {
         const floorGeo = new THREE.BoxGeometry(length - wallDepth, wallDepth, width)
         floorGeo.translate(0, wallDepth / 2, 0)
 
-        const ground8Texture = this.textureLoader.load(ground8Pic)
+        const ground8Texture = getTextureLoader().load(ground8Pic)
         ground8Texture.wrapS = ground8Texture.wrapT = THREE.RepeatWrapping
         //ground8Texture.repeat.set(6, 1)
         const floorMat = new THREE.MeshLambertMaterial({color: 0xcccccc, map: ground8Texture})
@@ -50,7 +51,7 @@ export default class House extends THREE.Group {
 
 
 
-        const leftAndRightWallTexture = this.textureLoader.load(wallPic)
+        const leftAndRightWallTexture = getTextureLoader().load(wallPic)
         leftAndRightWallTexture.wrapS = leftAndRightWallTexture.wrapT = THREE.RepeatWrapping
         leftAndRightWallTexture.repeat.set(6, 1)
 
@@ -84,7 +85,7 @@ export default class House extends THREE.Group {
 
 
 
-        const frontAndBackWallTexture = this.textureLoader.load(wallPic)
+        const frontAndBackWallTexture = getTextureLoader().load(wallPic)
         frontAndBackWallTexture.wrapS = frontAndBackWallTexture.wrapT = THREE.RepeatWrapping
         frontAndBackWallTexture.repeat.set(0.3, 0.3)
         const frontAndBackWallMat = new THREE.MeshLambertMaterial({color: 0xeeeeee, map: frontAndBackWallTexture})
@@ -126,7 +127,7 @@ export default class House extends THREE.Group {
 
 
 
-        const topTexture = this.textureLoader.load(topPic)
+        const topTexture = getTextureLoader().load(topPic)
         //topTexture.center.set(0.5, 0.5)
         topTexture.rotation = Math.PI/2
         topTexture.wrapS = topTexture.wrapT = THREE.RepeatWrapping
@@ -203,11 +204,9 @@ export default class House extends THREE.Group {
             const doorHeight = 2.5
             const doorDepth = 0.2
 
-            const loader = new THREE.TextureLoader()
-
             const doorGeo = new THREE.BoxGeometry(doorLength, doorHeight, doorDepth)
             doorGeo.translate(doorLength / 2, doorHeight / 2, 0)
-            const doorMat = new THREE.MeshStandardMaterial({color: "#fd693b", map: loader.load(wood2Pic)})
+            const doorMat = new THREE.MeshStandardMaterial({color: "#fd693b", map: getTextureLoader().load(wood2Pic)})
 
             super(doorGeo, doorMat)
             this.name = "门"
