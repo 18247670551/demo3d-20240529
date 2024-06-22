@@ -2,6 +2,7 @@ import * as THREE from "three"
 import ThreeCore from "@/three-widget/ThreeCore"
 import vertexShader from './shader/vertexShader.glsl'
 import fragmentShader from './shader/fragmentShader.glsl'
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
 
 
 export default class ThreeProject extends ThreeCore {
@@ -26,7 +27,7 @@ export default class ThreeProject extends ThreeCore {
         this.scene.add(ambientLight)
 
         const texture = getTextureLoader().load("/demo/photo3d/photo.jpg")
-        const depthTexture = getTextureLoader().load("/demo/photo3d/photo_d.png")
+        const depthTexture = getTextureLoader().load("/demo/photo3d/photo_depth.png")
 
 
 

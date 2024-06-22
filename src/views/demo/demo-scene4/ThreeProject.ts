@@ -33,7 +33,6 @@ export default class ThreeProject extends ThreeCore {
             }
         })
 
-        //this.camera.position.set(5, 6, 20)
         this.camera.position.set(5, 6, 25)
         this.scene.background = new THREE.Color(0x000000)
 

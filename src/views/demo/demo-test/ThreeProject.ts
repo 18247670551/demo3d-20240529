@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import {createCurvePoints} from "@/three-widget/ThreeUtils";
+import {getDracoGltfLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 export default class ThreeProject extends ThreeCore {
@@ -20,18 +20,18 @@ export default class ThreeProject extends ThreeCore {
 
         this.scene.background = new THREE.Color(0x000000)
 
-        this.camera.position.set(0, 10, 50)
+        this.camera.position.set(-10, 20, 30)
 
-        const ambientLight = new THREE.AmbientLight(0xffffff, 10)
+        const ambientLight = new THREE.AmbientLight(0xffffff, 4)
         this.scene.add(ambientLight)
 
-        const light = new THREE.DirectionalLight(0xffffff, 2)
-        light.position.set(0, 60, -600)
+        const light = new THREE.DirectionalLight(0xffffff, 0.1)
+        light.position.set(100, 60, -600)
         light.castShadow = true
         this.scene.add(light)
 
-        const shadowLight = new THREE.DirectionalLight(0xffffff, 5)
-        shadowLight.position.set(10, 60, 600)
+        const shadowLight = new THREE.DirectionalLight(0xffffff, 4)
+        shadowLight.position.set(100, 60, 600)
         shadowLight.castShadow = true
         this.scene.add(shadowLight)
 
@@ -43,29 +43,19 @@ export default class ThreeProject extends ThreeCore {
         // const axesHelper = new THREE.AxesHelper(10)
         // this.scene.add(axesHelper)
 
-        const v3s = [
-            new THREE.Vector3(0, 0, 0),
-            new THREE.Vector3(0, 0, 30),
-        ]
 
-        const geometry = new THREE.BufferGeometry()
-        geometry.setFromPoints(createCurvePoints(v3s))
 
-        const line = new THREE.Line(
-            geometry,
-            new THREE.LineBasicMaterial()
-        )
+        getDracoGltfLoader().load("public/demo/model-football-field/football-field.glb", gltf => {
 
-        this.scene.add(line)
+            console.log("gltf = ", gltf)
 
-    }
+            this.scene.add(gltf.scene)
 
-    
-    private createLine(startV3: THREE.Vector3, endV3: THREE.Vector3){
-
+        })
 
 
     }
+
 
 
     protected init() {

@@ -470,6 +470,13 @@
           <div class="title">简单场景4--鬼屋</div>
         </div>
 
+        <div class="item" @click="toDemo('示例-简单场景5')">
+          <div class="image">
+            <img src="/demo/__case-cover/scene-sphere-robot.png" alt="简单场景5"/>
+          </div>
+          <div class="title">简单场景5--酷炫球形机器人</div>
+        </div>
+
 
 
 
@@ -540,6 +547,14 @@
 
 
 
+
+
+        <div class="item" @click="toDemo('示例-模型-足球场')">
+          <div class="image">
+            <img src="/demo/__case-cover/model-football-field.png" alt="足球场"/>
+          </div>
+          <div class="title">模型--足球场</div>
+        </div>
 
         <div class="item" @click="toDemo('示例-模型-老虎')">
           <div class="image">

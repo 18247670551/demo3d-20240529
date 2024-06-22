@@ -15,8 +15,8 @@ import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 interface DemoPipeOptions {
     radius?: number
     color?: number
-    tubularSegments?: number
     radiusSegments?: number,
+    tubularSegments?: number
     curve: Curve<Vector3>,
 }
 
@@ -30,32 +30,32 @@ export default class DemoPipe extends MyMesh {
         const defaultOptions = {
             radius: 70,
             color: 0x777777,
-            tubularSegments: 100,
             radiusSegments: 16,
+            tubularSegments: 100,
             curve: new THREE.CatmullRomCurve3(),
         }
 
-        const allOptions: Required<DemoPipeOptions> = Object.assign({}, defaultOptions, options)
+        const finalOptions: Required<DemoPipeOptions> = Object.assign({}, defaultOptions, options)
 
         const flowTexture = getTextureLoader().load("/demo/my/common/pipe/flow.png")
 
         flowTexture.colorSpace = THREE.SRGBColorSpace
         flowTexture.wrapS = flowTexture.wrapT = THREE.RepeatWrapping
-        // allOptions.curve.getLength() / 1000 获取管道总长度 / 1000, 是贴图横向重复净数, 以确保每条管道贴图样式相同
-        flowTexture.repeat.set(allOptions.curve.getLength() / 1000, 1)
+        // finalOptions.curve.getLength() / 1000 获取管道总长度 / 1000, 是贴图横向重复次数, 以确保每条管道贴图样式相同
+        flowTexture.repeat.set(finalOptions.curve.getLength() / 1000, 1)
         flowTexture.needsUpdate = true
 
         const mat = new THREE.MeshPhongMaterial({
-            color: allOptions.color,
+            color: finalOptions.color,
             transparent: true,
             side: THREE.DoubleSide,
-            specular: allOptions.color,
+            specular: finalOptions.color,
             shininess: 15,
             //map: flowTexture
         })
         //mat.needsUpdate = true
 
-        const geo = new THREE.TubeGeometry(allOptions.curve, allOptions.tubularSegments, allOptions.radius, allOptions.radiusSegments)
+        const geo = new THREE.TubeGeometry(finalOptions.curve, finalOptions.tubularSegments, finalOptions.radius, finalOptions.radiusSegments)
 
         super(name, geo, mat)
 

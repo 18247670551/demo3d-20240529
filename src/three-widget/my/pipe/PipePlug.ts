@@ -20,8 +20,8 @@ export default class PipePlug  extends MyMesh {
             pipeRadius: 80,
         }
 
-        const allOptions = Object.assign({}, defaultOptions, options)
-        const geo = new THREE.SphereGeometry(allOptions.pipeRadius * 2, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.16)
+        const finalOptions = Object.assign({}, defaultOptions, options)
+        const geo = new THREE.SphereGeometry(finalOptions.pipeRadius * 2, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.16)
         geo.center()
         const mat = new THREE.MeshPhongMaterial({color: 0x666666, side: THREE.DoubleSide})
         super(name, geo, mat)

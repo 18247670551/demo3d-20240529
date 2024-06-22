@@ -4,6 +4,7 @@ import {AudioLoader} from "three"
 import {FBXLoader} from "three/examples/jsm/loaders/FBXLoader"
 import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader"
 import {MeshoptDecoder} from "three/examples/jsm/libs/meshopt_decoder.module"
+import {RGBELoader} from "three/examples/jsm/loaders/RGBELoader"
 
 
 
@@ -12,6 +13,8 @@ import {MeshoptDecoder} from "three/examples/jsm/libs/meshopt_decoder.module"
 const textureLoader = new THREE.TextureLoader()
 
 const audioLoader = new AudioLoader()
+
+const rgbeLoader = new RGBELoader()
 
 const fbxLoader = new FBXLoader()
 
@@ -54,6 +57,11 @@ export const getAudioLoader = () => {
 export const getFbxLoader = () => {
     fbxLoader.setPath("")
     return fbxLoader
+}
+
+export const getRGBELoader = () => {
+    rgbeLoader.setPath("")
+    return rgbeLoader
 }
 
 export const getCubeTextureLoader = () => {

@@ -33,13 +33,13 @@ export default class MyPoints extends THREE.Points {
             color: {r: 100, g: 200, b: 200, a: 1,},
         }
 
-        const allOptions = Object.assign({}, defaultOptions, options)
+        const finalOptions = Object.assign({}, defaultOptions, options)
 
         const shaderColor = new Float32Array(4)
-        shaderColor[0] = allOptions.color.r / 255
-        shaderColor[1] = allOptions.color.g / 255
-        shaderColor[2] = allOptions.color.b / 255
-        shaderColor[3] = allOptions.color.a
+        shaderColor[0] = finalOptions.color.r / 255
+        shaderColor[1] = finalOptions.color.g / 255
+        shaderColor[2] = finalOptions.color.b / 255
+        shaderColor[3] = finalOptions.color.a
 
         const geo = new THREE.BufferGeometry()
         const mat = new THREE.ShaderMaterial({
@@ -47,7 +47,7 @@ export default class MyPoints extends THREE.Points {
             fragmentShader,
             uniforms: {
                 time: {value: 0},
-                size: {value: allOptions.size},
+                size: {value: finalOptions.size},
                 color: {value: shaderColor},
             },
             transparent: true,
@@ -59,7 +59,7 @@ export default class MyPoints extends THREE.Points {
 
         super(geo, mat)
 
-        this.num = allOptions.num
+        this.num = finalOptions.num
 
         this.oldPositions = new Float32Array(this.num * 3)
         this.toPositions = new Float32Array(this.num * 3)

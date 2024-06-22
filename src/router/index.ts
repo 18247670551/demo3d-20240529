@@ -75,6 +75,7 @@ import Scene1 from '@/views/demo/demo-scene1/Index.vue'
 import Scene2 from '@/views/demo/demo-scene2/Index.vue'
 import Scene3 from '@/views/demo/demo-scene3/Index.vue'
 import SceneHauntedHouse from '@/views/demo/demo-scene4/Index.vue'
+import SceneSphereRobot from '@/views/demo/demo-scene-sphere-robot/Index.vue'
 import TextureDoor from '@/views/demo/demo-texture-door/Index.vue'
 import AnimationDoor from '@/views/demo/demo-animation-door/Index.vue'
 import AnimationMagicCircle from '@/views/demo/demo-animation-magic-circle/Index.vue'
@@ -85,6 +86,8 @@ import MeshPyramidLogo from '@/views/demo/demo-mesh-pyramid-logo/Index.vue'
 import MeshOlympicLogo from '@/views/demo/demo-mesh-olympic-logo/Index.vue'
 import MeshSimpleTree from '@/views/demo/demo-mesh-simple-tree/Index.vue'
 
+
+import ModelFootballField from '@/views/demo/demo-model-football-field/Index.vue'
 import ModelTiger from '@/views/demo/demo-model-tiger/Index.vue'
 import ModelFox from '@/views/demo/demo-model-fox/Index.vue'
 import ModelBomb from '@/views/demo/demo-model-bomb/Index.vue'
@@ -169,6 +172,7 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-简单场景2', path: '/demo/demo-scene2', component: Scene2, meta: {title: "示例-简单场景2", isLogin: true}},
     {name: '示例-简单场景3', path: '/demo/demo-scene3', component: Scene3, meta: {title: "示例-简单场景3", isLogin: true}},
     {name: '示例-简单场景4', path: '/demo/demo-scene4', component: SceneHauntedHouse, meta: {title: "示例-简单场景4", isLogin: true}},
+    {name: '示例-简单场景5', path: '/demo/demo-scene-sphere-robot', component: SceneSphereRobot, meta: {title: "示例-简单场景5", isLogin: true}},
 
     {name: '示例-材质示例1', path: '/demo/demo-texture-door', component: TextureDoor, meta: {title: "示例-材质示例1", isLogin: true}},
 
@@ -182,6 +186,7 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-奥运会logo', path: '/demo/demo-mesh-olympic-logo', component: MeshOlympicLogo, meta: {title: "示例-奥运会logo", isLogin: true}},
     {name: '示例-简易树', path: '/demo/demo-mesh-simple-tree', component: MeshSimpleTree, meta: {title: "示例-简易树", isLogin: true}},
 
+    {name: '示例-模型-足球场', path: '/demo/demo-model-football-field', component: ModelFootballField, meta: {title: "示例-模型-足球场", isLogin: true}},
     {name: '示例-模型-老虎', path: '/demo/demo-model-tiger', component: ModelTiger, meta: {title: "示例-模型-老虎", isLogin: true}},
     {name: '示例-模型-狐狸', path: '/demo/demo-model-fox', component: ModelFox, meta: {title: "示例-模型-狐狸", isLogin: true}},
     {name: '示例-模型-小米su7', path: '/demo/demo-model-su7', component: ModelSu7, meta: {title: "示例-模型-小米su7", isLogin: true}},
