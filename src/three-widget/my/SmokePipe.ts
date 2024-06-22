@@ -52,7 +52,7 @@ export default class SmokePipe extends MyGroup<SmokePipeOptions> {
     }
 
     private createSmokePointSprite() {
-        const texture = new THREE.TextureLoader().load('/demo/my/wash/smoke1.png')
+        const texture = getTextureLoader().load('/demo/my/wash/smoke1.png')
         
         texture.colorSpace = THREE.SRGBColorSpace
 

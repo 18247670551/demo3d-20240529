@@ -3,6 +3,7 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import vertexShader from './shader/vertexShader.glsl'
 import fragmentShader from './shader/fragmentShader.glsl'
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
 
 
 export default class ThreeProject extends ThreeCore {
@@ -55,10 +56,9 @@ export default class ThreeProject extends ThreeCore {
             endColor: '#1b3984'
         }
 
-        const textureLoader = new THREE.TextureLoader()
-        const texture = textureLoader.load('/demo/points4/1.png')
-        const texture1 = textureLoader.load('/demo/points4/2.png')
-        const texture2 = textureLoader.load('/demo/points4/3.png')
+        const texture = getTextureLoader().load('/demo/points4/1.png')
+        const texture1 = getTextureLoader().load('/demo/points4/2.png')
+        const texture2 = getTextureLoader().load('/demo/points4/3.png')
 
         const geometry = new THREE.BufferGeometry()
 

@@ -1,38 +1,31 @@
 import {repeat} from "lodash"
-import * as THREE from "three";
 
-/**
- * 用 THREE.Vector3[] 生成有圆角连接的折线, 圆角采集贝塞尔曲线
- * @param v3s
- */
-export const createCurvePoints = (v3s: THREE.Vector3[]) => {
 
-    if (v3s.length <= 2) {
-        return v3s
-    }
-    const points: THREE.Vector3[] = []
 
-    for (let i = 0; i < v3s.length - 2; i++) {
-        const line1 = new THREE.LineCurve3(v3s[i], v3s[i + 1])
-        const line2 = new THREE.LineCurve3(v3s[i + 1], v3s[i + 2])
 
-        let line1Points: THREE.Vector3[]
-        if (i == 0) {
-            line1Points = line1.getPoints(100).slice(0, 80)
-        } else {
-            line1Points = line1.getPoints(100).slice(20)
-        }
-        const line2Points = line2.getPoints(100).slice(20)
 
-        const curve1 = new THREE.QuadraticBezierCurve3(line1Points[79], v3s[1], line2Points[0])
-        const curve1Points = curve1.getPoints(100)
+// type TestA = "a" | "b" | "c" | "d"
+//
+// function assertNeverDemo(testA: TestA) {
+//     switch (testA) {
+//         case "a":
+//             // ...
+//             break
+//         case "b":
+//             // ...
+//             break
+//         case "c":
+//             // ...
+//             break
+//         default:
+//             return assertNever(testA) // 如果有忽略的case, 此处将有异常
+//     }
+// }
 
-        points.push(...line1Points, ...curve1Points, ...line2Points)
-    }
-
-    return points
-
+export function assertNever(value: never): never {
+    throw new Error("类型检查错误 .assertNever(): 非 never 类型" + value)
 }
+
 
 
 export const getAllNodeKeyByTree = (tree: any[], keyName: string, keys: string[] = []) => {

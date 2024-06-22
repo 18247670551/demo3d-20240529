@@ -3,6 +3,7 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import vertexShader from "./shader/vertexShader.glsl"
 import fragmentShader from "./shader/fragmentShader.glsl"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
 
 
 export default class ThreeProject extends ThreeCore {
@@ -35,8 +36,7 @@ export default class ThreeProject extends ThreeCore {
         this.scene.add(axesHelper)
 
 
-        const loader = new THREE.TextureLoader()
-        const texture = loader.load("public/demo/shader-wave/img.png")
+        const texture = getTextureLoader().load("public/demo/shader-wave/img.png")
 
         const shadeMaterial = new THREE.RawShaderMaterial({
             uniforms: {

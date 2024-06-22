@@ -3,6 +3,7 @@ import gsap from "gsap"
 import MyMesh from "@/three-widget/MyMesh"
 import {Curve} from "three/src/extras/core/Curve"
 import {Vector3} from "three/src/math/Vector3"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 /**
  * radius?: 管道半径
@@ -36,7 +37,7 @@ export default class DemoPipe extends MyMesh {
 
         const allOptions: Required<DemoPipeOptions> = Object.assign({}, defaultOptions, options)
 
-        const flowTexture = new THREE.TextureLoader().load("/demo/my/common/pipe/flow.png")
+        const flowTexture = getTextureLoader().load("/demo/my/common/pipe/flow.png")
 
         flowTexture.colorSpace = THREE.SRGBColorSpace
         flowTexture.wrapS = flowTexture.wrapT = THREE.RepeatWrapping

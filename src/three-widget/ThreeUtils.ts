@@ -3,6 +3,41 @@ import {Water as Water2} from "three/examples/jsm/objects/Water2"
 import {acceleratedRaycast, computeBoundsTree, disposeBoundsTree} from "three-mesh-bvh"
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js'
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
+
+
+/**
+ * 用 THREE.Vector3[] 生成有圆角连接的折线, 圆角采集贝塞尔曲线
+ * @param v3s
+ */
+export const createCurvePoints = (v3s: THREE.Vector3[]) => {
+
+    if (v3s.length <= 2) {
+        return v3s
+    }
+    const points: THREE.Vector3[] = []
+
+    for (let i = 0; i < v3s.length - 2; i++) {
+        const line1 = new THREE.LineCurve3(v3s[i], v3s[i + 1])
+        const line2 = new THREE.LineCurve3(v3s[i + 1], v3s[i + 2])
+
+        let line1Points: THREE.Vector3[]
+        if (i == 0) {
+            line1Points = line1.getPoints(100).slice(0, 80)
+        } else {
+            line1Points = line1.getPoints(100).slice(20)
+        }
+        const line2Points = line2.getPoints(100).slice(20)
+
+        const curve1 = new THREE.QuadraticBezierCurve3(line1Points[79], v3s[1], line2Points[0])
+        const curve1Points = curve1.getPoints(100)
+
+        points.push(...line1Points, ...curve1Points, ...line2Points)
+    }
+
+    return points
+
+}
 
 
 // 获取两个模型的世界矩阵, 通过invert获取逆矩阵, 通过矩阵相乘获取一个模型相对另一个模型的相对矩阵
@@ -126,7 +161,6 @@ export function initBVH() {
 
 // 要先执行 initBVH()
 export const setThreeWater2 = async (mesh: THREE.Mesh) => {
-    const loader = new THREE.TextureLoader()
     const waterGeometry = mesh.geometry.clone()
     resetUV(waterGeometry)
     waterGeometry?.computeBoundsTree()
@@ -136,8 +170,8 @@ export const setThreeWater2 = async (mesh: THREE.Mesh) => {
         flowDirection: new THREE.Vector2(1, 1),
         textureWidth: 1024,
         textureHeight: 1024,
-        normalMap0: loader.load("/demo/common/water/Water_1_M_Normal.jpg"),
-        normalMap1: loader.load("/demo/common/water/Water_2_M_Normal.jpg"),
+        normalMap0: getTextureLoader().load("/demo/common/water/Water_1_M_Normal.jpg"),
+        normalMap1: getTextureLoader().load("/demo/common/water/Water_2_M_Normal.jpg"),
     })
     tsWater.material.transparent = true
     tsWater.material.depthWrite = true

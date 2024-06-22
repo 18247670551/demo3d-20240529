@@ -1,6 +1,6 @@
 import * as THREE from "three"
 import MyGroup from "@/three-widget/MyGroup"
-
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 /**
  * @param iconWidth?: number
@@ -26,7 +26,6 @@ export default class PlaneText extends MyGroup<PlaneTextOptions> {
 
     private readonly canvasTexture: THREE.CanvasTexture
     private readonly ctx: CanvasRenderingContext2D
-    private readonly textureLoader = new THREE.TextureLoader()
 
     constructor(name: string, options?: PlaneTextOptions) {
 

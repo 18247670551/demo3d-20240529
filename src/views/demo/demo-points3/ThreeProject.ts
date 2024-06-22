@@ -1,6 +1,7 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
 
 
 export default class ThreeProject extends ThreeCore {
@@ -80,7 +81,7 @@ export default class ThreeProject extends ThreeCore {
         geo.setAttribute("color", new THREE.BufferAttribute(colors, 3))
 
 
-        const texture = new THREE.TextureLoader().load('/demo/points3/smoke1.png')
+        const texture = getTextureLoader().load('/demo/points3/smoke1.png')
         const pointsMat = new THREE.PointsMaterial({
             map: texture,
             alphaMap: texture,

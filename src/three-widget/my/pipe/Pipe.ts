@@ -1,6 +1,7 @@
 import * as THREE from "three"
 import gsap from "gsap"
 import MyMesh from "@/three-widget/MyMesh"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 /**
  * @param pipeRadius?: number
@@ -29,7 +30,7 @@ export default class Pipe extends MyMesh {
 
     constructor(name: string, options: PipeOptions) {
 
-        const flowTexture = new THREE.TextureLoader().load("/demo/my/pipe/pipe_flow.png")
+        const flowTexture = getTextureLoader().load("/demo/my/pipe/pipe_flow.png")
         
         flowTexture.colorSpace = THREE.SRGBColorSpace
         flowTexture.wrapS = flowTexture.wrapT = THREE.RepeatWrapping

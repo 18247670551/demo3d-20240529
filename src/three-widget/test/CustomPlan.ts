@@ -1,5 +1,6 @@
 import * as THREE from "three"
 import {BufferGeometry, Color, Float32BufferAttribute, Mesh, MeshBasicMaterial} from "three"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 
@@ -66,7 +67,7 @@ function test(){
     ]
 
     const plan = new CustomPlan(pointsPositions, {
-        material: new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load("/demo/my/dry/fanLeaf_blue.png")})
+        material: new THREE.MeshLambertMaterial({map: getTextureLoader().load("/demo/my/dry/fanLeaf_blue.png")})
     })
 
     console.log("plan = ", plan)

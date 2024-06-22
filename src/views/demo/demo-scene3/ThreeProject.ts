@@ -4,6 +4,7 @@ import ThreeCore from "@/three-widget/ThreeCore"
 import grassPic from "@/views/demo/demo-scene3/texture/grass.jpg"
 import House from "@/views/demo/demo-scene3/House"
 import {GUI} from "dat.gui"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
 
 
 export default class ThreeProject extends ThreeCore {
@@ -95,7 +96,7 @@ export default class ThreeProject extends ThreeCore {
     }
 
     private addGround() {
-        const texture = new THREE.TextureLoader().load(grassPic)
+        const texture = getTextureLoader().load(grassPic)
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping
         texture.repeat.set(10, 10)
 

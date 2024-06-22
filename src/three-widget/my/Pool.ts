@@ -2,6 +2,7 @@ import * as THREE from "three"
 import gsap from "gsap"
 import MyGroup from "@/three-widget/MyGroup"
 import * as CSG from "@/three-widget/CSG"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 /**
  * @param length?: number 1500
@@ -30,7 +31,6 @@ export default class Pool extends MyGroup<PoolOptions> {
 
     private readonly liquid: THREE.Mesh
     private readonly levelChangeAnimation: gsap.core.Tween
-    private readonly textureLoader = new THREE.TextureLoader()
 
     constructor(name: string, options?: PoolOptions) {
 

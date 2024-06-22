@@ -71,7 +71,7 @@ export default class ThreeProject extends ThreeCore {
          * 地板
          */
         const floorRadius = 30
-        const grassColorTexture = new THREE.TextureLoader().load(grassPic, texture => {
+        const grassColorTexture = getTextureLoader().load(grassPic, texture => {
             texture.wrapS = texture.wrapT = THREE.RepeatWrapping
             texture.repeat.set(10, 10)
         })

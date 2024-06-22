@@ -3,20 +3,18 @@ import * as THREE from "three"
 
 export default class MyGroup<T> extends THREE.Group{
 
-    // 需要遍历场景中所有自己的Group时, 依靠这个tag来找
-    readonly myTag = "MyGroup"
+    readonly MyGroup = "MyGroup"
 
     readonly options: Required<T>
 
     /**
-     * @param name 强制自己都给对象起个名字, 方便调试
-     * @param defaultOptions 模型所有字段参数, 即 必选非必选都必须有, 如果无参可传, 写一个空对象 {}
-     * @param customOptions 用户参数, 即必选字段必定有, 非必选参数可以有也可以没有
+     * @param name 强制自己都给对象起名字, 方便调试
+     * @param defaultOptions 模型参数 所有字段
+     * @param customOptions 用户参数
      */
     constructor(name: string, defaultOptions: Required<T>, customOptions?: T) {
         super()
         this.name = name
-        // @ts-ignore 用户参数覆盖所有参数(默认参数), 即: 用户传参了的使用用户的, 用户没传参的使用默认的
         this.options = Object.assign(defaultOptions, customOptions)
     }
 

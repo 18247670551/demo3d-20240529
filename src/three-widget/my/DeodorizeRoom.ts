@@ -37,8 +37,6 @@ interface DeodorizeChannelOptions {
 
 export default class DeodorizeRoom extends MyGroup<DeodorizeChannelOptions> {
 
-    private readonly textureLoader = new THREE.TextureLoader()
-
     constructor(name: string, options?: DeodorizeChannelOptions) {
 
         const defaultOptions: Required<DeodorizeChannelOptions> ={
@@ -75,7 +73,7 @@ export default class DeodorizeRoom extends MyGroup<DeodorizeChannelOptions> {
 
         const geo = new THREE.BoxGeometry(width, height, thickness )
 
-        const texture = new THREE.TextureLoader().load("/demo/my/deodorize/deodorize_device_logo.png")
+        const texture = getTextureLoader().load("/demo/my/deodorize/deodorize_device_logo.png")
         texture.colorSpace = THREE.SRGBColorSpace
         const logoMat = new THREE.MeshPhongMaterial({map: texture, color: 0xEEEEEE, transparent: true, opacity: 1, side: THREE.DoubleSide})
         const grayMat = new THREE.MeshPhongMaterial({color: 0x555555, transparent: true, opacity: 1, side: THREE.DoubleSide})
@@ -208,7 +206,6 @@ export default class DeodorizeRoom extends MyGroup<DeodorizeChannelOptions> {
         const topGeo = new THREE.BoxGeometry(this.options.squareLength, this.options.squareThickness, this.options.squareWidth)
         topGeo.translate(this.options.squareLength / 2, this.options.squareThickness / 2, this.options.squareWidth / 2)
 
-        const loader = new THREE.TextureLoader()
         const sideTexture = getTextureLoader().load("/demo/my/deodorize/body_0.jpg")
         sideTexture.wrapS = sideTexture.wrapT = THREE.RepeatWrapping
         sideTexture.repeat.set(10, 1)

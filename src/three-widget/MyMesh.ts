@@ -5,8 +5,7 @@ import * as THREE from "three"
  */
 export default class MyMesh extends THREE.Mesh{
 
-    // 需要遍历场景中所有自己的Mesh时, 依靠这个tag来找
-    readonly myTag = "MyMesh"
+    readonly MyGroup = "MyMesh"
 
     constructor(name: string, geometry: THREE.BufferGeometry, material: THREE.Material) {
         super(geometry, material)

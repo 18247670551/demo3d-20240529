@@ -1,6 +1,7 @@
 import * as THREE from "three"
 import gsap from "gsap"
 import MyGroup from "@/three-widget/MyGroup"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 /**
  * 循环风机
@@ -23,7 +24,6 @@ export default class CirculatingFan extends MyGroup<HeatingFanOptions> {
     private isRun = false
     private readonly leaf: THREE.Mesh
     private readonly leafAnimation: gsap.core.Tween
-    private readonly textureLoader = new THREE.TextureLoader()
 
     constructor(name: string, options?: HeatingFanOptions) {
 

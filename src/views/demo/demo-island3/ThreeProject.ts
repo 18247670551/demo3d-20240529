@@ -4,6 +4,7 @@ import ThreeCore from "@/three-widget/ThreeCore"
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 import {Water} from "three/examples/jsm/objects/Water2"
 import {RGBELoader} from "three/examples/jsm/loaders/RGBELoader"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 export default class ThreeProject extends ThreeCore {
 
@@ -70,16 +71,15 @@ export default class ThreeProject extends ThreeCore {
 
     private addWater() {
         const circleGeometry = new THREE.CircleGeometry(2000, 30)
-        const textureLoader = new THREE.TextureLoader()
         const waterMesh = new Water(circleGeometry, {
             textureWidth: 1024,
             textureHeight: 1024,
             color: 0x00719e,
             flowDirection: new THREE.Vector2(1, 1), //流动方向
             scale: 2,
-            flowMap: textureLoader.load("/demo/island3/Water_1_M_Flow.jpg"),
-            normalMap0: textureLoader.load("/demo/island3/Water_1_M_Normal.jpg"),
-            normalMap1: textureLoader.load("/demo/island3/Water_2_M_Normal.jpg"),
+            flowMap: getTextureLoader().load("/demo/island3/Water_1_M_Flow.jpg"),
+            normalMap0: getTextureLoader().load("/demo/island3/Water_1_M_Normal.jpg"),
+            normalMap1: getTextureLoader().load("/demo/island3/Water_2_M_Normal.jpg"),
         })
         waterMesh.rotation.x = -Math.PI / 2
         this.scene.add(waterMesh)

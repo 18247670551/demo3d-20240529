@@ -8,6 +8,7 @@ import * as THREE from 'three'
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import {Water} from "three/examples/jsm/objects/Water2"
 import Stats from "three/examples/jsm/libs/stats.module"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
 
 
 const threeDomRef = ref<HTMLDivElement | null>(null)
@@ -61,16 +62,15 @@ function init() {
 
   // 创建水面
   const waterGeo = new THREE.CircleGeometry(300, 64)
-  const textureLoader = new THREE.TextureLoader()
   const water = new Water(waterGeo, {
     textureWidth: 1024,
     textureHeight: 1024,
     color: 0xeeeeff,
     flowDirection: new THREE.Vector2(1, 1), //流动方向
     scale: 2,
-    flowMap: textureLoader.load("/demo/island/Water_1_M_Flow.jpg"),
-    normalMap0: textureLoader.load("/demo/island/Water_1_M_Normal.jpg"),
-    normalMap1: textureLoader.load("/demo/island/Water_2_M_Normal.jpg"),
+    flowMap: getTextureLoader().load("/demo/island/Water_1_M_Flow.jpg"),
+    normalMap0: getTextureLoader().load("/demo/island/Water_1_M_Normal.jpg"),
+    normalMap1: getTextureLoader().load("/demo/island/Water_2_M_Normal.jpg"),
   })
   // 水面旋转至水平
   water.rotation.x = -Math.PI / 2
@@ -83,7 +83,7 @@ function init() {
   skyGeo.scale(1, 1, -1)
 
   const skyMat = new THREE.MeshBasicMaterial({
-    map: new THREE.TextureLoader().load("/demo/island/sky.jpg")
+    map: getTextureLoader().load("/demo/island/sky.jpg")
   })
   const sky = new THREE.Mesh(skyGeo, skyMat)
   scene.add(sky)

@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import gsap from "gsap"
 import MyGroup from "@/three-widget/MyGroup"
-
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 /**
  * 加热风机
  * @param boxColor?: number
@@ -25,7 +25,6 @@ export default class HeatingFan extends MyGroup<HeatingFanOptions> {
     private isRun = false
     private readonly leaf: THREE.Mesh
     private readonly leafAnimation: gsap.core.Tween
-    private readonly textureLoader = new THREE.TextureLoader()
 
     constructor(name: string, options?: HeatingFanOptions) {
 

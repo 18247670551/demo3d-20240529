@@ -6,6 +6,7 @@
 import {onMounted, ref} from "vue"
 import * as THREE from 'three'
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
 
 const threeDomRef = ref<HTMLDivElement | null>(null)
 
@@ -26,7 +27,7 @@ function init() {
   scene.add(light)
 
   const renderer = new THREE.WebGLRenderer({
-    antialias: true, // 反锯齿
+    antialias: true
   })
 
   renderer.setSize(dom.clientWidth, dom.clientHeight)
@@ -47,8 +48,7 @@ function init() {
   scene.add(cube)
 
 
-  const loader = new THREE.TextureLoader()
-  loader.load("/demo/skybox/panorama.jpg", texture => {
+  getTextureLoader().load("/demo/skybox/panorama.jpg", texture => {
     const rt = new THREE.WebGLCubeRenderTarget(texture.image.height)
     rt.fromEquirectangularTexture(renderer, texture)
     scene.background = rt.texture

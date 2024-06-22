@@ -25,7 +25,7 @@ export default class SimpleTree extends THREE.Group{
 
         const treeCustomDepthMaterial = new THREE.MeshDepthMaterial({
             depthPacking: THREE.RGBADepthPacking,
-            map: new THREE.TextureLoader().load(treePic),
+            map: getTextureLoader().load(treePic),
             alphaTest: 0.5
         })
 

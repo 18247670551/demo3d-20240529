@@ -1,6 +1,7 @@
 import * as THREE from "three"
 import {RoundedBoxGeometry} from "three/examples/jsm/geometries/RoundedBoxGeometry"
 import BasePipeJoin, {MyBasePipeJoinOptions} from "@/three-widget/my/pipe/BasePipeJoin"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
 
 
 interface StrokeValveOptions extends MyBasePipeJoinOptions{
@@ -11,8 +12,6 @@ interface StrokeValveOptions extends MyBasePipeJoinOptions{
  * 行程阀
  */
 export default class StrokeValve extends BasePipeJoin {
-
-    private readonly textureLoader = new THREE.TextureLoader()
 
     private readonly dial: THREE.Mesh
 

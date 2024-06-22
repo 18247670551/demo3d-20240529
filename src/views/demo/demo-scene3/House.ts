@@ -17,7 +17,6 @@ interface HouseOptions {
 export default class House extends THREE.Group {
 
     private options: Required<HouseOptions>
-    private textureLoader = new THREE.TextureLoader()
 
     door: any
 
@@ -42,7 +41,6 @@ export default class House extends THREE.Group {
 
         const ground8Texture = getTextureLoader().load(ground8Pic)
         ground8Texture.wrapS = ground8Texture.wrapT = THREE.RepeatWrapping
-        //ground8Texture.repeat.set(6, 1)
         const floorMat = new THREE.MeshLambertMaterial({color: 0xcccccc, map: ground8Texture})
         const floor = new THREE.Mesh(floorGeo, floorMat)
         floor.name = "地板"

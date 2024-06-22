@@ -1,5 +1,6 @@
 import * as THREE from "three"
 import BasePipeJoin, {MyBasePipeJoinOptions} from "@/three-widget/my/pipe/BasePipeJoin"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 interface FlowMeterOptions extends MyBasePipeJoinOptions{
@@ -11,7 +12,6 @@ interface FlowMeterOptions extends MyBasePipeJoinOptions{
  */
 export default class FlowMeter extends BasePipeJoin {
 
-    private readonly textureLoader = new THREE.TextureLoader()
     private readonly dial: THREE.Mesh
 
     constructor(name: string, options?: FlowMeterOptions) {

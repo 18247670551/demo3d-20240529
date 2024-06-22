@@ -5,6 +5,7 @@ import {ImprovedNoise} from "three/examples/jsm/math/ImprovedNoise"
 import {mergeGeometries} from 'three/examples/jsm/utils/BufferGeometryUtils.js'
 import {RGBELoader} from "three/examples/jsm/loaders/RGBELoader"
 import grass_png from '/demo/my-world/textures/blocks/grass.png'
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 export default class ThreeProject extends ThreeCore {
 
@@ -161,9 +162,7 @@ export default class ThreeProject extends ThreeCore {
 
         const geometry = mergeGeometries(geometries)
         geometry.computeBoundingSphere()
-        //const texture = new THREE.TextureLoader().load('/demo/my-world/textures/blocks/grass.png')
-        // 图片等资源是可以import引入的, 当项目大时, 可以做专门的资源加载模块, import方式引入资源更方便管理
-        const texture = new THREE.TextureLoader().load(grass_png)
+        const texture = getTextureLoader().load(grass_png)
         texture.magFilter = THREE.NearestFilter
 
         const mat = new THREE.MeshStandardMaterial({

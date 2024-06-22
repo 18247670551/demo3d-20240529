@@ -27,8 +27,6 @@ export interface TruckBottomWashOptions {
 
 export default class TruckBottomWash extends MyGroup<TruckBottomWashOptions> {
 
-    private textureLoader = new THREE.TextureLoader()
-
     private readonly car: THREE.Group
 
     private carAnimation: gsap.core.Tween | null = null

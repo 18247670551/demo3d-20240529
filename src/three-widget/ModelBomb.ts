@@ -1,6 +1,6 @@
 import * as THREE from 'three'
+import {assertNever} from "@/utils/myUtils"
 
-type BombMesh = THREE.Mesh & { _splitSrcPos: THREE.Vector3, _splitSpeed: { x: number, y: number, z: number } }
 
 export default class ModelBomb {
 
@@ -12,7 +12,7 @@ export default class ModelBomb {
     currentSplitValue = 0
     offset = 1
 
-    meshList: BombMesh[] = []
+    meshList: THREE.Mesh[] = []
 
 
     mode: 1 | 2
@@ -66,8 +66,7 @@ export default class ModelBomb {
             })
             center = center.clone().multiplyScalar(1 / count)
         }else {
-            // ts 类型收缩, 用来检测 model 改变时, 触发检测报错
-            const modelCheck: never = this.mode
+            assertNever(this.mode)
         }
 
         let subBox
@@ -76,11 +75,11 @@ export default class ModelBomb {
         let targetPos
         model.traverse(child => {
             if (child.type == "Mesh") {
-                const mesh = child as BombMesh
+                const mesh = child as THREE.Mesh
                 //分别计算每个mesh的包围盒中心，其与爆炸中心连线作为爆炸方向
                 subBox = new THREE.Box3().expandByObject(mesh)
                 meshCenter = subBox.getCenter(new THREE.Vector3())
-                mesh._splitSrcPos = mesh.getWorldPosition(new THREE.Vector3())
+                mesh.userData._splitSrcPos = mesh.getWorldPosition(new THREE.Vector3())
 
 
                 if(this.mode === 1){
@@ -98,11 +97,10 @@ export default class ModelBomb {
                         z:(targetPos.z - center.z) * this.splitScale / this.splitSpeed,
                     }
                 }else {
-                    // ts 类型收缩, 用来检测 model 改变时, 触发检测报错
-                    const modelCheck: never = this.mode
+                    assertNever(this.mode)
                 }
 
-                mesh._splitSpeed = subSpeed
+                mesh.userData._splitSpeed = subSpeed
                 this.meshList.push(mesh)
             }
         })
@@ -140,7 +138,7 @@ export default class ModelBomb {
         if (this.currentSplitValue != 0 && this.meshList.length > 0) {
             for (let i = 0; i < this.meshList.length; i++) {
                 let node = this.meshList[i]
-                node.position.copy(node._splitSrcPos)
+                node.position.copy(node.userData._splitSrcPos)
             }
             this.currentSplitValue = 0
             this.targetSplitValue = 0
@@ -149,7 +147,7 @@ export default class ModelBomb {
 
     /**
      * 如果用滑动条控制时将滑动条的值传入这个函数
-     * @param value #[0,1]的值，表示爆炸进度
+     * @param value 爆炸进度, [0, 1]内的float
      */
     setValue(value: number) {
 
@@ -160,9 +158,9 @@ export default class ModelBomb {
 
         for (let i = 0; i < this.meshList.length; i++) {
             let node = this.meshList[i]
-            let x = node._splitSpeed.x * this.currentSplitValue + node._splitSrcPos.x
-            let y = node._splitSpeed.y * this.currentSplitValue + node._splitSrcPos.y
-            let z = node._splitSpeed.z * this.currentSplitValue + node._splitSrcPos.z
+            let x = node.userData._splitSpeed.x * this.currentSplitValue + node.userData._splitSrcPos.x
+            let y = node.userData._splitSpeed.y * this.currentSplitValue + node.userData._splitSrcPos.y
+            let z = node.userData._splitSpeed.z * this.currentSplitValue + node.userData._splitSrcPos.z
 
             const parent = node!.parent!
 
@@ -185,18 +183,18 @@ export default class ModelBomb {
 
             for (let i = 0; i < this.meshList.length; i++) {
 
-                let bombMesh = this.meshList[i]
+                let mesh = this.meshList[i]
 
-                let x = bombMesh._splitSpeed.x * this.currentSplitValue + bombMesh._splitSrcPos.x
-                let y = bombMesh._splitSpeed.y * this.currentSplitValue + bombMesh._splitSrcPos.y
-                let z = bombMesh._splitSpeed.z * this.currentSplitValue + bombMesh._splitSrcPos.z
+                let x = mesh.userData._splitSpeed.x * this.currentSplitValue + mesh.userData._splitSrcPos.x
+                let y = mesh.userData._splitSpeed.y * this.currentSplitValue + mesh.userData._splitSrcPos.y
+                let z = mesh.userData._splitSpeed.z * this.currentSplitValue + mesh.userData._splitSrcPos.z
 
-                const parent = bombMesh!.parent!
+                const parent = mesh!.parent!
 
                 parent.updateMatrixWorld()
                 const invMat = parent.matrixWorld.clone().invert()
                 const pos = new THREE.Vector3(x, y, z).applyMatrix4(invMat)
-                bombMesh.position.copy(pos)
+                mesh.position.copy(pos)
             }
 
             if (this.currentSplitValue == this.targetSplitValue) {

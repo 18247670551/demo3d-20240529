@@ -2,6 +2,7 @@ import gsap from 'gsap'
 import * as THREE from 'three'
 import {random} from "lodash"
 import MyGroup from "@/three-widget/MyGroup"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 /**
  * @param dropScopeRadius 下落区域半径
@@ -27,7 +28,7 @@ export default class Rain extends MyGroup<WaterFallOptions> {
 
         constructor(size: number, radius: number) {
 
-            const texture = new THREE.TextureLoader().load('/demo/my/common/rain.png')
+            const texture = getTextureLoader().load('/demo/my/common/rain.png')
             
             texture.colorSpace = THREE.SRGBColorSpace
 

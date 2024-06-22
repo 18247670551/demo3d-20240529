@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import {createCurvePoints} from "@/utils/myUtils"
+import {createCurvePoints} from "@/three-widget/ThreeUtils";
 
 
 export default class ThreeProject extends ThreeCore {
