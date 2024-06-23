@@ -67,15 +67,24 @@ import Canvas1 from '@/views/demo/demo-canvas1/Index.vue'
 import Canvas2 from '@/views/demo/demo-canvas2/Index.vue'
 import Wall from '@/views/demo/demo-wall/Index.vue'
 import Fire from '@/views/demo/demo-fire/Index.vue'
-import PlaneFire from '@/views/demo/demo-fire2/Index.vue'
-import ShaderWave from '@/views/demo/demo-shader-wave/Index.vue'
+
+
+import ShaderFire from '@/views/demo/demo-shader-fire/Index.vue'
+import ShaderSun from '@/views/demo/demo-shader-sun/Index.vue'
 import ShaderLightCylinder from '@/views/demo/demo-shader-light-cylinder/Index.vue'
+import ShaderTrafficLights from '@/views/demo/demo-shader-traffic-lights/Index.vue'
+import ShaderWave1 from '@/views/demo/demo-shader-wave1/Index.vue'
+import ShaderWave2 from '@/views/demo/demo-shader-wave2/Index.vue'
+import ShaderWave3 from '@/views/demo/demo-shader-wave3/Index.vue'
+
+
 import PointTag from '@/views/demo/demo-animation-point-tag/Index.vue'
 import Scene1 from '@/views/demo/demo-scene1/Index.vue'
 import Scene2 from '@/views/demo/demo-scene2/Index.vue'
 import Scene3 from '@/views/demo/demo-scene3/Index.vue'
 import SceneHauntedHouse from '@/views/demo/demo-scene4/Index.vue'
 import SceneSphereRobot from '@/views/demo/demo-scene-sphere-robot/Index.vue'
+import SmartCity from '@/views/demo/demo-smart-city/Index.vue'
 import TextureDoor from '@/views/demo/demo-texture-door/Index.vue'
 import AnimationDoor from '@/views/demo/demo-animation-door/Index.vue'
 import AnimationMagicCircle from '@/views/demo/demo-animation-magic-circle/Index.vue'
@@ -95,6 +104,11 @@ import ModelBomb from '@/views/demo/demo-model-bomb/Index.vue'
 import ModelSu7 from '@/views/demo/demo-model-su7/Index.vue'
 import Raycaster from '@/views/demo/demo-raycaster/Index.vue'
 import War from '@/views/demo/demo-war/Index.vue'
+
+
+import CesiumSimpleFirst from '@/views/demo/demo-cesium-simple-first/Index.vue'
+
+
 import Test from '@/views/demo/demo-test/Index.vue'
 
 const routes: RouteRecordRaw[] = [
@@ -160,12 +174,17 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-合并几何体', path: '/demo/demo-geometry-merged', component: MergedGeometry, meta: {title: "示例-合并几何体", isLogin: true}},
     {name: '示例-流光墙', path: '/demo/demo-wall', component: Wall, meta: {title: "示例-流光墙", isLogin: true}},
     {name: '示例-火焰', path: '/demo/demo-fire', component: Fire, meta: {title: "示例-火焰", isLogin: true}},
-    {name: '示例-平面火焰', path: '/demo/demo-fire2', component: PlaneFire, meta: {title: "示例-平面火焰", isLogin: true}},
+    {name: '示例-shader-火焰', path: '/demo/demo-shader-fire', component: ShaderFire, meta: {title: "示例-shader-火焰", isLogin: true}},
+    {name: '示例-shader-太阳', path: '/demo/demo-shader-sun', component: ShaderSun, meta: {title: "示例-shader-太阳", isLogin: true}},
 
 
-    {name: '示例-shader-波动', path: '/demo/demo-shader-wave', component: ShaderWave, meta: {title: "示例-shader-波动", isLogin: true}},
     {name: '示例-shader-光环柱', path: '/demo/demo-shader-light-cylinder', component: ShaderLightCylinder, meta: {title: "示例-shader-光环柱", isLogin: true}},
     {name: '示例-点标记', path: '/demo/demo-animation-point-tag', component: PointTag, meta: {title: "示例-点标记", isLogin: true}},
+
+    {name: '示例-shader-交通灯', path: '/demo/demo-shader-traffic-lights', component: ShaderTrafficLights, meta: {title: "示例-shader-交通灯", isLogin: true}},
+    {name: '示例-shader-波动1', path: '/demo/demo-shader-wave1', component: ShaderWave1, meta: {title: "示例-shader-波动1", isLogin: true}},
+    {name: '示例-shader-波动2', path: '/demo/demo-shader-wave2', component: ShaderWave2, meta: {title: "示例-shader-波动2", isLogin: true}},
+    {name: '示例-shader-波动3', path: '/demo/demo-shader-wave3', component: ShaderWave3, meta: {title: "示例-shader-波动3", isLogin: true}},
 
 
     {name: '示例-简单场景1', path: '/demo/demo-scene1', component: Scene1, meta: {title: "示例-简单场景1", isLogin: true}},
@@ -173,6 +192,7 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-简单场景3', path: '/demo/demo-scene3', component: Scene3, meta: {title: "示例-简单场景3", isLogin: true}},
     {name: '示例-简单场景4', path: '/demo/demo-scene4', component: SceneHauntedHouse, meta: {title: "示例-简单场景4", isLogin: true}},
     {name: '示例-简单场景5', path: '/demo/demo-scene-sphere-robot', component: SceneSphereRobot, meta: {title: "示例-简单场景5", isLogin: true}},
+    {name: '示例-智慧城市', path: '/demo/demo-smart-city', component: SmartCity, meta: {title: "示例-智慧城市", isLogin: true}},
 
     {name: '示例-材质示例1', path: '/demo/demo-texture-door', component: TextureDoor, meta: {title: "示例-材质示例1", isLogin: true}},
 
@@ -197,6 +217,11 @@ const routes: RouteRecordRaw[] = [
     {name: '示例-俄乌战争', path: '/demo/demo-war', component: War, meta: {title: "示例-俄乌战争", isLogin: true}},
     {name: '示例-canvas1', path: '/demo/demo-canvas1', component: Canvas1, meta: {title: "示例-canvas1", isLogin: true}},
     {name: '示例-canvas2', path: '/demo/demo-canvas2', component: Canvas2, meta: {title: "示例-canvas2", isLogin: true}},
+
+
+
+    {name: 'cesium-简例', path: '/demo/demo-cesium-simple-first', component: CesiumSimpleFirst, meta: {title: "cesium-简例", isLogin: true}},
+
     {name: '测试页面', path: '/demo/demo-test', component: Test, meta: {title: "测试页面", isLogin: true}},
 
 

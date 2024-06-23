@@ -8,7 +8,7 @@ import * as THREE from 'three'
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import {Water} from "three/examples/jsm/objects/Water2"
 import Stats from "three/examples/jsm/libs/stats.module"
-import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 const threeDomRef = ref<HTMLDivElement | null>(null)
@@ -104,7 +104,7 @@ function init() {
   // 添加小岛模型
   const loader = new GLTFLoader()
   const dracoLoader = new DRACOLoader()
-  dracoLoader.setDecoderPath("/draco/")
+  dracoLoader.setDecoderPath("/libs/draco/")
   loader.setDRACOLoader(dracoLoader)
   loader.load("/demo/island/island2.glb", (gltf) => {
     const isLand = gltf.scene

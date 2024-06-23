@@ -4,7 +4,7 @@ import ThreeCore from "@/three-widget/ThreeCore"
 import grassPic from "@/views/demo/demo-scene3/texture/grass.jpg"
 import House from "@/views/demo/demo-scene3/House"
 import {GUI} from "dat.gui"
-import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 export default class ThreeProject extends ThreeCore {

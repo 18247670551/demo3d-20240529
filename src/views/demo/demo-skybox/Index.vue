@@ -6,7 +6,7 @@
 import {onMounted, ref} from "vue"
 import * as THREE from 'three'
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
-import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 const threeDomRef = ref<HTMLDivElement | null>(null)
 

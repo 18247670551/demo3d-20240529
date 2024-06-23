@@ -3,7 +3,7 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader"
-import {OBJLoader} from "three/examples/jsm/loaders/OBJLoader";
+import {OBJLoader} from "three/examples/jsm/loaders/OBJLoader"
 
 export default class ThreeProject extends ThreeCore {
 
@@ -44,7 +44,7 @@ export default class ThreeProject extends ThreeCore {
 
         // glb压缩模型加载器
         const dracoLoader = new DRACOLoader()
-        dracoLoader.setDecoderPath("/draco/")
+        dracoLoader.setDecoderPath("/libs/draco/")
         const dracoGltfLoader = new GLTFLoader()
         dracoGltfLoader.setDRACOLoader(dracoLoader)
 

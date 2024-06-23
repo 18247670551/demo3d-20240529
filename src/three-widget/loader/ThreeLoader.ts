@@ -27,7 +27,7 @@ const gltfLoader = new GLTFLoader()
 
 // glb压缩模型加载器
 const dracoLoader = new DRACOLoader()
-dracoLoader.setDecoderPath("/draco/")
+dracoLoader.setDecoderPath("/libs/draco/")
 const dracoGltfLoader = new GLTFLoader()
 dracoGltfLoader.setDRACOLoader(dracoLoader)
 

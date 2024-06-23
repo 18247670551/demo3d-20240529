@@ -412,25 +412,26 @@
           <div class="title">火焰--材质切换动画</div>
         </div>
 
-        <div class="item" @click="toDemo('示例-平面火焰')">
+        <div class="item" @click="toDemo('示例-shader-火焰')">
           <div class="image">
-            <img src="/demo/__case-cover/fire2.png" alt="平面火焰"/>
+            <img src="/demo/__case-cover/shader-fire.png" alt="shader-火焰"/>
           </div>
-          <div class="title">平面火焰--shader</div>
+          <div class="title">shader-火焰</div>
         </div>
 
-        <div class="item" @click="toDemo('示例-shader-波动')">
+        <div class="item" @click="toDemo('示例-shader-太阳')">
           <div class="image">
-            <img src="/demo/__case-cover/shader-wave.png" alt="波动--shader"/>
+            <img src="/demo/__case-cover/shader-sun.png" alt="shader-太阳"/>
           </div>
-          <div class="title">波动--shader</div>
+          <div class="title">shader-太阳</div>
         </div>
+
 
         <div class="item" @click="toDemo('示例-shader-光环柱')">
           <div class="image">
             <img src="/demo/__case-cover/shader-light-cylinder.png" alt="shader-光环柱"/>
           </div>
-          <div class="title">光环柱--shader</div>
+          <div class="title">shader-光环柱</div>
         </div>
 
         <div class="item" @click="toDemo('示例-点标记')">
@@ -439,6 +440,42 @@
           </div>
           <div class="title">点标记</div>
         </div>
+
+
+
+
+
+        <div class="item" @click="toDemo('示例-shader-交通灯')">
+          <div class="image">
+            <img src="/demo/__case-cover/shader-traffic-lights.png" alt="shader-交通灯"/>
+          </div>
+          <div class="title">shader-交通灯</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-shader-波动1')">
+          <div class="image">
+            <img src="/demo/__case-cover/shader-wave1.png" alt="shader-波动1"/>
+          </div>
+          <div class="title">shader-波动1-单向</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-shader-波动2')">
+          <div class="image">
+            <img src="/demo/__case-cover/shader-wave2.png" alt="shader-波动2"/>
+          </div>
+          <div class="title">shader-波动2-两方向</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-shader-波动3')">
+          <div class="image">
+            <img src="/demo/__case-cover/shader-wave3.png" alt="shader-波动3"/>
+          </div>
+          <div class="title">shader-波动3-自定义</div>
+        </div>
+
+
+
+
 
 
 
@@ -475,6 +512,13 @@
             <img src="/demo/__case-cover/scene-sphere-robot.png" alt="简单场景5"/>
           </div>
           <div class="title">简单场景5--酷炫球形机器人</div>
+        </div>
+
+        <div class="item" @click="toDemo('示例-智慧城市')">
+          <div class="image">
+            <img src="/demo/__case-cover/smart-city.png" alt="智慧城市"/>
+          </div>
+          <div class="title">智慧城市</div>
         </div>
 
 
@@ -621,6 +665,16 @@
         </div>
 
 
+
+
+
+
+        <div class="item" @click="toDemo('cesium-简例')">
+          <div class="image">
+            <img src="/demo/__case-cover/cesium-simple-first.png" alt="cesium-简例"/>
+          </div>
+          <div class="title">cesium-简例</div>
+        </div>
 
 
 

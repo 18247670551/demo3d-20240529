@@ -1,9 +1,7 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
-import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 import ThreeCore from "@/three-widget/ThreeCore"
-import MyLoader from "@/three-widget/loader/MyLoader"
-import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader"
+import {getDracoGltfLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 export default class ThreeProject extends ThreeCore{
@@ -36,39 +34,14 @@ export default class ThreeProject extends ThreeCore{
 
     init(){
 
-        this.load2()
+        this.load()
 
     }
 
-    // 有发送加载进度事件, 在 Index.vue 中接收了
     async load(){
-        const loader = new MyLoader()
-        const { scene } = await loader.loadGLTF("/demo/csmart/csmart.glb")
-        if(scene){
-            this.scene.add(scene)
-        }else{
-            console.log("未找到模型")
-        }
-    }
-
-    // 有发送加载进度事件, 在 Index.vue 中接收了
-    async load2(){
-        const dracoLoader = new DRACOLoader()
-        dracoLoader.setDecoderPath("/draco/")
-        const dracoGltfLoader = new GLTFLoader()
-        dracoGltfLoader.setDRACOLoader(dracoLoader)
-
-        dracoGltfLoader.load("/demo/csmart/csmart_darco.glb", (gltf) => {
+        getDracoGltfLoader().load("/demo/csmart/csmart_darco.glb", (gltf) => {
             const obj = gltf.scene
             this.scene.add(obj)
-        })
-    }
-
-    load1(){
-        const gltfLoader = new GLTFLoader()
-        gltfLoader.load("/demo/csmart/csmart.glb", (gltf) => {
-           const scene = gltf.scene
-           this.scene.add(scene)
         })
     }
 

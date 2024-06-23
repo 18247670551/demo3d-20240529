@@ -6,6 +6,8 @@ import {UI_EVENT_NAME, LOAD_PROCESS} from '@/three-widget/events/eventConstructs
 import type UIEvent from '../events/UIEvents'
 import type {Object3D} from 'three'
 
+
+
 export default class MyLoader {
     private _gltfHandle: GLTFLoader
     private _fbxHandle: FBXLoader

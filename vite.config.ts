@@ -5,6 +5,7 @@ import path from "path"
 import viteCompression from "vite-plugin-compression"
 import {viteMockServe} from 'vite-plugin-mock'
 import glsl from "vite-plugin-glsl"
+import cesium from "vite-plugin-cesium"
 
 
 
@@ -48,6 +49,9 @@ export default defineConfig(({mode, command}: ConfigEnv): UserConfig => {
 
         plugins: [
             vue(),
+
+            // 引入时注意, 是引入插件里的 vite-plugin-cesium, 不是 cesium 主包的
+            cesium(),
 
             // ts引入threejs 着色器 *glsl 文件的插件
             glsl(),

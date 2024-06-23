@@ -3,7 +3,7 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import vertexShader from './shader/vertexShader.glsl'
 import fragmentShader from './shader/fragmentShader.glsl'
-import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 export default class ThreeProject extends ThreeCore {

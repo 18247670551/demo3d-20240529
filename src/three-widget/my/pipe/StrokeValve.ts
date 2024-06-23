@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import {RoundedBoxGeometry} from "three/examples/jsm/geometries/RoundedBoxGeometry"
 import BasePipeJoin, {MyBasePipeJoinOptions} from "@/three-widget/my/pipe/BasePipeJoin"
-import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 interface StrokeValveOptions extends MyBasePipeJoinOptions{

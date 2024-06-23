@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import MyGroup from "@/three-widget/MyGroup"
 import Pipe from "@/three-widget/my/pipe/Pipe"
 import PathUtils from "@/three-widget/PathUtils"
-import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 /**

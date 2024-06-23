@@ -1,5 +1,5 @@
 import * as THREE from "three"
-import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
 
 /**
  * 宽高比建议 1 : 106

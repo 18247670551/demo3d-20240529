@@ -351,17 +351,39 @@ npm run dev
 ![preview](public/demo/__case-cover/fire.png)
 
 #
-#### 示例: 火焰2
-![preview](public/demo/__case-cover/fire2.png)
+#### 示例: shader-火焰
+![preview](public/demo/__case-cover/shader-fire.png)
 
 
 #
-#### 示例: 原始着色器--波动
-![preview](public/demo/__case-cover/shader-wave.png)
+#### 示例: shader-太阳
+#### 用最新版three重写失败, 附上作者原文
+#### 来源 ice-图形学社区 作者 Jsonco
+#### https://www.icegl.cn/ask/article/28.html
+![preview](public/demo/__case-cover/shader-sun.png)
 
 
 #
-#### 示例: 光环柱--shader
+#### 示例: shader-交通灯
+#### 来源 郭先生的博客
+#### https://cloud.tencent.com/developer/article/1689743?from_column=20421&from=20421
+![preview](public/demo/__case-cover/shader-traffic-lights.png)
+
+#
+#### 示例: shader-波动1-单向
+![preview](public/demo/__case-cover/shader-wave1.png)
+
+#
+#### 示例: shader-波动2-两方向
+![preview](public/demo/__case-cover/shader-wave2.png)
+
+#
+#### 示例: shader-波动3-自定义
+![preview](public/demo/__case-cover/shader-wave3.png)
+
+
+#
+#### 示例: shader-光环柱
 ![preview](public/demo/__case-cover/shader-light-cylinder.png)
 
 
@@ -393,6 +415,14 @@ npm run dev
 #### 来源: csdn 作者 sayid760
 #### https://blog.csdn.net/qq_14993375/article/details/125240762
 ![preview](public/demo/__case-cover/scene-haunted-house.png)
+
+#
+#### 示例: 简单场景5--炫酷球形机器人
+![preview](public/demo/__case-cover/scene-sphere-robot.png)
+
+#
+#### 示例: 智慧城市
+![preview](public/demo/__case-cover/smart-city.png)
 
 
 

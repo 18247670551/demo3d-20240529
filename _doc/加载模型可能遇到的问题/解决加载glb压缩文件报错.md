@@ -11,8 +11,8 @@ import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader"
 import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader"
 
 const dracoLoader = new DRACOLoader()
-// 配置解码路径, public下的 /draco/
-dracoLoader.setDecoderPath("/draco/")
+// 配置解码路径, public下的 /libs/draco/
+dracoLoader.setDecoderPath("/libs/draco/")
 const loader = new GLTFLoader()
 loader.setDRACOLoader(dracoLoader)
 loader.load("/demo/park/city.glb", (gltf) => {
