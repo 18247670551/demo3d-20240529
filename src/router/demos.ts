@@ -87,19 +87,24 @@ const demos : {name: string, path: string}[] = [
     {name: '除臭车间2', path: 'scene-ming-deodorize2'},
 
 
-    {name: '游戏-飞机', path: 'game-airplane'},
-    {name: '游戏-狼兔项目--狼', path: 'game-wolf-rabbit-wolf'},
-    {name: '游戏-狼兔项目--兔', path: 'game-wolf-rabbit-rabbit'},
-    {name: '游戏-狼兔项目--刺猬', path: 'game-wolf-rabbit-hedgehog'},
-    {name: '游戏-狼兔项目--地球', path: 'game-wolf-rabbit-earth'},
-    {name: '游戏-狼兔项目', path: 'game-wolf-rabbit'},
-
-
     {name: '镜头跟随', path: 'scene-camera-flow'},
     {name: '射线选中物体', path: 'scene-raycaster'},
     {name: '过山车', path: 'scene-roller-coaster'},
     {name: '鬼屋', path: 'scene-haunted-house'},
     {name: '智慧城市', path: 'scene-smart-city'},
+
+
+
+
+    {name: '游戏-飞机', path: 'game-airplane'},
+    {name: '游戏-狼兔游戏--狼', path: 'game-wolf-rabbit-wolf'},
+    {name: '游戏-狼兔游戏--兔', path: 'game-wolf-rabbit-rabbit'},
+    {name: '游戏-狼兔游戏--刺猬', path: 'game-wolf-rabbit-hedgehog'},
+    {name: '游戏-狼兔游戏--地球', path: 'game-wolf-rabbit-earth'},
+    {name: '游戏-狼兔游戏', path: 'game-wolf-rabbit'},
+
+
+
 
 
     {name: 'canvas-绚烂粒子特效', path: 'canvas-animation-points1'},

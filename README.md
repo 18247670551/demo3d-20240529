@@ -39,421 +39,149 @@ npm run dev
 
 #
 #### 示例: 天空盒
-##### 来源网络
-![preview](public/demo/__case-cover/skybox.png)
+![preview](public/demo/__case-cover/mesh-skybox-image.png)
 
 #
-#### 示例: ***
-##### 来源网络
-![preview](public/demo/__case-cover/royal_esplanade.png)
+#### 示例: 天空盒-房间3d
+![preview](public/demo/__case-cover/mesh-skybox-room3d.png)
 
 
 #
-#### 示例: vr看房
-##### 来源网络
-![preview](public/demo/__case-cover/vr-room.png)
+#### 示例: 天空盒-皇家滨海大道广场
+![preview](public/demo/__case-cover/mesh-skybox-royal-esplanade.png)
+
+
 
 
 
 
 
 #
-#### 示例: 损坏的头盔
-##### 来源网络, 模型文件
-![preview](public/demo/__case-cover/damaged-helmet.png)
+#### 示例: 模型-球形机器人
+![preview](public/demo/__case-cover/model-sphere-robot.png)
+
+#
+#### 示例: 模型-小岛1
+![preview](public/demo/__case-cover/model-island1.png)
+
+#
+#### 示例: 模型-小岛2
+![preview](public/demo/__case-cover/model-island2.png)
+
+#
+#### 示例: 模型-小岛3
+![preview](public/demo/__case-cover/model-island3.png)
 
 #
 #### 示例: csmart
-##### 来源网络, 模型文件
-![preview](public/demo/__case-cover/csmart.png)
+![preview](public/demo/__case-cover/model-csmart.png)
 
 #
-#### 示例: F18
-##### 来源网络, 模型文件
-![preview](public/demo/__case-cover/fighter-f18.png)
-
+#### 示例: 模型-损坏的头盔
+![preview](public/demo/__case-cover/model-damaged-helmet.png)
 
 #
-#### 示例: 小岛
-##### 来源网络, glb文件
-![preview](public/demo/__case-cover/island.png)
+#### 示例: 模型-风扇
+![preview](public/demo/__case-cover/model-fan.png)
 
 #
-#### 示例: 小岛2
-##### 来源网络, glb文件
-![preview](public/demo/__case-cover/island2.png)
+#### 示例: 模型-F18
+![preview](public/demo/__case-cover/model-f18.png)
 
 #
-#### 示例: 小岛3
-##### 来源网络, glb文件
-![preview](public/demo/__case-cover/island3.png)
-
-
-
-
+#### 示例: 模型-足球场
+![preview](public/demo/__case-cover/model-football-field.png)
 
 #
-#### 示例: 曲线动画
-##### 来源网络, 重构
-![preview](public/demo/__case-cover/curve.png)
+#### 示例: 模型-老虎
+![preview](public/demo/__case-cover/model-tiger.png)
 
 #
-#### 示例: 萤火虫动画
-##### 来源网络, 重构
-![preview](public/demo/__case-cover/firefly.png)
+#### 示例: 模型-狐狸
+![preview](public/demo/__case-cover/model-fox.png)
 
 #
-#### 示例: 水面简例
-##### 本人编写
-![preview](public/demo/__case-cover/water0.png)
+#### 示例: 模型-小米su7
+![preview](public/demo/__case-cover/model-su7.png)
 
 #
-#### 示例: 管道简例
-##### 本人编写
-![preview](public/demo/__case-cover/pipe0.png)
+#### 示例: 模型-一些模型文件
+![preview](public/demo/__case-cover/model-some.png)
 
-#
-#### 示例: 树林
-##### 本人编写
-![preview](public/demo/__case-cover/forest.png)
+
+
+
 
 
 
 
 
 #
-#### 示例: 风扇
-##### 来源网络
-![preview](public/demo/__case-cover/fan.png)
+#### 示例: 粒子-简单示例1
+![preview](public/demo/__case-cover/mesh-points-simple1.png)
 
 #
-#### 示例: 地月
-![preview](public/demo/__case-cover/earthmoon.png)
+#### 示例: 粒子-下雨
+![preview](public/demo/__case-cover/mesh-points-rain.png)
 
 #
-#### 示例: 飞机
-##### 本人编写, 参照网络案例原模型, 以对象方式重写, 纯代码
-![preview](public/demo/__case-cover/plane.png)
+#### 示例: 粒子-雪花
+![preview](public/demo/__case-cover/mesh-points-snow.png)
 
 #
-#### 示例: 飞机2
-##### 本人编写, 参照网络案例原模型, 以对象方式重写, 纯代码
-![preview](public/demo/__case-cover/plane2.png)
-
+#### 示例: 粒子-银河系
+![preview](public/demo/__case-cover/mesh-points-galaxy.png)
 
 #
-#### 示例: 瀑布
-##### 本人编写, 参照网络案例原模型, 以对象方式重写, 纯代码
-![preview](public/demo/__case-cover/waterfall.png)
+#### 示例: 粒子-shader1
+![preview](public/demo/__case-cover/mesh-points-shader1.png)
 
 #
-#### 示例: 爱心气球
-##### 来源网络, 纯代码
-![preview](public/demo/__case-cover/heart-balloon.png)
-
+#### 示例: 粒子-烟花
+![preview](public/demo/__case-cover/mesh-points-fireworks.png)
 
 #
-#### 示例: 上海--模型文件
-##### 来源网络
-![preview](public/demo/__case-cover/shanghai2.png)
-
+#### 示例: 粒子-彩虹雨
+![preview](public/demo/__case-cover/mesh-points-rainbow-rain.png)
 
 #
-#### 示例: 上海
-##### 来源网络, 出自稀土掘金 作者 Funky_Tiger
-##### 本人重构, 原代码threejs版本较低, 改为最新版本164, 弯曲的楼贴图有bug, 代码中有标出
-##### 原地址 https://juejin.cn/post/6844903957416902669
-![preview](public/demo/__case-cover/shanghai.png)
-
-
-
-
+#### 示例: 粒子-倒计时
+![preview](public/demo/__case-cover/mesh-points-countdown.png)
 
 #
-#### 示例: 粒子简例0
-##### 本人编写
-![preview](public/demo/__case-cover/points0.png)
-
-#
-#### 示例: 粒子简例1--粒子动画--下雨
-##### 来源网络, 重构
-![preview](public/demo/__case-cover/points1.png)
-
-#
-#### 示例: 粒子简例2--粒子动画--漫天雪花
-##### 来源网络, 重构
-![preview](public/demo/__case-cover/points2.png)
-
-#
-#### 示例: 粒子简例3--银河系
-##### 来源网络, 重构
-![preview](public/demo/__case-cover/points3.png)
-
-#
-#### 示例: 粒子简例4--shader
-##### 来源网络, 重构
-![preview](public/demo/__case-cover/points4.png)
-
-#
-#### 示例: 粒子简例5--粒子动画-烟花-shader
-##### 来源网络, 重构
-![preview](public/demo/__case-cover/points5.png)
-
-#
-#### 示例: 粒子简例6--粒子动画-彩虹雨
-##### 来源网络, 重构
-![preview](public/demo/__case-cover/points6.png)
-
-#
-#### 示例: 粒子简例7--粒子动画-shader
-##### 本人编写
-![preview](public/demo/__case-cover/points7.png)
-
-#
-#### 示例: 粒子简例8--粒子动画-倒计时-shader
-##### 本人编写
-![preview](public/demo/__case-cover/points8.png)
-
-#
-#### 示例: 粒子简例9--波形动画-shader
-##### 来源网络, 博客园 作者 郭先生的博客
+#### 示例: 粒子-波动
+##### 来源网络, 作者 郭先生的博客
 ##### https://www.cnblogs.com/vadim-web/p/13444198.html
-![preview](public/demo/__case-cover/points9.png)
+![preview](public/demo/__case-cover/mesh-points-wave.png)
 
 #
-#### 示例: 粒子简例10--太阳动画-shader
+#### 示例: 粒子-太阳
 ##### 来源网络, csdn 作者 Jedi Hongbin
 ##### https://blog.csdn.net/printf_hello/article/details/127901103
-![preview](public/demo/__case-cover/points10.png)
+![preview](public/demo/__case-cover/mesh-points-sun.png)
 
 
 
 
 
-
-#
-#### 示例: 车辆消杀-清消车间
-##### 本人编写, 纯代码, 以对象方式调用动画
-![preview](public/demo/__case-cover/truck-wash-room.png)
-
-#
-#### 示例: 车辆消杀-烘干车间
-##### 本人编写, 纯代码, 以对象方式调用动画
-![preview](public/demo/__case-cover/truck-dry-room.png)
-
-#
-#### 示例: 净水车间
-##### 本人编写, 纯代码, 以对象方式调用动画
-![preview](public/demo/__case-cover/purity.png)
-
-#
-#### 示例: 除臭车间简例
-##### 本人编写, 纯代码, 以对象方式调用动画
-![preview](public/demo/__case-cover/deodorize0.png)
-
-#
-#### 示例: 除臭车间
-##### 本人编写, 纯代码, 以对象方式调用动画
-![preview](public/demo/__case-cover/deodorize.png)
-
-#
-#### 示例: 除臭车间2
-##### 本人编写, 纯代码, 以对象方式调用动画
-![preview](public/demo/__case-cover/deodorize2.png)
-
-
-
-#
-#### 示例: 我的世界随机地图
-##### 来源网络, csdn 作者 X01动力装甲
-##### https://webgl.blog.csdn.net/article/details/83965754
-![preview](public/demo/__case-cover/my-world.png)
-
-
-
-#
-#### 示例: 物理引擎
-##### 来源网络
-![preview](public/demo/__case-cover/physics.png)
-
-
-#
-#### 示例: 人物控制
-##### 来源网络
-![preview](public/demo/__case-cover/player.png)
-
-
-
-
-#
-#### 示例: 除臭车间2
-##### 本人编写, 纯代码, 以对象方式调用动画
-![preview](public/demo/__case-cover/deodorize2.png)
-
-
-
-
-#
-#### 示例: 狼兔项目--狼--纯代码
-##### 网络收集, 本人重构失败, 拆出模型
-![preview](public/demo/__case-cover/wr-wolf.png)
-
-#
-#### 示例: 狼兔项目--兔--纯代码
-##### 网络收集, 本人重构失败, 拆出模型
-![preview](public/demo/__case-cover/wr-rabbit.png)
-
-#
-#### 示例: 狼兔项目--刺猬--纯代码
-##### 网络收集, 本人重构失败, 拆出模型
-![preview](public/demo/__case-cover/wr-hedgehog.png)
-
-#
-#### 示例: 狼兔项目--地球--纯代码
-##### 网络收集, 本人重构失败, 拆出模型
-![preview](public/demo/__case-cover/wr-earth.png)
-
-#
-#### 示例: 狼兔项目
-##### 网络收集, 最新版three加ts对象像封装失败, 原版代码在路径中
-![preview](public/demo/__case-cover/wolf-rabbit.png)
-
-
-
-
-#
-#### 示例: 图片加3D效果, shader, 随便生成的景深图, 效果不好
-##### 本人编写
-![preview](public/demo/__case-cover/photo3d.png)
-
-#
-#### 示例: 3d文字
-##### 本人编写
-![preview](public/demo/__case-cover/text3d.png)
 
 #
 #### 示例: 缓冲几何体
-##### 本人编写
-![preview](public/demo/__case-cover/geometry-buffer.png)
+![preview](public/demo/__case-cover/mesh-geometry-buffer.png)
 
 #
 #### 示例: 合并几何体
-##### 本人编写
-![preview](public/demo/__case-cover/geometry-merged.png)
-
-#
-#### 示例: 流光墙
-##### 网络收集
-![preview](public/demo/__case-cover/wall.png)
-
-#
-#### 示例: 火焰
-![preview](public/demo/__case-cover/fire.png)
-
-#
-#### 示例: shader-火焰
-![preview](public/demo/__case-cover/shader-fire.png)
-
-
-#
-#### 示例: shader-太阳
-#### 用最新版three重写失败, 附上作者原文
-#### 来源 ice-图形学社区 作者 Jsonco
-#### https://www.icegl.cn/ask/article/28.html
-![preview](public/demo/__case-cover/shader-sun.png)
-
-
-#
-#### 示例: shader-交通灯
-#### 来源 郭先生的博客
-#### https://cloud.tencent.com/developer/article/1689743?from_column=20421&from=20421
-![preview](public/demo/__case-cover/shader-traffic-lights.png)
-
-#
-#### 示例: shader-波动1-单向
-![preview](public/demo/__case-cover/shader-wave1.png)
-
-#
-#### 示例: shader-波动2-两方向
-![preview](public/demo/__case-cover/shader-wave2.png)
-
-#
-#### 示例: shader-波动3-自定义
-![preview](public/demo/__case-cover/shader-wave3.png)
-
-
-#
-#### 示例: shader-光环柱
-![preview](public/demo/__case-cover/shader-light-cylinder.png)
-
-
-#
-#### 示例: 点标记
-#### 来源 csdn 作者 焦焦焦焦焦
-#### https://blog.csdn.net/weixin_60645637/article/details/135520320
-![preview](public/demo/__case-cover/point-tag.png)
-
-
-
+![preview](public/demo/__case-cover/mesh-geometry-merged.png)
 
 
 
 #
-#### 示例: 简单场景1--轨迹车辆, 镜头跟随
-![preview](public/demo/__case-cover/scene1.png)
+#### 示例: 3d文字
+![preview](public/demo/__case-cover/mesh-text3d.png)
 
 #
-#### 示例: 简单场景2--过山车, 可调整轨道
-![preview](public/demo/__case-cover/scene2.png)
-
-#
-#### 示例: 简单场景3--房子, 有开门动画
-![preview](public/demo/__case-cover/scene3.png)
-
-#
-#### 示例: 简单场景4--鬼屋
-#### 来源: csdn 作者 sayid760
-#### https://blog.csdn.net/qq_14993375/article/details/125240762
-![preview](public/demo/__case-cover/scene-haunted-house.png)
-
-#
-#### 示例: 简单场景5--炫酷球形机器人
-![preview](public/demo/__case-cover/scene-sphere-robot.png)
-
-#
-#### 示例: 智慧城市
-![preview](public/demo/__case-cover/smart-city.png)
-
-
-
-#
-#### 示例: 材质示例1
-![preview](public/demo/__case-cover/texture-door.png)
-
-#
-#### 示例: 动画--门
-![preview](public/demo/__case-cover/animation-door.png)
-
-#
-#### 示例: 动画--魔法阵
-#### 来源: csdn 作者 ~在水一方
-#### https://blog.csdn.net/qq_40147088/article/details/128418022
-![preview](public/demo/__case-cover/animation-magic-circle.png)
-
-#
-#### 示例: 动画--时光机
-#### 来源: 稀土掘金 作者 zxg_神说要有光
-#### https://juejin.cn/post/7258319655285178428
-![preview](public/demo/__case-cover/animation-time-machine.png)
-
-#
-#### 示例: 动画--音乐可视化
-#### 来源: 稀土掘金 作者 zxg_神说要有光
-#### https://mp.weixin.qq.com/s?__biz=Mzg3OTYzMDkzMg==&mid=2247486665&idx=1&sn=6dee71f9b99c49c89590174a24a8a96e&chksm=cf00c3f2f8774ae46dcbc886fded5c36a835730d2c0813975864c3a9faa1748c106886733e53&token=475014312&lang=zh_CN#rd
-![preview](public/demo/__case-cover/animation-music-visualize.png)
-
-
-
+#### 示例: 树林
+![preview](public/demo/__case-cover/mesh-sprite-forest.png)
 
 #
 #### 示例: 金字塔logo
@@ -464,42 +192,264 @@ npm run dev
 ![preview](public/demo/__case-cover/mesh-olympic-logo.png)
 
 #
-#### 示例: 模型--老虎-模型动画
-![preview](public/demo/__case-cover/model-tiger.png)
+#### 示例: 简易树
+![preview](public/demo/__case-cover/mesh-simple-tree.png)
 
 #
-#### 示例: 模型--狐狸-模型动画
-![preview](public/demo/__case-cover/model-fox.png)
+#### 示例: 用图片生成3D效果
+![preview](public/demo/__case-cover/mesh-photo3d.png)
+
+#
+#### 示例: 房子
+![preview](public/demo/__case-cover/mesh-house.png)
+
+#
+#### 示例: 材质示例-门
+![preview](public/demo/__case-cover/mesh-texture-door.png)
+
+
+
+
+#
+#### 示例: 动画--门
+![preview](public/demo/__case-cover/mesh-animation-door.png)
+
+#
+#### 示例: 动画--魔法阵
+#### 来源: csdn 作者 ~在水一方
+#### https://blog.csdn.net/qq_40147088/article/details/128418022
+![preview](public/demo/__case-cover/mesh-animation-magic-circle.png)
+
+#
+#### 示例: 动画--时光机
+#### 来源: 稀土掘金 作者 zxg_神说要有光
+#### https://juejin.cn/post/7258319655285178428
+![preview](public/demo/__case-cover/mesh-animation-time-machine.png)
+
+#
+#### 示例: 动画--音乐可视化
+#### 来源: 稀土掘金 作者 zxg_神说要有光
+#### https://mp.weixin.qq.com/s?__biz=Mzg3OTYzMDkzMg==&mid=2247486665&idx=1&sn=6dee71f9b99c49c89590174a24a8a96e&chksm=cf00c3f2f8774ae46dcbc886fded5c36a835730d2c0813975864c3a9faa1748c106886733e53&token=475014312&lang=zh_CN#rd
+![preview](public/demo/__case-cover/mesh-animation-music-visualize.png)
+
+#
+#### 示例: 动画--流光墙
+![preview](public/demo/__case-cover/mesh-animation-light-wall.png)
+
+#
+#### 示例: 动画--火焰
+![preview](public/demo/__case-cover/mesh-animation-fire.png)
+
+#
+#### 示例: 动画--点标记
+#### 来源 csdn 作者 焦焦焦焦焦
+#### https://blog.csdn.net/weixin_60645637/article/details/135520320
+![preview](public/demo/__case-cover/mesh-animation-point-tag.png)
+
+#
+#### 示例: 动画--地月系统
+![preview](public/demo/__case-cover/mesh-animation-earthmoon.png)
+
+#
+#### 示例: 动画--萤火虫
+![preview](public/demo/__case-cover/mesh-animation-firefly.png)
+
+#
+#### 示例: 动画--曲线运动
+![preview](public/demo/__case-cover/mesh-animation-curve.png)
+
+#
+#### 示例: 动画--管道流动
+![preview](public/demo/__case-cover/mesh-animation-pipe0.png)
+
+#
+#### 示例: 动画--飞机
+![preview](public/demo/__case-cover/mesh-animation-airplane.png)
+
+#
+#### 示例: 动画--俄乌战争
+![preview](public/demo/__case-cover/mesh-animation-war.png)
+
+#
+#### 示例: 动画--爆炸效果
+![preview](public/demo/__case-cover/mesh-animation-model-bomb.png)
+
+
+
+
+
+#
+#### 示例: shader-火焰
+![preview](public/demo/__case-cover/mesh-shader-fire.png)
+
+#
+#### 示例: shader-太阳
+#### 用最新版three重写失败, 附上作者原文
+#### 来源 ice-图形学社区 作者 Jsonco
+#### https://www.icegl.cn/ask/article/28.html
+![preview](public/demo/__case-cover/mesh-shader-sun.png)
+
+#
+#### 示例: shader-光环柱
+![preview](public/demo/__case-cover/mesh-shader-light-cylinder.png)
+
+#
+#### 示例: shader-交通灯
+#### 来源 郭先生的博客
+#### https://cloud.tencent.com/developer/article/1689743?from_column=20421&from=20421
+![preview](public/demo/__case-cover/mesh-shader-traffic-lights.png)
+
+
+#
+#### 示例: shader-波动1
+![preview](public/demo/__case-cover/mesh-shader-wave1.png)
+
+#
+#### 示例: shader-波动2
+![preview](public/demo/__case-cover/mesh-shader-wave1.png)
+
+#
+#### 示例: shader-波动3
+![preview](public/demo/__case-cover/mesh-shader-wave3.png)
+
+
+
+#
+#### 示例: 瀑布
+![preview](public/demo/__case-cover/scene-waterfall.png)
+
+#
+#### 示例: 爱心气球
+![preview](public/demo/__case-cover/scene-heart-balloon.png)
+
+#
+#### 示例: 上海
+##### 来源网络, 出自稀土掘金 作者 Funky_Tiger
+##### 本人重构, 原代码threejs版本较低, 改为最新版本164, 弯曲的楼贴图有bug, 代码中有标出
+##### 原地址 https://juejin.cn/post/6844903957416902669
+![preview](public/demo/__case-cover/scene-shanghai.png)
+
+#
+#### 示例: my-world
+##### 来源网络, csdn 作者 X01动力装甲
+##### https://webgl.blog.csdn.net/article/details/83965754
+![preview](public/demo/__case-cover/scene-my-world.png)
+
+#
+#### 示例: 物理引擎
+![preview](public/demo/__case-cover/scene-physics.png)
+
+#
+#### 示例: 人物控制
+![preview](public/demo/__case-cover/scene-player.png)
+
+
+
+
+
+#
+#### 示例: 烘干车间
+![preview](public/demo/__case-cover/scene-ming-dry.png)
+
+#
+#### 示例: 洗消车间
+![preview](public/demo/__case-cover/scene-ming-wash.png)
+
+#
+#### 示例: 净水车间
+![preview](public/demo/__case-cover/scene-ming-purity.png)
+
+#
+#### 示例: 净水车间2
+![preview](public/demo/__case-cover/scene-ming-purity2.png)
+
+#
+#### 示例: 除臭车间简例
+![preview](public/demo/__case-cover/scene-ming-deodorize0.png)
+
+#
+#### 示例: 除臭车间
+![preview](public/demo/__case-cover/scene-ming-deodorize.png)
+
+#
+#### 示例: 除臭车间2
+![preview](public/demo/__case-cover/scene-ming-deodorize2.png)
+
+
+
+
+#
+#### 示例: 镜头跟随
+![preview](public/demo/__case-cover/scene-camera-flow.png)
 
 #
 #### 示例: 射线选中物体
-![preview](public/demo/__case-cover/raycaster.png)
+![preview](public/demo/__case-cover/scene-raycaster.png)
 
 #
-#### 示例: 俄乌战争
-##### 网络收集
-![preview](public/demo/__case-cover/war.png)
+#### 示例: 过山车
+![preview](public/demo/__case-cover/scene-roller-coaster.png)
+
+#
+#### 示例: 鬼屋
+#### 来源: csdn 作者 sayid760
+#### https://blog.csdn.net/qq_14993375/article/details/125240762
+![preview](public/demo/__case-cover/scene-haunted-house.png)
+
+#
+#### 示例: 智慧城市
+![preview](public/demo/__case-cover/scene-smart-city.png)
+
+
+
+
+
+
 
 
 
 
 
 #
-#### 示例: canvas1--绚丽粒子炸裂效果
-##### 来源网络
-![preview](public/demo/__case-cover/canvas1.png)
+#### 示例: 游戏-飞机
+![preview](public/demo/__case-cover/game-airplane.png)
+
+#
+#### 示例: 游戏-狼兔游戏--狼
+![preview](public/demo/__case-cover/game-wolf-rabbit-wolf.png)
+
+#
+#### 示例: 游戏-狼兔游戏--兔
+![preview](public/demo/__case-cover/game-wolf-rabbit-rabbit.png)
+
+#
+#### 示例: 游戏-狼兔游戏--刺猬
+![preview](public/demo/__case-cover/game-wolf-rabbit-hedgehog.png)
+
+#
+#### 示例: 游戏-狼兔游戏--地球
+![preview](public/demo/__case-cover/game-wolf-rabbit-earth.png)
+
+#
+#### 示例: 游戏-狼兔游戏
+![preview](public/demo/__case-cover/game-wolf-rabbit.png)
+
+
 
 
 #
-#### 示例: canvas2--字母喷泉
-##### 来源网络
-![preview](public/demo/__case-cover/canvas2.png)
+#### 示例: canvas-绚烂粒子特效
+![preview](public/demo/__case-cover/canvas-animation-points1.png)
+
+#
+#### 示例: canvas-字母喷泉
+![preview](public/demo/__case-cover/canvas-animation-letter-fountain.png)
+
 
 
 #
-#### 示例: cesium 简单示例
+#### 示例: cesium-简例
 ![preview](public/demo/__case-cover/cesium-simple-first.png)
-
 
 
 
