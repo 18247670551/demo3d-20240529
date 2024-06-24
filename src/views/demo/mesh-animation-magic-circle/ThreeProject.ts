@@ -7,6 +7,7 @@ import point3Pic from "./texture/point3.png"
 import point4Pic from "./texture/point4.png"
 import magicPic from "./texture/magic.png"
 import guangyunPic from "./texture/guangyun.png"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
 
 
 export default class ThreeProject extends ThreeCore {

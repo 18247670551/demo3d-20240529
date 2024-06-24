@@ -176,14 +176,14 @@ export default class ThreeProject extends ThreeCore{
     }
 
     private addAndGetTemperatures() {
-        const t1 = new PlaneText("温度1", {iconPath: "/demo/my/dry/temperature.png"})
-        const t2 = new PlaneText("温度2", {iconPath: "/demo/my/dry/temperature.png"})
-        const t3 = new PlaneText("温度3", {iconPath: "/demo/my/dry/temperature.png"})
-        const t4 = new PlaneText("温度4", {iconPath: "/demo/my/dry/temperature.png"})
-        const t5 = new PlaneText("温度5", {iconPath: "/demo/my/dry/temperature.png"})
-        const t6 = new PlaneText("温度6", {iconPath: "/demo/my/dry/temperature.png"})
-        const t7 = new SpriteText("温度7", {iconPath: "/demo/my/dry/temperature.png"})
-        const t8 = new SpriteText("温度8", {iconPath: "/demo/my/dry/temperature.png"})
+        const t1 = new PlaneText("温度1", {iconPath: "/demo/scene-ming/dry/temperature.png"})
+        const t2 = new PlaneText("温度2", {iconPath: "/demo/scene-ming/dry/temperature.png"})
+        const t3 = new PlaneText("温度3", {iconPath: "/demo/scene-ming/dry/temperature.png"})
+        const t4 = new PlaneText("温度4", {iconPath: "/demo/scene-ming/dry/temperature.png"})
+        const t5 = new PlaneText("温度5", {iconPath: "/demo/scene-ming/dry/temperature.png"})
+        const t6 = new PlaneText("温度6", {iconPath: "/demo/scene-ming/dry/temperature.png"})
+        const t7 = new SpriteText("温度7", {iconPath: "/demo/scene-ming/dry/temperature.png"})
+        const t8 = new SpriteText("温度8", {iconPath: "/demo/scene-ming/dry/temperature.png"})
 
 
         const {roomLength, roomWidth, roomHeight} = this.room.options
@@ -259,8 +259,8 @@ export default class ThreeProject extends ThreeCore{
 
     private addAndGetHumiditys() {
 
-        const h1 = new SpriteText("湿度1", {iconPath: "/demo/my/dry/humidity.png"})
-        const h2 = new SpriteText("湿度2", {iconPath: "/demo/my/dry/humidity.png"})
+        const h1 = new SpriteText("湿度1", {iconPath: "/demo/scene-ming/dry/humidity.png"})
+        const h2 = new SpriteText("湿度2", {iconPath: "/demo/scene-ming/dry/humidity.png"})
 
 
         const {roomLength, roomWidth, roomHeight} = this.room!.options

@@ -30,7 +30,7 @@ export default class Pipe extends MyMesh {
 
     constructor(name: string, options: PipeOptions) {
 
-        const flowTexture = getTextureLoader().load("/demo/my/pipe/pipe_flow.png")
+        const flowTexture = getTextureLoader().load("/demo/scene-ming/pipe/pipe_flow.png")
         
         flowTexture.colorSpace = THREE.SRGBColorSpace
         flowTexture.wrapS = flowTexture.wrapT = THREE.RepeatWrapping

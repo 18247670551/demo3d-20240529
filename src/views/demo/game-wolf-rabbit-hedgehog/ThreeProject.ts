@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import Hedgehog from "@/views/demo/game-wolf-rabbit/hedgehog/Hedgehog"
+import Hedgehog from "@/views/demo/game-wolf-rabbit/Hedgehog"
 
 export default class ThreeProject extends ThreeCore {
 

@@ -279,7 +279,7 @@ export default class Room extends MyGroup<RoomOptions> {
         const geometry = new THREE.PlaneGeometry(this.options.doorWidth, this.options.doorHeight, 1, 1)
         geometry.translate(0, -this.options.doorHeight/2, 0)
 
-        const texture = getTextureLoader().load("/demo/my/common/room/door3.png")
+        const texture = getTextureLoader().load("/demo/scene-ming/common/room/door3.png")
         
         texture.colorSpace = THREE.SRGBColorSpace
 

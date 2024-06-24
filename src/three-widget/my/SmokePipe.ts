@@ -3,6 +3,7 @@ import {random} from "lodash"
 import gsap from "gsap"
 import MyGroup from "@/three-widget/MyGroup"
 import {disposeGroup} from "@/three-widget/ThreeUtils"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
 
 /**
  * @param radius 管道半径
@@ -52,7 +53,7 @@ export default class SmokePipe extends MyGroup<SmokePipeOptions> {
     }
 
     private createSmokePointSprite() {
-        const texture = getTextureLoader().load('/demo/my/wash/smoke1.png')
+        const texture = getTextureLoader().load('/demo/scene-ming/wash/smoke1.png')
         
         texture.colorSpace = THREE.SRGBColorSpace
 

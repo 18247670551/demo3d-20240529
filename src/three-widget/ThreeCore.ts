@@ -112,7 +112,7 @@ export default abstract class ThreeCore {
 
             // 执行动画
             for (const key in this.animates) {
-                this.animates[key]()
+                this.animates[key](this.clock.getDelta())
             }
 
             this.renderer.render(this.scene, this.camera)

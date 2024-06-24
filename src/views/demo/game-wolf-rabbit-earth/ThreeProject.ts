@@ -1,8 +1,8 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import Earth from "@/views/demo/game-wolf-rabbit/earth/Earth"
-import BonusParticles from "@/views/demo/game-wolf-rabbit/earth/BonusParticles"
+import BonusParticles from "@/views/demo/game-wolf-rabbit/BonusParticles"
+import Earth from "@/views/demo/game-airplane/Earth"
 
 
 export default class ThreeProject extends ThreeCore {
@@ -67,7 +67,7 @@ export default class ThreeProject extends ThreeCore {
     }
 
     private addAndGetEarth(earthRadius: number){
-        const earth = new Earth(earthRadius)
+        const earth = new Earth({earthRadius})
         this.scene.add(earth)
         return earth
     }

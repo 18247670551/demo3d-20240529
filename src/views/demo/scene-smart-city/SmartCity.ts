@@ -5,7 +5,6 @@ import LightWall from "@/views/demo/scene-smart-city/LightWall"
 import FlyLine from "@/views/demo/scene-smart-city/FlyLine"
 import buildoutline_vertexShader from "./shader/buildoutline/vertexShader.glsl"
 import buildoutline_fragmentShader from "./shader/buildoutline/fragmentShader.glsl"
-import {vec3} from "three/examples/jsm/nodes/shadernode/ShaderNode";
 
 
 const radarData = [
@@ -77,7 +76,7 @@ export default class SmartCity extends THREE.Group {
         const cityArray = ['CITY_UNTRIANGULATED']
         const floorArray = ['LANDMASS']
 
-        getFbxLoader().load("public/demo/smart-city/shanghai.FBX", model => {
+        getFbxLoader().load("public/demo/scene-smart-city/shanghai.FBX", model => {
 
             console.log("model = ", model)
 

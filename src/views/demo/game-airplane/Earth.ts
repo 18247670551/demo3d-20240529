@@ -3,6 +3,7 @@ import {Colors} from "@/views/demo/game-airplane/ThreeProject"
 
 
 interface EarthOptions {
+    earthRadius?: number,
     treesCount?: number,
     flowerCount?: number,
     colors?: Colors,
@@ -17,6 +18,7 @@ export default class Earth extends THREE.Group {
         super()
 
         const defaultOptions: Required<EarthOptions> = {
+            earthRadius: 600,
             treesCount: 300,
             flowerCount: 350,
             colors: {
@@ -44,7 +46,7 @@ export default class Earth extends THREE.Group {
     }
 
     private addEarth(){
-        const geom = new THREE.CylinderGeometry(600, 600, 1700, 40, 10)
+        const geom = new THREE.CylinderGeometry(this.options.earthRadius, this.options.earthRadius, 1700, 40, 10)
         geom.applyMatrix4(new THREE.Matrix4().makeRotationX(-Math.PI / 2))
         const mat = new THREE.MeshLambertMaterial({
             color: 0x629265,

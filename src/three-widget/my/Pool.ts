@@ -101,7 +101,7 @@ export default class Pool extends MyGroup<PoolOptions> {
         geo.translate(0, h / 2, 0)
 
         //液体水面材质
-        const texture = getTextureLoader().load("/demo/my/common/pool/river.jpg")
+        const texture = getTextureLoader().load("/demo/scene-ming/common/pool/river.jpg")
         
         texture.colorSpace = THREE.SRGBColorSpace
         let waterPlaneMat = new THREE.MeshStandardMaterial({

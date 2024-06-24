@@ -67,7 +67,7 @@ function test(){
     ]
 
     const plan = new CustomPlan(pointsPositions, {
-        material: new THREE.MeshLambertMaterial({map: getTextureLoader().load("/demo/my/dry/fanLeaf_blue.png")})
+        material: new THREE.MeshLambertMaterial({map: getTextureLoader().load("/demo/scene-ming/dry/fanLeaf_blue.png")})
     })
 
     console.log("plan = ", plan)

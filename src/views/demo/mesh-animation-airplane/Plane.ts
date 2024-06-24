@@ -156,7 +156,7 @@ export default class Plane extends MyGroup<PlaneOptions>{
      * 必须使用箭头函数, 此函数会在本类外部调用, 如果不用箭头函数, 函数内this指向错误, 使用箭头函数来保持this为本类对象
      * @param delta 每两帧画面间隔时间, 乘以每秒速度则是每两帧画面间隔应该移动的距离
      */
-    flyAnimate = (delta: number) => {
+    fly = (delta: number) => {
         this.position.x += this.options.speed * delta
         this.blade.rotation.y += Math.PI / 180 * this.options.bladeSpeed * delta
     }

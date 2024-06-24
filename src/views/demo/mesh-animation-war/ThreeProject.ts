@@ -62,7 +62,7 @@ export default class ThreeProject extends ThreeCore {
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
 
         
-        getDracoGltfLoader().load("/demo/war/ew8.glb", (gltf) => {
+        getDracoGltfLoader().load("/demo/mesh-animation-war/ew8.glb", (gltf) => {
             const obj = gltf.scene
 
             obj.traverse(child => {
@@ -110,13 +110,13 @@ export default class ThreeProject extends ThreeCore {
             }
             shader.uniforms.iTime = this.params.iTime
             shader.uniforms.iChannel0 = {
-                value: getTextureLoader().load("/demo/war/ichannel0.png"),
+                value: getTextureLoader().load("/demo/mesh-animation-war/ichannel0.png"),
             }
             shader.uniforms.iChannel1 = {
-                value: getTextureLoader().load("/demo/war/ichannel1.png"),
+                value: getTextureLoader().load("/demo/mesh-animation-war/ichannel1.png"),
             }
             shader.uniforms.iChannel2 = {
-                value: getTextureLoader().load("/demo/war/ichannel2.png"),
+                value: getTextureLoader().load("/demo/mesh-animation-war/ichannel2.png"),
             }
             shader.uniforms.iMouse = {value: new THREE.Vector2(0, 0)}
             shader.vertexShader = shader.vertexShader.replace(
@@ -146,7 +146,7 @@ export default class ThreeProject extends ThreeCore {
         const listener = new THREE.AudioListener()
         const sound = new THREE.Audio(listener)
         const audioLoader = new THREE.AudioLoader()
-        audioLoader.load("/demo/war/bomb.mp3", (buffer) => {
+        audioLoader.load("/demo/mesh-animation-war/bomb.mp3", (buffer) => {
             sound.setBuffer(buffer)
             sound.setVolume(0.5)
             // sound.setLoop(true)

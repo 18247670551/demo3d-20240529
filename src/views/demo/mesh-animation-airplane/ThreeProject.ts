@@ -1,5 +1,5 @@
 import ThreeCore from "@/three-widget/ThreeCore"
-import Plane from "@/views/demo/mesh-airplane/Plane"
+import Plane from "@/views/demo/mesh-animation-airplane/Plane"
 import * as THREE from "three"
 import {ElMessage} from "element-plus"
 import {GUI} from "dat.gui"
@@ -200,7 +200,7 @@ export class ThreeProject extends ThreeCore {
                 this.plane.position.x = this.planeDefaultPosition.x
             },
             "开始飞": () => {
-                this.addAnimate('flyAnimate', this.plane!.flyAnimate)
+                this.addAnimate('flyAnimate', this.plane!.fly)
             },
             "停止飞": () => {
                 this.removeAnimate('flyAnimate')

@@ -448,7 +448,7 @@ export default class ThreeProject extends ThreeCore {
 
 
         // todo 这里有bug 几何体在上面顶点偏移操作变形后, 材质贴图匹配不上
-        const texture = getTextureLoader().load("/demo/scene-shanghai/building5.jpg")
+        const texture = getTextureLoader().load("/demo/scene-shanghai/build/building5.jpg")
         texture.colorSpace = THREE.SRGBColorSpace
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping
         texture.repeat.set(2, 9)
@@ -487,7 +487,7 @@ export default class ThreeProject extends ThreeCore {
         const _geometry = new THREE.BoxGeometry(1, 22, 6)
 
 
-        const texture = getTextureLoader().load("/demo/scene-shanghai/building5.jpg")// 颜色贴图
+        const texture = getTextureLoader().load("/demo/scene-shanghai/build/building5.jpg")// 颜色贴图
         texture.colorSpace = THREE.SRGBColorSpace
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping // 水平和竖直方向重复贴图
         texture.repeat.set(0.35, 8)
@@ -526,7 +526,7 @@ export default class ThreeProject extends ThreeCore {
         const _geometry7 = new THREE.BoxGeometry(2, 1.3, 2)
         const _geometry8 = new THREE.BoxGeometry(1.5, 1, 1.5)
 
-        const texture = getTextureLoader().load("/demo/scene-shanghai/JMtowerbody.jpg")// 颜色贴图
+        const texture = getTextureLoader().load("/demo/scene-shanghai/build/JMtowerbody.jpg")// 颜色贴图
         texture.colorSpace = THREE.SRGBColorSpace
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping // 水平和竖直方向重复贴图
         texture.repeat.set(0.5, 1)
@@ -572,7 +572,7 @@ export default class ThreeProject extends ThreeCore {
         const _cylinderGeometry = new THREE.CylinderGeometry(0.1, 0.5, 5, 3)
 
 
-        const texture = getTextureLoader().load("/demo/scene-shanghai/JMtowertop.jpg")// 颜色贴图
+        const texture = getTextureLoader().load("/demo/scene-shanghai/build/JMtowertop.jpg")// 颜色贴图
         texture.colorSpace = THREE.SRGBColorSpace
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping // 水平和竖直方向重复贴图
         texture.repeat.set(0.35, 1)
@@ -661,7 +661,7 @@ export default class ThreeProject extends ThreeCore {
         //geo.computeFaceNormals() // todo 计算法向量，会对光照产生影响, 新版本不知道该怎么改
 
         // 自定义形状贴图贴不上, 这里原作者源码里也没解决
-        const texture = getTextureLoader().load("/demo/scene-shanghai/JMtowerbody.jpg")
+        const texture = getTextureLoader().load("/demo/scene-shanghai/build/JMtowerbody.jpg")
         texture.colorSpace = THREE.SRGBColorSpace
         texture.wrapS = texture.wrapT = THREE.RepeatWrapping
         texture.repeat.set(0.5, 1)

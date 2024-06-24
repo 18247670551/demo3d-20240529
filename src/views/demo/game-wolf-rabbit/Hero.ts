@@ -3,7 +3,7 @@ import {gsap} from "gsap"
 
 
 
-export default class Hero extends THREE.Group {
+export default class Rabbit extends THREE.Group {
 
     status = "running"
     private runningCycle = 0

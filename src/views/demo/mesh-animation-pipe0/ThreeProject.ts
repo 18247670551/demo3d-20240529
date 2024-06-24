@@ -2,7 +2,7 @@ import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import {Curve, Vector3} from "three"
-import DemoPipe from "@/views/demo/mesh-ming-pipe0/DemoPipe"
+import DemoPipe from "@/views/demo/mesh-animation-pipe0/DemoPipe"
 import {GUI} from "dat.gui"
 
 export default class ThreeProject extends ThreeCore {

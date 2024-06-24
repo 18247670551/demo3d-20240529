@@ -6,13 +6,13 @@ const initSpeed = 5
 const speed = 6
 const maxSpeed = 48
 
-export default class Monster extends THREE.Group {
+export default class Wolf extends THREE.Group {
 
     private gameStatus = ""
     private runningCycle = 0
 
     private body: THREE.Group
-    heroHolder: THREE.Group
+    rabbitHolder: THREE.Group
 
     head: THREE.Mesh
     torso: THREE.Mesh
@@ -67,9 +67,9 @@ export default class Monster extends THREE.Group {
         this.mouth.rotation.x = .4
         this.mouth.position.z = 4
 
-        this.heroHolder = new THREE.Group()
-        this.heroHolder.position.z = 20
-        this.mouth.add(this.heroHolder)
+        this.rabbitHolder = new THREE.Group()
+        this.rabbitHolder.position.z = 20
+        this.mouth.add(this.rabbitHolder)
 
         const toothGeom = new THREE.BoxGeometry(2, 2, 1, 1)
         const vs = toothGeom.getAttribute("position")

@@ -2,13 +2,13 @@ import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import {GUI} from "dat.gui"
-import Hero from "@/views/demo/game-wolf-rabbit/rabbit/Hero"
+import Rabbit from "@/views/demo/game-wolf-rabbit-rabbit/Rabbit"
 
 export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
 
-    private readonly rabbit: Hero
+    private readonly rabbit: Rabbit
     protected dela = 0
 
 
@@ -60,7 +60,7 @@ export default class ThreeProject extends ThreeCore {
     }
 
     private addAndGetRabbit(){
-        const rabbit = new Hero()
+        const rabbit = new Rabbit()
         this.scene.add(rabbit)
         return rabbit
     }

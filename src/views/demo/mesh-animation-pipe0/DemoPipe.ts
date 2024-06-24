@@ -37,7 +37,7 @@ export default class DemoPipe extends MyMesh {
 
         const finalOptions: Required<DemoPipeOptions> = Object.assign({}, defaultOptions, options)
 
-        const flowTexture = getTextureLoader().load("/demo/my/common/pipe/flow.png")
+        const flowTexture = getTextureLoader().load("/demo/scene-ming/common/pipe/flow.png")
 
         flowTexture.colorSpace = THREE.SRGBColorSpace
         flowTexture.wrapS = flowTexture.wrapT = THREE.RepeatWrapping

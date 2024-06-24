@@ -2,11 +2,12 @@ import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import {gsap} from "gsap"
-import BonusParticles from "@/views/demo/game-wolf-rabbit-失败/BonusParticles"
-import Hero from "@/views/demo/game-wolf-rabbit-失败/Hero"
-import Carrot from "@/views/demo/game-wolf-rabbit-失败/Carrot"
-import Monster from "@/views/demo/game-wolf-rabbit-失败/Monster"
-import Hedgehog from "@/views/demo/game-wolf-rabbit-失败/Hedgehog"
+import BonusParticles from "@/views/demo/game-wolf-rabbit/BonusParticles";
+import Carrot from "@/views/demo/game-wolf-rabbit/Carrot";
+import Rabbit from "@/views/demo/game-wolf-rabbit/Hero";
+import Hedgehog from "@/views/demo/game-wolf-rabbit/Hedgehog";
+import Wolf from "@/views/demo/game-wolf-rabbit/Monster";
+
 
 const fieldOfView = 50
 const nearPlane = 1
@@ -22,14 +23,14 @@ const levelUpdateFreq = 3000
 let speed = 6
 const initSpeed = 5
 const maxSpeed = 48
-const monsterPos = .65
-const monsterPosTarget = .65
+const wolfPos = .65
+const wolfPosTarget = .65
 let floorRotation = 0
 const collisionObstacle = 10
 const collisionBonus = 20
 const cameraPosGame = 160
 const cameraPosGameOver = 260
-const monsterAcceleration = 0.004
+const wolfAcceleration = 0.004
 const malusClearColor = 0xb44b39
 const malusClearAlpha = 0
 const audio = new Audio('/demo/rabbit-game/Antonio-Vivaldi-Summer_01.mp3')
@@ -73,13 +74,13 @@ export default class ThreeProject extends ThreeCore {
     private gameStatus = "play"
     private runningCycle = 0
     private bonusParticles: BonusParticles
-    private hero: Hero
+    private rabbit: Rabbit
     private floor: THREE.Group
     private carrot: Carrot
-    private monster: Monster
+    private wolf: Wolf
     private hedgehog: Hedgehog
-    private monsterPosTarget = 0
-    private monsterPos = 0
+    private wolfPosTarget = 0
+    private wolfPos = 0
     private fieldDistanceDom: HTMLElement
     private gameOverDom: HTMLElement
 
@@ -136,8 +137,8 @@ export default class ThreeProject extends ThreeCore {
         this.carrot = this.addAndGetCarrot()
         this.carrot.position.y = 50
 
-        this.monster = this.addAndGetMonster()
-        this.hero = this.addAndGetHero()
+        this.wolf = this.addAndGetWolf()
+        this.rabbit = this.addAndGetRabbit()
         this.hedgehog = this.addAndGetHedgehog()
         this.bonusParticles = this.addAndGetBonusParticles()
     }
@@ -145,7 +146,7 @@ export default class ThreeProject extends ThreeCore {
     protected init() {
         this.addTrees()
         setInterval(() => {
-            this.hero.hang()
+            this.rabbit.hang()
         }, 3000)
     }
 
@@ -155,12 +156,12 @@ export default class ThreeProject extends ThreeCore {
 
         if (this.gameStatus == "play") {
 
-            if (this.hero.status == "running") {
-                this.hero.run(this.delta)
+            if (this.rabbit.status == "running") {
+                this.rabbit.run(this.delta)
             }
 
             this.updateDistance()
-            this.updateMonsterPosition()
+            this.updateWolfPosition()
             this.updateCarrotPosition()
             this.updateFloorRotation()
 
@@ -184,12 +185,12 @@ export default class ThreeProject extends ThreeCore {
 
     }
 
-    private addAndGetHero() {
-        const hero = new Hero()
-        this.scene.add(hero)
-        hero.rotation.y = Math.PI / 2
-        hero.nod()
-        return hero
+    private addAndGetRabbit() {
+        const rabbit = new Rabbit()
+        this.scene.add(rabbit)
+        rabbit.rotation.y = Math.PI / 2
+        rabbit.nod()
+        return rabbit
     }
 
     private addAndGetHedgehog() {
@@ -202,13 +203,13 @@ export default class ThreeProject extends ThreeCore {
         return hedgehog
     }
 
-    private addAndGetMonster() {
-        const monster = new Monster()
-        monster.position.z = 20
-        //monster.mesh.scale.set(1.2,1.2,1.2)
-        this.scene.add(monster)
-        this.updateMonsterPosition()
-        return monster
+    private addAndGetWolf() {
+        const wolf = new Wolf()
+        wolf.position.z = 20
+        //wolf.mesh.scale.set(1.2,1.2,1.2)
+        this.scene.add(wolf)
+        this.updateWolfPosition()
+        return wolf
     }
 
     private updateCarrotPosition = () => {
@@ -218,19 +219,19 @@ export default class ThreeProject extends ThreeCore {
         this.carrot.position.x = Math.cos(floorRotation + this.carrot.angle) * (floorRadius + 50)
     }
 
-    private updateMonsterPosition = () => {
-        console.log("this.monster = ", this.monster)
-        this.monster.run(this.delta)
-        this.monsterPosTarget -= delta * monsterAcceleration
-        this.monsterPos += (monsterPosTarget - monsterPos) * delta
-        if (monsterPos < .56) {
+    private updateWolfPosition = () => {
+        console.log("this.wolf = ", this.wolf)
+        this.wolf.run(this.delta)
+        this.wolfPosTarget -= delta * wolfAcceleration
+        this.wolfPos += (wolfPosTarget - wolfPos) * delta
+        if (wolfPos < .56) {
             this.gameOver()
         }
 
-        const angle = Math.PI * monsterPos
-        this.monster.position.y = -floorRadius + Math.sin(angle) * (floorRadius + 12)
-        this.monster.position.x = Math.cos(angle) * (floorRadius + 15)
-        this.monster.rotation.z = -Math.PI / 2 + angle
+        const angle = Math.PI * wolfPos
+        this.wolf.position.y = -floorRadius + Math.sin(angle) * (floorRadius + 12)
+        this.wolf.position.x = Math.cos(angle) * (floorRadius + 15)
+        this.wolf.rotation.z = -Math.PI / 2 + angle
     }
 
     private updateFloorRotation = () => {
@@ -251,8 +252,8 @@ export default class ThreeProject extends ThreeCore {
     }
 
     private checkCollision = () => {
-        const db = this.hero.position.clone().sub(this.carrot.position.clone())
-        const dm = this.hero.position.clone().sub(this.hedgehog.position.clone())
+        const db = this.rabbit.position.clone().sub(this.carrot.position.clone())
+        const dm = this.rabbit.position.clone().sub(this.hedgehog.position.clone())
 
         if (db.length() < collisionBonus) {
             this.getBonus()
@@ -288,7 +289,7 @@ export default class ThreeProject extends ThreeCore {
                 this.hedgehog.rotation.set(0, 0, 0)
             }
         })
-        this.monsterPosTarget -= .04
+        this.wolfPosTarget -= .04
         gsap.from(this, {
             malusClearAlpha: .5,
             duration: 0.5,
@@ -311,16 +312,16 @@ export default class ThreeProject extends ThreeCore {
         this.bonusParticles.explose()
         this.carrot.angle += Math.PI / 2
         //speed*=.95
-        this.monsterPosTarget += .025
+        this.wolfPosTarget += .025
     }
 
 
     private gameOver() {
         this.gameOverDom.className = "show"
         this.gameStatus = "gameOver"
-        this.monster.sit()
-        this.hero.hang()
-        this.monster.heroHolder.add(this.hero)
+        this.wolf.sit()
+        this.rabbit.hang()
+        this.wolf.rabbitHolder.add(this.rabbit)
         gsap.to(this, {speed: 0, duration: 1})
         gsap.to(this.camera.position, {z: cameraPosGameOver, y: 60, x: -30, duration: 3})
         this.carrot.visible = false
@@ -453,7 +454,7 @@ export default class ThreeProject extends ThreeCore {
 
     private handleMouseDown() {
         if (this.gameStatus == "play") {
-            this.hero.jump()
+            this.rabbit.jump()
         } else if (this.gameStatus == "readyToReplay") {
             this.replay()
         }
@@ -465,24 +466,24 @@ export default class ThreeProject extends ThreeCore {
 
         this.gameOverDom.className = ""
 
-        gsap.killTweensOf(this.monster.pawFL.position)
-        gsap.killTweensOf(this.monster.pawFR.position)
-        gsap.killTweensOf(this.monster.pawBL.position)
-        gsap.killTweensOf(this.monster.pawBR.position)
+        gsap.killTweensOf(this.wolf.pawFL.position)
+        gsap.killTweensOf(this.wolf.pawFR.position)
+        gsap.killTweensOf(this.wolf.pawBL.position)
+        gsap.killTweensOf(this.wolf.pawBR.position)
 
-        gsap.killTweensOf(this.monster.pawFL.rotation)
-        gsap.killTweensOf(this.monster.pawFR.rotation)
-        gsap.killTweensOf(this.monster.pawBL.rotation)
-        gsap.killTweensOf(this.monster.pawBR.rotation)
+        gsap.killTweensOf(this.wolf.pawFL.rotation)
+        gsap.killTweensOf(this.wolf.pawFR.rotation)
+        gsap.killTweensOf(this.wolf.pawBL.rotation)
+        gsap.killTweensOf(this.wolf.pawBR.rotation)
 
-        gsap.killTweensOf(this.monster.tail.rotation)
-        gsap.killTweensOf(this.monster.head.rotation)
-        gsap.killTweensOf(this.monster.eyeL.scale)
-        gsap.killTweensOf(this.monster.eyeR.scale)
+        gsap.killTweensOf(this.wolf.tail.rotation)
+        gsap.killTweensOf(this.wolf.head.rotation)
+        gsap.killTweensOf(this.wolf.eyeL.scale)
+        gsap.killTweensOf(this.wolf.eyeR.scale)
 
-        //gsap.killTweensOf(hero.head.rotation)
+        //gsap.killTweensOf(rabbit.head.rotation)
 
-        this.monster.tail.rotation.y = 0
+        this.wolf.tail.rotation.y = 0
 
         gsap.to(this.camera.position, {
             x: 0,
@@ -491,39 +492,39 @@ export default class ThreeProject extends ThreeCore {
             duration: 3,
             //ease:Power4.easeInOut
         })
-        gsap.to(this.monster.torso.rotation, {
+        gsap.to(this.wolf.torso.rotation, {
             x: 0,
             duration: 2,
             //ease:Power4.easeInOut
         })
-        gsap.to(this.monster.torso.position, {
+        gsap.to(this.wolf.torso.position, {
             y: 0,
             duration: 2,
             //ease:Power4.easeInOut
         })
-        gsap.to(this.monster.pawFL.rotation, {
+        gsap.to(this.wolf.pawFL.rotation, {
             x: 0,
             duration: 2,
             //ease:Power4.easeInOut
         })
-        gsap.to(this.monster.pawFR.rotation, {
+        gsap.to(this.wolf.pawFR.rotation, {
             x: 0,
             duration: 2,
             //ease:Power4.easeInOut
         })
-        gsap.to(this.monster.mouth.rotation, {
+        gsap.to(this.wolf.mouth.rotation, {
             x: .5,
             duration: 2,
             //ease:Power4.easeInOut
         })
 
 
-        gsap.to(this.monster.head.rotation, 2, {y: 0, x: -.3, ease: Power4.easeInOut})
+        gsap.to(this.wolf.head.rotation, 2, {y: 0, x: -.3, ease: Power4.easeInOut})
 
-        gsap.to(this.hero.position, 2, {x: 20, ease: Power4.easeInOut})
-        gsap.to(this.hero.head.rotation, 2, {x: 0, y: 0, ease: Power4.easeInOut})
-        gsap.to(this.monster.mouth.rotation, 2, {x: .2, ease: Power4.easeInOut})
-        gsap.to(this.monster.mouth.rotation, 1, {
+        gsap.to(this.rabbit.position, 2, {x: 20, ease: Power4.easeInOut})
+        gsap.to(this.rabbit.head.rotation, 2, {x: 0, y: 0, ease: Power4.easeInOut})
+        gsap.to(this.wolf.mouth.rotation, 2, {x: .2, ease: Power4.easeInOut})
+        gsap.to(this.wolf.mouth.rotation, 1, {
             x: .4, ease: Power4.easeIn, delay: 1, onComplete: () => {
 
                 this.resetGame()
@@ -533,22 +534,22 @@ export default class ThreeProject extends ThreeCore {
     }
 
     private resetGame() {
-        this.scene.add(this.hero)
-        this.hero.rotation.y = Math.PI / 2
-        this.hero.position.y = 0
-        this.hero.position.z = 0
-        this.hero.position.x = 0
+        this.scene.add(this.rabbit)
+        this.rabbit.rotation.y = Math.PI / 2
+        this.rabbit.position.y = 0
+        this.rabbit.position.z = 0
+        this.rabbit.position.x = 0
 
-        this.monsterPos = .56
-        this.monsterPosTarget = .65
+        this.wolfPos = .56
+        this.wolfPosTarget = .65
         speed = initSpeed
         level = 0
         distance = 0
         this.carrot.visible = true
         this.hedgehog.visible = true
         this.gameStatus = "play"
-        this.hero.status = "running"
-        this.hero.nod()
+        this.rabbit.status = "running"
+        this.rabbit.nod()
         audio.play()
         this.updateLevel()
         // @ts-ignore

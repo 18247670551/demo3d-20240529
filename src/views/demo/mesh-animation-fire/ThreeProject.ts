@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import Fire from "@/views/demo/mesh-animation-fire/Fire";
+import Fire from "@/views/demo/mesh-animation-fire/Fire"
 
 export default class ThreeProject extends ThreeCore {
 

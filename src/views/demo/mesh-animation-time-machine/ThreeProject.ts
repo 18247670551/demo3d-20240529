@@ -3,6 +3,7 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import stormPic from "./texture/storm.jpg"
 import metalPic from "./texture/metal.png"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader";
 
 
 export default class ThreeProject extends ThreeCore {

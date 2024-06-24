@@ -1,7 +1,12 @@
 import * as THREE from "three"
 import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js'
 import {ColorRepresentation} from "three/src/math/Color"
-import {getTextureLoader} from "../../../src/three-widget/loader/ThreeLoader"
+import {getTextureLoader} from "@/three-widget/loader/ThreeLoader"
+
+
+import ring3Pic from "/public/demo/mesh-animation-point-tag/ring3.png"
+import gradient_round_outside_to_innerPic from "/public/demo/mesh-animation-point-tag/gradient_round_outside_to_inner.png"
+
 
 interface PointTagOptions {
     radius: number,
@@ -15,8 +20,8 @@ const defaultOptions: Required<PointTagOptions> = {
     radius: 4,
     height: 20,
     color: '#EEEE00',
-    ringTexture: getTextureLoader().load('/demo/point-tag/ring3.png'),
-    tagTexture: getTextureLoader().load('/demo/point-tag/gradient_round_outside_to_inner.png'),
+    ringTexture: getTextureLoader().load(ring3Pic),
+    tagTexture: getTextureLoader().load(gradient_round_outside_to_innerPic),
 }
 
 

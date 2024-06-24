@@ -208,7 +208,7 @@ export default class ThreeProject extends ThreeCore {
         })
 
 
-        getGltfLoader().load("public/demo/scene1/car.glb", glb => {
+        getGltfLoader().load("public/demo/scene-camera-flow/car.glb", glb => {
             const car = glb.scene
 
             console.log("car = ", car)

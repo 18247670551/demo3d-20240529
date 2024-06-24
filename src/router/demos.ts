@@ -88,10 +88,10 @@ const demos : {name: string, path: string}[] = [
 
 
     {name: '游戏-飞机', path: 'game-airplane'},
-    {name: '游戏-狼兔项目--狼', path: 'game-wr-wolf'},
-    {name: '游戏-狼兔项目--兔', path: 'game-wr-rabbit'},
-    {name: '游戏-狼兔项目--刺猬', path: 'game-wr-hedgehog'},
-    {name: '游戏-狼兔项目--地球', path: 'game-wr-earth'},
+    {name: '游戏-狼兔项目--狼', path: 'game-wolf-rabbit-wolf'},
+    {name: '游戏-狼兔项目--兔', path: 'game-wolf-rabbit-rabbit'},
+    {name: '游戏-狼兔项目--刺猬', path: 'game-wolf-rabbit-hedgehog'},
+    {name: '游戏-狼兔项目--地球', path: 'game-wolf-rabbit-earth'},
     {name: '游戏-狼兔项目', path: 'game-wolf-rabbit'},
 
 

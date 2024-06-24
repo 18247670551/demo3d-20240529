@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import {gsap} from "gsap"
 
 
-export default class Monster extends THREE.Group {
+export default class Wolf extends THREE.Group {
 
     private runningCycle = 0
 

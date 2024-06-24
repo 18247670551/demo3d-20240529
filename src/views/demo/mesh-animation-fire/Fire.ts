@@ -40,7 +40,7 @@ export default class Fire extends THREE.Group{
         const geometry = new THREE.PlaneGeometry(w, h)
         geometry.translate(0, h / 2, 0)
 
-        const texture = getTextureLoader().load('/demo/fire/fire.png')
+        const texture = getTextureLoader().load('/demo/mesh-animation-fire/fire.png')
         // 设置纹理重复次数
         texture.repeat.set(1 / this.num, 1)
         this.texture = texture

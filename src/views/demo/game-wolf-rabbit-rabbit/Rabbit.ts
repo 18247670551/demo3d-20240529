@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import {gsap} from "gsap"
 
 
-export default class Hero extends THREE.Group {
+export default class Rabbit extends THREE.Group {
 
     private runningCycle = 0
     private speed = 6

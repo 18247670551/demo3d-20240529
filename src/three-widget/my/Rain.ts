@@ -28,7 +28,7 @@ export default class Rain extends MyGroup<WaterFallOptions> {
 
         constructor(size: number, radius: number) {
 
-            const texture = getTextureLoader().load('/demo/my/common/rain.png')
+            const texture = getTextureLoader().load('/demo/scene-ming/common/rain.png')
             
             texture.colorSpace = THREE.SRGBColorSpace
 

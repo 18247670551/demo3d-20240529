@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import PointTag from "../../../../public/demo/mesh-point-tag/PointTag"
+import PointTag from "./PointTag"
 
 export default class ThreeProject extends ThreeCore {
 
@@ -18,17 +18,18 @@ export default class ThreeProject extends ThreeCore {
             }
         })
 
-        this.camera.position.set(-100, 200, 300)
         this.scene.background = new THREE.Color(0x000000)
+        this.camera.position.set(-100, 200, 300)
         this.renderer.shadowMap.enabled = true
+
+
+
 
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
         this.orbit.target.y = 30
 
         // const axesHelper = new THREE.AxesHelper(100)
         // this.scene.add(axesHelper)
-
-
 
 
         const ambientLight = new THREE.AmbientLight(0xffffff, 1)

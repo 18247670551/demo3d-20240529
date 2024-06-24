@@ -2,13 +2,13 @@ import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
 import {GUI} from "dat.gui"
-import Monster from "@/views/demo/game-wolf-rabbit/wolf/Monster"
+import Wolf from "@/views/demo/game-wolf-rabbit-wolf/Wolf"
 
 export default class ThreeProject extends ThreeCore {
 
     private readonly orbit: OrbitControls
 
-    private readonly wolf: Monster
+    private readonly wolf: Wolf
     protected dela = 0
 
 
@@ -42,7 +42,7 @@ export default class ThreeProject extends ThreeCore {
 
         this.orbit = new OrbitControls(this.camera, this.renderer.domElement)
 
-        this.wolf = this.addAndGetMonster()
+        this.wolf = this.addAndGetWolf()
         this.wolf.rotation.y = Math.PI/2
         this.wolf.nod()
     }
@@ -58,8 +58,8 @@ export default class ThreeProject extends ThreeCore {
         this.dela = this.clock.getDelta()
     }
 
-    private addAndGetMonster(){
-        const wolf = new Monster()
+    private addAndGetWolf(){
+        const wolf = new Wolf()
         this.scene.add(wolf)
         return wolf
     }

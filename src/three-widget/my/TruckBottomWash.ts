@@ -121,7 +121,7 @@ export default class TruckBottomWash extends MyGroup<TruckBottomWashOptions> {
 
     private createWheel() {
 
-        const wheelTexture = getTextureLoader().load("/demo/my/wash/wheel.png")
+        const wheelTexture = getTextureLoader().load("/demo/scene-ming/wash/wheel.png")
         
         wheelTexture.colorSpace = THREE.SRGBColorSpace
 
@@ -132,7 +132,7 @@ export default class TruckBottomWash extends MyGroup<TruckBottomWashOptions> {
         })
 
 
-        const tyreTexture = getTextureLoader().load("/demo/my/wash/tyre_0.png")
+        const tyreTexture = getTextureLoader().load("/demo/scene-ming/wash/tyre_0.png")
         
         tyreTexture.colorSpace = THREE.SRGBColorSpace
 

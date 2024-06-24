@@ -170,14 +170,14 @@ export default class Truck extends MyGroup<TruckOptions> {
      * 车厢大小: 长7米, 宽2.3米, 高2.5米
      */
     private addBody() {
-        const sideTexture = getTextureLoader().load("/demo/my/common/truck/body_0.jpg")
+        const sideTexture = getTextureLoader().load("/demo/scene-ming/common/truck/body_0.jpg")
         
         sideTexture.colorSpace = THREE.SRGBColorSpace
 
         sideTexture.wrapS = sideTexture.wrapT = THREE.RepeatWrapping
         sideTexture.repeat.set(20, 1)
 
-        const bottomTexture = getTextureLoader().load("/demo/my/common/truck/bottom_0.png")
+        const bottomTexture = getTextureLoader().load("/demo/scene-ming/common/truck/bottom_0.png")
         
         bottomTexture.colorSpace = THREE.SRGBColorSpace
 
@@ -213,7 +213,7 @@ export default class Truck extends MyGroup<TruckOptions> {
 
     private createWheel() {
 
-        const wheelTexture = getTextureLoader().load("/demo/my/common/truck/wheel.png")
+        const wheelTexture = getTextureLoader().load("/demo/scene-ming/common/truck/wheel.png")
         
         wheelTexture.colorSpace = THREE.SRGBColorSpace
 
@@ -224,7 +224,7 @@ export default class Truck extends MyGroup<TruckOptions> {
         })
 
 
-        const tyreTexture = getTextureLoader().load("/demo/my/common/truck/tyre_0.png")
+        const tyreTexture = getTextureLoader().load("/demo/scene-ming/common/truck/tyre_0.png")
         
         tyreTexture.colorSpace = THREE.SRGBColorSpace
         tyreTexture.wrapS = tyreTexture.wrapT = THREE.RepeatWrapping

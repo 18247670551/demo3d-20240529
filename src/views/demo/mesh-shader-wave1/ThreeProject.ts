@@ -34,7 +34,7 @@ export default class ThreeProject extends ThreeCore {
         
         
 
-        const texture = getTextureLoader().load("public/demo/shader-wave/img.png")
+        const texture = getTextureLoader().load("public/demo/mesh-shader-wave1/img.png")
 
         const shadeMaterial = new THREE.RawShaderMaterial({
             uniforms: {
