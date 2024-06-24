@@ -113,7 +113,7 @@ export default class SmokeParticle extends THREE.Points {
 
 
     static createMaterial() {
-        const texture = getTextureLoader().load("/demo/my/wash/smoke1.png")
+        const texture = getTextureLoader().load("/demo/scene-ming-wash/smoke1.png")
         
         texture.colorSpace = THREE.SRGBColorSpace
 

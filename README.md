@@ -489,10 +489,16 @@ npm run dev
 ##### 来源网络
 ![preview](public/demo/__case-cover/canvas1.png)
 
+
 #
 #### 示例: canvas2--字母喷泉
 ##### 来源网络
 ![preview](public/demo/__case-cover/canvas2.png)
+
+
+#
+#### 示例: cesium 简单示例
+![preview](public/demo/__case-cover/cesium-simple-first.png)
 
 
 

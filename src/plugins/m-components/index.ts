@@ -22,16 +22,6 @@ const components: Record<string, Component> = {
     MLoading,
 }
 
-// 不知为何, 用 import()函数直接导入的方法找不到图标, 先用上面的方式
-// const components: Record<string, Component> = {
-//     SvgIcon: () => import('@/plugins/m-components/svg-icon/Index.vue'),
-//     MSpace: () => import('@/plugins/m-components/m-space/Index.vue'),
-//     MPage: () => import('@/plugins/m-components/m-page/Index.vue'),
-//     MTableColIndex: () => import('@/plugins/m-components/m-table-col-index/Index.vue'),
-//     MLabelValue: () => import('@/plugins/m-components/m-label-value/Index.vue'),
-//     MHeader: () => import('@/plugins/m-components/m-header/Index.vue'),
-// }
-
 export default {
     install(app: App) {
         Object.keys(components).forEach((key) => {

@@ -16,9 +16,9 @@ export default defineConfig(({mode, command}: ConfigEnv): UserConfig => {
     //__filename 执行js文件所在的绝对地址——文件路径
     //process.cwd()和__dirname可能相同
 
-    const envDir = path.resolve(__dirname, "_env")
-    const srcDir = path.resolve(__dirname, "src")
-    const env = loadEnv(mode, envDir)
+    //const envDir = path.resolve(__dirname, "_env")
+    //const srcDir = path.resolve(__dirname, "src")
+    //const env = loadEnv(mode, envDir)
 
     const isServe = command === "serve"
     const isBuild = command === "build"
@@ -29,11 +29,11 @@ export default defineConfig(({mode, command}: ConfigEnv): UserConfig => {
         define: {
             IS_BUILD: isBuild // 用于渲染进程判断当前是否为打包环境
         },
-        envDir,
+        envDir: path.resolve(__dirname, "_env"),
         base: './',
         resolve: {
             alias: {
-                '@': srcDir,
+                '@': path.resolve(__dirname, "src"),
                 '@api': path.resolve(__dirname, "src/api"),
             },
             // 导入时想要省略的扩展名列表

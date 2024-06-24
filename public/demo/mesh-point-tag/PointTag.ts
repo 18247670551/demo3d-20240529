@@ -1,0 +1,118 @@
+import * as THREE from "three"
+import * as BufferGeometryUtils from 'three/examples/jsm/utils/BufferGeometryUtils.js'
+import {ColorRepresentation} from "three/src/math/Color"
+import {getTextureLoader} from "../../../src/three-widget/loader/ThreeLoader"
+
+interface PointTagOptions {
+    radius: number,
+    height: number,
+    color: ColorRepresentation,
+    ringTexture: THREE.Texture,
+    tagTexture: THREE.Texture,
+}
+
+const defaultOptions: Required<PointTagOptions> = {
+    radius: 4,
+    height: 20,
+    color: '#EEEE00',
+    ringTexture: getTextureLoader().load('/demo/point-tag/ring3.png'),
+    tagTexture: getTextureLoader().load('/demo/point-tag/gradient_round_outside_to_inner.png'),
+}
+
+
+export default class PointTag extends THREE.Group {
+
+    private readonly tag: THREE.Mesh
+    private readonly ring: THREE.Mesh
+
+    constructor(options?: PointTagOptions) {
+
+        super()
+
+        const finalOptions = Object.assign({}, defaultOptions, options)
+
+        const {radius, height, color, ringTexture, tagTexture} = finalOptions
+
+        // 顶部圆椎高占比 1/3
+        const topConeHeight = height / 3
+        // 底部圆椎高占比 2/3
+        const bottomConeHeight = height / 3 * 2
+        // 底部圆椎Y轴提升距离是自身高度的一半
+        const bottomConeHeightTranslateY = bottomConeHeight / 2
+        // 顶部圆椎Y轴提升距离是自身高度的一半 + 底部圆椎体高度
+        const topConeHeightTranslateY = topConeHeight / 2 + bottomConeHeight
+
+
+        // 顶部圆椎
+        const topConeGeometry = new THREE.ConeGeometry(radius, topConeHeight, 4)
+        topConeGeometry.translate(0, topConeHeightTranslateY, 0)
+
+        // 底部圆椎
+        const bottomConeGeometry = new THREE.ConeGeometry(radius, bottomConeHeight, 4)
+        bottomConeGeometry.rotateX(Math.PI)
+        bottomConeGeometry.translate(0, bottomConeHeightTranslateY, 0)
+
+        // 合并 顶部圆椎 底部圆椎
+        const mergedGeometry = BufferGeometryUtils.mergeGeometries([
+            topConeGeometry.toNonIndexed(), // 转换为非索引格式
+            bottomConeGeometry.toNonIndexed()
+        ])
+
+        const material = new THREE.MeshBasicMaterial({
+            color,
+            map: tagTexture,
+            transparent: true,
+        })
+
+        const tag = new THREE.Mesh(mergedGeometry, material)
+        this.add(tag)
+        this.tag = tag
+
+
+        // 动画光晕平面
+        const ringGeo = new THREE.PlaneGeometry(height / 2, height / 2)
+        // Y轴提升距离是底部圆椎体高度
+        ringGeo.rotateX(-Math.PI / 2)
+        ringGeo.translate(0, bottomConeHeight, 0)
+
+        const ringMat = new THREE.MeshBasicMaterial({
+            map: ringTexture,
+            side: THREE.DoubleSide,
+            color,
+            transparent: true,
+            depthTest: false,
+        })
+
+        const ring = new THREE.Mesh(ringGeo, ringMat)
+        this.add(ring)
+        this.ring = ring
+    }
+
+    update() {
+
+        this.tag.rotation.y += 0.01
+
+        let scale = this.ring.scale.x
+        // 光圈放大范围，从1倍放大到6倍
+        const range = 6
+        scale += 0.02
+        // 光圈透明度
+        let opacity
+
+        if (scale < range * 0.3) {
+            // 光圈的透明度从0.0逐渐过渡到1.0，逐渐显示
+            opacity = (scale - 1) / (range * 0.3 - 1)
+        } else if (scale > range * 0.3 && scale <= range) {
+            // 光圈的透明度从1.0逐渐过渡到0.0，逐渐消失
+            opacity = 1 - (scale - range * 0.3) / (range - range * 0.3)
+        } else {
+            // 重置缩放值
+            scale = 1.0
+        }
+        this.ring.scale.set(scale, 1, scale)
+        // @ts-ignore
+        this.ring.material.opacity = opacity
+    }
+
+
+}
