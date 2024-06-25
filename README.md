@@ -39,6 +39,7 @@ npm run dev
 
 #
 #### 示例: 天空盒
+#### 单贴图
 ![preview](public/demo/__case-cover/mesh-skybox-image.png)
 
 #
@@ -48,6 +49,7 @@ npm run dev
 
 #
 #### 示例: 天空盒-皇家滨海大道广场
+#### hdr材质
 ![preview](public/demo/__case-cover/mesh-skybox-royal-esplanade.png)
 
 
@@ -181,6 +183,7 @@ npm run dev
 
 #
 #### 示例: 树林
+#### 树木全是精灵材质
 ![preview](public/demo/__case-cover/mesh-sprite-forest.png)
 
 #
@@ -193,19 +196,21 @@ npm run dev
 
 #
 #### 示例: 简易树
+#### 由多个平面贴图交叉生成
 ![preview](public/demo/__case-cover/mesh-simple-tree.png)
 
 #
 #### 示例: 用图片生成3D效果
+#### 景深图片是随意生成的, 效果不好
 ![preview](public/demo/__case-cover/mesh-photo3d.png)
-
-#
-#### 示例: 房子
-![preview](public/demo/__case-cover/mesh-house.png)
 
 #
 #### 示例: 材质示例-门
 ![preview](public/demo/__case-cover/mesh-texture-door.png)
+
+#
+#### 示例: 房子, 有开门动画
+![preview](public/demo/__case-cover/mesh-house.png)
 
 
 
@@ -238,6 +243,7 @@ npm run dev
 
 #
 #### 示例: 动画--火焰
+#### 关键帧动画
 ![preview](public/demo/__case-cover/mesh-animation-fire.png)
 
 #
@@ -306,7 +312,7 @@ npm run dev
 
 #
 #### 示例: shader-波动2
-![preview](public/demo/__case-cover/mesh-shader-wave1.png)
+![preview](public/demo/__case-cover/mesh-shader-wave2.png)
 
 #
 #### 示例: shader-波动3
@@ -388,6 +394,7 @@ npm run dev
 
 #
 #### 示例: 过山车
+#### 可编辑轨道
 ![preview](public/demo/__case-cover/scene-roller-coaster.png)
 
 #
@@ -432,7 +439,16 @@ npm run dev
 
 #
 #### 示例: 游戏-狼兔游戏
+#### 用最新版three重构失败
 ![preview](public/demo/__case-cover/game-wolf-rabbit.png)
+
+
+
+
+#
+#### 示例: cesium-简例
+#### cesium.js 的一个简单示例
+![preview](public/demo/__case-cover/cesium-simple-first.png)
 
 
 
@@ -447,16 +463,10 @@ npm run dev
 
 
 
-#
-#### 示例: cesium-简例
-![preview](public/demo/__case-cover/cesium-simple-first.png)
-
-
-
 
 # 源码文件夹
 
 #### 1. 网络上搜集来的源码没保留原作者注释或信息, 网络案例大多都比较老旧, threejs新版本与旧版本改动较大, 本项目整理过的网络案例, 源码经过重构, 改成ts, 改成对象化
 #### 2. 无意抄袭删除原作者, 如果介意, 请留言, 本人会添加原作者信息或删除
 #### 3. 本项目 _doc 目录下, 附上了本人搜集来的网络案例源码包, 如有侵权, 请联系本人删除
-#### 4. 附带的网络案例, 如果有兴趣重构并愿意开源重构后代码的(最好是基于three最新版本号, ts, 对象化封装), 可以加qq好友402337325共同学习, 更新代码
+#### 4. 附带的网络案例和本人重构失败案例, 如果有兴趣重构(基于three最新版本, ts对象化封装)并愿意开源的, 可以加qq好友402337325共同学习, 更新代码

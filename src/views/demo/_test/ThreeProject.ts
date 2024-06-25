@@ -1,7 +1,6 @@
 import * as THREE from "three"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls"
 import ThreeCore from "@/three-widget/ThreeCore"
-import {getDracoGltfLoader} from "@/three-widget/loader/ThreeLoader"
 
 
 export default class ThreeProject extends ThreeCore {
@@ -44,14 +43,6 @@ export default class ThreeProject extends ThreeCore {
         // this.scene.add(axesHelper)
 
 
-
-        getDracoGltfLoader().load("public/demo/model-football-field/football-field.glb", gltf => {
-
-            console.log("gltf = ", gltf)
-
-            this.scene.add(gltf.scene)
-
-        })
 
 
     }

@@ -56,7 +56,7 @@ export default abstract class ThreeCore {
             antialias: true,
             alpha: true,
             // 深度缓冲, 解决模型重叠部分不停闪烁问题
-            // 这个属性会导致精灵材质会被后面的物体遮挡(不知道什么原理),
+            // 这个属性会导致精灵材质会被后面的物体遮挡
             // 只能出现问题的时候, 在那个场景 new ThreeCore继承类的时候, 传入rendererOptions参数, 将此参数改为 false
             logarithmicDepthBuffer: true
         }

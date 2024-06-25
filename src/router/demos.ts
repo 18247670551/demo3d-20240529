@@ -43,8 +43,8 @@ const demos : {name: string, path: string}[] = [
     {name: '奥运会logo', path: 'mesh-olympic-logo'},
     {name: '简易树', path: 'mesh-simple-tree'},
     {name: '用图片生成3D效果', path: 'mesh-photo3d'},
-    {name: '房子', path: 'mesh-house'},
     {name: '材质示例-门', path: 'mesh-texture-door'},
+    {name: '房子', path: 'mesh-house'},
 
 
     {name: '动画--门', path: 'mesh-animation-door'},
@@ -105,13 +105,13 @@ const demos : {name: string, path: string}[] = [
 
 
 
+    {name: 'cesium-简例', path: 'cesium-simple-first'},
 
 
     {name: 'canvas-绚烂粒子特效', path: 'canvas-animation-points1'},
     {name: 'canvas-字母喷泉', path: 'canvas-animation-letter-fountain'},
 
 
-    {name: 'cesium-简例', path: 'cesium-simple-first'},
 
     {name: '测试页面', path: '_test'},
 
